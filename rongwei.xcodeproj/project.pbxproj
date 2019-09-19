@@ -9,6 +9,15 @@
 /* Begin PBXBuildFile section */
 		9ECA9B3767B523B47E5CC5D3 /* libPods-rongweiUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AF8B2EC23CB6593255A65F59 /* libPods-rongweiUITests.a */; };
 		B0A72C8143F173529952CB2D /* libPods-rongwei.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 20D41B16400FB5B4785A6312 /* libPods-rongwei.a */; };
+		C428EBAD2333A880009E0E8A /* DFAppVersionTool.m in Sources */ = {isa = PBXBuildFile; fileRef = C428EBAC2333A880009E0E8A /* DFAppVersionTool.m */; };
+		C428EBB22333A99A009E0E8A /* DFTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = C428EBB12333A99A009E0E8A /* DFTabBarController.m */; };
+		C428EBB52333AD8E009E0E8A /* DFNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = C428EBB42333AD8E009E0E8A /* DFNavigationController.m */; };
+		C428EBCC2333B51F009E0E8A /* DFHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C428EBCB2333B51F009E0E8A /* DFHomeViewController.m */; };
+		C428EBCF2333B534009E0E8A /* DFJianCaiViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C428EBCE2333B534009E0E8A /* DFJianCaiViewController.m */; };
+		C428EBD22333B543009E0E8A /* DFMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C428EBD12333B543009E0E8A /* DFMainViewController.m */; };
+		C428EBD52333B55D009E0E8A /* DFXiaoGuoTuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C428EBD42333B55D009E0E8A /* DFXiaoGuoTuViewController.m */; };
+		C428EBD82333B58D009E0E8A /* DFFindGonglueViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C428EBD72333B58D009E0E8A /* DFFindGonglueViewController.m */; };
+		C428EBDB2333BAEC009E0E8A /* DFBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C428EBDA2333BAEC009E0E8A /* DFBaseViewController.m */; };
 		C46AD0E523338FE6000514B7 /* DFNetworkTool.m in Sources */ = {isa = PBXBuildFile; fileRef = C46AD0E423338FE6000514B7 /* DFNetworkTool.m */; };
 		C46AD0EA23339256000514B7 /* DFUserModelTool.m in Sources */ = {isa = PBXBuildFile; fileRef = C46AD0E923339255000514B7 /* DFUserModelTool.m */; };
 		C4E0680B23327A6300C0F650 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C4E0680A23327A6300C0F650 /* AppDelegate.m */; };
@@ -48,6 +57,24 @@
 		A8B7A36D84EBABCCD8B96DCC /* Pods-rongweiUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-rongweiUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-rongweiUITests/Pods-rongweiUITests.release.xcconfig"; sourceTree = "<group>"; };
 		AD2B213CB6C8440140E4FF58 /* libPods-rongweiTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-rongweiTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AF8B2EC23CB6593255A65F59 /* libPods-rongweiUITests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-rongweiUITests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		C428EBAB2333A880009E0E8A /* DFAppVersionTool.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DFAppVersionTool.h; sourceTree = "<group>"; };
+		C428EBAC2333A880009E0E8A /* DFAppVersionTool.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DFAppVersionTool.m; sourceTree = "<group>"; };
+		C428EBB02333A99A009E0E8A /* DFTabBarController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DFTabBarController.h; sourceTree = "<group>"; };
+		C428EBB12333A99A009E0E8A /* DFTabBarController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DFTabBarController.m; sourceTree = "<group>"; };
+		C428EBB32333AD8E009E0E8A /* DFNavigationController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DFNavigationController.h; sourceTree = "<group>"; };
+		C428EBB42333AD8E009E0E8A /* DFNavigationController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DFNavigationController.m; sourceTree = "<group>"; };
+		C428EBCA2333B51F009E0E8A /* DFHomeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DFHomeViewController.h; sourceTree = "<group>"; };
+		C428EBCB2333B51F009E0E8A /* DFHomeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DFHomeViewController.m; sourceTree = "<group>"; };
+		C428EBCD2333B534009E0E8A /* DFJianCaiViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DFJianCaiViewController.h; sourceTree = "<group>"; };
+		C428EBCE2333B534009E0E8A /* DFJianCaiViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DFJianCaiViewController.m; sourceTree = "<group>"; };
+		C428EBD02333B543009E0E8A /* DFMainViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DFMainViewController.h; sourceTree = "<group>"; };
+		C428EBD12333B543009E0E8A /* DFMainViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DFMainViewController.m; sourceTree = "<group>"; };
+		C428EBD32333B55D009E0E8A /* DFXiaoGuoTuViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DFXiaoGuoTuViewController.h; sourceTree = "<group>"; };
+		C428EBD42333B55D009E0E8A /* DFXiaoGuoTuViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DFXiaoGuoTuViewController.m; sourceTree = "<group>"; };
+		C428EBD62333B58D009E0E8A /* DFFindGonglueViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DFFindGonglueViewController.h; sourceTree = "<group>"; };
+		C428EBD72333B58D009E0E8A /* DFFindGonglueViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DFFindGonglueViewController.m; sourceTree = "<group>"; };
+		C428EBD92333BAEC009E0E8A /* DFBaseViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DFBaseViewController.h; sourceTree = "<group>"; };
+		C428EBDA2333BAEC009E0E8A /* DFBaseViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DFBaseViewController.m; sourceTree = "<group>"; };
 		C46AD0E323338FE6000514B7 /* DFNetworkTool.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DFNetworkTool.h; sourceTree = "<group>"; };
 		C46AD0E423338FE6000514B7 /* DFNetworkTool.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DFNetworkTool.m; sourceTree = "<group>"; };
 		C46AD0E62333901B000514B7 /* DFApi.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DFApi.h; sourceTree = "<group>"; };
@@ -115,12 +142,205 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		C428EBAE2333A97A009E0E8A /* Class */ = {
+			isa = PBXGroup;
+			children = (
+				C428EBBA2333B4FB009E0E8A /* home */,
+				C428EBBE2333B4FB009E0E8A /* jiancaiku */,
+				C428EBC22333B4FB009E0E8A /* main */,
+				C428EBC62333B4FB009E0E8A /* xiaoguotu */,
+				C428EBB62333B4FB009E0E8A /* zhaogonglue */,
+				C428EBAF2333A97A009E0E8A /* Tabbar */,
+			);
+			path = Class;
+			sourceTree = "<group>";
+		};
+		C428EBAF2333A97A009E0E8A /* Tabbar */ = {
+			isa = PBXGroup;
+			children = (
+				C428EBB02333A99A009E0E8A /* DFTabBarController.h */,
+				C428EBB12333A99A009E0E8A /* DFTabBarController.m */,
+				C428EBB32333AD8E009E0E8A /* DFNavigationController.h */,
+				C428EBB42333AD8E009E0E8A /* DFNavigationController.m */,
+				C428EBD92333BAEC009E0E8A /* DFBaseViewController.h */,
+				C428EBDA2333BAEC009E0E8A /* DFBaseViewController.m */,
+			);
+			path = Tabbar;
+			sourceTree = "<group>";
+		};
+		C428EBB62333B4FB009E0E8A /* zhaogonglue */ = {
+			isa = PBXGroup;
+			children = (
+				C428EBB72333B4FB009E0E8A /* contro */,
+				C428EBB82333B4FB009E0E8A /* model */,
+				C428EBB92333B4FB009E0E8A /* view */,
+			);
+			path = zhaogonglue;
+			sourceTree = "<group>";
+		};
+		C428EBB72333B4FB009E0E8A /* contro */ = {
+			isa = PBXGroup;
+			children = (
+				C428EBD62333B58D009E0E8A /* DFFindGonglueViewController.h */,
+				C428EBD72333B58D009E0E8A /* DFFindGonglueViewController.m */,
+			);
+			path = contro;
+			sourceTree = "<group>";
+		};
+		C428EBB82333B4FB009E0E8A /* model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = model;
+			sourceTree = "<group>";
+		};
+		C428EBB92333B4FB009E0E8A /* view */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = view;
+			sourceTree = "<group>";
+		};
+		C428EBBA2333B4FB009E0E8A /* home */ = {
+			isa = PBXGroup;
+			children = (
+				C428EBBB2333B4FB009E0E8A /* contro */,
+				C428EBBC2333B4FB009E0E8A /* model */,
+				C428EBBD2333B4FB009E0E8A /* view */,
+			);
+			path = home;
+			sourceTree = "<group>";
+		};
+		C428EBBB2333B4FB009E0E8A /* contro */ = {
+			isa = PBXGroup;
+			children = (
+				C428EBCA2333B51F009E0E8A /* DFHomeViewController.h */,
+				C428EBCB2333B51F009E0E8A /* DFHomeViewController.m */,
+			);
+			path = contro;
+			sourceTree = "<group>";
+		};
+		C428EBBC2333B4FB009E0E8A /* model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = model;
+			sourceTree = "<group>";
+		};
+		C428EBBD2333B4FB009E0E8A /* view */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = view;
+			sourceTree = "<group>";
+		};
+		C428EBBE2333B4FB009E0E8A /* jiancaiku */ = {
+			isa = PBXGroup;
+			children = (
+				C428EBBF2333B4FB009E0E8A /* contro */,
+				C428EBC02333B4FB009E0E8A /* model */,
+				C428EBC12333B4FB009E0E8A /* view */,
+			);
+			path = jiancaiku;
+			sourceTree = "<group>";
+		};
+		C428EBBF2333B4FB009E0E8A /* contro */ = {
+			isa = PBXGroup;
+			children = (
+				C428EBCD2333B534009E0E8A /* DFJianCaiViewController.h */,
+				C428EBCE2333B534009E0E8A /* DFJianCaiViewController.m */,
+			);
+			path = contro;
+			sourceTree = "<group>";
+		};
+		C428EBC02333B4FB009E0E8A /* model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = model;
+			sourceTree = "<group>";
+		};
+		C428EBC12333B4FB009E0E8A /* view */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = view;
+			sourceTree = "<group>";
+		};
+		C428EBC22333B4FB009E0E8A /* main */ = {
+			isa = PBXGroup;
+			children = (
+				C428EBC32333B4FB009E0E8A /* contro */,
+				C428EBC42333B4FB009E0E8A /* model */,
+				C428EBC52333B4FB009E0E8A /* view */,
+			);
+			path = main;
+			sourceTree = "<group>";
+		};
+		C428EBC32333B4FB009E0E8A /* contro */ = {
+			isa = PBXGroup;
+			children = (
+				C428EBD02333B543009E0E8A /* DFMainViewController.h */,
+				C428EBD12333B543009E0E8A /* DFMainViewController.m */,
+			);
+			path = contro;
+			sourceTree = "<group>";
+		};
+		C428EBC42333B4FB009E0E8A /* model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = model;
+			sourceTree = "<group>";
+		};
+		C428EBC52333B4FB009E0E8A /* view */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = view;
+			sourceTree = "<group>";
+		};
+		C428EBC62333B4FB009E0E8A /* xiaoguotu */ = {
+			isa = PBXGroup;
+			children = (
+				C428EBC72333B4FB009E0E8A /* contro */,
+				C428EBC82333B4FB009E0E8A /* model */,
+				C428EBC92333B4FB009E0E8A /* view */,
+			);
+			path = xiaoguotu;
+			sourceTree = "<group>";
+		};
+		C428EBC72333B4FB009E0E8A /* contro */ = {
+			isa = PBXGroup;
+			children = (
+				C428EBD32333B55D009E0E8A /* DFXiaoGuoTuViewController.h */,
+				C428EBD42333B55D009E0E8A /* DFXiaoGuoTuViewController.m */,
+			);
+			path = contro;
+			sourceTree = "<group>";
+		};
+		C428EBC82333B4FB009E0E8A /* model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = model;
+			sourceTree = "<group>";
+		};
+		C428EBC92333B4FB009E0E8A /* view */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = view;
+			sourceTree = "<group>";
+		};
 		C46AD0E123338FC4000514B7 /* Tool */ = {
 			isa = PBXGroup;
 			children = (
 				C46AD0EB2333930E000514B7 /* Macro */,
 				C46AD0E72333923A000514B7 /* Model */,
 				C46AD0E223338FC4000514B7 /* Network */,
+				C428EBAB2333A880009E0E8A /* DFAppVersionTool.h */,
+				C428EBAC2333A880009E0E8A /* DFAppVersionTool.m */,
 			);
 			path = Tool;
 			sourceTree = "<group>";
@@ -177,6 +397,7 @@
 		C4E0680823327A6300C0F650 /* rongwei */ = {
 			isa = PBXGroup;
 			children = (
+				C428EBAE2333A97A009E0E8A /* Class */,
 				C46AD0E123338FC4000514B7 /* Tool */,
 				C4E0680923327A6300C0F650 /* AppDelegate.h */,
 				C4E0680A23327A6300C0F650 /* AppDelegate.m */,
@@ -431,9 +652,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C428EBCF2333B534009E0E8A /* DFJianCaiViewController.m in Sources */,
+				C428EBAD2333A880009E0E8A /* DFAppVersionTool.m in Sources */,
+				C428EBB52333AD8E009E0E8A /* DFNavigationController.m in Sources */,
+				C428EBD22333B543009E0E8A /* DFMainViewController.m in Sources */,
+				C428EBD52333B55D009E0E8A /* DFXiaoGuoTuViewController.m in Sources */,
+				C428EBDB2333BAEC009E0E8A /* DFBaseViewController.m in Sources */,
+				C428EBB22333A99A009E0E8A /* DFTabBarController.m in Sources */,
 				C46AD0EA23339256000514B7 /* DFUserModelTool.m in Sources */,
 				C46AD0E523338FE6000514B7 /* DFNetworkTool.m in Sources */,
+				C428EBD82333B58D009E0E8A /* DFFindGonglueViewController.m in Sources */,
 				C4E0680E23327A6300C0F650 /* ViewController.m in Sources */,
+				C428EBCC2333B51F009E0E8A /* DFHomeViewController.m in Sources */,
 				C4E0681923327A6700C0F650 /* main.m in Sources */,
 				C4E0680B23327A6300C0F650 /* AppDelegate.m in Sources */,
 			);

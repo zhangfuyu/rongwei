@@ -16,4 +16,7 @@
 #import<Masonry.h>
 #import "DFUserModelTool.h"
 #import "YYMacro.h"
+#import "DFBaseViewController.h"
+#import "UIColor+YYAdd.h"
+
 #endif /* PrefixHeader_pch */
