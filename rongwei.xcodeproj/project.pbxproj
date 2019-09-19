@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		9ECA9B3767B523B47E5CC5D3 /* libPods-rongweiUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AF8B2EC23CB6593255A65F59 /* libPods-rongweiUITests.a */; };
 		B0A72C8143F173529952CB2D /* libPods-rongwei.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 20D41B16400FB5B4785A6312 /* libPods-rongwei.a */; };
+		C46AD0E523338FE6000514B7 /* DFNetworkTool.m in Sources */ = {isa = PBXBuildFile; fileRef = C46AD0E423338FE6000514B7 /* DFNetworkTool.m */; };
+		C46AD0EA23339256000514B7 /* DFUserModelTool.m in Sources */ = {isa = PBXBuildFile; fileRef = C46AD0E923339255000514B7 /* DFUserModelTool.m */; };
 		C4E0680B23327A6300C0F650 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C4E0680A23327A6300C0F650 /* AppDelegate.m */; };
 		C4E0680E23327A6300C0F650 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C4E0680D23327A6300C0F650 /* ViewController.m */; };
 		C4E0681123327A6300C0F650 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C4E0680F23327A6300C0F650 /* Main.storyboard */; };
@@ -46,6 +48,12 @@
 		A8B7A36D84EBABCCD8B96DCC /* Pods-rongweiUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-rongweiUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-rongweiUITests/Pods-rongweiUITests.release.xcconfig"; sourceTree = "<group>"; };
 		AD2B213CB6C8440140E4FF58 /* libPods-rongweiTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-rongweiTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AF8B2EC23CB6593255A65F59 /* libPods-rongweiUITests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-rongweiUITests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		C46AD0E323338FE6000514B7 /* DFNetworkTool.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DFNetworkTool.h; sourceTree = "<group>"; };
+		C46AD0E423338FE6000514B7 /* DFNetworkTool.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DFNetworkTool.m; sourceTree = "<group>"; };
+		C46AD0E62333901B000514B7 /* DFApi.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DFApi.h; sourceTree = "<group>"; };
+		C46AD0E823339255000514B7 /* DFUserModelTool.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DFUserModelTool.h; sourceTree = "<group>"; };
+		C46AD0E923339255000514B7 /* DFUserModelTool.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DFUserModelTool.m; sourceTree = "<group>"; };
+		C46AD0EC2333932C000514B7 /* YYMacro.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YYMacro.h; sourceTree = "<group>"; };
 		C4E0680623327A6300C0F650 /* rongwei.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = rongwei.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C4E0680923327A6300C0F650 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		C4E0680A23327A6300C0F650 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -107,6 +115,43 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		C46AD0E123338FC4000514B7 /* Tool */ = {
+			isa = PBXGroup;
+			children = (
+				C46AD0EB2333930E000514B7 /* Macro */,
+				C46AD0E72333923A000514B7 /* Model */,
+				C46AD0E223338FC4000514B7 /* Network */,
+			);
+			path = Tool;
+			sourceTree = "<group>";
+		};
+		C46AD0E223338FC4000514B7 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				C46AD0E323338FE6000514B7 /* DFNetworkTool.h */,
+				C46AD0E423338FE6000514B7 /* DFNetworkTool.m */,
+				C46AD0E62333901B000514B7 /* DFApi.h */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		C46AD0E72333923A000514B7 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				C46AD0E823339255000514B7 /* DFUserModelTool.h */,
+				C46AD0E923339255000514B7 /* DFUserModelTool.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		C46AD0EB2333930E000514B7 /* Macro */ = {
+			isa = PBXGroup;
+			children = (
+				C46AD0EC2333932C000514B7 /* YYMacro.h */,
+			);
+			path = Macro;
+			sourceTree = "<group>";
+		};
 		C4E067FD23327A6300C0F650 = {
 			isa = PBXGroup;
 			children = (
@@ -132,6 +177,7 @@
 		C4E0680823327A6300C0F650 /* rongwei */ = {
 			isa = PBXGroup;
 			children = (
+				C46AD0E123338FC4000514B7 /* Tool */,
 				C4E0680923327A6300C0F650 /* AppDelegate.h */,
 				C4E0680A23327A6300C0F650 /* AppDelegate.m */,
 				C4E0680C23327A6300C0F650 /* ViewController.h */,
@@ -185,6 +231,7 @@
 				C4E0680223327A6300C0F650 /* Sources */,
 				C4E0680323327A6300C0F650 /* Frameworks */,
 				C4E0680423327A6300C0F650 /* Resources */,
+				047404FCA0984C1ADDC57D94 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -303,6 +350,26 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		047404FCA0984C1ADDC57D94 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-rongwei/Pods-rongwei-resources.sh",
+				"${PODS_ROOT}/IQKeyboardManager/IQKeyboardManager/Resources/IQKeyboardManager.bundle",
+				"${PODS_ROOT}/SVProgressHUD/SVProgressHUD/SVProgressHUD.bundle",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/IQKeyboardManager.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/SVProgressHUD.bundle",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-rongwei/Pods-rongwei-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		110663C3DFBC230780D96518 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -364,6 +431,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C46AD0EA23339256000514B7 /* DFUserModelTool.m in Sources */,
+				C46AD0E523338FE6000514B7 /* DFNetworkTool.m in Sources */,
 				C4E0680E23327A6300C0F650 /* ViewController.m in Sources */,
 				C4E0681923327A6700C0F650 /* main.m in Sources */,
 				C4E0680B23327A6300C0F650 /* AppDelegate.m in Sources */,
@@ -462,6 +531,8 @@
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = " $(SRCROOT)/RongWeiNet/PrefixHeader.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
@@ -519,6 +590,8 @@
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = " $(SRCROOT)/RongWeiNet/PrefixHeader.pch";
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
