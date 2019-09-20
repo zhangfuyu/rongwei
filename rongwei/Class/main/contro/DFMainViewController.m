@@ -7,16 +7,23 @@
 //
 
 #import "DFMainViewController.h"
+#import "DFMainHeaderView.h"
 
 @interface DFMainViewController ()
 
 @end
 
 @implementation DFMainViewController
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    self.navigationController.navigationBar.hidden = YES;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    [self.view addSubview:[DFMainHeaderView new]];
 }
 
 /*

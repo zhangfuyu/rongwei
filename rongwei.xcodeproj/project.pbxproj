@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		18810E7E23347D1A00F8191C /* DFMainHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 18810E7D23347D1A00F8191C /* DFMainHeaderView.m */; };
 		9ECA9B3767B523B47E5CC5D3 /* libPods-rongweiUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AF8B2EC23CB6593255A65F59 /* libPods-rongweiUITests.a */; };
 		B0A72C8143F173529952CB2D /* libPods-rongwei.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 20D41B16400FB5B4785A6312 /* libPods-rongwei.a */; };
 		C428EBAD2333A880009E0E8A /* DFAppVersionTool.m in Sources */ = {isa = PBXBuildFile; fileRef = C428EBAC2333A880009E0E8A /* DFAppVersionTool.m */; };
@@ -49,6 +50,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		18810E7C23347D1A00F8191C /* DFMainHeaderView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DFMainHeaderView.h; sourceTree = "<group>"; };
+		18810E7D23347D1A00F8191C /* DFMainHeaderView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DFMainHeaderView.m; sourceTree = "<group>"; };
 		20D41B16400FB5B4785A6312 /* libPods-rongwei.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-rongwei.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		57B0271A67F37CB49B073DD4 /* Pods-rongweiUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-rongweiUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-rongweiUITests/Pods-rongweiUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		5E319CAAFB935DB2950D656D /* Pods-rongweiTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-rongweiTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-rongweiTests/Pods-rongweiTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -296,6 +299,8 @@
 		C428EBC52333B4FB009E0E8A /* view */ = {
 			isa = PBXGroup;
 			children = (
+				18810E7C23347D1A00F8191C /* DFMainHeaderView.h */,
+				18810E7D23347D1A00F8191C /* DFMainHeaderView.m */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -658,6 +663,7 @@
 				C428EBD22333B543009E0E8A /* DFMainViewController.m in Sources */,
 				C428EBD52333B55D009E0E8A /* DFXiaoGuoTuViewController.m in Sources */,
 				C428EBDB2333BAEC009E0E8A /* DFBaseViewController.m in Sources */,
+				18810E7E23347D1A00F8191C /* DFMainHeaderView.m in Sources */,
 				C428EBB22333A99A009E0E8A /* DFTabBarController.m in Sources */,
 				C46AD0EA23339256000514B7 /* DFUserModelTool.m in Sources */,
 				C46AD0E523338FE6000514B7 /* DFNetworkTool.m in Sources */,

@@ -13,10 +13,10 @@
 // You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
 
 #import <AFNetworking.h>
-#import<Masonry.h>
+#import <Masonry.h>
 #import "DFUserModelTool.h"
 #import "YYMacro.h"
 #import "DFBaseViewController.h"
-#import "UIColor+YYAdd.h"
-
+#import <YYCategories.h>
+#import <UIImageView+WebCache.h>
 #endif /* PrefixHeader_pch */
