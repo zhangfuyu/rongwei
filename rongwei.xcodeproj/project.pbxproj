@@ -10,6 +10,9 @@
 		18810E7E23347D1A00F8191C /* DFMainHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 18810E7D23347D1A00F8191C /* DFMainHeaderView.m */; };
 		9ECA9B3767B523B47E5CC5D3 /* libPods-rongweiUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AF8B2EC23CB6593255A65F59 /* libPods-rongweiUITests.a */; };
 		B0A72C8143F173529952CB2D /* libPods-rongwei.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 20D41B16400FB5B4785A6312 /* libPods-rongwei.a */; };
+		C41FCD95233501110017427F /* DFMainTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C41FCD94233501110017427F /* DFMainTableViewCell.m */; };
+		C41FCD98233507F70017427F /* DFMainCellBtn.m in Sources */ = {isa = PBXBuildFile; fileRef = C41FCD97233507F70017427F /* DFMainCellBtn.m */; };
+		C41FCD9B23350AE90017427F /* DFMainDataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C41FCD9A23350AE90017427F /* DFMainDataModel.m */; };
 		C428EBAD2333A880009E0E8A /* DFAppVersionTool.m in Sources */ = {isa = PBXBuildFile; fileRef = C428EBAC2333A880009E0E8A /* DFAppVersionTool.m */; };
 		C428EBB22333A99A009E0E8A /* DFTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = C428EBB12333A99A009E0E8A /* DFTabBarController.m */; };
 		C428EBB52333AD8E009E0E8A /* DFNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = C428EBB42333AD8E009E0E8A /* DFNavigationController.m */; };
@@ -60,6 +63,12 @@
 		A8B7A36D84EBABCCD8B96DCC /* Pods-rongweiUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-rongweiUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-rongweiUITests/Pods-rongweiUITests.release.xcconfig"; sourceTree = "<group>"; };
 		AD2B213CB6C8440140E4FF58 /* libPods-rongweiTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-rongweiTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AF8B2EC23CB6593255A65F59 /* libPods-rongweiUITests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-rongweiUITests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		C41FCD93233501110017427F /* DFMainTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DFMainTableViewCell.h; sourceTree = "<group>"; };
+		C41FCD94233501110017427F /* DFMainTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DFMainTableViewCell.m; sourceTree = "<group>"; };
+		C41FCD96233507F70017427F /* DFMainCellBtn.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DFMainCellBtn.h; sourceTree = "<group>"; };
+		C41FCD97233507F70017427F /* DFMainCellBtn.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DFMainCellBtn.m; sourceTree = "<group>"; };
+		C41FCD9923350AE90017427F /* DFMainDataModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DFMainDataModel.h; sourceTree = "<group>"; };
+		C41FCD9A23350AE90017427F /* DFMainDataModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DFMainDataModel.m; sourceTree = "<group>"; };
 		C428EBAB2333A880009E0E8A /* DFAppVersionTool.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DFAppVersionTool.h; sourceTree = "<group>"; };
 		C428EBAC2333A880009E0E8A /* DFAppVersionTool.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DFAppVersionTool.m; sourceTree = "<group>"; };
 		C428EBB02333A99A009E0E8A /* DFTabBarController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DFTabBarController.h; sourceTree = "<group>"; };
@@ -292,6 +301,8 @@
 		C428EBC42333B4FB009E0E8A /* model */ = {
 			isa = PBXGroup;
 			children = (
+				C41FCD9923350AE90017427F /* DFMainDataModel.h */,
+				C41FCD9A23350AE90017427F /* DFMainDataModel.m */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -301,6 +312,10 @@
 			children = (
 				18810E7C23347D1A00F8191C /* DFMainHeaderView.h */,
 				18810E7D23347D1A00F8191C /* DFMainHeaderView.m */,
+				C41FCD93233501110017427F /* DFMainTableViewCell.h */,
+				C41FCD94233501110017427F /* DFMainTableViewCell.m */,
+				C41FCD96233507F70017427F /* DFMainCellBtn.h */,
+				C41FCD97233507F70017427F /* DFMainCellBtn.m */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -659,12 +674,15 @@
 			files = (
 				C428EBCF2333B534009E0E8A /* DFJianCaiViewController.m in Sources */,
 				C428EBAD2333A880009E0E8A /* DFAppVersionTool.m in Sources */,
+				C41FCD95233501110017427F /* DFMainTableViewCell.m in Sources */,
 				C428EBB52333AD8E009E0E8A /* DFNavigationController.m in Sources */,
 				C428EBD22333B543009E0E8A /* DFMainViewController.m in Sources */,
 				C428EBD52333B55D009E0E8A /* DFXiaoGuoTuViewController.m in Sources */,
 				C428EBDB2333BAEC009E0E8A /* DFBaseViewController.m in Sources */,
 				18810E7E23347D1A00F8191C /* DFMainHeaderView.m in Sources */,
+				C41FCD98233507F70017427F /* DFMainCellBtn.m in Sources */,
 				C428EBB22333A99A009E0E8A /* DFTabBarController.m in Sources */,
+				C41FCD9B23350AE90017427F /* DFMainDataModel.m in Sources */,
 				C46AD0EA23339256000514B7 /* DFUserModelTool.m in Sources */,
 				C46AD0E523338FE6000514B7 /* DFNetworkTool.m in Sources */,
 				C428EBD82333B58D009E0E8A /* DFFindGonglueViewController.m in Sources */,

@@ -17,7 +17,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self.view.backgroundColor = DCBGColor;
+    self.view.backgroundColor = [UIColor colorWithHexString:@"F2F2F2"];//DCBGColor;
 }
 
 /*
