@@ -13,6 +13,9 @@
 		C41FCD95233501110017427F /* DFMainTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C41FCD94233501110017427F /* DFMainTableViewCell.m */; };
 		C41FCD98233507F70017427F /* DFMainCellBtn.m in Sources */ = {isa = PBXBuildFile; fileRef = C41FCD97233507F70017427F /* DFMainCellBtn.m */; };
 		C41FCD9B23350AE90017427F /* DFMainDataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C41FCD9A23350AE90017427F /* DFMainDataModel.m */; };
+		C41FCDA0233784880017427F /* DFLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C41FCD9F233784880017427F /* DFLoginViewController.m */; };
+		C41FCDA42337865A0017427F /* DFTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = C41FCDA32337865A0017427F /* DFTextField.m */; };
+		C41FCDA82337B7FD0017427F /* NSString+GHRegular.m in Sources */ = {isa = PBXBuildFile; fileRef = C41FCDA72337B7FD0017427F /* NSString+GHRegular.m */; };
 		C428EBAD2333A880009E0E8A /* DFAppVersionTool.m in Sources */ = {isa = PBXBuildFile; fileRef = C428EBAC2333A880009E0E8A /* DFAppVersionTool.m */; };
 		C428EBB22333A99A009E0E8A /* DFTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = C428EBB12333A99A009E0E8A /* DFTabBarController.m */; };
 		C428EBB52333AD8E009E0E8A /* DFNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = C428EBB42333AD8E009E0E8A /* DFNavigationController.m */; };
@@ -69,6 +72,12 @@
 		C41FCD97233507F70017427F /* DFMainCellBtn.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DFMainCellBtn.m; sourceTree = "<group>"; };
 		C41FCD9923350AE90017427F /* DFMainDataModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DFMainDataModel.h; sourceTree = "<group>"; };
 		C41FCD9A23350AE90017427F /* DFMainDataModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DFMainDataModel.m; sourceTree = "<group>"; };
+		C41FCD9E233784880017427F /* DFLoginViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DFLoginViewController.h; sourceTree = "<group>"; };
+		C41FCD9F233784880017427F /* DFLoginViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DFLoginViewController.m; sourceTree = "<group>"; };
+		C41FCDA22337865A0017427F /* DFTextField.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DFTextField.h; sourceTree = "<group>"; };
+		C41FCDA32337865A0017427F /* DFTextField.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DFTextField.m; sourceTree = "<group>"; };
+		C41FCDA62337B7FD0017427F /* NSString+GHRegular.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+GHRegular.h"; sourceTree = "<group>"; };
+		C41FCDA72337B7FD0017427F /* NSString+GHRegular.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+GHRegular.m"; sourceTree = "<group>"; };
 		C428EBAB2333A880009E0E8A /* DFAppVersionTool.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DFAppVersionTool.h; sourceTree = "<group>"; };
 		C428EBAC2333A880009E0E8A /* DFAppVersionTool.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DFAppVersionTool.m; sourceTree = "<group>"; };
 		C428EBB02333A99A009E0E8A /* DFTabBarController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DFTabBarController.h; sourceTree = "<group>"; };
@@ -154,9 +163,46 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		C41FCD9C2337846E0017427F /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				C41FCDA1233786310017427F /* view */,
+				C41FCD9D2337846E0017427F /* contro */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		C41FCD9D2337846E0017427F /* contro */ = {
+			isa = PBXGroup;
+			children = (
+				C41FCD9E233784880017427F /* DFLoginViewController.h */,
+				C41FCD9F233784880017427F /* DFLoginViewController.m */,
+			);
+			path = contro;
+			sourceTree = "<group>";
+		};
+		C41FCDA1233786310017427F /* view */ = {
+			isa = PBXGroup;
+			children = (
+				C41FCDA22337865A0017427F /* DFTextField.h */,
+				C41FCDA32337865A0017427F /* DFTextField.m */,
+			);
+			path = view;
+			sourceTree = "<group>";
+		};
+		C41FCDA52337B7E00017427F /* UIkit */ = {
+			isa = PBXGroup;
+			children = (
+				C41FCDA62337B7FD0017427F /* NSString+GHRegular.h */,
+				C41FCDA72337B7FD0017427F /* NSString+GHRegular.m */,
+			);
+			path = UIkit;
+			sourceTree = "<group>";
+		};
 		C428EBAE2333A97A009E0E8A /* Class */ = {
 			isa = PBXGroup;
 			children = (
+				C41FCD9C2337846E0017427F /* Login */,
 				C428EBBA2333B4FB009E0E8A /* home */,
 				C428EBBE2333B4FB009E0E8A /* jiancaiku */,
 				C428EBC22333B4FB009E0E8A /* main */,
@@ -356,6 +402,7 @@
 		C46AD0E123338FC4000514B7 /* Tool */ = {
 			isa = PBXGroup;
 			children = (
+				C41FCDA52337B7E00017427F /* UIkit */,
 				C46AD0EB2333930E000514B7 /* Macro */,
 				C46AD0E72333923A000514B7 /* Model */,
 				C46AD0E223338FC4000514B7 /* Network */,
@@ -676,6 +723,7 @@
 				C428EBAD2333A880009E0E8A /* DFAppVersionTool.m in Sources */,
 				C41FCD95233501110017427F /* DFMainTableViewCell.m in Sources */,
 				C428EBB52333AD8E009E0E8A /* DFNavigationController.m in Sources */,
+				C41FCDA0233784880017427F /* DFLoginViewController.m in Sources */,
 				C428EBD22333B543009E0E8A /* DFMainViewController.m in Sources */,
 				C428EBD52333B55D009E0E8A /* DFXiaoGuoTuViewController.m in Sources */,
 				C428EBDB2333BAEC009E0E8A /* DFBaseViewController.m in Sources */,
@@ -687,9 +735,11 @@
 				C46AD0E523338FE6000514B7 /* DFNetworkTool.m in Sources */,
 				C428EBD82333B58D009E0E8A /* DFFindGonglueViewController.m in Sources */,
 				C4E0680E23327A6300C0F650 /* ViewController.m in Sources */,
+				C41FCDA82337B7FD0017427F /* NSString+GHRegular.m in Sources */,
 				C428EBCC2333B51F009E0E8A /* DFHomeViewController.m in Sources */,
 				C4E0681923327A6700C0F650 /* main.m in Sources */,
 				C4E0680B23327A6300C0F650 /* AppDelegate.m in Sources */,
+				C41FCDA42337865A0017427F /* DFTextField.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
