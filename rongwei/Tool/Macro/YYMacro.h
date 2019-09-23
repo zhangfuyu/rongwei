@@ -83,6 +83,9 @@
 
 #define HScaleWidth(width) ceil(ScreenW / 375 * width)
 
+#define HScaleFont(size) [UIFont systemFontOfSize:floor(size * (ScreenW / 375.f)) > size ? size : floor(size * (ScreenW / 375.f))]
+
+
 /** 弱引用 */
 #define WEAKSELF __weak typeof(self) weakSelf = self;
 

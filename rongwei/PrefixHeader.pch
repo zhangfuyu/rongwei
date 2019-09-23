@@ -19,4 +19,6 @@
 #import "DFBaseViewController.h"
 #import <YYCategories.h>
 #import <UIImageView+WebCache.h>
+#import "NSString+GHRegular.h"
+#import <SVProgressHUD.h>
 #endif /* PrefixHeader_pch */
