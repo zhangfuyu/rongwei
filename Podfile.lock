@@ -21,7 +21,6 @@ PODS:
     - SDWebImage/Core (= 4.3.3)
   - SDWebImage/Core (4.3.3)
   - SVProgressHUD (2.2.5)
-  - UINavigation-SXFixSpace (1.0.3)
   - YYCache (1.0.4)
   - YYCategories (1.0.4):
     - YYCategories/no-arc (= 1.0.4)
@@ -34,7 +33,6 @@ DEPENDENCIES:
   - Masonry
   - SDWebImage
   - SVProgressHUD
-  - UINavigation-SXFixSpace
   - YYCache
   - YYCategories
 
@@ -46,7 +44,6 @@ SPEC REPOS:
     - Masonry
     - SDWebImage
     - SVProgressHUD
-    - UINavigation-SXFixSpace
     - YYCache
     - YYCategories
 
@@ -57,10 +54,9 @@ SPEC CHECKSUMS:
   Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
   SDWebImage: de4d90b5bff3571eae7bd16202b1f43135409fa5
   SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
-  UINavigation-SXFixSpace: f5a684b5b4927c295ef23e83346fb7699268b751
   YYCache: 8105b6638f5e849296c71f331ff83891a4942952
   YYCategories: 6bcd4314c6661a561410dce4a793379ebd306abd
 
-PODFILE CHECKSUM: c75d1f6f1d202d916d4a57f1d8a24d3cdaa9ecc0
+PODFILE CHECKSUM: cfacbb317d1112953f8a9ccff0fd79d3a64bfe9f
 
-COCOAPODS: 1.5.2
+COCOAPODS: 1.7.5

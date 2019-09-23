@@ -8,7 +8,7 @@ target 'rongwei' do
   # Pods for rongwei
 
   pod 'AFNetworking'
-  pod 'UINavigation-SXFixSpace'
+#  pod 'UINavigation-SXFixSpace'
   pod 'SDWebImage'
   pod 'SVProgressHUD'
   pod 'IQKeyboardManager'
