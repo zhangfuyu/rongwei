@@ -34,8 +34,10 @@
     
     self.dataArry = [DFMainDataModel getDataSource];
     self.titleArry = [DFMainDataModel getDataSourceForTitle];
+    self.view.backgroundColor = [UIColor colorWithHexString:@"F2F2F2"];
 
-    self.mainTableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, ScreenW, ScreenH - kTabBarHeight) style:UITableViewStyleGrouped];
+    self.mainTableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, ScreenW, ScreenH - kTabBarHeight) style:UITableViewStylePlain];
+    self.mainTableView.backgroundView.backgroundColor = [UIColor colorWithHexString:@"F2F2F2"];
     self.mainTableView.delegate = self;
     self.mainTableView.dataSource = self;
     [self.view addSubview:self.mainTableView];
@@ -72,16 +74,16 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (indexPath.section == 0 || indexPath.section == 1 || indexPath.section == 2 || indexPath.section == 5) {
-        return 115;
+        return HScaleHeight(115) + HScaleHeight(5);
     }
     else
     {
-        return 190;
+        return HScaleHeight(190) + HScaleHeight(5);
     }
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
-    return HScaleHeight(5);
+    return 0;
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
 {

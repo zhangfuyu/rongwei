@@ -12,6 +12,16 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface DFBaseViewController : UIViewController
 
+@property (nonatomic , strong)UITableView *dataTableview;
+
+- (void)allocTableviewWith:(UITableViewStyle)style;
+
+- (void)tabelviewAddReload;
+
+- (void)tableviewAddMoreDown;
+
+- (void)refreshData;
+- (void)getMoreData;
 @end
 
 NS_ASSUME_NONNULL_END

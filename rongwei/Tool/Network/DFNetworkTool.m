@@ -15,8 +15,8 @@
 
 // 开发环境
 
-static const NSString *ipAddress = @"http://apidev.zsu1.com";
-static const NSString *htmlAddress = @"http://apidev.zsu1.com/";
+static const NSString *ipAddress = @"http://api.rongzw.com/Userapi/";
+static const NSString *htmlAddress = @"http://api.rongzw.com/Userapi/";
 
 
 
@@ -97,7 +97,6 @@ static const NSString *htmlAddress = @"http://apidev.zsu1.com/";
     
     self.sessionManager.requestSerializer.timeoutInterval = 20;
     
-    NSLog(@"---------------duoshaoge");
     
     if (method == GHRequestMethod_GET) {
         

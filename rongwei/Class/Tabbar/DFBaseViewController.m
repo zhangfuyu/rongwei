@@ -18,6 +18,32 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.view.backgroundColor = [UIColor colorWithHexString:@"FFFFFF"];//DCBGColor;
+    self.automaticallyAdjustsScrollViewInsets = NO;
+}
+
+- (void)tabelviewAddReload
+{
+    self.dataTableview.mj_header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(refreshData)];
+}
+
+- (void)tableviewAddMoreDown
+{
+    self.dataTableview.mj_footer = [MJRefreshBackNormalFooter footerWithRefreshingTarget:self refreshingAction:@selector(getMoreData)];
+}
+- (void)refreshData
+{
+    
+}
+- (void)getMoreData
+{
+    
+}
+- (void)allocTableviewWith:(UITableViewStyle)style
+{
+    self.dataTableview = [[UITableView alloc]initWithFrame:CGRectZero style:style];
+    self.dataTableview.showsVerticalScrollIndicator = NO;
+    self.dataTableview.showsVerticalScrollIndicator = NO;
+    [self.view addSubview:self.dataTableview];
 }
 
 /*

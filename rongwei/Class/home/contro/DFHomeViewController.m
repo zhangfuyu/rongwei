@@ -7,8 +7,11 @@
 //
 
 #import "DFHomeViewController.h"
+#import "DFEsignerlListViewController.h"
 
 @interface DFHomeViewController ()
+
+
 
 @end
 
@@ -18,8 +21,8 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.title = @"首页";
-    
-    [[DFUserModelTool shareInstance] showLoginViewController];
+    [self.navigationController pushViewController:[DFEsignerlListViewController new] animated:YES];
+//    [[DFUserModelTool shareInstance] showLoginViewController];
 }
 
 /*

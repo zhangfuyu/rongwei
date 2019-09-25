@@ -10,6 +10,10 @@
 
 #import "DFTextField.h"
 
+#import "DFForgotPasswordViewController.h"
+
+#import "WXApi.h"
+
 @interface DFLoginViewController ()
 
 @property (nonatomic , strong)UIImageView *headerImage;
@@ -39,6 +43,12 @@
 {
     [super viewWillAppear:animated];
     self.navigationController.navigationBar.hidden = YES;
+    
+    // 微信授权成功
+       [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(wechatAuthSuccess:) name:kNotificationWeChatAuthSuccess object:nil];
+       
+       // 微信授权失败
+       [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(wechatAuthFailed) name:kNotificationWeChatAuthFailed object:nil];
 }
 
 - (void)viewDidLoad {
@@ -107,7 +117,7 @@
     self.phoneTextField.returnKeyType = UIReturnKeyDone;
     self.phoneTextField.maxInputDigit = 11;
     self.phoneTextField.endEditingDigit = 11;
-    self.phoneTextField.leftSpace = HScaleHeight(45);
+    self.phoneTextField.leftSpace = HScaleWidth(45);
     [self.view addSubview:self.phoneTextField];
     
     [self.phoneTextField mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -129,8 +139,7 @@
         make.centerY.mas_equalTo(leftview.mas_centerY);
     }];
     
-    self.phoneTextField.leftView = leftview;
-    self.phoneTextField.leftViewMode = UITextFieldViewModeAlways;
+    [self.phoneTextField addSubview:leftview];
     
     
     
@@ -142,8 +151,6 @@
     self.posswordField.layer.masksToBounds = true;
     self.posswordField.keyboardType = UIKeyboardTypePhonePad;
     self.posswordField.returnKeyType = UIReturnKeyDone;
-//    self.posswordField.maxInputDigit = 11;
-//    self.posswordField.endEditingDigit = 11;
     self.posswordField.leftSpace = HScaleHeight(45);
     [self.view addSubview:self.posswordField];
     
@@ -165,8 +172,8 @@
         make.centerY.mas_equalTo(leftview2.mas_centerY);
     }];
     
-    self.posswordField.leftView = leftview2;
-    self.posswordField.leftViewMode = UITextFieldViewModeAlways;
+    [self.posswordField addSubview:leftview2];
+    
     
 
     UIButton *loginBtn = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -189,6 +196,7 @@
     [forgotPassword setTitleColor:[UIColor colorWithHexString:@"999999"] forState:UIControlStateNormal];
     [forgotPassword setTitle:@"忘记密码" forState:UIControlStateNormal];
     forgotPassword.titleLabel.font = HScaleFont(12);
+    [forgotPassword addTarget:self action:@selector(pushForgotPasswordVC) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:forgotPassword];
     
     [forgotPassword mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -213,6 +221,7 @@
     
     UIButton *weixinLogin = [UIButton buttonWithType:UIButtonTypeCustom];
     [weixinLogin setImage:[UIImage imageNamed:@"微信"] forState:UIControlStateNormal];
+    [weixinLogin addTarget:self action:@selector(weixinLogin) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:weixinLogin];
     
     [weixinLogin mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -238,7 +247,7 @@
  */
 - (void)verificationCodeLogin:(UIButton *)clickBtn
 {
-    clickBtn.selected = !clickBtn.selected;
+    clickBtn.selected = YES;
     self.possWordBtn.selected = NO;
     if (clickBtn.selected) {
         self.headerImage.image = [UIImage imageNamed:@"头像 女孩 (1)"];
@@ -253,7 +262,7 @@
  */
 - (void)possWordLogin:(UIButton *)clickBtn
 {
-    clickBtn.selected = !clickBtn.selected;
+    clickBtn.selected = YES;
     self.VerificationCodeBtn.selected = NO;
     if (clickBtn.selected) {
         self.headerImage.image = [UIImage imageNamed:@"头像_男孩"];
@@ -303,12 +312,59 @@
     self.countDown --;
 }
 
+
+/// 点击忘记密码  
+- (void)pushForgotPasswordVC
+{
+    [self.navigationController pushViewController:[DFForgotPasswordViewController new] animated:YES];
+}
 /**
  点击登录
  */
 - (void)requestloginin
 {
+    
+//    if (self.phoneTextField.text.length == 0) {
+//        [SVProgressHUD showErrorWithStatus:@"请输入您的手机号"];
+//        return;
+//    }
+//    
+//    if (![self.phoneTextField.text isMobileNumber]) {
+//        [SVProgressHUD showErrorWithStatus:@"请输入正确的手机号"];
+//        return;
+//    }
+//    
+//    if (self.posswordField.text.length == 0) {
+//         
+//        [SVProgressHUD showErrorWithStatus:@"请输入您的密码"];
+//               
+//        return;
+//        
+//    }
+    
+    NSMutableDictionary *parma = [@{
+        @"phone":@"15067118711",
+        @"password":@"123456"
+    }copy];
+    
+    [[DFNetworkTool shareInstance] requestWithMethod:GHRequestMethod_POST withUrl:LoginApi withParameter:parma withLoadingType:GHLoadingType_ShowLoading withShouldHaveToken:NO withContentType:GHContentType_JSON completionBlock:^(BOOL isSuccess, NSString * _Nullable msg, id  _Nullable response) {
+        if (isSuccess) {
+            NSLog(@"------->成功");
+        }
+    }];
+    
     [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+///微信登录
+- (void)weixinLogin
+{
+    
+    SendAuthReq *req = [[SendAuthReq alloc] init];
+    req.scope = @"snsapi_userinfo";
+    req.state = @"udoctor";
+   
+    [WXApi sendReq:req];
 }
 
 - (UIView *)getVerificationCodeView
@@ -332,6 +388,55 @@
         
     }
     return _getVerificationCodeBtn;
+}
+/**
+ 微信授权失败
+ */
+- (void)wechatAuthFailed {
+    
+//    self.wechatLoginButton.selected = false;
+//    self.phoneLoginButton.selected = true;
+    
+}
+
+/**
+ 微信授权成功
+ 
+ @param noti <#noti description#>
+ */
+- (void)wechatAuthSuccess:(NSNotification *)noti {
+    
+    NSString *code = noti.userInfo[@"code"];
+
+    if (code.length > 0) {
+        
+        NSString *url = [NSString stringWithFormat:@"https://api.weixin.qq.com/sns/oauth2/access_token?appid=%@&secret=%@&code=%@&grant_type=authorization_code",kWXAppKey,AppSecret,code];
+        
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+            NSURL *zoneUrl = [NSURL URLWithString:url];
+            NSString *zoneStr = [NSString stringWithContentsOfURL:zoneUrl encoding:NSUTF8StringEncoding error:nil];
+            NSData *data = [zoneStr dataUsingEncoding:NSUTF8StringEncoding];
+            dispatch_async(dispatch_get_main_queue(), ^{
+                if (data) {
+                    NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
+                    NSString *openId = dic[@"openid"];
+                    
+//                    [self getWechatUserInfoWithopenId:openId];
+                }
+            });
+        });
+        
+        
+       
+
+    }
+    
+}
+
+
+- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
+{
+    [self.view endEditing:YES];
 }
 
 /*
