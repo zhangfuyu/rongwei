@@ -27,6 +27,11 @@
           
           self.interactivePopGestureRecognizer.delegate = weakSelf;
       }
+    
+    [self.navigationBar setBackgroundImage:nil forBarMetrics:UIBarMetricsDefault];
+    [self.navigationBar setShadowImage:nil];
+
+//    self.navigationBar.translucent = YES;
 
 }
 #pragma mark - 初始化

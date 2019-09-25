@@ -12,6 +12,10 @@
 #import <Foundation/Foundation.h>
 
 
+#define kWXAppKey             @"wx9cf296975442a767"
+#define AppSecret             @"05fb23bfb0d3cb1314938cb46e8aa9d7"
+
+
 /******************    TabBar          *************/
 #define MallClassKey   @"rootVCClassString"
 #define MallTitleKey   @"title"

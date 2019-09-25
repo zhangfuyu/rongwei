@@ -9,8 +9,9 @@
 #import "AppDelegate.h"
 #import "DFAppVersionTool.h"
 #import "DFTabBarController.h"
+#import "WXApi.h"
 
-@interface AppDelegate ()
+@interface AppDelegate ()<WXApiDelegate>
 
 @end
 
@@ -20,6 +21,8 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
      [self setUpRootVC]; //跟控制器判断
+    
+    [WXApi registerApp:kWXAppKey];
     return YES;
 }
 #pragma mark - 根控制器
@@ -72,5 +75,50 @@
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
 
+#pragma mark - WXApiDelegate
+- (void)onResp:(BaseResp*)resp {
+    
+    
+    if ([resp isKindOfClass:[SendAuthResp class]]) {
+        
+        SendAuthResp *sendAuthResp = ((SendAuthResp *)resp);
+        if ([sendAuthResp.state isEqualToString:@"udoctor"] && sendAuthResp.errCode == 0) {
+            
+            // 是微信登录成功的回调
+            NSString *code = sendAuthResp.code;
+//            [self getWeiXinOpenId:code];
+
+            [[NSNotificationCenter defaultCenter] postNotificationName:kNotificationWeChatAuthSuccess object:nil userInfo:@{@"code":ISNIL(code)}];
+            
+        } else {
+            
+            // 微信登录失败
+//              ERR_OK = 0(用户同意) ERR_AUTH_DENIED = -4（用户拒绝授权） ERR_USER_CANCEL = -2（用户取消）
+            if (sendAuthResp.errCode == -4) {
+                [SVProgressHUD showErrorWithStatus:@"您已拒绝登录授权"];
+            } else if (sendAuthResp.errCode == -2) {
+                [SVProgressHUD showErrorWithStatus:@"您已取消登录授权"];
+            } else {
+                [SVProgressHUD showErrorWithStatus:ISNIL(sendAuthResp.errStr)];
+            }
+            
+            [[NSNotificationCenter defaultCenter] postNotificationName:kNotificationWeChatAuthFailed object:nil];
+
+        }
+        
+    } else if ([resp isKindOfClass:[SendMessageToWXResp class]]) {
+        
+        SendMessageToWXResp *sendMessageResp = ((SendMessageToWXResp *)resp);
+        
+        if (sendMessageResp.errCode == 0) {
+            NSLog(@"微信分享成功");
+            
+//            [self shareSuccessAction];
+            
+        }
+        
+    }
+    
+}
 
 @end

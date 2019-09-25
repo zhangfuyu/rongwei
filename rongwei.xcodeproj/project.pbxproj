@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		1808D70B2339ABA600710164 /* DFForgotPasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1808D70A2339ABA600710164 /* DFForgotPasswordViewController.m */; };
+		1809B474233B075100D768C3 /* DFEsignerlListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1809B473233B075100D768C3 /* DFEsignerlListViewController.m */; };
+		1809B477233B0F5000D768C3 /* DFDesignerModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1809B476233B0F5000D768C3 /* DFDesignerModel.m */; };
+		186E7DDF233B31E900C0DCDE /* DfDesignerTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 186E7DDE233B31E800C0DCDE /* DfDesignerTableViewCell.m */; };
 		18810E7E23347D1A00F8191C /* DFMainHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 18810E7D23347D1A00F8191C /* DFMainHeaderView.m */; };
 		9ECA9B3767B523B47E5CC5D3 /* libPods-rongweiUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AF8B2EC23CB6593255A65F59 /* libPods-rongweiUITests.a */; };
 		B0A72C8143F173529952CB2D /* libPods-rongwei.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 20D41B16400FB5B4785A6312 /* libPods-rongwei.a */; };
@@ -60,6 +63,13 @@
 		1808D7092339ABA600710164 /* DFForgotPasswordViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DFForgotPasswordViewController.h; sourceTree = "<group>"; };
 		1808D70A2339ABA600710164 /* DFForgotPasswordViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DFForgotPasswordViewController.m; sourceTree = "<group>"; };
 		1808D70C2339F26200710164 /* rongwei.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = rongwei.entitlements; sourceTree = "<group>"; };
+		1809B471233AFC5100D768C3 /* DFNotification.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DFNotification.h; sourceTree = "<group>"; };
+		1809B472233B075100D768C3 /* DFEsignerlListViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DFEsignerlListViewController.h; sourceTree = "<group>"; };
+		1809B473233B075100D768C3 /* DFEsignerlListViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DFEsignerlListViewController.m; sourceTree = "<group>"; };
+		1809B475233B0F5000D768C3 /* DFDesignerModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = DFDesignerModel.h; path = rongwei/Class/home/contro/DFDesignerModel.h; sourceTree = SOURCE_ROOT; };
+		1809B476233B0F5000D768C3 /* DFDesignerModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = DFDesignerModel.m; path = rongwei/Class/home/contro/DFDesignerModel.m; sourceTree = SOURCE_ROOT; };
+		186E7DDD233B31E800C0DCDE /* DfDesignerTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = DfDesignerTableViewCell.h; path = rongwei/Class/home/contro/DfDesignerTableViewCell.h; sourceTree = SOURCE_ROOT; };
+		186E7DDE233B31E800C0DCDE /* DfDesignerTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = DfDesignerTableViewCell.m; path = rongwei/Class/home/contro/DfDesignerTableViewCell.m; sourceTree = SOURCE_ROOT; };
 		18810E7C23347D1A00F8191C /* DFMainHeaderView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DFMainHeaderView.h; sourceTree = "<group>"; };
 		18810E7D23347D1A00F8191C /* DFMainHeaderView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DFMainHeaderView.m; sourceTree = "<group>"; };
 		20D41B16400FB5B4785A6312 /* libPods-rongwei.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-rongwei.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -280,6 +290,8 @@
 			children = (
 				C428EBCA2333B51F009E0E8A /* DFHomeViewController.h */,
 				C428EBCB2333B51F009E0E8A /* DFHomeViewController.m */,
+				1809B472233B075100D768C3 /* DFEsignerlListViewController.h */,
+				1809B473233B075100D768C3 /* DFEsignerlListViewController.m */,
 			);
 			path = contro;
 			sourceTree = "<group>";
@@ -287,6 +299,10 @@
 		C428EBBC2333B4FB009E0E8A /* model */ = {
 			isa = PBXGroup;
 			children = (
+				1809B475233B0F5000D768C3 /* DFDesignerModel.h */,
+				1809B476233B0F5000D768C3 /* DFDesignerModel.m */,
+				186E7DDD233B31E800C0DCDE /* DfDesignerTableViewCell.h */,
+				186E7DDE233B31E800C0DCDE /* DfDesignerTableViewCell.m */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -441,6 +457,7 @@
 			isa = PBXGroup;
 			children = (
 				C46AD0EC2333932C000514B7 /* YYMacro.h */,
+				1809B471233AFC5100D768C3 /* DFNotification.h */,
 			);
 			path = Macro;
 			sourceTree = "<group>";
@@ -734,13 +751,16 @@
 				18810E7E23347D1A00F8191C /* DFMainHeaderView.m in Sources */,
 				C41FCD98233507F70017427F /* DFMainCellBtn.m in Sources */,
 				C428EBB22333A99A009E0E8A /* DFTabBarController.m in Sources */,
+				186E7DDF233B31E900C0DCDE /* DfDesignerTableViewCell.m in Sources */,
 				C41FCD9B23350AE90017427F /* DFMainDataModel.m in Sources */,
 				C46AD0EA23339256000514B7 /* DFUserModelTool.m in Sources */,
 				C46AD0E523338FE6000514B7 /* DFNetworkTool.m in Sources */,
 				C428EBD82333B58D009E0E8A /* DFFindGonglueViewController.m in Sources */,
 				C4E0680E23327A6300C0F650 /* ViewController.m in Sources */,
+				1809B477233B0F5000D768C3 /* DFDesignerModel.m in Sources */,
 				C41FCDA82337B7FD0017427F /* NSString+GHRegular.m in Sources */,
 				C428EBCC2333B51F009E0E8A /* DFHomeViewController.m in Sources */,
+				1809B474233B075100D768C3 /* DFEsignerlListViewController.m in Sources */,
 				C4E0681923327A6700C0F650 /* main.m in Sources */,
 				C4E0680B23327A6300C0F650 /* AppDelegate.m in Sources */,
 				1808D70B2339ABA600710164 /* DFForgotPasswordViewController.m in Sources */,
@@ -921,8 +941,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = rongwei/rongwei.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = TUV3S622PG;
+				DEVELOPMENT_TEAM = 77XN44C2XF;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/rongwei/PrefixHeader.pch";
 				INFOPLIST_FILE = rongwei/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
@@ -930,8 +951,9 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.rongzhuang.com;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ghwl.udoctor;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -942,8 +964,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = rongwei/rongwei.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = TUV3S622PG;
+				DEVELOPMENT_TEAM = 77XN44C2XF;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/rongwei/PrefixHeader.pch";
 				INFOPLIST_FILE = rongwei/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
@@ -951,8 +974,9 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.rongzhuang.com;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ghwl.udoctor;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;

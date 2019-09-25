@@ -18,6 +18,9 @@ target 'rongwei' do
   pod 'JSONModel'
   pod 'Masonry'
   pod 'WechatOpenSDK'
+  pod 'MJRefresh', '~> 3.1.15.7' #上下拉
+  
+  pod 'CQTopBar' #筛选条件框
   target 'rongweiTests' do
     inherit! :search_paths
     # Pods for testing

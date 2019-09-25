@@ -9,5 +9,7 @@
 #ifndef DFApi_h
 #define DFApi_h
 
+#define LoginApi   @"user/login"
 
+#define DesignerListsApi   @"designer/lists"
 #endif /* DFApi_h */

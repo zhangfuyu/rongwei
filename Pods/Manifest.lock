@@ -14,9 +14,11 @@ PODS:
   - AFNetworking/Serialization (3.2.1)
   - AFNetworking/UIKit (3.2.1):
     - AFNetworking/NSURLSession
+  - CQTopBar (1.0.5)
   - IQKeyboardManager (6.0.3)
   - JSONModel (1.7.0)
   - Masonry (1.1.0)
+  - MJRefresh (3.1.15.7)
   - SDWebImage (4.3.3):
     - SDWebImage/Core (= 4.3.3)
   - SDWebImage/Core (4.3.3)
@@ -30,9 +32,11 @@ PODS:
 
 DEPENDENCIES:
   - AFNetworking
+  - CQTopBar
   - IQKeyboardManager
   - JSONModel
   - Masonry
+  - MJRefresh (~> 3.1.15.7)
   - SDWebImage
   - SVProgressHUD
   - UINavigation-SXFixSpace
@@ -43,9 +47,11 @@ DEPENDENCIES:
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - AFNetworking
+    - CQTopBar
     - IQKeyboardManager
     - JSONModel
     - Masonry
+    - MJRefresh
     - SDWebImage
     - SVProgressHUD
     - UINavigation-SXFixSpace
@@ -55,9 +61,11 @@ SPEC REPOS:
 
 SPEC CHECKSUMS:
   AFNetworking: b6f891fdfaed196b46c7a83cf209e09697b94057
+  CQTopBar: 2b6e857ed3fccfc3f781b15336f028287c19c264
   IQKeyboardManager: c390e612f4b98c8fd748016470138537dc163ead
   JSONModel: 840bc0fcffb24b8454d2c026bf26fea454b8e98d
   Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
+  MJRefresh: 697f8ec75ebdbe9207767bb682cf0f51b0d8a41f
   SDWebImage: de4d90b5bff3571eae7bd16202b1f43135409fa5
   SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
   UINavigation-SXFixSpace: 10f223253ebff2ceefa26694e23b7694269763c4
@@ -65,6 +73,6 @@ SPEC CHECKSUMS:
   YYCache: 8105b6638f5e849296c71f331ff83891a4942952
   YYCategories: 6bcd4314c6661a561410dce4a793379ebd306abd
 
-PODFILE CHECKSUM: 272fb81711276df2c888317f4470c03fa84bed5a
+PODFILE CHECKSUM: 4d06ae95fe302712be7457bc047dd008ff26e409
 
 COCOAPODS: 1.7.5
