@@ -10,6 +10,10 @@
 
 #import "DFTextField.h"
 
+#import "DFForgotPasswordViewController.h"
+
+#import "WXApi.h"
+
 @interface DFLoginViewController ()
 
 @property (nonatomic , strong)UIImageView *headerImage;
@@ -107,7 +111,7 @@
     self.phoneTextField.returnKeyType = UIReturnKeyDone;
     self.phoneTextField.maxInputDigit = 11;
     self.phoneTextField.endEditingDigit = 11;
-    self.phoneTextField.leftSpace = HScaleHeight(45);
+    self.phoneTextField.leftSpace = HScaleWidth(45);
     [self.view addSubview:self.phoneTextField];
     
     [self.phoneTextField mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -129,8 +133,7 @@
         make.centerY.mas_equalTo(leftview.mas_centerY);
     }];
     
-    self.phoneTextField.leftView = leftview;
-    self.phoneTextField.leftViewMode = UITextFieldViewModeAlways;
+    [self.phoneTextField addSubview:leftview];
     
     
     
@@ -142,8 +145,6 @@
     self.posswordField.layer.masksToBounds = true;
     self.posswordField.keyboardType = UIKeyboardTypePhonePad;
     self.posswordField.returnKeyType = UIReturnKeyDone;
-//    self.posswordField.maxInputDigit = 11;
-//    self.posswordField.endEditingDigit = 11;
     self.posswordField.leftSpace = HScaleHeight(45);
     [self.view addSubview:self.posswordField];
     
@@ -165,8 +166,8 @@
         make.centerY.mas_equalTo(leftview2.mas_centerY);
     }];
     
-    self.posswordField.leftView = leftview2;
-    self.posswordField.leftViewMode = UITextFieldViewModeAlways;
+    [self.posswordField addSubview:leftview2];
+    
     
 
     UIButton *loginBtn = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -189,6 +190,7 @@
     [forgotPassword setTitleColor:[UIColor colorWithHexString:@"999999"] forState:UIControlStateNormal];
     [forgotPassword setTitle:@"忘记密码" forState:UIControlStateNormal];
     forgotPassword.titleLabel.font = HScaleFont(12);
+    [forgotPassword addTarget:self action:@selector(pushForgotPasswordVC) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:forgotPassword];
     
     [forgotPassword mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -213,6 +215,7 @@
     
     UIButton *weixinLogin = [UIButton buttonWithType:UIButtonTypeCustom];
     [weixinLogin setImage:[UIImage imageNamed:@"微信"] forState:UIControlStateNormal];
+    [weixinLogin addTarget:self action:@selector(weixinLogin) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:weixinLogin];
     
     [weixinLogin mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -238,7 +241,7 @@
  */
 - (void)verificationCodeLogin:(UIButton *)clickBtn
 {
-    clickBtn.selected = !clickBtn.selected;
+    clickBtn.selected = YES;
     self.possWordBtn.selected = NO;
     if (clickBtn.selected) {
         self.headerImage.image = [UIImage imageNamed:@"头像 女孩 (1)"];
@@ -253,7 +256,7 @@
  */
 - (void)possWordLogin:(UIButton *)clickBtn
 {
-    clickBtn.selected = !clickBtn.selected;
+    clickBtn.selected = YES;
     self.VerificationCodeBtn.selected = NO;
     if (clickBtn.selected) {
         self.headerImage.image = [UIImage imageNamed:@"头像_男孩"];
@@ -303,12 +306,24 @@
     self.countDown --;
 }
 
+
+/// 点击忘记密码  
+- (void)pushForgotPasswordVC
+{
+    [self.navigationController pushViewController:[DFForgotPasswordViewController new] animated:YES];
+}
 /**
  点击登录
  */
 - (void)requestloginin
 {
     [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+///微信登录
+- (void)weixinLogin
+{
+    
 }
 
 - (UIView *)getVerificationCodeView
@@ -332,6 +347,10 @@
         
     }
     return _getVerificationCodeBtn;
+}
+- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
+{
+    [self.view endEditing:YES];
 }
 
 /*

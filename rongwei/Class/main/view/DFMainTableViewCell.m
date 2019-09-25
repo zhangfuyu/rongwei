@@ -39,7 +39,8 @@
         [whiteView mas_makeConstraints:^(MASConstraintMaker *make) {
             make.left.mas_equalTo(HScaleWidth(13));
             make.right.mas_equalTo(-HScaleWidth(13));
-            make.top.bottom.mas_equalTo(0);
+            make.top.mas_equalTo(HScaleHeight(5));
+            make.bottom.mas_equalTo(0);
         }];
         
         

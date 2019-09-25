@@ -26,8 +26,9 @@
 
 - (void)showLoginViewController
 {
-    UINavigationController *nav = [[UINavigationController alloc]initWithRootViewController:[DFLoginViewController new]];
-    [[[DFUserModelTool shareInstance] getCurrentVC] presentViewController:nav animated:YES completion:nil];
+//    UINavigationController *nav = [[UINavigationController alloc]initWithRootViewController:[DFLoginViewController new]];
+//    [[[DFUserModelTool shareInstance] getCurrentVC] presentViewController:nav animated:YES completion:nil];
+    [[[DFUserModelTool shareInstance] getCurrentVC].navigationController pushViewController:[DFLoginViewController new] animated:YES];
 }
 //获取当前屏幕显示的viewcontroller
 - (UIViewController *)getCurrentVC

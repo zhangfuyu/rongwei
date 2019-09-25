@@ -8,7 +8,7 @@ target 'rongwei' do
   # Pods for rongwei
 
   pod 'AFNetworking'
-#  pod 'UINavigation-SXFixSpace'
+  pod 'UINavigation-SXFixSpace'
   pod 'SDWebImage'
   pod 'SVProgressHUD'
   pod 'IQKeyboardManager'
@@ -17,7 +17,7 @@ target 'rongwei' do
   pod 'YYCache'
   pod 'JSONModel'
   pod 'Masonry'
-
+  pod 'WechatOpenSDK'
   target 'rongweiTests' do
     inherit! :search_paths
     # Pods for testing

@@ -8,7 +8,7 @@
 
 #import "DFNavigationController.h"
 
-@interface DFNavigationController ()
+@interface DFNavigationController ()<UIGestureRecognizerDelegate>
 
 @end
 
@@ -21,12 +21,19 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    __weak typeof(self) weakSelf = self;
+
+   if ([self respondsToSelector:@selector(interactivePopGestureRecognizer)]) {
+          
+          self.interactivePopGestureRecognizer.delegate = weakSelf;
+      }
+
 }
 #pragma mark - 初始化
 + (void)setUpBase
 {
     UINavigationBar *bar = [UINavigationBar appearance];
-    bar.barTintColor = DCBGColor;
+    bar.barTintColor = [UIColor colorWithHexString:@"FFFFFF"];//DCBGColor;
     [bar setTintColor:[UIColor darkGrayColor]];
     bar.translucent = YES;
     [bar setBackgroundImage:[UIImage new] forBarMetrics:UIBarMetricsDefault];
@@ -35,7 +42,7 @@
     // 设置导航栏字体颜色
     UIColor * naiColor = [UIColor blackColor];
     attributes[NSForegroundColorAttributeName] = naiColor;
-    attributes[NSFontAttributeName] = PFR18Font;
+    attributes[NSFontAttributeName] = HScaleFont(18);
     bar.titleTextAttributes = attributes;
 }
 #pragma mark - 返回
@@ -43,31 +50,56 @@
     
     if (self.childViewControllers.count >= 1) {
         //返回按钮自定义
-        UIBarButtonItem *negativeSpacer = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
-        negativeSpacer.width = -15;
+//        UIBarButtonItem *negativeSpacer = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
+//        negativeSpacer.width = -15;
         
         UIButton *button = [[UIButton alloc] init];
-        [button setImage:[UIImage imageNamed:@"navigation_back_normal"] forState:UIControlStateNormal];
-        [button setImage:[UIImage imageNamed:@"navigation_back_hl"] forState:UIControlStateHighlighted];
-        button.frame = CGRectMake(0, 0, 33, 33);
+        [button setImage:[UIImage imageNamed:@"login_back"] forState:UIControlStateNormal];
+        [button setImage:[UIImage imageNamed:@"login_back"] forState:UIControlStateHighlighted];
+        button.frame = CGRectMake(20, 20, 33, 33);
         
-        if (@available(ios 11.0,*)) {
-            button.contentEdgeInsets = UIEdgeInsetsMake(0, -15,0, 0);
-            button.imageEdgeInsets = UIEdgeInsetsMake(0, -10,0, 0);
-        }
+//        if (@available(ios 11.0,*)) {
+//            button.contentEdgeInsets = UIEdgeInsetsMake(0, -15,0, 0);
+//            button.imageEdgeInsets = UIEdgeInsetsMake(0, -10,0, 0);
+//        }
         
         [button addTarget:self action:@selector(backButtonTapClick) forControlEvents:UIControlEventTouchUpInside];
         UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithCustomView:button];
         
-        viewController.navigationItem.leftBarButtonItems = @[negativeSpacer, backButton];
+        viewController.navigationItem.leftBarButtonItem = backButton;//@[negativeSpacer, backButton];
         
         viewController.hidesBottomBarWhenPushed = YES;
         
         // 就有滑动返回功能
         self.interactivePopGestureRecognizer.delegate = nil;
     }
+    if (self.childViewControllers.count == 1) {
+        viewController.hidesBottomBarWhenPushed = YES; //viewController是将要被push的控制器
+      
+    }
+       
+       
     //跳转
     [super pushViewController:viewController animated:animated];
+}
+-(BOOL)gestureRecognizerShouldBegin:(UIGestureRecognizer *)gestureRecognizer{
+    if (self.navigationController.viewControllers.count == 1) {
+        return NO;
+    }else{
+        return YES;
+    }
+}
+
+- (void)navigationController:(UINavigationController *)navigationController didShowViewController:(UIViewController *)viewController animated:(BOOL)animated{
+    
+    if ([navigationController respondsToSelector:@selector(interactivePopGestureRecognizer)]) {
+        navigationController.interactivePopGestureRecognizer.enabled = YES;
+    }
+//使navigationcontroller中第一个控制器不响应右滑pop手势
+    if (navigationController.viewControllers.count == 1) {
+        navigationController.interactivePopGestureRecognizer.enabled = NO;
+        navigationController.interactivePopGestureRecognizer.delegate = nil;
+    }
 }
 
 #pragma mark - 点击

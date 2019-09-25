@@ -21,4 +21,5 @@
 #import <UIImageView+WebCache.h>
 #import "NSString+GHRegular.h"
 #import <SVProgressHUD.h>
+#import "DFNavigationController.h"
 #endif /* PrefixHeader_pch */
