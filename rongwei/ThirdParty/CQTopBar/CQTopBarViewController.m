@@ -31,7 +31,7 @@ const NSUInteger segmentH = 40;
 
 - (void)initUI{
     CGFloat segmentFrameX = self.segmentFrame.origin.x == 0?0:self.segmentFrame.origin.x;
-    CGFloat segmentFrameY = self.segmentFrame.origin.y == 0?segmentY:self.segmentFrame.origin.y;
+    CGFloat segmentFrameY = self.segmentFrame.origin.y == 0?0:self.segmentFrame.origin.y;
     CGFloat segmentFrameW = self.segmentFrame.size.width == 0?CGRectGetWidth(self.view.bounds):self.segmentFrame.size.width;
     CGFloat segmentFrameH = self.segmentFrame.size.height == 0?segmentH:self.segmentFrame.size.height;
 

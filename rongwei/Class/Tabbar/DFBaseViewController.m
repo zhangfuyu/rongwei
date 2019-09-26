@@ -19,6 +19,7 @@
     // Do any additional setup after loading the view.
     self.view.backgroundColor = [UIColor colorWithHexString:@"FFFFFF"];//DCBGColor;
     self.automaticallyAdjustsScrollViewInsets = NO;
+    
 }
 
 - (void)tabelviewAddReload
@@ -44,6 +45,17 @@
     self.dataTableview.showsVerticalScrollIndicator = NO;
     self.dataTableview.showsVerticalScrollIndicator = NO;
     [self.view addSubview:self.dataTableview];
+    self.dataTableview.estimatedRowHeight = 0;
+
+    if (@available(iOS 11.0, *)) {
+        self.dataTableview.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
+        // est和代理 可选1个
+        self.dataTableview.estimatedSectionFooterHeight = 0;
+        self.dataTableview.estimatedSectionHeaderHeight = 0;
+    } else {
+        self.automaticallyAdjustsScrollViewInsets = NO;
+    }
+   
 }
 
 /*

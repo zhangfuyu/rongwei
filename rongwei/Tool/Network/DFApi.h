@@ -12,4 +12,6 @@
 #define LoginApi   @"user/login"
 
 #define DesignerListsApi   @"designer/lists"
+
+#define DesignerDetailApi   @"designer/detail"
 #endif /* DFApi_h */

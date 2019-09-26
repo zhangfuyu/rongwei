@@ -9,7 +9,9 @@
 #import "DFEsignerlListViewController.h"
 #import "DFDesignerModel.h"
 #import "DfDesignerTableViewCell.h"
-
+#import "CQTopBarViewController.h"
+#import "CQTopBarSegment.h"
+#import "DFEsignerDetialViewController.h"
 
 @interface DFEsignerlListViewController ()<UITableViewDelegate,UITableViewDataSource>
 
@@ -19,7 +21,7 @@
 
 @property (nonatomic , strong)NSMutableArray *dataListArry;
 
-@property (nonatomic, strong) CQTopBarViewController *topBar;
+@property (nonatomic, strong) CQTopBarSegment *segment;
 
 
 @end
@@ -30,23 +32,26 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
+   
+    self.title = @"设计师";
     
    
+    self.dataTableview = [[UITableView alloc]initWithFrame:CGRectZero style:UITableViewStylePlain];
+    [self.view addSubview:self.dataTableview];
     
     
-    
-    self.title = @"设计师";
-    [self allocTableviewWith:UITableViewStyleGrouped];
     self.dataTableview.delegate = self;
     self.dataTableview.dataSource = self;
-    
+    self.dataTableview.tableFooterView = [UIView new];
+    self.dataTableview.showsVerticalScrollIndicator = NO;
+    self.dataTableview.showsVerticalScrollIndicator = NO;
     [self tabelviewAddReload];
     [self tableviewAddMoreDown];
     
-    
-    self.dataTableview.tableFooterView = [UIView new];
+    self.dataTableview.tableFooterView = nil;
     [self.dataTableview mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.right.left.mas_equalTo(0);
+        make.top.mas_equalTo(kNavBarAndStatusBarHeight);
+        make.right.left.mas_equalTo(0);
         make.bottom.mas_equalTo(-kBottomSafeHeight);
     }];
     self.currentPage = 1;
@@ -83,6 +88,9 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    DFEsignerDetialViewController *detail = [[DFEsignerDetialViewController alloc]init];
+    detail.model = self.dataListArry[indexPath.row];
+    [self.navigationController pushViewController:detail animated:YES];
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
@@ -91,7 +99,13 @@
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
-    return self.topBar.view;
+    
+    UIView *backview = [[UIView alloc]initWithFrame:CGRectMake(0, 0, ScreenW, HScaleHeight(53))];
+    backview.backgroundColor = [UIColor colorWithHexString:@"F2F2F2"];
+    [backview addSubview:self.segment];
+            
+    
+    return backview;
 }
 //然后在UITableView的代理方法中加入以下代码
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
@@ -164,21 +178,21 @@
     }
     return _dataListArry;
 }
-- (CQTopBarViewController *)topBar
+
+- (CQTopBarSegment *)segment
 {
-    if (!_topBar) {
-        _topBar = [[CQTopBarViewController alloc] init];
-        _topBar.automaticallyAdjustsScrollViewInsets = NO;
-        _topBar.segmentFrame = CGRectMake(0, 0, ScreenW, HScaleHeight(53));
-        _topBar.sectionTitles = @[@"区域选择",@"擅长风格",@"综合排序"];
-        _topBar.titleTextColor = [UIColor colorWithHexString:@"666666"];
-        _topBar.selectedTitleTextColor = [UIColor colorWithHexString:@"DD1A21"];
-        self.topBar.pageViewClasses = @[[CQTopBarViewController class],[CQTopBarViewController class],[CQTopBarViewController class]];
-        [self addChildViewController:_topBar];
-        [self.view addSubview:self.topBar.view];
+    if (!_segment) {
+        _segment = [[CQTopBarSegment alloc]initWithFrame:CGRectMake(0, 0, ScreenW, HScaleHeight(47)) sectionTitles:@[@"区域选择",@"擅长风格",@"综合排序"]];
+        _segment.titleTextColor = [UIColor colorWithHexString:@"666666"];
+        _segment.segmentImage = @"箭头";
+        _segment.selectSegmentImage = @"箭头-1";
+        _segment.selectedTitleTextColor = [UIColor colorWithHexString:@"DD1A21"];
+        _segment.titleTextFont = HScaleFont(12);
+        _segment.segmentlineColor = [UIColor clearColor];
     }
-    return _topBar;
+    return _segment;
 }
+
 /*
 #pragma mark - Navigation
 
