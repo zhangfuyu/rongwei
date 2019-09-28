@@ -46,10 +46,60 @@
             
             self.model = [[DFDesignerModel alloc]initWithDictionary:response error:nil];
             self.headerView.model = self.model;
+            
+            [self getWorkData];
+            
         }
     }];
 }
 
+/// 作品
+- (void)getWorkData
+{
+    NSMutableDictionary *parmar = [@{
+        @"designer_id":self.model.modelId,
+        @"page":@(1),
+        @"page_size":@(10)
+    }copy];
+    
+    [[DFNetworkTool shareInstance] requestWithMethod:GHRequestMethod_POST withUrl:WorkDesignerDetailApi withParameter:parmar withLoadingType:GHLoadingType_ShowLoading withShouldHaveToken:YES withContentType:GHContentType_Formdata completionBlock:^(BOOL isSuccess, NSString * _Nullable msg, id  _Nullable response) {
+           if (isSuccess) {
+               
+              
+               
+           }
+       }];
+}
+
+/// 个人简介
+- (void)getPersonalProfile
+{
+    [[DFNetworkTool shareInstance] requestWithMethod:GHRequestMethod_POST withUrl:DesignerAboutDetailApi withParameter:@{@"id":self.model.modelId} withLoadingType:GHLoadingType_ShowLoading withShouldHaveToken:YES withContentType:GHContentType_Formdata completionBlock:^(BOOL isSuccess, NSString * _Nullable msg, id  _Nullable response) {
+        if (isSuccess) {
+            
+           
+            
+        }
+    }];
+}
+
+/// 评论
+- (void)getComment
+{
+    NSMutableDictionary *parmar = [@{
+        @"designer_id":self.model.modelId,
+        @"page":@(1),
+        @"page_size":@(10)
+    }copy];
+    
+    [[DFNetworkTool shareInstance] requestWithMethod:GHRequestMethod_POST withUrl:DesignerCommentDetailApi withParameter:parmar withLoadingType:GHLoadingType_ShowLoading withShouldHaveToken:YES withContentType:GHContentType_Formdata completionBlock:^(BOOL isSuccess, NSString * _Nullable msg, id  _Nullable response) {
+           if (isSuccess) {
+               
+              
+               
+           }
+       }];
+}
 /*
 #pragma mark - Navigation
 
@@ -79,7 +129,10 @@
     }
     return cell;
 }
-
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return HScaleHeight(242);
+}
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
     return HScaleHeight(40);

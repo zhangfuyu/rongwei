@@ -10,6 +10,7 @@
 		1808D70B2339ABA600710164 /* DFForgotPasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1808D70A2339ABA600710164 /* DFForgotPasswordViewController.m */; };
 		1809B474233B075100D768C3 /* DFEsignerlListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1809B473233B075100D768C3 /* DFEsignerlListViewController.m */; };
 		1809B477233B0F5000D768C3 /* DFDesignerModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1809B476233B0F5000D768C3 /* DFDesignerModel.m */; };
+		180FCDF3233D972000CD4BB7 /* DFWorksTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 180FCDF2233D972000CD4BB7 /* DFWorksTableViewCell.m */; };
 		1815AE6C233C3FAF007A1955 /* CQTopBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1815AE63233C3FAF007A1955 /* CQTopBarView.m */; };
 		1815AE6D233C3FAF007A1955 /* CQTopBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1815AE63233C3FAF007A1955 /* CQTopBarView.m */; };
 		1815AE6E233C3FAF007A1955 /* CQTopBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1815AE63233C3FAF007A1955 /* CQTopBarView.m */; };
@@ -87,6 +88,8 @@
 		1809B473233B075100D768C3 /* DFEsignerlListViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DFEsignerlListViewController.m; sourceTree = "<group>"; };
 		1809B475233B0F5000D768C3 /* DFDesignerModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = DFDesignerModel.h; path = rongwei/Class/home/model/DFDesignerModel.h; sourceTree = SOURCE_ROOT; };
 		1809B476233B0F5000D768C3 /* DFDesignerModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = DFDesignerModel.m; path = rongwei/Class/home/model/DFDesignerModel.m; sourceTree = SOURCE_ROOT; };
+		180FCDF1233D972000CD4BB7 /* DFWorksTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DFWorksTableViewCell.h; sourceTree = "<group>"; };
+		180FCDF2233D972000CD4BB7 /* DFWorksTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DFWorksTableViewCell.m; sourceTree = "<group>"; };
 		1815AE62233C3FAF007A1955 /* CQTopBarSegment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CQTopBarSegment.h; sourceTree = "<group>"; };
 		1815AE63233C3FAF007A1955 /* CQTopBarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CQTopBarView.m; sourceTree = "<group>"; };
 		1815AE64233C3FAF007A1955 /* CQSegmentTitleImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CQSegmentTitleImage.m; sourceTree = "<group>"; };
@@ -380,6 +383,8 @@
 				1815AE7F233C898F007A1955 /* DFDesignerView.m */,
 				1815AE85233CAB5F007A1955 /* DFCasesView.h */,
 				1815AE86233CAB5F007A1955 /* DFCasesView.m */,
+				180FCDF1233D972000CD4BB7 /* DFWorksTableViewCell.h */,
+				180FCDF2233D972000CD4BB7 /* DFWorksTableViewCell.m */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -832,6 +837,7 @@
 				186E7DDF233B31E900C0DCDE /* DfDesignerTableViewCell.m in Sources */,
 				C41FCD9B23350AE90017427F /* DFMainDataModel.m in Sources */,
 				C46AD0EA23339256000514B7 /* DFUserModelTool.m in Sources */,
+				180FCDF3233D972000CD4BB7 /* DFWorksTableViewCell.m in Sources */,
 				C46AD0E523338FE6000514B7 /* DFNetworkTool.m in Sources */,
 				C428EBD82333B58D009E0E8A /* DFFindGonglueViewController.m in Sources */,
 				C4E0680E23327A6300C0F650 /* ViewController.m in Sources */,

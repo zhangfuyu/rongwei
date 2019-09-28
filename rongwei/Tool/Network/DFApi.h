@@ -11,7 +11,30 @@
 
 #define LoginApi   @"user/login"
 
+/**
+设计师列表
+*/
 #define DesignerListsApi   @"designer/lists"
 
+/**
+设计师详情
+*/
 #define DesignerDetailApi   @"designer/detail"
+
+
+/**
+设计师作品
+*/
+#define WorkDesignerDetailApi   @"work/designer"
+
+/**
+设计师简介
+*/
+#define DesignerAboutDetailApi   @"designer/about"
+
+/**
+设计师评价
+*/
+#define DesignerCommentDetailApi   @"designer/comment"
+
 #endif /* DFApi_h */
