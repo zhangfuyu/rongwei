@@ -8,8 +8,9 @@
 
 #import "DFHomeViewController.h"
 #import "DFEsignerlListViewController.h"
+#import "DFHomeHeaderView.h"
 
-@interface DFHomeViewController ()
+@interface DFHomeViewController ()<UITableViewDelegate,UITableViewDataSource>
 
 
 
@@ -17,14 +18,49 @@
 
 @implementation DFHomeViewController
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    self.navigationController.navigationBar.hidden = YES;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.title = @"首页";
-    [self.navigationController pushViewController:[DFEsignerlListViewController new] animated:YES];
+    
+    [self allocTableviewWith:UITableViewStylePlain];
+    [self.dataTableview mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.top.right.mas_equalTo(0);
+        make.bottom.mas_equalTo(-kTabBarHeight);
+    }];
+    
+    DFHomeHeaderView *headerview = [[DFHomeHeaderView alloc]initWithFrame:CGRectMake(0, 0, ScreenW, HScaleHeight(526) + kStatusBarHeight)];
+  
+    self.dataTableview.tableHeaderView = headerview;
+    
+//    [self.navigationController pushViewController:[DFEsignerlListViewController new] animated:YES];
 //    [[DFUserModelTool shareInstance] showLoginViewController];
 }
+#pragma mark - UITableViewDelegate,UITableViewDataSource
 
+-(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    return 1;
+}
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return 1;
+}
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    static NSString *Cellidear = @"cell";
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:Cellidear];
+    if (!cell) {
+        cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:Cellidear];
+    }
+    return cell;
+}
 /*
 #pragma mark - Navigation
 

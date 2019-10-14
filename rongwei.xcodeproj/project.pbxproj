@@ -32,6 +32,15 @@
 		1815AE87233CAB5F007A1955 /* DFCasesView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1815AE86233CAB5F007A1955 /* DFCasesView.m */; };
 		186E7DDF233B31E900C0DCDE /* DfDesignerTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 186E7DDE233B31E800C0DCDE /* DfDesignerTableViewCell.m */; };
 		18810E7E23347D1A00F8191C /* DFMainHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 18810E7D23347D1A00F8191C /* DFMainHeaderView.m */; };
+		188888C823543D3C00391F21 /* DFHomeHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 188888C723543D3C00391F21 /* DFHomeHeaderView.m */; };
+		188888D923543FF800391F21 /* SDCycleScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 188888CD23543FF800391F21 /* SDCycleScrollView.m */; };
+		188888DA23543FF800391F21 /* UIView+SDExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 188888CE23543FF800391F21 /* UIView+SDExtension.m */; };
+		188888DB23543FF800391F21 /* SDCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 188888CF23543FF800391F21 /* SDCollectionViewCell.m */; };
+		188888DC23543FF800391F21 /* TADotView.m in Sources */ = {isa = PBXBuildFile; fileRef = 188888D223543FF800391F21 /* TADotView.m */; };
+		188888DD23543FF800391F21 /* TAPageControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 188888D323543FF800391F21 /* TAPageControl.m */; };
+		188888DE23543FF800391F21 /* TAAnimatedDotView.m in Sources */ = {isa = PBXBuildFile; fileRef = 188888D423543FF800391F21 /* TAAnimatedDotView.m */; };
+		188888DF23543FF800391F21 /* TAAbstractDotView.m in Sources */ = {isa = PBXBuildFile; fileRef = 188888D523543FF800391F21 /* TAAbstractDotView.m */; };
+		188888E22354430900391F21 /* DFHomeModuleButtonView.m in Sources */ = {isa = PBXBuildFile; fileRef = 188888E12354430900391F21 /* DFHomeModuleButtonView.m */; };
 		9ECA9B3767B523B47E5CC5D3 /* libPods-rongweiUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AF8B2EC23CB6593255A65F59 /* libPods-rongweiUITests.a */; };
 		B0A72C8143F173529952CB2D /* libPods-rongwei.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 20D41B16400FB5B4785A6312 /* libPods-rongwei.a */; };
 		C41FCD95233501110017427F /* DFMainTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C41FCD94233501110017427F /* DFMainTableViewCell.m */; };
@@ -112,6 +121,24 @@
 		186E7DDE233B31E800C0DCDE /* DfDesignerTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = DfDesignerTableViewCell.m; path = rongwei/Class/home/view/DfDesignerTableViewCell.m; sourceTree = SOURCE_ROOT; };
 		18810E7C23347D1A00F8191C /* DFMainHeaderView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DFMainHeaderView.h; sourceTree = "<group>"; };
 		18810E7D23347D1A00F8191C /* DFMainHeaderView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DFMainHeaderView.m; sourceTree = "<group>"; };
+		188888C623543D3C00391F21 /* DFHomeHeaderView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DFHomeHeaderView.h; sourceTree = "<group>"; };
+		188888C723543D3C00391F21 /* DFHomeHeaderView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DFHomeHeaderView.m; sourceTree = "<group>"; };
+		188888CA23543FF800391F21 /* UIView+SDExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+SDExtension.h"; sourceTree = "<group>"; };
+		188888CB23543FF800391F21 /* SDCycleScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDCycleScrollView.h; sourceTree = "<group>"; };
+		188888CC23543FF800391F21 /* SDCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDCollectionViewCell.h; sourceTree = "<group>"; };
+		188888CD23543FF800391F21 /* SDCycleScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDCycleScrollView.m; sourceTree = "<group>"; };
+		188888CE23543FF800391F21 /* UIView+SDExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+SDExtension.m"; sourceTree = "<group>"; };
+		188888CF23543FF800391F21 /* SDCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDCollectionViewCell.m; sourceTree = "<group>"; };
+		188888D123543FF800391F21 /* TAAbstractDotView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TAAbstractDotView.h; sourceTree = "<group>"; };
+		188888D223543FF800391F21 /* TADotView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TADotView.m; sourceTree = "<group>"; };
+		188888D323543FF800391F21 /* TAPageControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TAPageControl.m; sourceTree = "<group>"; };
+		188888D423543FF800391F21 /* TAAnimatedDotView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TAAnimatedDotView.m; sourceTree = "<group>"; };
+		188888D523543FF800391F21 /* TAAbstractDotView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TAAbstractDotView.m; sourceTree = "<group>"; };
+		188888D623543FF800391F21 /* TADotView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TADotView.h; sourceTree = "<group>"; };
+		188888D723543FF800391F21 /* TAAnimatedDotView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TAAnimatedDotView.h; sourceTree = "<group>"; };
+		188888D823543FF800391F21 /* TAPageControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TAPageControl.h; sourceTree = "<group>"; };
+		188888E02354430900391F21 /* DFHomeModuleButtonView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DFHomeModuleButtonView.h; sourceTree = "<group>"; };
+		188888E12354430900391F21 /* DFHomeModuleButtonView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DFHomeModuleButtonView.m; sourceTree = "<group>"; };
 		20D41B16400FB5B4785A6312 /* libPods-rongwei.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-rongwei.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		57B0271A67F37CB49B073DD4 /* Pods-rongweiUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-rongweiUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-rongweiUITests/Pods-rongweiUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		5E319CAAFB935DB2950D656D /* Pods-rongweiTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-rongweiTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-rongweiTests/Pods-rongweiTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -207,6 +234,7 @@
 		1815AE60233C3F97007A1955 /* ThirdParty */ = {
 			isa = PBXGroup;
 			children = (
+				188888C923543FF800391F21 /* SDCycleScrollView */,
 				1815AE61233C3FAF007A1955 /* CQTopBar */,
 			);
 			path = ThirdParty;
@@ -236,6 +264,35 @@
 				1809B476233B0F5000D768C3 /* DFDesignerModel.m */,
 			);
 			path = model;
+			sourceTree = "<group>";
+		};
+		188888C923543FF800391F21 /* SDCycleScrollView */ = {
+			isa = PBXGroup;
+			children = (
+				188888CA23543FF800391F21 /* UIView+SDExtension.h */,
+				188888CB23543FF800391F21 /* SDCycleScrollView.h */,
+				188888CC23543FF800391F21 /* SDCollectionViewCell.h */,
+				188888CD23543FF800391F21 /* SDCycleScrollView.m */,
+				188888CE23543FF800391F21 /* UIView+SDExtension.m */,
+				188888CF23543FF800391F21 /* SDCollectionViewCell.m */,
+				188888D023543FF800391F21 /* PageControl */,
+			);
+			path = SDCycleScrollView;
+			sourceTree = "<group>";
+		};
+		188888D023543FF800391F21 /* PageControl */ = {
+			isa = PBXGroup;
+			children = (
+				188888D123543FF800391F21 /* TAAbstractDotView.h */,
+				188888D223543FF800391F21 /* TADotView.m */,
+				188888D323543FF800391F21 /* TAPageControl.m */,
+				188888D423543FF800391F21 /* TAAnimatedDotView.m */,
+				188888D523543FF800391F21 /* TAAbstractDotView.m */,
+				188888D623543FF800391F21 /* TADotView.h */,
+				188888D723543FF800391F21 /* TAAnimatedDotView.h */,
+				188888D823543FF800391F21 /* TAPageControl.h */,
+			);
+			path = PageControl;
 			sourceTree = "<group>";
 		};
 		787A0C2B46C4B0D11C413FC4 /* Pods */ = {
@@ -385,6 +442,10 @@
 				1815AE86233CAB5F007A1955 /* DFCasesView.m */,
 				180FCDF1233D972000CD4BB7 /* DFWorksTableViewCell.h */,
 				180FCDF2233D972000CD4BB7 /* DFWorksTableViewCell.m */,
+				188888C623543D3C00391F21 /* DFHomeHeaderView.h */,
+				188888C723543D3C00391F21 /* DFHomeHeaderView.m */,
+				188888E02354430900391F21 /* DFHomeModuleButtonView.h */,
+				188888E12354430900391F21 /* DFHomeModuleButtonView.m */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -824,6 +885,7 @@
 				C41FCD95233501110017427F /* DFMainTableViewCell.m in Sources */,
 				1815AE72233C3FAF007A1955 /* CQTopBarSegmentCell.m in Sources */,
 				C428EBB52333AD8E009E0E8A /* DFNavigationController.m in Sources */,
+				188888DE23543FF800391F21 /* TAAnimatedDotView.m in Sources */,
 				C41FCDA0233784880017427F /* DFLoginViewController.m in Sources */,
 				C428EBD22333B543009E0E8A /* DFMainViewController.m in Sources */,
 				1815AE75233C3FAF007A1955 /* CQTopBarViewController.m in Sources */,
@@ -844,13 +906,21 @@
 				1809B477233B0F5000D768C3 /* DFDesignerModel.m in Sources */,
 				C41FCDA82337B7FD0017427F /* NSString+GHRegular.m in Sources */,
 				C428EBCC2333B51F009E0E8A /* DFHomeViewController.m in Sources */,
+				188888C823543D3C00391F21 /* DFHomeHeaderView.m in Sources */,
+				188888DC23543FF800391F21 /* TADotView.m in Sources */,
 				1815AE6F233C3FAF007A1955 /* CQSegmentTitleImage.m in Sources */,
 				1809B474233B075100D768C3 /* DFEsignerlListViewController.m in Sources */,
 				1815AE78233C3FAF007A1955 /* CQTopBarSegment.m in Sources */,
+				188888DB23543FF800391F21 /* SDCollectionViewCell.m in Sources */,
 				C4E0681923327A6700C0F650 /* main.m in Sources */,
+				188888DD23543FF800391F21 /* TAPageControl.m in Sources */,
+				188888D923543FF800391F21 /* SDCycleScrollView.m in Sources */,
 				C4E0680B23327A6300C0F650 /* AppDelegate.m in Sources */,
 				1808D70B2339ABA600710164 /* DFForgotPasswordViewController.m in Sources */,
 				C41FCDA42337865A0017427F /* DFTextField.m in Sources */,
+				188888DF23543FF800391F21 /* TAAbstractDotView.m in Sources */,
+				188888DA23543FF800391F21 /* UIView+SDExtension.m in Sources */,
+				188888E22354430900391F21 /* DFHomeModuleButtonView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
