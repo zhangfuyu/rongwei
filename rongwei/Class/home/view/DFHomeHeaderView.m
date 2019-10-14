@@ -246,6 +246,12 @@
     [self addSubview:self.recommended];
      [self.recommended setImageURLStringsGroup:@[]];
 }
+
+/// 定位
+- (void)clickLocationAction
+{
+    
+}
 #pragma mark - SDCycleScrollViewDelegate
 - (void)cycleScrollView:(SDCycleScrollView *)cycleScrollView didSelectItemAtIndex:(NSInteger)index {
     
