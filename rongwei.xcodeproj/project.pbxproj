@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		1808D70B2339ABA600710164 /* DFForgotPasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1808D70A2339ABA600710164 /* DFForgotPasswordViewController.m */; };
+		18095C5F23559478002212E9 /* DFHomeNaiBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 18095C5E23559478002212E9 /* DFHomeNaiBarView.m */; };
 		1809B474233B075100D768C3 /* DFEsignerlListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1809B473233B075100D768C3 /* DFEsignerlListViewController.m */; };
 		1809B477233B0F5000D768C3 /* DFDesignerModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1809B476233B0F5000D768C3 /* DFDesignerModel.m */; };
 		180FCDF3233D972000CD4BB7 /* DFWorksTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 180FCDF2233D972000CD4BB7 /* DFWorksTableViewCell.m */; };
@@ -93,6 +94,8 @@
 		1808D7092339ABA600710164 /* DFForgotPasswordViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DFForgotPasswordViewController.h; sourceTree = "<group>"; };
 		1808D70A2339ABA600710164 /* DFForgotPasswordViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DFForgotPasswordViewController.m; sourceTree = "<group>"; };
 		1808D70C2339F26200710164 /* rongwei.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = rongwei.entitlements; sourceTree = "<group>"; };
+		18095C5D23559478002212E9 /* DFHomeNaiBarView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DFHomeNaiBarView.h; sourceTree = "<group>"; };
+		18095C5E23559478002212E9 /* DFHomeNaiBarView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DFHomeNaiBarView.m; sourceTree = "<group>"; };
 		1809B471233AFC5100D768C3 /* DFNotification.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DFNotification.h; sourceTree = "<group>"; };
 		1809B472233B075100D768C3 /* DFEsignerlListViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DFEsignerlListViewController.h; sourceTree = "<group>"; };
 		1809B473233B075100D768C3 /* DFEsignerlListViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DFEsignerlListViewController.m; sourceTree = "<group>"; };
@@ -451,6 +454,8 @@
 				188888E12354430900391F21 /* DFHomeModuleButtonView.m */,
 				C46B0B1C2354ADF6000CC79B /* DFSectionView.h */,
 				C46B0B1D2354ADF6000CC79B /* DFSectionView.m */,
+				18095C5D23559478002212E9 /* DFHomeNaiBarView.h */,
+				18095C5E23559478002212E9 /* DFHomeNaiBarView.m */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -910,6 +915,7 @@
 				C4E0680E23327A6300C0F650 /* ViewController.m in Sources */,
 				1809B477233B0F5000D768C3 /* DFDesignerModel.m in Sources */,
 				C41FCDA82337B7FD0017427F /* NSString+GHRegular.m in Sources */,
+				18095C5F23559478002212E9 /* DFHomeNaiBarView.m in Sources */,
 				C428EBCC2333B51F009E0E8A /* DFHomeViewController.m in Sources */,
 				188888C823543D3C00391F21 /* DFHomeHeaderView.m in Sources */,
 				C46B0B1E2354ADF6000CC79B /* DFSectionView.m in Sources */,

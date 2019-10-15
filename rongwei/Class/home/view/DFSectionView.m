@@ -7,11 +7,15 @@
 //
 
 #import "DFSectionView.h"
+#import "DFEsignerlListViewController.h"
+
 @interface DFSectionView()
 
 @property (nonatomic , strong)UILabel *titleLabel;
 
 @property (nonatomic , strong)UILabel *subtitleLabel;
+
+@property (nonatomic , strong)UIButton *moreBtn;
 
 @end
 
@@ -42,6 +46,14 @@
             make.left.mas_equalTo(HScaleWidth(10));
             make.top.mas_equalTo(self.titleLabel.mas_bottom).offset(HScaleHeight(7));
             make.height.mas_equalTo(HScaleHeight(11));
+        }];
+        
+        [self addSubview:self.moreBtn];
+        [self.moreBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.top.mas_equalTo(self.titleLabel.mas_top);
+            make.bottom.mas_equalTo(self.titleLabel.mas_bottom);
+            make.right.mas_equalTo(0);
+            make.width.mas_equalTo(HScaleWidth(21+5+8+13+13));
         }];
         
     }
@@ -84,5 +96,23 @@
         _subtitleLabel.textColor = [UIColor colorWithHexString:@"999999"];
     }
     return _subtitleLabel;
+}
+
+- (UIButton *)moreBtn
+{
+    if (!_moreBtn) {
+        _moreBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+        [_moreBtn setTitle:@"更多>" forState:UIControlStateNormal];
+        [_moreBtn setTitleColor:[UIColor colorWithHexString:@"999999"] forState:UIControlStateNormal];
+        [_moreBtn addTarget:self action:@selector(pushMoreVC) forControlEvents:UIControlEventTouchUpInside];
+        _moreBtn.titleLabel.font = HScaleFont(11);
+    }
+    return _moreBtn;
+}
+- (void)pushMoreVC
+{
+    if ([self.titleText isEqualToString:@"推荐设计师"]) {
+        [self.viewController.navigationController pushViewController:[DFEsignerlListViewController new] animated:YES];
+    }
 }
 @end

@@ -9,11 +9,20 @@
 #import "DFHomeViewController.h"
 #import "DFEsignerlListViewController.h"
 #import "DFHomeHeaderView.h"
+#import "DFSectionView.h"
+#import "DFHomeNaiBarView.h"
 
 @interface DFHomeViewController ()<UITableViewDelegate,UITableViewDataSource>
 
+@property (nonatomic , strong)DFSectionView *firstSection;
 
+@property (nonatomic , strong)DFSectionView *secondSection;
 
+@property (nonatomic , strong)DFSectionView *threeSection;
+
+@property (nonatomic , strong)DFSectionView *fourSection;
+
+@property (nonatomic , strong)DFHomeNaiBarView *narbaView;
 @end
 
 @implementation DFHomeViewController
@@ -30,6 +39,8 @@
     self.title = @"首页";
     
     [self allocTableviewWith:UITableViewStylePlain];
+    self.dataTableview.delegate = self;
+    self.dataTableview.dataSource = self;
     [self.dataTableview mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.top.right.mas_equalTo(0);
         make.bottom.mas_equalTo(-kTabBarHeight);
@@ -38,6 +49,8 @@
     DFHomeHeaderView *headerview = [[DFHomeHeaderView alloc]initWithFrame:CGRectMake(0, 0, ScreenW, HScaleHeight(526) + kStatusBarHeight)];
   
     self.dataTableview.tableHeaderView = headerview;
+    
+    self.narbaView.hidden = YES;
     
 //    [self.navigationController pushViewController:[DFEsignerlListViewController new] animated:YES];
 //    [[DFUserModelTool shareInstance] showLoginViewController];
@@ -60,6 +73,102 @@
         cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:Cellidear];
     }
     return cell;
+}
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 100;
+}
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+{
+    if (section == 0 || section == 2) {
+        return HScaleHeight(56);
+    }
+    
+    return HScaleHeight(39);
+}
+- (nullable UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
+{
+    if (section == 0) {
+        return self.firstSection;
+    }
+    else if (section == 1)
+    {
+        return self.secondSection;
+    }
+    else if (section == 2)
+    {
+        return self.threeSection;
+    }
+    return self.fourSection;
+}
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+}
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView
+{
+    if (scrollView.contentOffset.y >= HScaleHeight(348)) {
+        self.narbaView.hidden = NO;
+    }
+    else
+    {
+        self.narbaView.hidden = YES;
+        if (scrollView.contentOffset.y <= 0) {
+            [self.dataTableview scrollToTopAnimated:NO];
+        }
+    }
+}
+
+- (DFSectionView *)firstSection
+{
+    if (!_firstSection) {
+        _firstSection = [[DFSectionView alloc]initWithFrame:CGRectMake(0, 0, ScreenW, HScaleHeight(56))];
+        _firstSection.titleText = @"推荐案例";
+        _firstSection.subText = @"40000+业主的装修案例，%100所见即所得";
+    }
+    return _firstSection;
+}
+- (DFSectionView *)secondSection
+{
+    if (!_secondSection) {
+        _secondSection = [[DFSectionView alloc]initWithFrame:CGRectMake(0, 0, ScreenW, HScaleHeight(39))];
+        _secondSection.titleText = @"施工工地";
+        _secondSection.isShowSubTitle = NO;
+    }
+    return _secondSection;
+}
+- (DFSectionView *)threeSection
+{
+    if (!_threeSection) {
+        _threeSection = [[DFSectionView alloc]initWithFrame:CGRectMake(0, 0, ScreenW, HScaleHeight(56))];
+        _threeSection.titleText = @"推荐设计师";
+        _threeSection.subText = @"40000+业主的装修案例，%100所见即所得";
+    }
+    return _threeSection;
+}
+
+- (DFSectionView *)fourSection
+{
+    if (!_fourSection) {
+        _fourSection = [[DFSectionView alloc]initWithFrame:CGRectMake(0, 0, ScreenW, HScaleHeight(39))];
+        _fourSection.titleText = @"热门攻略";
+        _fourSection.isShowSubTitle = NO;
+    }
+    return _fourSection;
+}
+- (DFHomeNaiBarView *)narbaView
+{
+    if (!_narbaView) {
+        _narbaView = [[DFHomeNaiBarView alloc]initWithFrame:CGRectMake(0, 0, ScreenW, kNavBarAndStatusBarHeight)];
+        WEAKSELF;
+        _narbaView.scroToMusrUp = ^{
+            [weakSelf.dataTableview scrollToTopAnimated:NO];
+        };
+        [self.view addSubview:_narbaView];
+        [self.view bringSubviewToFront:_narbaView];
+    }
+    return _narbaView;
 }
 /*
 #pragma mark - Navigation
