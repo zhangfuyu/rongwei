@@ -150,6 +150,8 @@
         DFHomeModuleButtonView *buttonView = [[DFHomeModuleButtonView alloc] initWithImageName:[imageArry objectOrNilAtIndex:index] withTitle:[titleArry objectOrNilAtIndex:index]];
                    
                   
+        [buttonView.actionButton addTarget:self action:@selector(clicksubButton:) forControlEvents:UIControlEventTouchUpInside];
+        buttonView.actionButton.tag = index;
         [self addSubview:buttonView];
         
         float frameX = index % 5 * interval + (index % 5 * HScaleWidth(44)) + HScaleWidth(15);
@@ -247,8 +249,22 @@
      [self.recommended setImageURLStringsGroup:@[]];
 }
 
+- (void)clicksubButton:(UIButton *)clickBtn
+{
+    //效果图
+    if (clickBtn.tag == 0) {
+        [self.viewController.tabBarController setSelectedIndex:1];
+    }
+}
+
 /// 定位
 - (void)clickLocationAction
+{
+    
+}
+
+/// 消息
+- (void)clickNoticeAction
 {
     
 }

@@ -11,6 +11,9 @@
 		18095C5F23559478002212E9 /* DFHomeNaiBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 18095C5E23559478002212E9 /* DFHomeNaiBarView.m */; };
 		1809B474233B075100D768C3 /* DFEsignerlListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1809B473233B075100D768C3 /* DFEsignerlListViewController.m */; };
 		1809B477233B0F5000D768C3 /* DFDesignerModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1809B476233B0F5000D768C3 /* DFDesignerModel.m */; };
+		180B58372358084A00D1E847 /* DFRenderingNarbarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 180B58362358084A00D1E847 /* DFRenderingNarbarView.m */; };
+		180B583E23585DE900D1E847 /* DFWaterFallLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 180B583D23585DE900D1E847 /* DFWaterFallLayout.m */; };
+		180B584123585F2F00D1E847 /* DFRenderingCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 180B584023585F2F00D1E847 /* DFRenderingCollectionViewCell.m */; };
 		180FCDF3233D972000CD4BB7 /* DFWorksTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 180FCDF2233D972000CD4BB7 /* DFWorksTableViewCell.m */; };
 		1815AE6C233C3FAF007A1955 /* CQTopBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1815AE63233C3FAF007A1955 /* CQTopBarView.m */; };
 		1815AE6D233C3FAF007A1955 /* CQTopBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1815AE63233C3FAF007A1955 /* CQTopBarView.m */; };
@@ -101,6 +104,12 @@
 		1809B473233B075100D768C3 /* DFEsignerlListViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DFEsignerlListViewController.m; sourceTree = "<group>"; };
 		1809B475233B0F5000D768C3 /* DFDesignerModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = DFDesignerModel.h; path = rongwei/Class/home/model/DFDesignerModel.h; sourceTree = SOURCE_ROOT; };
 		1809B476233B0F5000D768C3 /* DFDesignerModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = DFDesignerModel.m; path = rongwei/Class/home/model/DFDesignerModel.m; sourceTree = SOURCE_ROOT; };
+		180B58352358084A00D1E847 /* DFRenderingNarbarView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = DFRenderingNarbarView.h; path = rongwei/Class/xiaoguotu/view/DFRenderingNarbarView.h; sourceTree = SOURCE_ROOT; };
+		180B58362358084A00D1E847 /* DFRenderingNarbarView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = DFRenderingNarbarView.m; path = rongwei/Class/xiaoguotu/view/DFRenderingNarbarView.m; sourceTree = SOURCE_ROOT; };
+		180B583C23585DE900D1E847 /* DFWaterFallLayout.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DFWaterFallLayout.h; sourceTree = "<group>"; };
+		180B583D23585DE900D1E847 /* DFWaterFallLayout.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DFWaterFallLayout.m; sourceTree = "<group>"; };
+		180B583F23585F2F00D1E847 /* DFRenderingCollectionViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DFRenderingCollectionViewCell.h; sourceTree = "<group>"; };
+		180B584023585F2F00D1E847 /* DFRenderingCollectionViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DFRenderingCollectionViewCell.m; sourceTree = "<group>"; };
 		180FCDF1233D972000CD4BB7 /* DFWorksTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DFWorksTableViewCell.h; sourceTree = "<group>"; };
 		180FCDF2233D972000CD4BB7 /* DFWorksTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DFWorksTableViewCell.m; sourceTree = "<group>"; };
 		1815AE62233C3FAF007A1955 /* CQTopBarSegment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CQTopBarSegment.h; sourceTree = "<group>"; };
@@ -237,6 +246,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		180B583B23585DB100D1E847 /* view */ = {
+			isa = PBXGroup;
+			children = (
+				180B58352358084A00D1E847 /* DFRenderingNarbarView.h */,
+				180B58362358084A00D1E847 /* DFRenderingNarbarView.m */,
+				180B583C23585DE900D1E847 /* DFWaterFallLayout.h */,
+				180B583D23585DE900D1E847 /* DFWaterFallLayout.m */,
+				180B583F23585F2F00D1E847 /* DFRenderingCollectionViewCell.h */,
+				180B584023585F2F00D1E847 /* DFRenderingCollectionViewCell.m */,
+			);
+			path = view;
+			sourceTree = "<group>";
+		};
 		1815AE60233C3F97007A1955 /* ThirdParty */ = {
 			isa = PBXGroup;
 			children = (
@@ -537,9 +559,9 @@
 		C428EBC62333B4FB009E0E8A /* xiaoguotu */ = {
 			isa = PBXGroup;
 			children = (
+				180B583B23585DB100D1E847 /* view */,
 				C428EBC72333B4FB009E0E8A /* contro */,
 				C428EBC82333B4FB009E0E8A /* model */,
-				C428EBC92333B4FB009E0E8A /* view */,
 			);
 			path = xiaoguotu;
 			sourceTree = "<group>";
@@ -558,13 +580,6 @@
 			children = (
 			);
 			path = model;
-			sourceTree = "<group>";
-		};
-		C428EBC92333B4FB009E0E8A /* view */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = view;
 			sourceTree = "<group>";
 		};
 		C46AD0E123338FC4000514B7 /* Tool */ = {
@@ -907,6 +922,7 @@
 				C428EBB22333A99A009E0E8A /* DFTabBarController.m in Sources */,
 				1815AE84233C96BE007A1955 /* NSString+Extension.m in Sources */,
 				186E7DDF233B31E900C0DCDE /* DfDesignerTableViewCell.m in Sources */,
+				180B584123585F2F00D1E847 /* DFRenderingCollectionViewCell.m in Sources */,
 				C41FCD9B23350AE90017427F /* DFMainDataModel.m in Sources */,
 				C46AD0EA23339256000514B7 /* DFUserModelTool.m in Sources */,
 				180FCDF3233D972000CD4BB7 /* DFWorksTableViewCell.m in Sources */,
@@ -917,6 +933,7 @@
 				C41FCDA82337B7FD0017427F /* NSString+GHRegular.m in Sources */,
 				18095C5F23559478002212E9 /* DFHomeNaiBarView.m in Sources */,
 				C428EBCC2333B51F009E0E8A /* DFHomeViewController.m in Sources */,
+				180B58372358084A00D1E847 /* DFRenderingNarbarView.m in Sources */,
 				188888C823543D3C00391F21 /* DFHomeHeaderView.m in Sources */,
 				C46B0B1E2354ADF6000CC79B /* DFSectionView.m in Sources */,
 				188888DC23543FF800391F21 /* TADotView.m in Sources */,
@@ -926,6 +943,7 @@
 				188888DB23543FF800391F21 /* SDCollectionViewCell.m in Sources */,
 				C4E0681923327A6700C0F650 /* main.m in Sources */,
 				188888DD23543FF800391F21 /* TAPageControl.m in Sources */,
+				180B583E23585DE900D1E847 /* DFWaterFallLayout.m in Sources */,
 				188888D923543FF800391F21 /* SDCycleScrollView.m in Sources */,
 				C4E0680B23327A6300C0F650 /* AppDelegate.m in Sources */,
 				1808D70B2339ABA600710164 /* DFForgotPasswordViewController.m in Sources */,
@@ -1132,7 +1150,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.ghwl.udoctor;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -1155,7 +1173,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.ghwl.udoctor;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
