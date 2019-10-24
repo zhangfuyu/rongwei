@@ -45,6 +45,10 @@
 		188888DE23543FF800391F21 /* TAAnimatedDotView.m in Sources */ = {isa = PBXBuildFile; fileRef = 188888D423543FF800391F21 /* TAAnimatedDotView.m */; };
 		188888DF23543FF800391F21 /* TAAbstractDotView.m in Sources */ = {isa = PBXBuildFile; fileRef = 188888D523543FF800391F21 /* TAAbstractDotView.m */; };
 		188888E22354430900391F21 /* DFHomeModuleButtonView.m in Sources */ = {isa = PBXBuildFile; fileRef = 188888E12354430900391F21 /* DFHomeModuleButtonView.m */; };
+		18BD929C235D7C360084873C /* DFBuildingHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 18BD929B235D7C360084873C /* DFBuildingHeaderView.m */; };
+		18EEA1AB235991D00072D0EB /* DFChooseView.m in Sources */ = {isa = PBXBuildFile; fileRef = 18EEA1AA235991D00072D0EB /* DFChooseView.m */; };
+		18EEA1B0235995E40072D0EB /* DFStrategyHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 18EEA1AF235995E40072D0EB /* DFStrategyHeaderView.m */; };
+		18EEA1B323599CB40072D0EB /* DFStrategyTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 18EEA1B223599CB40072D0EB /* DFStrategyTableViewCell.m */; };
 		9ECA9B3767B523B47E5CC5D3 /* libPods-rongweiUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AF8B2EC23CB6593255A65F59 /* libPods-rongweiUITests.a */; };
 		B0A72C8143F173529952CB2D /* libPods-rongwei.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 20D41B16400FB5B4785A6312 /* libPods-rongwei.a */; };
 		C41FCD95233501110017427F /* DFMainTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C41FCD94233501110017427F /* DFMainTableViewCell.m */; };
@@ -152,6 +156,14 @@
 		188888D823543FF800391F21 /* TAPageControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TAPageControl.h; sourceTree = "<group>"; };
 		188888E02354430900391F21 /* DFHomeModuleButtonView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DFHomeModuleButtonView.h; sourceTree = "<group>"; };
 		188888E12354430900391F21 /* DFHomeModuleButtonView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DFHomeModuleButtonView.m; sourceTree = "<group>"; };
+		18BD929A235D7C360084873C /* DFBuildingHeaderView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DFBuildingHeaderView.h; sourceTree = "<group>"; };
+		18BD929B235D7C360084873C /* DFBuildingHeaderView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DFBuildingHeaderView.m; sourceTree = "<group>"; };
+		18EEA1A9235991D00072D0EB /* DFChooseView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = DFChooseView.h; path = rongwei/Class/zhaogonglue/view/DFChooseView.h; sourceTree = SOURCE_ROOT; };
+		18EEA1AA235991D00072D0EB /* DFChooseView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = DFChooseView.m; path = rongwei/Class/zhaogonglue/view/DFChooseView.m; sourceTree = SOURCE_ROOT; };
+		18EEA1AE235995E40072D0EB /* DFStrategyHeaderView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DFStrategyHeaderView.h; sourceTree = "<group>"; };
+		18EEA1AF235995E40072D0EB /* DFStrategyHeaderView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DFStrategyHeaderView.m; sourceTree = "<group>"; };
+		18EEA1B123599CB40072D0EB /* DFStrategyTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DFStrategyTableViewCell.h; sourceTree = "<group>"; };
+		18EEA1B223599CB40072D0EB /* DFStrategyTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DFStrategyTableViewCell.m; sourceTree = "<group>"; };
 		20D41B16400FB5B4785A6312 /* libPods-rongwei.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-rongwei.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		57B0271A67F37CB49B073DD4 /* Pods-rongweiUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-rongweiUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-rongweiUITests/Pods-rongweiUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		5E319CAAFB935DB2950D656D /* Pods-rongweiTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-rongweiTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-rongweiTests/Pods-rongweiTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -323,6 +335,42 @@
 			path = PageControl;
 			sourceTree = "<group>";
 		};
+		18BD9298235D7BE00084873C /* model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = model;
+			sourceTree = "<group>";
+		};
+		18BD9299235D7BE00084873C /* view */ = {
+			isa = PBXGroup;
+			children = (
+				18BD929A235D7C360084873C /* DFBuildingHeaderView.h */,
+				18BD929B235D7C360084873C /* DFBuildingHeaderView.m */,
+			);
+			path = view;
+			sourceTree = "<group>";
+		};
+		18EEA1AC235991FA0072D0EB /* model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = model;
+			sourceTree = "<group>";
+		};
+		18EEA1AD235991FA0072D0EB /* view */ = {
+			isa = PBXGroup;
+			children = (
+				18EEA1A9235991D00072D0EB /* DFChooseView.h */,
+				18EEA1AA235991D00072D0EB /* DFChooseView.m */,
+				18EEA1AE235995E40072D0EB /* DFStrategyHeaderView.h */,
+				18EEA1AF235995E40072D0EB /* DFStrategyHeaderView.m */,
+				18EEA1B123599CB40072D0EB /* DFStrategyTableViewCell.h */,
+				18EEA1B223599CB40072D0EB /* DFStrategyTableViewCell.m */,
+			);
+			path = view;
+			sourceTree = "<group>";
+		};
 		787A0C2B46C4B0D11C413FC4 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -406,9 +454,9 @@
 		C428EBB62333B4FB009E0E8A /* zhaogonglue */ = {
 			isa = PBXGroup;
 			children = (
+				18EEA1AC235991FA0072D0EB /* model */,
+				18EEA1AD235991FA0072D0EB /* view */,
 				C428EBB72333B4FB009E0E8A /* contro */,
-				C428EBB82333B4FB009E0E8A /* model */,
-				C428EBB92333B4FB009E0E8A /* view */,
 			);
 			path = zhaogonglue;
 			sourceTree = "<group>";
@@ -420,20 +468,6 @@
 				C428EBD72333B58D009E0E8A /* DFFindGonglueViewController.m */,
 			);
 			path = contro;
-			sourceTree = "<group>";
-		};
-		C428EBB82333B4FB009E0E8A /* model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = model;
-			sourceTree = "<group>";
-		};
-		C428EBB92333B4FB009E0E8A /* view */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = view;
 			sourceTree = "<group>";
 		};
 		C428EBBA2333B4FB009E0E8A /* home */ = {
@@ -485,9 +519,9 @@
 		C428EBBE2333B4FB009E0E8A /* jiancaiku */ = {
 			isa = PBXGroup;
 			children = (
+				18BD9298235D7BE00084873C /* model */,
+				18BD9299235D7BE00084873C /* view */,
 				C428EBBF2333B4FB009E0E8A /* contro */,
-				C428EBC02333B4FB009E0E8A /* model */,
-				C428EBC12333B4FB009E0E8A /* view */,
 			);
 			path = jiancaiku;
 			sourceTree = "<group>";
@@ -499,20 +533,6 @@
 				C428EBCE2333B534009E0E8A /* DFJianCaiViewController.m */,
 			);
 			path = contro;
-			sourceTree = "<group>";
-		};
-		C428EBC02333B4FB009E0E8A /* model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = model;
-			sourceTree = "<group>";
-		};
-		C428EBC12333B4FB009E0E8A /* view */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = view;
 			sourceTree = "<group>";
 		};
 		C428EBC22333B4FB009E0E8A /* main */ = {
@@ -907,6 +927,7 @@
 				1815AE87233CAB5F007A1955 /* DFCasesView.m in Sources */,
 				1815AE7D233C657C007A1955 /* DFEsignerDetialViewController.m in Sources */,
 				C428EBAD2333A880009E0E8A /* DFAppVersionTool.m in Sources */,
+				18EEA1AB235991D00072D0EB /* DFChooseView.m in Sources */,
 				C41FCD95233501110017427F /* DFMainTableViewCell.m in Sources */,
 				1815AE72233C3FAF007A1955 /* CQTopBarSegmentCell.m in Sources */,
 				C428EBB52333AD8E009E0E8A /* DFNavigationController.m in Sources */,
@@ -921,6 +942,7 @@
 				C41FCD98233507F70017427F /* DFMainCellBtn.m in Sources */,
 				C428EBB22333A99A009E0E8A /* DFTabBarController.m in Sources */,
 				1815AE84233C96BE007A1955 /* NSString+Extension.m in Sources */,
+				18EEA1B0235995E40072D0EB /* DFStrategyHeaderView.m in Sources */,
 				186E7DDF233B31E900C0DCDE /* DfDesignerTableViewCell.m in Sources */,
 				180B584123585F2F00D1E847 /* DFRenderingCollectionViewCell.m in Sources */,
 				C41FCD9B23350AE90017427F /* DFMainDataModel.m in Sources */,
@@ -932,10 +954,12 @@
 				1809B477233B0F5000D768C3 /* DFDesignerModel.m in Sources */,
 				C41FCDA82337B7FD0017427F /* NSString+GHRegular.m in Sources */,
 				18095C5F23559478002212E9 /* DFHomeNaiBarView.m in Sources */,
+				18EEA1B323599CB40072D0EB /* DFStrategyTableViewCell.m in Sources */,
 				C428EBCC2333B51F009E0E8A /* DFHomeViewController.m in Sources */,
 				180B58372358084A00D1E847 /* DFRenderingNarbarView.m in Sources */,
 				188888C823543D3C00391F21 /* DFHomeHeaderView.m in Sources */,
 				C46B0B1E2354ADF6000CC79B /* DFSectionView.m in Sources */,
+				18BD929C235D7C360084873C /* DFBuildingHeaderView.m in Sources */,
 				188888DC23543FF800391F21 /* TADotView.m in Sources */,
 				1815AE6F233C3FAF007A1955 /* CQSegmentTitleImage.m in Sources */,
 				1809B474233B075100D768C3 /* DFEsignerlListViewController.m in Sources */,

@@ -26,6 +26,8 @@
 {
     if (self = [super initWithFrame:frame]) {
         
+        self.contentView.backgroundColor = [UIColor whiteColor];
+        
         [self.contentimage mas_makeConstraints:^(MASConstraintMaker *make) {
             make.left.top.right.mas_equalTo(0);
             make.height.mas_equalTo(HScaleHeight(85));
@@ -47,14 +49,14 @@
     return self;
 }
 
-- (UIView *)contentView
+- (UIImageView *)contentimage
 {
     if (!_contentimage) {
         _contentimage = [[UIImageView alloc]init];
         _contentimage.backgroundColor = [UIColor orangeColor];
         [self.contentView addSubview:_contentimage];
     }
-    return self;
+    return _contentimage;
 }
 
 - (UILabel *)titlelabel

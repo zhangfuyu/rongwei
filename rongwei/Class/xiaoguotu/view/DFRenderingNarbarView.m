@@ -108,6 +108,23 @@
          make.height.mas_equalTo(HScaleHeight(2));
          make.width.mas_equalTo([self sizeWithText:clickbtn.titleLabel.text font:HScaleFont(15) maxSize:CGSizeMake(MAXFLOAT, HScaleHeight(15))].width);
     }];
+    
+    
+    if (self.chooseConditionsBlock) {
+        if ([clickbtn.titleLabel.text isEqualToString:@"效果图"]) {
+            self.chooseConditionsBlock(DFconditions_Rendering);
+        }
+        else if ([clickbtn.titleLabel.text isEqualToString:@"局部图"])
+        {
+            self.chooseConditionsBlock(DFconditions_LocalFigure);
+
+        }
+        else
+        {
+            self.chooseConditionsBlock(DFconditions_DecorateACase);
+
+        }
+    }
 }
 
 - (void)clickNoticeAction

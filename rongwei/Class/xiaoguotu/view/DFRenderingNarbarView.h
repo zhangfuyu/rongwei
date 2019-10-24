@@ -10,7 +10,17 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+typedef enum : NSUInteger {
+   
+    DFconditions_Rendering  = 0, //效果图
+    DFconditions_LocalFigure = 1,//局部图
+    DFconditions_DecorateACase =2,//装修案例
+    
+} DFconditions;
+
 @interface DFRenderingNarbarView : UIView
+
+@property (nonatomic , copy) void (^chooseConditionsBlock)(DFconditions conditon);
 
 @end
 

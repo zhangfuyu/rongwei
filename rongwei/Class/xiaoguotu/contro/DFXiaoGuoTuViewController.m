@@ -39,22 +39,22 @@
     
     [self.view addSubview:self.segment];
     
-     // 创建布局
-        DFWaterFallLayout * waterFallLayout = [[DFWaterFallLayout alloc]init];
-        waterFallLayout.fallDelegate = self;
+    // 创建布局
+    DFWaterFallLayout * waterFallLayout = [[DFWaterFallLayout alloc]init];
+    waterFallLayout.fallDelegate = self;
     //    waterFallLayout.headerReferenceSize = CGSizeMake(SCREENWIDTH, HScaleHeight(350));
-        
-        //    UICollectionViewFlowLayout *waterFallLayout = [[UICollectionViewFlowLayout alloc] init];
-        
-        //    waterFallLayout.headerReferenceSize = CGSizeMake(SCREENWIDTH, HScaleHeight(350));
-        
-        // 创建collectionView
-        self.scrollView = [[UICollectionView alloc]initWithFrame:CGRectMake(0, 0, kNavBarAndStatusBarHeight + HScaleHeight(47), ScreenH - kNavAndTabHeight - HScaleHeight(47)) collectionViewLayout:waterFallLayout];
-        self.scrollView.backgroundColor = [UIColor whiteColor];
-        self.scrollView.delegate = self;
-        self.scrollView.dataSource = self;
-        self.scrollView.showsVerticalScrollIndicator = NO;
-        [self.view addSubview:self.scrollView];
+    
+    //    UICollectionViewFlowLayout *waterFallLayout = [[UICollectionViewFlowLayout alloc] init];
+    
+    //    waterFallLayout.headerReferenceSize = CGSizeMake(SCREENWIDTH, HScaleHeight(350));
+    
+    // 创建collectionView
+    self.scrollView = [[UICollectionView alloc]initWithFrame:CGRectMake(0, kNavBarAndStatusBarHeight + HScaleHeight(47), ScreenW, ScreenH - kNavAndTabHeight - HScaleHeight(47)) collectionViewLayout:waterFallLayout];
+    self.scrollView.backgroundColor = [UIColor whiteColor];
+    self.scrollView.delegate = self;
+    self.scrollView.dataSource = self;
+    self.scrollView.showsVerticalScrollIndicator = NO;
+    self.scrollView.backgroundColor = [UIColor colorWithHexString:@"FFFFFF"];
         
         
         
