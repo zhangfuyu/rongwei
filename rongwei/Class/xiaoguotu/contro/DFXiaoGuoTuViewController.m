@@ -58,9 +58,9 @@
         
         
         
-        [self.scrollView registerClass:[DFRenderingCollectionViewCell class] forCellWithReuseIdentifier:@"DFRenderingCollectionViewCell"];
-        
-        [self.view addSubview:self.scrollView];
+    [self.scrollView registerClass:[DFRenderingCollectionViewCell class] forCellWithReuseIdentifier:@"DFRenderingCollectionViewCell"];
+    
+    [self.view addSubview:self.scrollView];
     
 }
 
