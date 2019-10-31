@@ -176,4 +176,10 @@
     return self;
 }
 
+- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
+{
+    if ([DFUserModelTool shareInstance].isLogin == NO) {
+        [self.viewController.navigationController pushViewController:[DFLoginViewController new] animated:YES];
+    }
+}
 @end

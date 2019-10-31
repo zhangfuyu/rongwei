@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		18066932236A601000830CA9 /* DFRegisteredFirstViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18066931236A601000830CA9 /* DFRegisteredFirstViewController.m */; };
 		1808D70B2339ABA600710164 /* DFForgotPasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1808D70A2339ABA600710164 /* DFForgotPasswordViewController.m */; };
 		18095C5F23559478002212E9 /* DFHomeNaiBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 18095C5E23559478002212E9 /* DFHomeNaiBarView.m */; };
 		1809B474233B075100D768C3 /* DFEsignerlListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1809B473233B075100D768C3 /* DFEsignerlListViewController.m */; };
@@ -98,6 +99,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		18066930236A601000830CA9 /* DFRegisteredFirstViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DFRegisteredFirstViewController.h; sourceTree = "<group>"; };
+		18066931236A601000830CA9 /* DFRegisteredFirstViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DFRegisteredFirstViewController.m; sourceTree = "<group>"; };
 		1808D7092339ABA600710164 /* DFForgotPasswordViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DFForgotPasswordViewController.h; sourceTree = "<group>"; };
 		1808D70A2339ABA600710164 /* DFForgotPasswordViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DFForgotPasswordViewController.m; sourceTree = "<group>"; };
 		1808D70C2339F26200710164 /* rongwei.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = rongwei.entitlements; sourceTree = "<group>"; };
@@ -400,6 +403,8 @@
 				C41FCD9F233784880017427F /* DFLoginViewController.m */,
 				1808D7092339ABA600710164 /* DFForgotPasswordViewController.h */,
 				1808D70A2339ABA600710164 /* DFForgotPasswordViewController.m */,
+				18066930236A601000830CA9 /* DFRegisteredFirstViewController.h */,
+				18066931236A601000830CA9 /* DFRegisteredFirstViewController.m */,
 			);
 			path = contro;
 			sourceTree = "<group>";
@@ -945,6 +950,7 @@
 				18EEA1B0235995E40072D0EB /* DFStrategyHeaderView.m in Sources */,
 				186E7DDF233B31E900C0DCDE /* DfDesignerTableViewCell.m in Sources */,
 				180B584123585F2F00D1E847 /* DFRenderingCollectionViewCell.m in Sources */,
+				18066932236A601000830CA9 /* DFRegisteredFirstViewController.m in Sources */,
 				C41FCD9B23350AE90017427F /* DFMainDataModel.m in Sources */,
 				C46AD0EA23339256000514B7 /* DFUserModelTool.m in Sources */,
 				180FCDF3233D972000CD4BB7 /* DFWorksTableViewCell.m in Sources */,

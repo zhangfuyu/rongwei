@@ -14,6 +14,8 @@
 
 #import "WXApi.h"
 
+#import "DFRegisteredFirstViewController.h"
+
 @interface DFLoginViewController ()
 
 @property (nonatomic , strong)UIImageView *headerImage;
@@ -49,6 +51,12 @@
        
        // 微信授权失败
        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(wechatAuthFailed) name:kNotificationWeChatAuthFailed object:nil];
+}
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    self.navigationController.navigationBar.hidden = NO;
+
 }
 
 - (void)viewDidLoad {
@@ -210,6 +218,7 @@
     [registered setTitle:@"立即注册" forState:UIControlStateNormal];
     registered.titleLabel.font = HScaleFont(12);
     [self.view addSubview:registered];
+    [registered addTarget:self action:@selector(registerednew) forControlEvents:UIControlEventTouchUpInside];
     
     [registered mas_makeConstraints:^(MASConstraintMaker *make) {
         make.right.mas_equalTo(loginBtn.mas_right);
@@ -312,7 +321,11 @@
     self.countDown --;
 }
 
-
+/// 立即注册
+- (void)registerednew
+{
+    [self.navigationController pushViewController:[DFRegisteredFirstViewController new] animated:YES];
+}
 /// 点击忘记密码  
 - (void)pushForgotPasswordVC
 {
