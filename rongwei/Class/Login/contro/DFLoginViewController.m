@@ -157,6 +157,7 @@
     self.posswordField.backgroundColor = [UIColor colorWithHexString:@"F5F5F5"];
     self.posswordField.layer.cornerRadius = HScaleHeight(3);
     self.posswordField.layer.masksToBounds = true;
+    self.posswordField.secureTextEntry = YES;
     self.posswordField.keyboardType = UIKeyboardTypePhonePad;
     self.posswordField.returnKeyType = UIReturnKeyDone;
     self.posswordField.leftSpace = HScaleHeight(45);
@@ -261,8 +262,16 @@
     if (clickBtn.selected) {
         self.headerImage.image = [UIImage imageNamed:@"头像 女孩 (1)"];
         self.leftiamgeForCode.image = [UIImage imageNamed:@"验证码"];
+        self.posswordField.secureTextEntry = NO;
         self.posswordField.rightSpace = HScaleWidth(114);
+        [self.posswordField addSubview:self.getVerificationCodeView];
         self.posswordField.rightView = self.getVerificationCodeView;
+
+        [self.getVerificationCodeView mas_remakeConstraints:^(MASConstraintMaker *make) {
+            make.top.bottom.right.mas_equalTo(0);
+            make.width.mas_equalTo(HScaleWidth(114));
+        }];
+        
     }
 }
 
@@ -276,6 +285,11 @@
     if (clickBtn.selected) {
         self.headerImage.image = [UIImage imageNamed:@"头像_男孩"];
         self.leftiamgeForCode.image = [UIImage imageNamed:@"密码"];
+        self.posswordField.secureTextEntry = YES;
+        [self.getVerificationCodeView mas_remakeConstraints:^(MASConstraintMaker *make) {
+            make.top.bottom.right.mas_equalTo(0);
+            make.width.mas_equalTo(HScaleWidth(0));
+        }];
         self.posswordField.rightSpace = 0;
         self.posswordField.rightView = nil;
     }
@@ -337,31 +351,40 @@
 - (void)requestloginin
 {
     
-//    if (self.phoneTextField.text.length == 0) {
-//        [SVProgressHUD showErrorWithStatus:@"请输入您的手机号"];
-//        return;
-//    }
-//    
-//    if (![self.phoneTextField.text isMobileNumber]) {
-//        [SVProgressHUD showErrorWithStatus:@"请输入正确的手机号"];
-//        return;
-//    }
-//    
-//    if (self.posswordField.text.length == 0) {
-//         
-//        [SVProgressHUD showErrorWithStatus:@"请输入您的密码"];
-//               
-//        return;
-//        
-//    }
+    if (self.phoneTextField.text.length == 0) {
+        [SVProgressHUD showErrorWithStatus:@"请输入您的手机号"];
+        return;
+    }
+    
+    if (![self.phoneTextField.text isMobileNumber]) {
+        [SVProgressHUD showErrorWithStatus:@"请输入正确的手机号"];
+        return;
+    }
+    
+    if (self.posswordField.text.length == 0) {
+         
+        [SVProgressHUD showErrorWithStatus:@"请输入您的密码"];
+               
+        return;
+        
+    }
     
     NSMutableDictionary *parma = [@{
-        @"phone":@"15067118711",
-        @"password":@"123456"
+        @"username":self.phoneTextField.text,
+        @"password":self.posswordField.text
     }copy];
     
-    [[DFNetworkTool shareInstance] requestWithMethod:GHRequestMethod_POST withUrl:LoginApi withParameter:parma withLoadingType:GHLoadingType_ShowLoading withShouldHaveToken:NO withContentType:GHContentType_JSON completionBlock:^(BOOL isSuccess, NSString * _Nullable msg, id  _Nullable response) {
+    [[DFNetworkTool shareInstance] requestWithMethod:GHRequestMethod_POST withUrl:LoginApi withParameter:parma withLoadingType:GHLoadingType_ShowLoading withShouldHaveToken:NO withContentType:GHContentType_Formdata completionBlock:^(BOOL isSuccess, NSString * _Nullable msg, id  _Nullable response) {
         if (isSuccess) {
+            if (![response[@"status"] isEqualToString:@"ok"]) {
+                        
+                [SVProgressHUD showErrorWithStatus:response[@"data"]];
+                return;
+            }
+            [DFUserModelTool shareInstance].uid = [NSString stringWithFormat:@"%@",response[@"data"][@"uid"]];
+            [DFUserModelTool shareInstance].isLogin = YES;
+            [self.navigationController popViewControllerAnimated:YES];
+            [self dismissViewControllerAnimated:YES completion:nil];
             NSLog(@"------->成功");
         }
     }];
@@ -383,7 +406,10 @@
 - (UIView *)getVerificationCodeView
 {
     if (!_getVerificationCodeView) {
-        _getVerificationCodeView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, HScaleWidth(114), HScaleHeight(45))];
+        _getVerificationCodeView = [[UIView alloc]init];//WithFrame:CGRectMake(0, 0, HScaleWidth(114), HScaleHeight(45))];
+        
+        [_getVerificationCodeView addSubview:_getVerificationCodeBtn];
+
     }
     return _getVerificationCodeView;
 }
@@ -395,7 +421,6 @@
         [_getVerificationCodeBtn setTitle:@"获取验证码" forState:UIControlStateNormal];
         [_getVerificationCodeBtn setTitleColor:[UIColor colorWithHexString:@"333333"] forState:UIControlStateNormal];
         _getVerificationCodeBtn.titleLabel.font = HScaleFont(15);
-        [self.getVerificationCodeView addSubview:_getVerificationCodeBtn];
         [_getVerificationCodeBtn addTarget:self action:@selector(selectVerificationCodeBtn) forControlEvents:UIControlEventTouchUpInside];
        
         

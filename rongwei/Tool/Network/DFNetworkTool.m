@@ -15,10 +15,11 @@
 
 // 开发环境
 
-static const NSString *ipAddress = @"http://api.rongzw.com/Userapi/";
-static const NSString *htmlAddress = @"http://api.rongzw.com/Userapi/";
+//static const NSString *ipAddress = @"http://api.rongzw.com/Userapi/";
+//static const NSString *htmlAddress = @"http://api.rongzw.com/Userapi/";
 
-
+static const NSString *ipAddress = @"http://rz.soft-shop.cn/api/";
+static const NSString *htmlAddress = @"http://rz.soft-shop.cn/api/";
 
 @interface DFNetworkTool ()
 

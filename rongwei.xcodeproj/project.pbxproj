@@ -35,6 +35,7 @@
 		1815AE80233C898F007A1955 /* DFDesignerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1815AE7F233C898F007A1955 /* DFDesignerView.m */; };
 		1815AE84233C96BE007A1955 /* NSString+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 1815AE82233C96BE007A1955 /* NSString+Extension.m */; };
 		1815AE87233CAB5F007A1955 /* DFCasesView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1815AE86233CAB5F007A1955 /* DFCasesView.m */; };
+		1843A990236C18430070586C /* DFRegisteredSecondViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1843A98F236C18430070586C /* DFRegisteredSecondViewController.m */; };
 		186E7DDF233B31E900C0DCDE /* DfDesignerTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 186E7DDE233B31E800C0DCDE /* DfDesignerTableViewCell.m */; };
 		18810E7E23347D1A00F8191C /* DFMainHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 18810E7D23347D1A00F8191C /* DFMainHeaderView.m */; };
 		188888C823543D3C00391F21 /* DFHomeHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 188888C723543D3C00391F21 /* DFHomeHeaderView.m */; };
@@ -137,6 +138,8 @@
 		1815AE83233C96BE007A1955 /* NSString+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Extension.h"; sourceTree = "<group>"; };
 		1815AE85233CAB5F007A1955 /* DFCasesView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DFCasesView.h; sourceTree = "<group>"; };
 		1815AE86233CAB5F007A1955 /* DFCasesView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DFCasesView.m; sourceTree = "<group>"; };
+		1843A98E236C18430070586C /* DFRegisteredSecondViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DFRegisteredSecondViewController.h; sourceTree = "<group>"; };
+		1843A98F236C18430070586C /* DFRegisteredSecondViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DFRegisteredSecondViewController.m; sourceTree = "<group>"; };
 		186E7DDD233B31E800C0DCDE /* DfDesignerTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = DfDesignerTableViewCell.h; path = rongwei/Class/home/view/DfDesignerTableViewCell.h; sourceTree = SOURCE_ROOT; };
 		186E7DDE233B31E800C0DCDE /* DfDesignerTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = DfDesignerTableViewCell.m; path = rongwei/Class/home/view/DfDesignerTableViewCell.m; sourceTree = SOURCE_ROOT; };
 		18810E7C23347D1A00F8191C /* DFMainHeaderView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DFMainHeaderView.h; sourceTree = "<group>"; };
@@ -405,6 +408,8 @@
 				1808D70A2339ABA600710164 /* DFForgotPasswordViewController.m */,
 				18066930236A601000830CA9 /* DFRegisteredFirstViewController.h */,
 				18066931236A601000830CA9 /* DFRegisteredFirstViewController.m */,
+				1843A98E236C18430070586C /* DFRegisteredSecondViewController.h */,
+				1843A98F236C18430070586C /* DFRegisteredSecondViewController.m */,
 			);
 			path = contro;
 			sourceTree = "<group>";
@@ -960,6 +965,7 @@
 				1809B477233B0F5000D768C3 /* DFDesignerModel.m in Sources */,
 				C41FCDA82337B7FD0017427F /* NSString+GHRegular.m in Sources */,
 				18095C5F23559478002212E9 /* DFHomeNaiBarView.m in Sources */,
+				1843A990236C18430070586C /* DFRegisteredSecondViewController.m in Sources */,
 				18EEA1B323599CB40072D0EB /* DFStrategyTableViewCell.m in Sources */,
 				C428EBCC2333B51F009E0E8A /* DFHomeViewController.m in Sources */,
 				180B58372358084A00D1E847 /* DFRenderingNarbarView.m in Sources */,

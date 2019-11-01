@@ -10,6 +10,8 @@
 
 #import "DFTextField.h"
 
+#import "DFRegisteredSecondViewController.h"
+
 @interface DFRegisteredFirstViewController ()
 
 @property (nonatomic , strong)DFTextField *phoneTextField;
@@ -22,6 +24,10 @@
 
 @property (nonatomic, strong) NSTimer *timer;
 
+@property (nonatomic, strong) UIImageView *selectimage;
+
+@property (nonatomic, assign) BOOL isRead;
+
 @end
 
 @implementation DFRegisteredFirstViewController
@@ -30,7 +36,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.title = @"注册（1/2）";
-    
+    self.isRead = NO;
     
     self.phoneTextField = [[DFTextField alloc] init];
     self.phoneTextField.font = HScaleFont(15);
@@ -132,6 +138,7 @@
     updown.backgroundColor = [UIColor colorWithHexString:@"108EE9"];
     updown.layer.cornerRadius = 2.5;
     [self.view addSubview:updown];
+    [updown addTarget:self action:@selector(TheNextStep) forControlEvents:UIControlEventTouchUpInside];
     
     [updown mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.mas_equalTo(HScaleWidth(25));
@@ -141,7 +148,53 @@
         
     }];
     
+    
+    self.selectimage = [[UIImageView alloc]init];
+    self.selectimage.image = [UIImage imageNamed:@"圆角矩形 2 拷贝"];
+    self.selectimage.userInteractionEnabled = YES;
+    [self.view addSubview:self.selectimage];
+    
+    UITapGestureRecognizer *noneTapGR = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(selectread)];
+    [self.selectimage addGestureRecognizer:noneTapGR];
+    
+    [self.selectimage mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.mas_equalTo(updown.mas_left);
+        make.top.mas_equalTo(updown.mas_bottom).offset(HScaleHeight(21.5));
+        make.size.mas_equalTo(CGSizeMake(HScaleWidth(15), HScaleHeight(15)));
+    }];
+    
+    UILabel *label = [[UILabel alloc] init];
+    label.numberOfLines = 0;
+    [self.view addSubview:label];
+
+    NSMutableAttributedString *string = [[NSMutableAttributedString alloc] initWithString:@"我已阅读并接受《注册许可协议》" attributes:@{NSFontAttributeName: [UIFont fontWithName:@"PingFang SC" size: 12],NSForegroundColorAttributeName: [UIColor colorWithRed:153/255.0 green:153/255.0 blue:153/255.0 alpha:1.0]}];
+
+    [string addAttributes:@{NSFontAttributeName: [UIFont fontWithName:@"PingFang SC" size: HScaleHeight(12)]} range:NSMakeRange(0, 7)];
+
+    [string addAttributes:@{NSFontAttributeName: [UIFont fontWithName:@"PingFang SC" size: HScaleHeight(12)], NSForegroundColorAttributeName: [UIColor colorWithRed:221/255.0 green:26/255.0 blue:33/255.0 alpha:1.0]} range:NSMakeRange(7, 8)];
+
+
+    label.attributedText = string;
+    
+    [label mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.mas_equalTo(self.selectimage.mas_right).offset(HScaleWidth(3));
+        make.centerY.mas_equalTo(self.selectimage.mas_centerY);
+        make.height.mas_equalTo(HScaleHeight(12));
+    }];
+    
 }
+- (void)selectread
+{
+    self.isRead = !self.isRead;
+    if (self.isRead) {
+        self.selectimage.image = [UIImage imageNamed:@"复选框"];
+    }
+    else
+    {
+        self.selectimage.image = [UIImage imageNamed:@"圆角矩形 2 拷贝"];
+    }
+}
+
 - (UIButton *)getVerificationCodeBtn
 {
     if (!_getVerificationCodeBtn) {
@@ -163,19 +216,63 @@
            return;
        }
        
-       if (![self.phoneTextField.text isMobileNumber]) {
-           [SVProgressHUD showErrorWithStatus:@"请输入正确的手机号"];
-           return;
-       }
+   if (![self.phoneTextField.text isMobileNumber]) {
+       [SVProgressHUD showErrorWithStatus:@"请输入正确的手机号"];
+       return;
+   }
+       
+    
+    
+    
+    [[DFNetworkTool shareInstance] requestWithMethod:GHRequestMethod_POST withUrl:SendCode withParameter:@{@"phone":self.phoneTextField.text} withLoadingType:GHLoadingType_ShowLoading withShouldHaveToken:NO withContentType:GHContentType_Formdata completionBlock:^(BOOL isSuccess, NSString * _Nullable msg, id  _Nullable response) {
+        if (isSuccess) {
+            
+            self.countDown = 60;
+            
+            self.getVerificationCodeBtn.enabled = false;
+            
+            self.timer = [NSTimer scheduledTimerWithTimeInterval:1.0f target:self selector:@selector(timerCountDown) userInfo:nil repeats:true];
+            
+            [[NSRunLoop mainRunLoop] addTimer:self.timer forMode:NSRunLoopCommonModes];
+            
+        }
+    }];
+    
        
        
-       self.countDown = 60;
-       
-       self.getVerificationCodeBtn.enabled = false;
-       
-       self.timer = [NSTimer scheduledTimerWithTimeInterval:1.0f target:self selector:@selector(timerCountDown) userInfo:nil repeats:true];
-       
-       [[NSRunLoop mainRunLoop] addTimer:self.timer forMode:NSRunLoopCommonModes];
+}
+
+- (void)TheNextStep
+{
+//    if (!self.isRead) {
+//        [SVProgressHUD showErrorWithStatus:@"请勾选《注册许可协议》"];
+//        return;
+//    }
+//    
+//    
+//     if (self.phoneTextField.text.length == 0) {
+//            [SVProgressHUD showErrorWithStatus:@"请输入您的手机号"];
+//            return;
+//        }
+//        
+//    if (![self.phoneTextField.text isMobileNumber]) {
+//        [SVProgressHUD showErrorWithStatus:@"请输入正确的手机号"];
+//        return;
+//    }
+//    
+//    if (![self.verificationField.text isMobileNumber]) {
+//        [SVProgressHUD showErrorWithStatus:@"请输入验证码"];
+//        return;
+//    }
+//    
+    
+    
+    DFRegisteredSecondViewController *secondpassword = [[DFRegisteredSecondViewController alloc]init];
+    secondpassword.phoneNumber = self.phoneTextField.text;
+    secondpassword.code = self.verificationField.text;
+    [self.navigationController pushViewController:secondpassword animated:YES];
+    
+
 }
 - (void)timerCountDown
 {

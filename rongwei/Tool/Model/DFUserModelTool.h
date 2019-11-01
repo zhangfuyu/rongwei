@@ -29,6 +29,8 @@ NS_ASSUME_NONNULL_BEGIN
  */
 @property (nonatomic, assign) BOOL isLogin;
 
+@property (nonatomic, strong) NSString *uid;
+
 
 - (void)showLoginViewController;
 

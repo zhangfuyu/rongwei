@@ -9,12 +9,12 @@
 #ifndef DFApi_h
 #define DFApi_h
 
-#define LoginApi   @"user/login"
+#define LoginApi   @"userInfo/userNameLogin"
 
 /**
 设计师列表
 */
-#define DesignerListsApi   @"designer/lists"
+#define DesignerListsApi   @"designer/getDesignersList"
 
 /**
 设计师详情
@@ -36,5 +36,18 @@
 设计师评价
 */
 #define DesignerCommentDetailApi   @"designer/comment"
+
+
+/**
+注册
+*/
+#define RegisterUser   @"userInfo/registerUser"
+
+
+/**
+发松验证码
+*/
+#define SendCode   @"userInfo/sendCode"
+
 
 #endif /* DFApi_h */
