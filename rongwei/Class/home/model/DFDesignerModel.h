@@ -57,7 +57,7 @@ NS_ASSUME_NONNULL_BEGIN
 /// 擅长风格
 @property (nonatomic , strong) NSArray<Optional> *styles_name;
 
-
+@property (nonatomic , strong) NSArray<Optional> *style;
 
 @property (nonatomic , strong) NSString<Optional> *area_id;
 

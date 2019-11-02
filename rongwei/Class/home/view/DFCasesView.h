@@ -19,8 +19,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, assign) NSInteger selectBtnTag;
 
-@property (nonatomic, assign) Boolean canscroll;
+@property (nonatomic, assign) BOOL canscroll;
 
+@property (nonatomic, strong) NSString *workcount;
 
 @end
 

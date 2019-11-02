@@ -19,7 +19,7 @@
 /**
 设计师详情
 */
-#define DesignerDetailApi   @"designer/detail"
+#define DesignerDetailApi   @"designer/getOneDesigner"
 
 
 /**

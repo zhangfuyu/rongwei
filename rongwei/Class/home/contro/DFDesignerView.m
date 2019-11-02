@@ -149,9 +149,24 @@
            self.moneyLabel.text = [NSString stringWithFormat:@"%d-%d元/㎡",[model.min_money intValue],[model.max_money intValue]];
 
        }
+    
+    NSMutableArray *stylearry = [NSMutableArray arrayWithCapacity:0];
+
        
+    if (model.style.count > 0) {
+        for (NSDictionary *dic in model.style) {
+            [stylearry addObject:dic[@"name"]];
+        }
+        self.goodAtLabel.text = [NSString stringWithFormat:@"擅长风格:%@",[stylearry componentsJoinedByString:@"、"]];
+
+    }
+    else
+    {
+        self.goodAtLabel.text = [NSString stringWithFormat:@"擅长风格:"];
+
+    }
        
-       self.goodAtLabel.text = [NSString stringWithFormat:@"擅长风格:%@",[model.styles_name componentsJoinedByString:@"、"]];
+//       self.goodAtLabel.text = [NSString stringWithFormat:@"擅长风格:%@",[model.styles_name componentsJoinedByString:@"、"]];
        
        self.workYearLabel.text = [NSString stringWithFormat:@"%d年经验",[model.years intValue]];
     

@@ -10,14 +10,24 @@
 #import "DFDesignerView.h"
 #import "DFCasesView.h"
 
+#import "DFDesignerWorkModel.h"
+#import "DFWorkListTableViewCell.h"
+
 @interface DFEsignerDetialViewController ()<UITableViewDelegate,UITableViewDataSource>
 
 @property (nonatomic , strong)DFDesignerView *headerView;
 
 @property (nonatomic , strong) NSMutableArray *dataArry;
 
+@property (nonatomic , strong) NSMutableArray *work_list;//作品
+
 @property (nonatomic , strong) DFCasesView *secondHeaderView;
 
+@property (nonatomic , strong) NSString *worlcount;
+
+@property (nonatomic , assign) NSInteger selectStyle;// 1作品 2个人简介。3评价
+
+@property (nonatomic , strong) UIButton *likeThisBtn;
 @end
 
 @implementation DFEsignerDetialViewController
@@ -26,6 +36,8 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.title = self.model.name;
+    
+    self.selectStyle = 1;
     
     [self allocTableviewWith:UITableViewStylePlain];
     self.dataTableview.delegate = self;
@@ -39,16 +51,29 @@
     }];
     
     self.dataTableview.tableHeaderView = self.headerView;
-    
+    self.dataTableview.tableFooterView = nil;
+    self.headerView.model = self.model;
+
+    self.likeThisBtn.selected = NO;
     
     [[DFNetworkTool shareInstance] requestWithMethod:GHRequestMethod_POST withUrl:DesignerDetailApi withParameter:@{@"id":self.model.modelId} withLoadingType:GHLoadingType_ShowLoading withShouldHaveToken:YES withContentType:GHContentType_Formdata completionBlock:^(BOOL isSuccess, NSString * _Nullable msg, id  _Nullable response) {
         if (isSuccess) {
             
-            self.model = [[DFDesignerModel alloc]initWithDictionary:response error:nil];
-            self.headerView.model = self.model;
+//            self.model = [[DFDesignerModel alloc]initWithDictionary:response[@"data"] error:nil];
+//            self.headerView.model = self.model;
+            NSDictionary *listdic = response[@"data"][@"work_list"];
             
-            [self getWorkData];
-            
+            NSArray *listarry = listdic[@"list"];
+            if (listarry.count > 0) {
+                self.worlcount = [NSString stringWithFormat:@"%@",response[@"data"][@"work_list"][@"count"]];
+                self.secondHeaderView.workcount = self.worlcount;
+                for (NSDictionary *dic in listarry) {
+                    DFDesignerWorkModel *workmodel = [[DFDesignerWorkModel alloc]initWithDictionary:dic error:nil];
+                    [self.work_list addObject:workmodel];
+                }
+            }
+//            [self getWorkData];
+            [self.dataTableview reloadData];
         }
     }];
 }
@@ -116,12 +141,25 @@
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
+    if (self.selectStyle == 1) {
+        return self.work_list.count;
+    }
     return 1;
-    return self.dataArry.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    
+    if (self.selectStyle == 1) {
+        static NSString *cellid = @"DFWorkListTableViewCell";
+        DFWorkListTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellid];
+        if (!cell) {
+            cell = [[DFWorkListTableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellid];
+        }
+        cell.model = self.work_list[indexPath.row];
+        return cell;
+    }
+    
     static NSString *cellid = @"cell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellid];
     if (!cell) {
@@ -141,7 +179,20 @@
 {
     return self.secondHeaderView;
 }
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    [tableView deselectRowAtIndexPath:indexPath animated:NO];
+}
 
+
+
+- (NSMutableArray *)work_list
+{
+    if (!_work_list) {
+        _work_list = [NSMutableArray arrayWithCapacity:0];
+    }
+    return _work_list;
+}
 - (NSMutableArray *)dataArry
 {
     if (!_dataArry) {
@@ -163,19 +214,45 @@
     if (!_secondHeaderView) {
         _secondHeaderView = [[DFCasesView alloc]initWithFrame:CGRectMake(0, 0, ScreenW, HScaleHeight(40))];
         _secondHeaderView.backgroundColor = [UIColor whiteColor];
-        _secondHeaderView.titleArry = [NSMutableArray arrayWithArray:@[@"作品（20）",@"个人简介",@"评价"]];
-//        __weak typeof(self) weakself = self;
+        _secondHeaderView.titleArry = [NSMutableArray arrayWithArray:@[@"作品（0）",@"个人简介",@"评价"]];
+        __weak typeof(self) weakself = self;
         _secondHeaderView.clickTypeBlock = ^(NSString * _Nonnull clickTitle) {
-//            if ([clickTitle isEqualToString:@"精选点评"]) {
-//                weakself.contentCell.pageContentView.contentViewCurrentIndex = 0;
-//            }
-//            else
-//            {
-//                weakself.contentCell.pageContentView.contentViewCurrentIndex = 1;
-//            }
+            if ([clickTitle isEqualToString:@"个人简介"]) {
+            }
+            else if ([clickTitle isEqualToString:@"评价"])
+            {
+                
+            }
+            else
+            {
+                weakself.selectStyle = 1;
+            }
+                
         };
     }
     return _secondHeaderView;
 }
-
+- (UIButton *)likeThisBtn
+{
+    if (!_likeThisBtn) {
+        _likeThisBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+        [_likeThisBtn setTitleColor:UIColorHex(0x010101) forState:UIControlStateNormal];
+        _likeThisBtn.frame = CGRectMake(0, 0, HScaleWidth(83), 44);
+        _likeThisBtn.titleLabel.font = HScaleFont(12);
+        [_likeThisBtn setTitleColor:[UIColor colorWithHexString:@"DD1A21"] forState:UIControlStateNormal];
+        [_likeThisBtn setTitle:@"  附近医院" forState:UIControlStateNormal];
+        [_likeThisBtn setImage:[UIImage imageNamed:@"no_Focus_on"] forState:UIControlStateNormal];
+        [_likeThisBtn setImage:[UIImage imageNamed:@"Focus_on"] forState:UIControlStateSelected];
+        [_likeThisBtn addTarget:self action:@selector(focusonThis) forControlEvents:UIControlEventTouchUpInside];
+        UIBarButtonItem *rightBtn1 = [[UIBarButtonItem alloc] initWithCustomView:_likeThisBtn];
+        self.navigationItem.rightBarButtonItem = rightBtn1;
+        
+    }
+    return _likeThisBtn;
+}
+- (void)focusonThis
+{
+    
+    self.likeThisBtn.selected = !self.likeThisBtn.selected;
+}
 @end

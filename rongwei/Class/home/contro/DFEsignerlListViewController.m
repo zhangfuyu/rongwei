@@ -61,7 +61,7 @@
         make.bottom.mas_equalTo(-kBottomSafeHeight);
     }];
     self.currentPage = 1;
-    [self getdata];
+    [self refreshData];
     
 }
 #pragma mark - <UITableViewDelegate,UITableViewDataSource>
@@ -141,9 +141,10 @@
 - (void)getdata
 {
     
-    NSMutableDictionary *parma = [@{@"city_id":@"1025",
+    NSMutableDictionary *parma = [@{@"style_id":@"0",
+                                    @"des_status":@"0",
                                     @"page":@(self.currentPage),
-                                    @"page_size":@(20)
+//                                    @"page_size":@(20)
     }copy];
     
     [[DFNetworkTool shareInstance] requestWithMethod:GHRequestMethod_POST withUrl:DesignerListsApi withParameter:parma withLoadingType:GHLoadingType_ShowLoading withShouldHaveToken:NO withContentType:GHContentType_Formdata completionBlock:^(BOOL isSuccess, NSString * _Nullable msg, id  _Nullable response) {

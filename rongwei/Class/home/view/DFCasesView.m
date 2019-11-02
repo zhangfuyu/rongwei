@@ -93,6 +93,12 @@
     
     self.scrollview.contentSize = CGSizeMake(scroWid + 15, CGRectGetHeight(self.bounds));
 }
+- (void)setWorkcount:(NSString *)workcount
+{
+    _workcount = workcount;
+    UIButton *workbtn = [self.itemBtnArr firstObject];
+    [workbtn setTitle:[NSString stringWithFormat:@"作品（%@）",workcount] forState:UIControlStateNormal];
+}
 - (void)setSelectBtnTag:(NSInteger)selectBtnTag
 {
     _selectBtnTag = selectBtnTag;
