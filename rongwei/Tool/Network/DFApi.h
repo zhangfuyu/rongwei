@@ -49,5 +49,10 @@
 */
 #define SendCode   @"userInfo/sendCode"
 
+/******************/
 
+/**
+发松验证码
+*/
+#define HomeWorks   @"index/getNav"
 #endif /* DFApi_h */

@@ -11,6 +11,7 @@
 #import <AFNetworking.h>
 #import <SVProgressHUD.h>
 #import <AFNetworkActivityIndicatorManager.h>
+#import <CommonCrypto/CommonCrypto.h>//md5
 
 
 // 开发环境
@@ -18,7 +19,7 @@
 //static const NSString *ipAddress = @"http://api.rongzw.com/Userapi/";
 //static const NSString *htmlAddress = @"http://api.rongzw.com/Userapi/";
 
-static const NSString *ipAddress = @"http://rz.soft-shop.cn/api/";
+static const NSString *ipAddress = @"http://admintest.rongzw.com/api/";
 static const NSString *htmlAddress = @"http://rz.soft-shop.cn/api/";
 
 @interface DFNetworkTool ()
@@ -91,7 +92,10 @@ static const NSString *htmlAddress = @"http://rz.soft-shop.cn/api/";
     
     if (shouldHaveToken == true && [DFUserModelTool shareInstance].isLogin == true) {
         NSLog(@"%@", [DFUserModelTool shareInstance].token);
-        [self.sessionManager.requestSerializer setValue:ISNIL([DFUserModelTool shareInstance].token) forHTTPHeaderField:@"Authorization"];
+        NSString *token = [self encryptMd5:[NSString stringWithFormat:@"%@rzw2019",[self today]]];
+//        [self.sessionManager.requestSerializer setValue:ISNIL([DFUserModelTool shareInstance].token) forHTTPHeaderField:@"Authorization"];
+        [self.sessionManager.requestSerializer setValue:token forHTTPHeaderField:@"public_token"];
+
     }
     
     [self.sessionManager.requestSerializer setValue:@"gzip,deflate" forHTTPHeaderField:@"Accept-Encoding"];
@@ -265,5 +269,52 @@ static const NSString *htmlAddress = @"http://rz.soft-shop.cn/api/";
     
     
 }
+- (NSMutableString *)encryptMd5:(NSString *)origingString{
+    //md5加密
+    const char *cStr = [origingString UTF8String];
+    unsigned char digest[16];
+    
+    CC_MD5( cStr,(CC_LONG)strlen(cStr), digest ); // This is the md5 call
+    
+    //加密成md5的字符串
+    NSMutableString *output = [NSMutableString stringWithCapacity:CC_MD5_DIGEST_LENGTH * 2];
+    
+    for(int i = 0; i < CC_MD5_DIGEST_LENGTH; i++)
+        [output appendFormat:@"%02x", digest[i]];
+    return output;
+}
+- (NSString *)today
+{
+    NSDate *date = [NSDate date];
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
+    //获取当前时间日期展示字符串 如：2019-05-23-13:58:59
+    NSString *str = [formatter stringFromDate:date];
 
+    //下面是单独获取每项的值
+    NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
+    NSDateComponents *comps = [[NSDateComponents alloc] init];
+//    NSInteger unitFlags = NSYearCalendarUnit |NSMonthCalendarUnit |NSCalendarUnitDay |NSWeekdayCalendarUnit |NSCalendarUnitHour |NSMinuteCalendarUnit |NSSecondCalendarUnit;
+//    comps = [calendar components:unitFlags fromDate:date];
+    
+    NSInteger unitFlags = NSCalendarUnitDay;
+    comps = [calendar components:unitFlags fromDate:date];
+
+    //星期 注意星期是从周日开始计算
+//    int week = [comps weekday];
+//    //年
+//    int year=[comps year];
+//    //月
+//    int month = [comps month];
+    //日
+    long day = [comps day];
+    
+    return [NSString stringWithFormat:@"%ld",day];
+    //时
+//    int hour = [comps hour];
+//    //分
+//    int minute = [comps minute];
+//    //秒
+//    int second = [comps second];
+}
 @end

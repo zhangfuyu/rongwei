@@ -48,6 +48,7 @@
     UIImageView *imageView = [[UIImageView alloc] init];
     imageView.contentMode = UIViewContentModeScaleAspectFill;
     imageView.image = [UIImage imageNamed:ISNIL(self.imageName)];
+    [imageView sd_setImageWithURL:[NSURL URLWithString:self.imageName] placeholderImage:nil];
     [self addSubview:imageView];
     
     [imageView mas_makeConstraints:^(MASConstraintMaker *make) {

@@ -11,6 +11,7 @@
 #import "DFHomeHeaderView.h"
 #import "DFSectionView.h"
 #import "DFHomeNaiBarView.h"
+#import "DFHomeNavModel.h"
 
 @interface DFHomeViewController ()<UITableViewDelegate,UITableViewDataSource>
 
@@ -23,6 +24,8 @@
 @property (nonatomic , strong)DFSectionView *fourSection;
 
 @property (nonatomic , strong)DFHomeNaiBarView *narbaView;
+
+@property (nonatomic , strong)NSMutableArray *navArry;
 @end
 
 @implementation DFHomeViewController
@@ -37,7 +40,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.title = @"首页";
-    
+    [DFUserModelTool shareInstance].isLogin = true;
     [self allocTableviewWith:UITableViewStylePlain];
     self.dataTableview.delegate = self;
     self.dataTableview.dataSource = self;
@@ -51,6 +54,17 @@
     self.dataTableview.tableHeaderView = headerview;
     
     self.narbaView.hidden = YES;
+    
+    [[DFNetworkTool shareInstance] requestWithMethod:GHRequestMethod_GET withUrl:HomeWorks withParameter:nil withLoadingType:GHLoadingType_HideLoading withShouldHaveToken:YES withContentType:GHContentType_JSON completionBlock:^(BOOL isSuccess, NSString * _Nullable msg, id  _Nullable response) {
+        if (isSuccess) {
+            NSLog(@"--->");
+            for (NSDictionary *dic in (NSArray *)response[@"data"]) {
+                DFHomeNavModel *model = [[DFHomeNavModel alloc]initWithDictionary:dic error:nil];
+                [self.navArry addObject:model];
+            }
+            headerview.navArry = self.navArry;
+        }
+    }];
     
 //    [self.navigationController pushViewController:[DFEsignerlListViewController new] animated:YES];
 //    [[DFUserModelTool shareInstance] showLoginViewController];
@@ -169,6 +183,14 @@
         [self.view bringSubviewToFront:_narbaView];
     }
     return _narbaView;
+}
+
+- (NSMutableArray *)navArry
+{
+    if (!_navArry) {
+        _navArry = [NSMutableArray arrayWithCapacity:0];
+    }
+    return _navArry;
 }
 /*
 #pragma mark - Navigation

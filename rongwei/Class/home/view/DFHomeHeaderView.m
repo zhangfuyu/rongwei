@@ -140,27 +140,27 @@
      self.scrollView.imageSize = CGSizeMake(ScreenW - HScaleHeight(20), HScaleHeight(150));
      [self addSubview:self.scrollView];
     
-    NSArray *titleArry = @[@"效果图",@"找设计",@"找施工",@"买材料",@"查攻略",@"算报价",@"想咨询",@"要监理",@"智慧家",@"看直播"];
-    NSArray *imageArry = @[@"xiaoguotu",@"zhaosheji",@"zhaoshigong",@"maicailiao",@"chagonglue",@"suanbaojia",@"xiangzixun",@"yaojianli",@"zhihuijia",@"kanzhibo"];
-    
-    
-    float interval = (ScreenW - HScaleWidth(30) - (HScaleWidth(44) * 5)) / 4;
-    
-    for (NSInteger index = 0; index < titleArry.count; index ++) {
-        DFHomeModuleButtonView *buttonView = [[DFHomeModuleButtonView alloc] initWithImageName:[imageArry objectOrNilAtIndex:index] withTitle:[titleArry objectOrNilAtIndex:index]];
-                   
-                  
-        [buttonView.actionButton addTarget:self action:@selector(clicksubButton:) forControlEvents:UIControlEventTouchUpInside];
-        buttonView.actionButton.tag = index;
-        [self addSubview:buttonView];
-        
-        float frameX = index % 5 * interval + (index % 5 * HScaleWidth(44)) + HScaleWidth(15);
-        
-        float frameY = index / 5 * HScaleHeight(62) + index / 5 * HScaleHeight(20) + HScaleHeight(150) + HScaleHeight(17) + kNavBarAndStatusBarHeight;
-        
-        buttonView.frame = CGRectMake(frameX, frameY, HScaleWidth(44), HScaleHeight(62));
-        
-    }
+//    NSArray *titleArry = @[@"效果图",@"找设计",@"找施工",@"买材料",@"查攻略",@"算报价",@"想咨询",@"要监理",@"智慧家",@"看直播"];
+//    NSArray *imageArry = @[@"xiaoguotu",@"zhaosheji",@"zhaoshigong",@"maicailiao",@"chagonglue",@"suanbaojia",@"xiangzixun",@"yaojianli",@"zhihuijia",@"kanzhibo"];
+//
+//
+//    float interval = (ScreenW - HScaleWidth(30) - (HScaleWidth(44) * 5)) / 4;
+//
+//    for (NSInteger index = 0; index < titleArry.count; index ++) {
+//        DFHomeModuleButtonView *buttonView = [[DFHomeModuleButtonView alloc] initWithImageName:[imageArry objectOrNilAtIndex:index] withTitle:[titleArry objectOrNilAtIndex:index]];
+//
+//
+//        [buttonView.actionButton addTarget:self action:@selector(clicksubButton:) forControlEvents:UIControlEventTouchUpInside];
+//        buttonView.actionButton.tag = index;
+//        [self addSubview:buttonView];
+//
+//        float frameX = index % 5 * interval + (index % 5 * HScaleWidth(44)) + HScaleWidth(15);
+//
+//        float frameY = index / 5 * HScaleHeight(62) + index / 5 * HScaleHeight(20) + HScaleHeight(150) + HScaleHeight(17) + kNavBarAndStatusBarHeight;
+//
+//        buttonView.frame = CGRectMake(frameX, frameY, HScaleWidth(44), HScaleHeight(62));
+//
+//    }
     
     
     UIImageView *noorderimage = [[UIImageView alloc]init];
@@ -170,7 +170,7 @@
     [noorderimage mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.mas_equalTo(HScaleWidth(13));
         make.size.mas_equalTo(CGSizeMake(HScaleWidth(9), HScaleHeight(9)));
-        make.top.mas_equalTo(HScaleHeight(385 )+ kStatusBarHeight);
+        make.top.mas_equalTo(HScaleHeight(385)+ kStatusBarHeight);
     }];
     
     UILabel *firstLabel = [[UILabel alloc]init];
@@ -248,7 +248,37 @@
     [self addSubview:self.recommended];
      [self.recommended setImageURLStringsGroup:@[]];
 }
-
+- (void)setNavArry:(NSMutableArray *)navArry
+{
+    _navArry = navArry;
+//    NSArray *titleArry = @[@"效果图",@"找设计",@"找施工",@"买材料",@"查攻略",@"算报价",@"想咨询",@"要监理",@"智慧家",@"看直播"];
+//    NSArray *imageArry = @[@"xiaoguotu",@"zhaosheji",@"zhaoshigong",@"maicailiao",@"chagonglue",@"suanbaojia",@"xiangzixun",@"yaojianli",@"zhihuijia",@"kanzhibo"];
+//    
+    
+    float interval = (ScreenW - HScaleWidth(30) - (HScaleWidth(44) * 5)) / 4;
+    
+    
+    
+    for (NSInteger index = 0; index < navArry.count; index ++) {
+        
+        DFHomeNavModel *model = navArry[index];
+        
+        DFHomeModuleButtonView *buttonView = [[DFHomeModuleButtonView alloc] initWithImageName:model.pic_url withTitle:model.name];
+                   
+                  
+        [buttonView.actionButton addTarget:self action:@selector(clicksubButton:) forControlEvents:UIControlEventTouchUpInside];
+        buttonView.actionButton.tag = index;
+        [self addSubview:buttonView];
+        
+        float frameX = index % 5 * interval + (index % 5 * HScaleWidth(44)) + HScaleWidth(15);
+        
+        float frameY = index / 5 * HScaleHeight(62) + index / 5 * HScaleHeight(20) + HScaleHeight(150) + HScaleHeight(17) + kNavBarAndStatusBarHeight;
+        
+        buttonView.frame = CGRectMake(frameX, frameY, HScaleWidth(44), HScaleHeight(62));
+        
+    }
+    
+}
 - (void)clicksubButton:(UIButton *)clickBtn
 {
     //效果图

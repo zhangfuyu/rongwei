@@ -7,11 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "DFHomeNavModel.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface DFHomeHeaderView : UIView
 @property (nonatomic , strong) UIButton *locationButton;
+
+@property (nonatomic , strong) NSMutableArray *navArry;
 
 @end
 
