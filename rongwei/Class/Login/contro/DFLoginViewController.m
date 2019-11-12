@@ -351,45 +351,95 @@
 - (void)requestloginin
 {
     
-    if (self.phoneTextField.text.length == 0) {
-        [SVProgressHUD showErrorWithStatus:@"请输入您的手机号"];
-        return;
-    }
-    
-    if (![self.phoneTextField.text isMobileNumber]) {
-        [SVProgressHUD showErrorWithStatus:@"请输入正确的手机号"];
-        return;
-    }
-    
-    if (self.posswordField.text.length == 0) {
-         
-        [SVProgressHUD showErrorWithStatus:@"请输入您的密码"];
-               
-        return;
-        
-    }
-    
-    NSMutableDictionary *parma = [@{
-        @"username":self.phoneTextField.text,
-        @"password":self.posswordField.text
-    }copy];
-    
-    [[DFNetworkTool shareInstance] requestWithMethod:GHRequestMethod_POST withUrl:LoginApi withParameter:parma withLoadingType:GHLoadingType_ShowLoading withShouldHaveToken:NO withContentType:GHContentType_Formdata completionBlock:^(BOOL isSuccess, NSString * _Nullable msg, id  _Nullable response) {
-        if (isSuccess) {
-            if (![response[@"status"] isEqualToString:@"ok"]) {
-                        
-                [SVProgressHUD showErrorWithStatus:response[@"data"]];
-                return;
-            }
-            [DFUserModelTool shareInstance].uid = [NSString stringWithFormat:@"%@",response[@"data"][@"uid"]];
-            [DFUserModelTool shareInstance].isLogin = YES;
-            [self.navigationController popViewControllerAnimated:YES];
-            [self dismissViewControllerAnimated:YES completion:nil];
-            NSLog(@"------->成功");
+    if (self.possWordBtn.selected) {
+        if (self.phoneTextField.text.length == 0) {
+            [SVProgressHUD showErrorWithStatus:@"请输入您的手机号"];
+            return;
         }
-    }];
+        
+        if (![self.phoneTextField.text isMobileNumber]) {
+            [SVProgressHUD showErrorWithStatus:@"请输入正确的手机号"];
+            return;
+        }
+        
+        if (self.posswordField.text.length == 0) {
+             
+            [SVProgressHUD showErrorWithStatus:@"请输入您的密码"];
+                   
+            return;
+            
+        }
+        
+        NSMutableDictionary *parma = [@{
+            @"username":self.phoneTextField.text,
+            @"password":self.posswordField.text
+        }copy];
+        
+        [[DFNetworkTool shareInstance] requestWithMethod:GHRequestMethod_POST withUrl:LoginApi withParameter:parma withLoadingType:GHLoadingType_ShowLoading withShouldHaveToken:NO withContentType:GHContentType_Formdata completionBlock:^(BOOL isSuccess, NSString * _Nullable msg, id  _Nullable response) {
+            if (isSuccess) {
+                if (![response[@"status"] isEqualToString:@"ok"]) {
+                            
+                    [SVProgressHUD showErrorWithStatus:response[@"data"]];
+                    return;
+                }
+                [DFUserModelTool shareInstance].uid = [NSString stringWithFormat:@"%@",response[@"data"][@"uid"]];
+                [DFUserModelTool shareInstance].isLogin = YES;
+                [self.navigationController popViewControllerAnimated:YES];
+                [self dismissViewControllerAnimated:YES completion:nil];
+                NSLog(@"------->成功");
+            }
+        }];
+        
+        [self dismissViewControllerAnimated:YES completion:nil];
+    }
+    else
+    {
+        if (self.phoneTextField.text.length == 0) {
+            [SVProgressHUD showErrorWithStatus:@"请输入您的手机号"];
+            return;
+        }
+        
+        if (![self.phoneTextField.text isMobileNumber]) {
+            [SVProgressHUD showErrorWithStatus:@"请输入正确的手机号"];
+            return;
+        }
+        
+        if (self.posswordField.text.length == 0) {
+             
+            [SVProgressHUD showErrorWithStatus:@"请输入验证码"];
+                   
+            return;
+            
+        }
+        
+        NSMutableDictionary *parma = [@{
+                   @"phone":self.phoneTextField.text,
+                   @"code":self.posswordField.text
+               }copy];
+        [[DFNetworkTool shareInstance] requestWithMethod:GHRequestMethod_POST withUrl:LoginApi withParameter:parma withLoadingType:GHLoadingType_ShowLoading withShouldHaveToken:NO withContentType:GHContentType_Formdata completionBlock:^(BOOL isSuccess, NSString * _Nullable msg, id  _Nullable response) {
+                  
+            if (isSuccess) {
+                
+                   if (![response[@"status"] isEqualToString:@"ok"]) {
+                               
+                       [SVProgressHUD showErrorWithStatus:response[@"data"]];
+                       return;
+                   }
+                   [DFUserModelTool shareInstance].uid = [NSString stringWithFormat:@"%@",response[@"data"][@"uid"]];
+                   [DFUserModelTool shareInstance].isLogin = YES;
+                   [self.navigationController popViewControllerAnimated:YES];
+                   [self dismissViewControllerAnimated:YES completion:nil];
+                   NSLog(@"------->成功");
+                  
+            }
+             
+        }];
+               
+               
+        [self dismissViewControllerAnimated:YES completion:nil];
+    }
     
-    [self dismissViewControllerAnimated:YES completion:nil];
+    
 }
 
 ///微信登录
