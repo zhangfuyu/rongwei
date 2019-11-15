@@ -12,6 +12,7 @@
 #import "DFSectionView.h"
 #import "DFHomeNaiBarView.h"
 #import "DFHomeNavModel.h"
+#import "DFGetNetData.h"
 
 @interface DFHomeViewController ()<UITableViewDelegate,UITableViewDataSource>
 
@@ -65,6 +66,9 @@
             headerview.navArry = self.navArry;
         }
     }];
+    
+    
+    NSMutableArray *arry = [DFGetNetData getadvertising];
     
 //    [self.navigationController pushViewController:[DFEsignerlListViewController new] animated:YES];
 //    [[DFUserModelTool shareInstance] showLoginViewController];

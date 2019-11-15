@@ -55,4 +55,11 @@
 发松验证码
 */
 #define HomeWorks   @"index/getNav"
+
+/**
+首页-广告位接口
+*/
+#define HomeAds   @"index/ads"
+
+
 #endif /* DFApi_h */

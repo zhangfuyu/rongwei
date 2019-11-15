@@ -15,6 +15,7 @@
 		180B58372358084A00D1E847 /* DFRenderingNarbarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 180B58362358084A00D1E847 /* DFRenderingNarbarView.m */; };
 		180B583E23585DE900D1E847 /* DFWaterFallLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 180B583D23585DE900D1E847 /* DFWaterFallLayout.m */; };
 		180B584123585F2F00D1E847 /* DFRenderingCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 180B584023585F2F00D1E847 /* DFRenderingCollectionViewCell.m */; };
+		180C9197237BA01B0001CD4E /* DFGetNetData.m in Sources */ = {isa = PBXBuildFile; fileRef = 180C9196237BA01B0001CD4E /* DFGetNetData.m */; };
 		180E71FD237ADAB000CD34D2 /* DFHomeNavModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 180E71FC237ADAB000CD34D2 /* DFHomeNavModel.m */; };
 		180FCDF3233D972000CD4BB7 /* DFWorksTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 180FCDF2233D972000CD4BB7 /* DFWorksTableViewCell.m */; };
 		1815AE6C233C3FAF007A1955 /* CQTopBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1815AE63233C3FAF007A1955 /* CQTopBarView.m */; };
@@ -121,6 +122,8 @@
 		180B583D23585DE900D1E847 /* DFWaterFallLayout.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DFWaterFallLayout.m; sourceTree = "<group>"; };
 		180B583F23585F2F00D1E847 /* DFRenderingCollectionViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DFRenderingCollectionViewCell.h; sourceTree = "<group>"; };
 		180B584023585F2F00D1E847 /* DFRenderingCollectionViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DFRenderingCollectionViewCell.m; sourceTree = "<group>"; };
+		180C9195237BA01B0001CD4E /* DFGetNetData.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DFGetNetData.h; sourceTree = "<group>"; };
+		180C9196237BA01B0001CD4E /* DFGetNetData.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DFGetNetData.m; sourceTree = "<group>"; };
 		180E71FB237ADAB000CD34D2 /* DFHomeNavModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DFHomeNavModel.h; sourceTree = "<group>"; };
 		180E71FC237ADAB000CD34D2 /* DFHomeNavModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DFHomeNavModel.m; sourceTree = "<group>"; };
 		180FCDF1233D972000CD4BB7 /* DFWorksTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DFWorksTableViewCell.h; sourceTree = "<group>"; };
@@ -321,6 +324,8 @@
 				1843A992236C39030070586C /* DFDesignerWorkModel.m */,
 				180E71FB237ADAB000CD34D2 /* DFHomeNavModel.h */,
 				180E71FC237ADAB000CD34D2 /* DFHomeNavModel.m */,
+				180C9195237BA01B0001CD4E /* DFGetNetData.h */,
+				180C9196237BA01B0001CD4E /* DFGetNetData.m */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -948,6 +953,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C428EBCF2333B534009E0E8A /* DFJianCaiViewController.m in Sources */,
+				180C9197237BA01B0001CD4E /* DFGetNetData.m in Sources */,
 				1815AE80233C898F007A1955 /* DFDesignerView.m in Sources */,
 				1815AE87233CAB5F007A1955 /* DFCasesView.m in Sources */,
 				1815AE7D233C657C007A1955 /* DFEsignerDetialViewController.m in Sources */,

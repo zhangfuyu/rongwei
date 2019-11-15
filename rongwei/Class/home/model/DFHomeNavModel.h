@@ -31,6 +31,10 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic , strong) NSString<Optional> *url;
 
+@property (nonatomic , strong) NSString<Optional> *page_view;
+
+
+@property (nonatomic , strong) NSString<Optional> *type;
 @end
 
 NS_ASSUME_NONNULL_END
