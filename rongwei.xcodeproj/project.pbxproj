@@ -75,6 +75,8 @@
 		C46AD0E523338FE6000514B7 /* DFNetworkTool.m in Sources */ = {isa = PBXBuildFile; fileRef = C46AD0E423338FE6000514B7 /* DFNetworkTool.m */; };
 		C46AD0EA23339256000514B7 /* DFUserModelTool.m in Sources */ = {isa = PBXBuildFile; fileRef = C46AD0E923339255000514B7 /* DFUserModelTool.m */; };
 		C46B0B1E2354ADF6000CC79B /* DFSectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = C46B0B1D2354ADF6000CC79B /* DFSectionView.m */; };
+		C48C2FF423818AB700ECFBC9 /* DFSaveDataTool.m in Sources */ = {isa = PBXBuildFile; fileRef = C48C2FF323818AB700ECFBC9 /* DFSaveDataTool.m */; };
+		C48C2FF723818C6800ECFBC9 /* DFCityModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C48C2FF623818C6800ECFBC9 /* DFCityModel.m */; };
 		C4E0680B23327A6300C0F650 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C4E0680A23327A6300C0F650 /* AppDelegate.m */; };
 		C4E0680E23327A6300C0F650 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C4E0680D23327A6300C0F650 /* ViewController.m */; };
 		C4E0681123327A6300C0F650 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C4E0680F23327A6300C0F650 /* Main.storyboard */; };
@@ -228,6 +230,10 @@
 		C46AD0EC2333932C000514B7 /* YYMacro.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YYMacro.h; sourceTree = "<group>"; };
 		C46B0B1C2354ADF6000CC79B /* DFSectionView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DFSectionView.h; sourceTree = "<group>"; };
 		C46B0B1D2354ADF6000CC79B /* DFSectionView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DFSectionView.m; sourceTree = "<group>"; };
+		C48C2FF223818AB700ECFBC9 /* DFSaveDataTool.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DFSaveDataTool.h; sourceTree = "<group>"; };
+		C48C2FF323818AB700ECFBC9 /* DFSaveDataTool.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DFSaveDataTool.m; sourceTree = "<group>"; };
+		C48C2FF523818C6800ECFBC9 /* DFCityModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DFCityModel.h; sourceTree = "<group>"; };
+		C48C2FF623818C6800ECFBC9 /* DFCityModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DFCityModel.m; sourceTree = "<group>"; };
 		C4E0680623327A6300C0F650 /* rongwei.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = rongwei.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C4E0680923327A6300C0F650 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		C4E0680A23327A6300C0F650 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -660,6 +666,10 @@
 			children = (
 				C46AD0E823339255000514B7 /* DFUserModelTool.h */,
 				C46AD0E923339255000514B7 /* DFUserModelTool.m */,
+				C48C2FF223818AB700ECFBC9 /* DFSaveDataTool.h */,
+				C48C2FF323818AB700ECFBC9 /* DFSaveDataTool.m */,
+				C48C2FF523818C6800ECFBC9 /* DFCityModel.h */,
+				C48C2FF623818C6800ECFBC9 /* DFCityModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -957,9 +967,11 @@
 				1815AE80233C898F007A1955 /* DFDesignerView.m in Sources */,
 				1815AE87233CAB5F007A1955 /* DFCasesView.m in Sources */,
 				1815AE7D233C657C007A1955 /* DFEsignerDetialViewController.m in Sources */,
+				C48C2FF723818C6800ECFBC9 /* DFCityModel.m in Sources */,
 				C428EBAD2333A880009E0E8A /* DFAppVersionTool.m in Sources */,
 				18EEA1AB235991D00072D0EB /* DFChooseView.m in Sources */,
 				C41FCD95233501110017427F /* DFMainTableViewCell.m in Sources */,
+				C48C2FF423818AB700ECFBC9 /* DFSaveDataTool.m in Sources */,
 				1815AE72233C3FAF007A1955 /* CQTopBarSegmentCell.m in Sources */,
 				C428EBB52333AD8E009E0E8A /* DFNavigationController.m in Sources */,
 				188888DE23543FF800391F21 /* TAAnimatedDotView.m in Sources */,

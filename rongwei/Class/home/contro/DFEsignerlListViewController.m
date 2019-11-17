@@ -141,13 +141,12 @@
 - (void)getdata
 {
     
-    NSMutableDictionary *parma = [@{@"style_id":@"0",
-                                    @"des_status":@"0",
-                                    @"page":@(self.currentPage),
+    NSMutableDictionary *parma = [@{@"is_rec":@"10",
+                                    @"itemsPerLoad":@(self.currentPage),
 //                                    @"page_size":@(20)
     }copy];
     
-    [[DFNetworkTool shareInstance] requestWithMethod:GHRequestMethod_POST withUrl:DesignerListsApi withParameter:parma withLoadingType:GHLoadingType_ShowLoading withShouldHaveToken:NO withContentType:GHContentType_Formdata completionBlock:^(BOOL isSuccess, NSString * _Nullable msg, id  _Nullable response) {
+    [[DFNetworkTool shareInstance] requestWithMethod:GHRequestMethod_GET withUrl:DesignerListsApi withParameter:parma withLoadingType:GHLoadingType_ShowLoading withShouldHaveToken:YES withContentType:GHContentType_JSON completionBlock:^(BOOL isSuccess, NSString * _Nullable msg, id  _Nullable response) {
         
         [self.dataTableview.mj_header endRefreshing];
         [self.dataTableview.mj_footer endRefreshing];

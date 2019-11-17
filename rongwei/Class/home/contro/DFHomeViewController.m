@@ -40,6 +40,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+    [[DFUserModelTool shareInstance]getcitydata];
+    
     self.title = @"首页";
     [DFUserModelTool shareInstance].isLogin = true;
     [self allocTableviewWith:UITableViewStylePlain];
@@ -67,8 +70,36 @@
         }
     }];
     
+    [[DFNetworkTool shareInstance] requestWithMethod:GHRequestMethod_GET withUrl:HomeAds withParameter:nil withLoadingType:GHLoadingType_HideLoading withShouldHaveToken:YES withContentType:GHContentType_JSON completionBlock:^(BOOL isSuccess, NSString * _Nullable msg, id  _Nullable response) {
+        if (isSuccess) {
+            
+            NSArray *hot = response[@"data"][@"APP-热门攻略广告位"];
+            for (NSInteger index = 0; index < hot.count; index ++) {
+                NSDictionary *dic = hot[index];
+                DFHomeNavModel *model = [[DFHomeNavModel alloc]initWithDictionary:dic error:nil];
+                [[DFUserModelTool shareInstance].hotArry addObject:model];
+            }
+            NSArray *banaer = response[@"data"][@"APP-首页轮播图"];
+            for (NSInteger index = 0; index < banaer.count; index ++) {
+                 NSDictionary *dic = hot[index];
+                 DFHomeNavModel *model = [[DFHomeNavModel alloc]initWithDictionary:dic error:nil];
+                 [[DFUserModelTool shareInstance].banaerArry addObject:model];
+            }
+            
+            headerview.banaerArry = [DFUserModelTool shareInstance].banaerArry;
+            
+            NSArray *navdown = response[@"data"][@"APP-图标导航下方广告"];
+            for (NSInteger index = 0; index < navdown.count; index ++) {
+                 NSDictionary *dic = navdown[index];
+                 DFHomeNavModel *model = [[DFHomeNavModel alloc]initWithDictionary:dic error:nil];
+                 [[DFUserModelTool shareInstance].navDownArry addObject:model];
+            }
+            headerview.navdownArry = [DFUserModelTool shareInstance].navDownArry;
+            
+        }
+    }];
     
-    NSMutableArray *arry = [DFGetNetData getadvertising];
+//    NSMutableArray *arry = [DFGetNetData getadvertising];
     
 //    [self.navigationController pushViewController:[DFEsignerlListViewController new] animated:YES];
 //    [[DFUserModelTool shareInstance] showLoginViewController];

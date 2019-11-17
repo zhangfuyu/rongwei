@@ -11,6 +11,10 @@
 
 #import "DFLoginViewController.h"
 
+#import "DFCityModel.h"
+
+#import "DFSaveDataTool.h"
+
 @implementation DFUserModelTool
 
 + (instancetype)shareInstance
@@ -77,4 +81,62 @@
     
     return currentVC;
 }
+- (NSMutableArray *)banaerArry
+{
+    if (!_banaerArry) {
+        _banaerArry = [NSMutableArray arrayWithCapacity:0];
+    }
+    return _banaerArry;
+}
+- (NSMutableArray *)navDownArry
+{
+    if (!_navDownArry) {
+        _navDownArry = [NSMutableArray arrayWithCapacity:0];
+    }
+    return _navDownArry;
+}
+- (NSMutableArray *)hotArry
+{
+    if (!_hotArry) {
+        _hotArry = [NSMutableArray arrayWithCapacity:0];
+    }
+    return _hotArry;
+}
+
+- (void)getcitydata
+{
+    
+    NSDictionary *citydic = [[DFSaveDataTool shareInstance] getCountryData];
+    
+    if (citydic == nil) {
+            [[DFNetworkTool shareInstance] requestWithMethod:GHRequestMethod_GET withUrl:regions withParameter:@{@"type":@"tree"} withLoadingType:GHLoadingType_HideLoading withShouldHaveToken:YES withContentType:GHContentType_Formdata completionBlock:^(BOOL isSuccess, NSString * _Nullable msg, id  _Nullable response) {
+            if (isSuccess) {
+                
+                NSDictionary *datadic = response[@"data"];
+                
+                [[DFSaveDataTool shareInstance] saveCountryDataWithData:datadic];
+                
+
+                
+                
+            }
+        }];
+    }
+    
+    
+    NSArray *allkey = citydic.allKeys;
+
+    NSMutableArray *provinceArry = [NSMutableArray arrayWithCapacity:0];
+    for (NSInteger index = 0; index < allkey.count; index ++) {
+        NSString *indexKey = allkey[index];
+        NSDictionary *keyData = citydic[indexKey];
+        DFCityModel *provinceModel = [[DFCityModel alloc]initWithDictionary:keyData error:nil];
+        [provinceArry addObject:provinceModel];
+    }
+    
+    NSLog(@"------>%@",provinceArry);
+    
+
+}
+
 @end

@@ -32,7 +32,21 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong) NSString *uid;
 
 
+/// 首页banaer 上
+@property (nonatomic , strong) NSMutableArray *banaerArry;
+
+
+/// 图标导航下方广告
+@property (nonatomic , strong) NSMutableArray *navDownArry;
+
+/// 热门攻略
+@property (nonatomic , strong) NSMutableArray *hotArry;
+
 - (void)showLoginViewController;
+
+
+/// 地区(省市区)列表 数据
+- (void)getcitydata;
 
 @end
 

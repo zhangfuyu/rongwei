@@ -16,6 +16,8 @@
 
 @property (nonatomic , strong)SDCycleScrollView *recommended;
 
+
+
 @end
 
 @implementation DFHomeHeaderView
@@ -246,7 +248,6 @@
     self.recommended.imageSize = CGSizeMake(HScaleHeight(310), HScaleHeight(100));
     
     [self addSubview:self.recommended];
-     [self.recommended setImageURLStringsGroup:@[]];
 }
 - (void)setNavArry:(NSMutableArray *)navArry
 {
@@ -278,6 +279,30 @@
         
     }
     
+}
+- (void)setBanaerArry:(NSMutableArray *)banaerArry
+{
+    _banaerArry = banaerArry;
+    NSMutableArray *imageUrlArray = [NSMutableArray arrayWithCapacity:0];
+    for (NSInteger index = 0; index < banaerArry.count; index ++) {
+        DFHomeNavModel *model = [banaerArry objectOrNilAtIndex:index];
+        [imageUrlArray addObject:model.pic_url];
+        
+    }
+    
+    [self.scrollView setImageURLStringsGroup:imageUrlArray];
+}
+- (void)setNavdownArry:(NSMutableArray *)navdownArry
+{
+    _navdownArry = navdownArry;
+    NSMutableArray *imageUrlArray = [NSMutableArray arrayWithCapacity:0];
+    for (NSInteger index = 0; index < navdownArry.count; index ++) {
+        DFHomeNavModel *model = [navdownArry objectOrNilAtIndex:index];
+        [imageUrlArray addObject:model.pic_url];
+        
+    }
+    
+    [self.recommended setImageURLStringsGroup:imageUrlArray];
 }
 - (void)clicksubButton:(UIButton *)clickBtn
 {

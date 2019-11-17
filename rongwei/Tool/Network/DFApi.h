@@ -14,7 +14,7 @@
 /**
 设计师列表
 */
-#define DesignerListsApi   @"designer/getDesignersList"
+#define DesignerListsApi   @"designer/designe"
 
 /**
 设计师详情
@@ -51,8 +51,14 @@
 
 /******************/
 
+
 /**
-发松验证码
+省市区获取
+*/
+#define regions   @"regions/list"
+
+/**
+首页-导航
 */
 #define HomeWorks   @"index/getNav"
 

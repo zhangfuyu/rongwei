@@ -16,6 +16,10 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic , strong) NSMutableArray *navArry;
 
+@property (nonatomic , strong) NSMutableArray *banaerArry;
+
+@property (nonatomic , strong) NSMutableArray *navdownArry;
+
 @end
 
 NS_ASSUME_NONNULL_END
