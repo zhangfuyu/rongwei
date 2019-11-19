@@ -54,7 +54,6 @@
     [self tabelviewAddReload];
     [self tableviewAddMoreDown];
     
-    self.dataTableview.tableFooterView = nil;
     [self.dataTableview mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.mas_equalTo(kNavBarAndStatusBarHeight);
         make.right.left.mas_equalTo(0);
@@ -141,7 +140,7 @@
 - (void)getdata
 {
     
-    NSMutableDictionary *parma = [@{@"is_rec":@"10",
+    NSMutableDictionary *parma = [@{@"is_rec":@"0",
                                     @"itemsPerLoad":@(self.currentPage),
 //                                    @"page_size":@(20)
     }copy];

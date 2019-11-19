@@ -98,20 +98,20 @@
 
     }
     
-    NSMutableArray *stylearry = [NSMutableArray arrayWithCapacity:0];
+//    NSMutableArray *stylearry = [NSMutableArray arrayWithCapacity:0];
 
-    if (model.style.count > 0) {
-        for (NSDictionary *dic in model.style) {
-            [stylearry addObject:dic[@"name"]];
-        }
-        self.goodAtLabel.text = [NSString stringWithFormat:@"擅长风格:%@",[stylearry componentsJoinedByString:@"、"]];
+//    if (model.style.count > 0) {
+//        for (NSDictionary *dic in model.style) {
+//            [stylearry addObject:dic[@"name"]];
+//        }
+        self.goodAtLabel.text = [NSString stringWithFormat:@"擅长风格:%@",model.styles_text];
 
-    }
-    else
-    {
-        self.goodAtLabel.text = [NSString stringWithFormat:@"擅长风格:"];
-
-    }
+//    }
+//    else
+//    {
+//        self.goodAtLabel.text = [NSString stringWithFormat:@"擅长风格:"];
+//
+//    }
     
     
     self.workYearLabel.text = [NSString stringWithFormat:@"%d年以上|%d套作品",[model.years intValue],[model.works_num intValue]];

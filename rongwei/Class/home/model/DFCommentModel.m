@@ -1,15 +1,17 @@
 //
-//  DFDesignerWorkModel.m
+//  DFCommentModel.m
 //  rongwei
 //
-//  Created by apple on 2019/11/1.
+//  Created by apple on 2019/11/18.
 //  Copyright © 2019 zhangfuyu. All rights reserved.
 //
 
-#import "DFDesignerWorkModel.h"
+#import "DFCommentModel.h"
 
-@implementation DFDesignerWorkModel
+@implementation DFCommentModel
+
 + (JSONKeyMapper *)keyMapper{
     return [[JSONKeyMapper alloc] initWithModelToJSONDictionary:@{@"modelid":@"id"}];
 }
+
 @end

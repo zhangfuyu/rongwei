@@ -13,6 +13,8 @@
 #import "DFHomeNaiBarView.h"
 #import "DFHomeNavModel.h"
 #import "DFGetNetData.h"
+#import "DfDesignerTableViewCell.h"
+#import "DFEsignerDetialViewController.h"
 
 @interface DFHomeViewController ()<UITableViewDelegate,UITableViewDataSource>
 
@@ -27,6 +29,9 @@
 @property (nonatomic , strong)DFHomeNaiBarView *narbaView;
 
 @property (nonatomic , strong)NSMutableArray *navArry;
+
+//设计师数组
+@property (nonatomic , strong)NSMutableArray *designerListArry;
 @end
 
 @implementation DFHomeViewController
@@ -41,7 +46,12 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    [[DFUserModelTool shareInstance]getcitydata];
+    //子线程请求省市区
+    dispatch_async(dispatch_get_global_queue(0, 0), ^{
+           
+        [[DFUserModelTool shareInstance]getcitydata];
+
+    });
     
     self.title = @"首页";
     [DFUserModelTool shareInstance].isLogin = true;
@@ -99,6 +109,13 @@
         }
     }];
     
+    //子线程请求推荐设计师
+    dispatch_async(dispatch_get_global_queue(0, 0), ^{
+           
+        [self getdesignerList];
+
+    });
+    
 //    NSMutableArray *arry = [DFGetNetData getadvertising];
     
 //    [self.navigationController pushViewController:[DFEsignerlListViewController new] animated:YES];
@@ -108,14 +125,30 @@
 
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
+    
     return 4;
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
+    if (section == 2) {
+        return self.designerListArry.count;
+    }
     return 1;
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    
+    if (indexPath.section == 2) {
+            static NSString *cellid = @"DfDesignerTableViewCell";
+        DfDesignerTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellid];
+        if (!cell) {
+            cell = [[DfDesignerTableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellid];
+        }
+        cell.model = [self.designerListArry objectAtIndex:indexPath.row];
+        
+        return cell;
+    }
+    
     static NSString *Cellidear = @"cell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:Cellidear];
     if (!cell) {
@@ -123,8 +156,12 @@
     }
     return cell;
 }
+
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    if (indexPath.section == 2) {
+        return HScaleHeight(105);
+    }
     return 100;
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
@@ -153,6 +190,11 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    if (indexPath.section == 2) {
+        DFEsignerDetialViewController *detail = [[DFEsignerDetialViewController alloc]init];
+        detail.model = self.designerListArry[indexPath.row];
+        [self.navigationController pushViewController:detail animated:YES];
+    }
 }
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
@@ -168,7 +210,40 @@
         }
     }
 }
+- (void)getdesignerList
+{
+    
+    NSMutableDictionary *parma = [@{@"is_rec":@"1",
+                                    @"itemsPerLoad":@(1),
+//                                    @"page_size":@(20)
+    }copy];
+    
+    [[DFNetworkTool shareInstance] requestWithMethod:GHRequestMethod_GET withUrl:DesignerListsApi withParameter:parma withLoadingType:GHLoadingType_ShowLoading withShouldHaveToken:YES withContentType:GHContentType_JSON completionBlock:^(BOOL isSuccess, NSString * _Nullable msg, id  _Nullable response) {
+        
+        if (isSuccess) {
+            NSLog(@"请求成功");
+            NSArray *dataarry = response[@"data"];
+            [self.designerListArry removeAllObjects];
+            
+            if (dataarry > 0) {
+                for (NSDictionary *dic in dataarry) {
+                    DFDesignerModel *model = [[DFDesignerModel alloc] initWithDictionary:dic error:nil];
+                    [self.designerListArry addObject:model];
+                    if (self.designerListArry.count >= 2) {
+                        break;
+                    }
+                }
+            }
 
+            dispatch_async(dispatch_get_main_queue(), ^{
+                        
+                [self.dataTableview reloadSection:2 withRowAnimation:UITableViewRowAnimationNone];
+
+            });
+        }
+            
+    }];
+}
 - (DFSectionView *)firstSection
 {
     if (!_firstSection) {
@@ -226,6 +301,13 @@
         _navArry = [NSMutableArray arrayWithCapacity:0];
     }
     return _navArry;
+}
+- (NSMutableArray *)designerListArry
+{
+    if (!_designerListArry) {
+        _designerListArry = [NSMutableArray arrayWithCapacity:0];
+    }
+    return _designerListArry;
 }
 /*
 #pragma mark - Navigation

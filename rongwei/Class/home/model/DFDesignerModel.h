@@ -43,7 +43,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 
 /// 擅长风格 14,20,7
-@property (nonatomic , strong) NSString<Optional> *styles;
+@property (nonatomic , strong) NSArray<Optional> *styles;
 
 
 /// 作量数量
@@ -55,7 +55,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 
 /// 擅长风格
-@property (nonatomic , strong) NSArray<Optional> *styles_name;
+@property (nonatomic , strong) NSString<Optional> *styles_text;
 
 @property (nonatomic , strong) NSArray<Optional> *style;
 
@@ -78,6 +78,9 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic , strong) NSString<Optional> *sort;
 
 @property (nonatomic , strong) NSString<Optional> *updated_at;
+
+@property (nonatomic , strong) NSString<Optional> *address;
+
 @end
 
 NS_ASSUME_NONNULL_END

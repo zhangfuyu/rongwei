@@ -68,7 +68,7 @@
     self.numbercount.text = [NSString stringWithFormat:@"%@张",model.img_num];
     self.namelabel.text = model.title;
     
-    self.moretextlabel.text = [NSString stringWithFormat:@"%@m²",model.mianji];
+    self.moretextlabel.text = [NSString stringWithFormat:@"%@  %@  %@m²",model.style[@"name"],model.shape[@"name"],model.mianji];
 }
 - (void)awakeFromNib {
     [super awakeFromNib];

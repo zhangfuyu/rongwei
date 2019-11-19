@@ -18,6 +18,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic , strong) NSString<Optional> *designer_id;
 
+@property (nonatomic , strong) NSString<Optional> *designer_name;
+
+
 @property (nonatomic , strong) NSString<Optional> *hits;
 
 @property (nonatomic , strong) NSString<Optional> *modelid;
@@ -36,13 +39,19 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic , strong) NSString<Optional> *quarter_id;
 
-@property (nonatomic , strong) NSString<Optional> *shape;
+@property (nonatomic , strong) NSString<Optional> *quarter_name;
+
+
+@property (nonatomic , strong) NSDictionary<Optional> *shape;
 
 @property (nonatomic , strong) NSString<Optional> *shape_id;
 
 @property (nonatomic , strong) NSString<Optional> *sort;
 
-@property (nonatomic , strong) NSString<Optional> *styles;
+@property (nonatomic , strong) NSDictionary<Optional> *style;
+
+@property (nonatomic , strong) NSString<Optional> *style_id;
+
 
 @property (nonatomic , strong) NSString<Optional> *title;
 
@@ -50,6 +59,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic , strong) NSString<Optional> *zaojia;
 
+@property (nonatomic , strong) NSArray<Optional> *work_images;
 
 @end
 

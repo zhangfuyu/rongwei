@@ -134,7 +134,6 @@
         [provinceArry addObject:provinceModel];
     }
     
-    NSLog(@"------>%@",provinceArry);
     
 
 }

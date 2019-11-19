@@ -17,6 +17,9 @@
 		180B584123585F2F00D1E847 /* DFRenderingCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 180B584023585F2F00D1E847 /* DFRenderingCollectionViewCell.m */; };
 		180C9197237BA01B0001CD4E /* DFGetNetData.m in Sources */ = {isa = PBXBuildFile; fileRef = 180C9196237BA01B0001CD4E /* DFGetNetData.m */; };
 		180E71FD237ADAB000CD34D2 /* DFHomeNavModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 180E71FC237ADAB000CD34D2 /* DFHomeNavModel.m */; };
+		180E7AD423827E47009EB0A4 /* DFCommentModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 180E7AD323827E47009EB0A4 /* DFCommentModel.m */; };
+		180E7AD7238378C5009EB0A4 /* DFDesignerCommentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 180E7AD6238378C5009EB0A4 /* DFDesignerCommentCell.m */; };
+		180E7ADA2383C116009EB0A4 /* DFAppointViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 180E7AD92383C116009EB0A4 /* DFAppointViewController.m */; };
 		180FCDF3233D972000CD4BB7 /* DFWorksTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 180FCDF2233D972000CD4BB7 /* DFWorksTableViewCell.m */; };
 		1815AE6C233C3FAF007A1955 /* CQTopBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1815AE63233C3FAF007A1955 /* CQTopBarView.m */; };
 		1815AE6D233C3FAF007A1955 /* CQTopBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1815AE63233C3FAF007A1955 /* CQTopBarView.m */; };
@@ -128,6 +131,12 @@
 		180C9196237BA01B0001CD4E /* DFGetNetData.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DFGetNetData.m; sourceTree = "<group>"; };
 		180E71FB237ADAB000CD34D2 /* DFHomeNavModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DFHomeNavModel.h; sourceTree = "<group>"; };
 		180E71FC237ADAB000CD34D2 /* DFHomeNavModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DFHomeNavModel.m; sourceTree = "<group>"; };
+		180E7AD223827E47009EB0A4 /* DFCommentModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DFCommentModel.h; sourceTree = "<group>"; };
+		180E7AD323827E47009EB0A4 /* DFCommentModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DFCommentModel.m; sourceTree = "<group>"; };
+		180E7AD5238378C5009EB0A4 /* DFDesignerCommentCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DFDesignerCommentCell.h; sourceTree = "<group>"; };
+		180E7AD6238378C5009EB0A4 /* DFDesignerCommentCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DFDesignerCommentCell.m; sourceTree = "<group>"; };
+		180E7AD82383C116009EB0A4 /* DFAppointViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DFAppointViewController.h; sourceTree = "<group>"; };
+		180E7AD92383C116009EB0A4 /* DFAppointViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DFAppointViewController.m; sourceTree = "<group>"; };
 		180FCDF1233D972000CD4BB7 /* DFWorksTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DFWorksTableViewCell.h; sourceTree = "<group>"; };
 		180FCDF2233D972000CD4BB7 /* DFWorksTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DFWorksTableViewCell.m; sourceTree = "<group>"; };
 		1815AE62233C3FAF007A1955 /* CQTopBarSegment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CQTopBarSegment.h; sourceTree = "<group>"; };
@@ -328,6 +337,8 @@
 				1809B476233B0F5000D768C3 /* DFDesignerModel.m */,
 				1843A991236C39030070586C /* DFDesignerWorkModel.h */,
 				1843A992236C39030070586C /* DFDesignerWorkModel.m */,
+				180E7AD223827E47009EB0A4 /* DFCommentModel.h */,
+				180E7AD323827E47009EB0A4 /* DFCommentModel.m */,
 				180E71FB237ADAB000CD34D2 /* DFHomeNavModel.h */,
 				180E71FC237ADAB000CD34D2 /* DFHomeNavModel.m */,
 				180C9195237BA01B0001CD4E /* DFGetNetData.h */,
@@ -523,6 +534,8 @@
 				1809B473233B075100D768C3 /* DFEsignerlListViewController.m */,
 				1815AE7B233C657C007A1955 /* DFEsignerDetialViewController.h */,
 				1815AE7C233C657C007A1955 /* DFEsignerDetialViewController.m */,
+				180E7AD82383C116009EB0A4 /* DFAppointViewController.h */,
+				180E7AD92383C116009EB0A4 /* DFAppointViewController.m */,
 			);
 			path = contro;
 			sourceTree = "<group>";
@@ -548,6 +561,8 @@
 				18095C5E23559478002212E9 /* DFHomeNaiBarView.m */,
 				1843A994236C3E580070586C /* DFWorkListTableViewCell.h */,
 				1843A995236C3E580070586C /* DFWorkListTableViewCell.m */,
+				180E7AD5238378C5009EB0A4 /* DFDesignerCommentCell.h */,
+				180E7AD6238378C5009EB0A4 /* DFDesignerCommentCell.m */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -968,6 +983,7 @@
 				1815AE87233CAB5F007A1955 /* DFCasesView.m in Sources */,
 				1815AE7D233C657C007A1955 /* DFEsignerDetialViewController.m in Sources */,
 				C48C2FF723818C6800ECFBC9 /* DFCityModel.m in Sources */,
+				180E7AD7238378C5009EB0A4 /* DFDesignerCommentCell.m in Sources */,
 				C428EBAD2333A880009E0E8A /* DFAppVersionTool.m in Sources */,
 				18EEA1AB235991D00072D0EB /* DFChooseView.m in Sources */,
 				C41FCD95233501110017427F /* DFMainTableViewCell.m in Sources */,
@@ -985,6 +1001,8 @@
 				C41FCD98233507F70017427F /* DFMainCellBtn.m in Sources */,
 				C428EBB22333A99A009E0E8A /* DFTabBarController.m in Sources */,
 				1815AE84233C96BE007A1955 /* NSString+Extension.m in Sources */,
+				180E7ADA2383C116009EB0A4 /* DFAppointViewController.m in Sources */,
+				180E7AD423827E47009EB0A4 /* DFCommentModel.m in Sources */,
 				18EEA1B0235995E40072D0EB /* DFStrategyHeaderView.m in Sources */,
 				186E7DDF233B31E900C0DCDE /* DfDesignerTableViewCell.m in Sources */,
 				180E71FD237ADAB000CD34D2 /* DFHomeNavModel.m in Sources */,

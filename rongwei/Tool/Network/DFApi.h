@@ -14,18 +14,18 @@
 /**
 设计师列表
 */
-#define DesignerListsApi   @"designer/designe"
+#define DesignerListsApi   @"designer/designer"
 
 /**
 设计师详情
 */
-#define DesignerDetailApi   @"designer/getOneDesigner"
+#define DesignerDetailApi   @"designer/designer/1"
 
 
 /**
 设计师作品
 */
-#define WorkDesignerDetailApi   @"work/designer"
+#define WorkDesignerDetailApi   @"designer/works"
 
 /**
 设计师简介
@@ -35,7 +35,7 @@
 /**
 设计师评价
 */
-#define DesignerCommentDetailApi   @"designer/comment"
+#define DesignerCommentDetailApi   @"designer/comments"
 
 
 /**
