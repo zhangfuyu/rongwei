@@ -16,7 +16,7 @@
 #import "DFDesignerCommentCell.h"
 #import "DFAppointViewController.h"
 
-@interface DFEsignerDetialViewController ()<UITableViewDelegate,UITableViewDataSource>
+@interface DFEsignerDetialViewController ()<UITableViewDelegate,UITableViewDataSource,DFAppointViewControllerDelegate>
 
 @property (nonatomic , strong)DFDesignerView *headerView;
 
@@ -261,10 +261,18 @@
     }];
 }
 
+#pragma mark - 预约资料填写
+- (void)FillInTheInformation
+{
+    NSLog(@"---->点击了填写资料");
+}
+
 /// y预约
 - (void)appointresigner
 {
-    [self.navigationController pushViewController:[DFAppointViewController new] animated:YES];
+    DFAppointViewController *appoint = [[DFAppointViewController alloc]init];
+    appoint.delegate = self;
+    [self.navigationController pushViewController:appoint animated:YES];
 }
 - (NSMutableArray *)work_list
 {
@@ -358,5 +366,9 @@
 {
     
     self.likeThisBtn.selected = !self.likeThisBtn.selected;
+}
+- (void)dealloc
+{
+    
 }
 @end

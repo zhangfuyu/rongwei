@@ -22,6 +22,7 @@
 #import "NSString+GHRegular.h"
 #import <SVProgressHUD.h>
 #import "DFNavigationController.h"
+#import <IQKeyboardManager.h>
 
 #import "DFNotification.h"
 #import "DFNetworkTool.h"

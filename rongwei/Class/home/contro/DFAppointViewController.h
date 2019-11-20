@@ -10,7 +10,16 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+@protocol DFAppointViewControllerDelegate <NSObject>
+
+@optional
+- (void)FillInTheInformation;
+
+@end
+
 @interface DFAppointViewController : DFBaseViewController
+
+@property (nonatomic , weak) id<DFAppointViewControllerDelegate>delegate;
 
 @end
 

@@ -21,7 +21,8 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
      [self setUpRootVC]; //跟控制器判断
-    
+    [IQKeyboardManager sharedManager].enableAutoToolbar = YES;
+
     [WXApi registerApp:kWXAppKey];
     return YES;
 }

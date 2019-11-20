@@ -9,6 +9,7 @@
 #import "DFHomeHeaderView.h"
 #import "SDCycleScrollView.h"
 #import "DFHomeModuleButtonView.h"
+#import "DFFoundConstructionViewController.h"
 
 @interface DFHomeHeaderView()<SDCycleScrollViewDelegate>
 
@@ -309,6 +310,10 @@
     //效果图
     if (clickBtn.tag == 0) {
         [self.viewController.tabBarController setSelectedIndex:1];
+    }
+    else if (clickBtn.tag == 2)
+    {
+        [self.viewController.navigationController pushViewController:[DFFoundConstructionViewController new] animated:YES];
     }
 }
 

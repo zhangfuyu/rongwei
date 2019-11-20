@@ -40,8 +40,50 @@
         make.left.mas_equalTo(HScaleHeight(12));
         make.right.mas_equalTo(-HScaleHeight(12));
     }];
-}
+    
+    
+    
+    UIButton *cancle = [UIButton buttonWithType:UIButtonTypeCustom];
+    cancle.titleLabel.font = HScaleFont(15);
+    [cancle setTitleColor:[UIColor colorWithHexString:@"DD1A21"] forState:UIControlStateNormal];
+    [cancle setTitle:@"取消" forState:UIControlStateNormal];
+    [cancle addTarget:self action:@selector(back) forControlEvents:UIControlEventTouchUpInside];
+    cancle.layer.borderWidth = 1;
+    cancle.layer.borderColor = [UIColor colorWithHexString:@"DD1A21"].CGColor;
+    [self.view addSubview:cancle];
+    
+    [cancle mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.mas_equalTo(HScaleWidth(71));
+        make.top.mas_equalTo(label.mas_bottom).offset(HScaleHeight(34));
+        make.size.mas_equalTo(CGSizeMake(HScaleWidth(104), HScaleHeight(36)));
+    }];
 
+    UIButton *sure = [UIButton buttonWithType:UIButtonTypeCustom];
+    sure.titleLabel.font = HScaleFont(15);
+    [sure setTitleColor:[UIColor colorWithHexString:@"FFFFFF"] forState:UIControlStateNormal];
+    [sure setTitle:@"去填写" forState:UIControlStateNormal];
+    [sure addTarget:self action:@selector(gowork) forControlEvents:UIControlEventTouchUpInside];
+    sure.backgroundColor = [UIColor colorWithHexString:@"DD1A21"];
+    [self.view addSubview:sure];
+    
+    [sure mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.right.mas_equalTo(-HScaleWidth(71));
+        make.top.mas_equalTo(label.mas_bottom).offset(HScaleHeight(34));
+        make.size.mas_equalTo(CGSizeMake(HScaleWidth(104), HScaleHeight(36)));
+    }];
+}
+- (void)back
+{
+    [self.navigationController popViewControllerAnimated:YES];
+}
+- (void)gowork
+{
+    if (self.delegate && [self.delegate respondsToSelector:@selector(FillInTheInformation)]) {
+        [self.delegate FillInTheInformation];
+    }
+    [self.navigationController popViewControllerAnimated:YES];
+
+}
 /*
 #pragma mark - Navigation
 
