@@ -68,4 +68,14 @@
 #define HomeAds   @"index/ads"
 
 
+/**
+施工工地列表
+*/
+#define Construction   @"construction/site"
+
+/**
+施工公司列表
+*/
+#define Company   @"construction/company"
+
 #endif /* DFApi_h */

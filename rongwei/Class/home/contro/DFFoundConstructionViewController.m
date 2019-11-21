@@ -9,10 +9,22 @@
 #import "DFFoundConstructionViewController.h"
 #import "DFTextField.h"
 #import "DfConstructionHeadrView.h"
+#import "DFConstructionModel.h"
+#import "DFCompanyModel.h"
+#import "DFCompanyTableViewCell.h"
+#import "CQTopBarSegment.h"
 
-@interface DFFoundConstructionViewController ()
+@interface DFFoundConstructionViewController ()<UITableViewDelegate , UITableViewDataSource>
 
 @property (nonatomic , strong) DFTextField *searchTextField;
+
+@property (nonatomic ,  strong) NSMutableArray *constructionArry;
+
+@property (nonatomic ,  strong) NSMutableArray *companyArry;//公司列表
+
+@property (nonatomic , strong) DfConstructionHeadrView *header;
+
+@property (nonatomic , strong) CQTopBarSegment *segment;
 
 @end
 
@@ -29,6 +41,31 @@
     // Do any additional setup after loading the view.
     self.title = @"找施工";
     [self setupNavigationBar];
+    
+    self.header = [[DfConstructionHeadrView alloc]initWithFrame:CGRectMake(0, kNavBarAndStatusBarHeight, ScreenW, HScaleHeight(360))];
+    
+    [self allocTableviewWith:UITableViewStylePlain];
+    self.dataTableview.delegate = self;
+    self.dataTableview.dataSource = self;
+    
+    self.dataTableview.tableHeaderView = self.header;
+    self.dataTableview.tableFooterView = [UIView new];
+    self.dataTableview.separatorInset = UIEdgeInsetsMake(0, 0, 0, 0);
+    
+    [self.dataTableview mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.right.mas_equalTo(0);
+        make.top.mas_equalTo(kNavBarAndStatusBarHeight);
+        make.bottom.mas_equalTo(-kBottomSafeHeight);
+    }];
+    
+    //子线程请求推荐设计师
+    dispatch_async(dispatch_get_global_queue(0, 0), ^{
+           
+        [self getConstruction];
+        
+        [self getCompany];
+    });
+    
 }
 - (void)setupNavigationBar
 {
@@ -119,6 +156,75 @@
 
 
 }
+
+/// 获取施工公司列表
+- (void)getCompany
+{
+    [[DFNetworkTool shareInstance] requestWithMethod:GHRequestMethod_GET withUrl:Company withParameter:nil withLoadingType:GHLoadingType_HideLoading withShouldHaveToken:YES withContentType:GHContentType_JSON completionBlock:^(BOOL isSuccess, NSString * _Nullable msg, id  _Nullable response) {
+        if (isSuccess) {
+            
+            NSArray *dataarry = response[@"data"];
+            
+            for (NSInteger index = 0; index < dataarry.count; index ++) {
+                DFCompanyModel *model = [[DFCompanyModel alloc]initWithDictionary:dataarry[index] error:nil];
+                [self.companyArry addObject:model];
+            }
+            [self.dataTableview reloadData];
+        }
+    }];
+}
+//请求施工列表
+- (void)getConstruction
+{
+    [[DFNetworkTool shareInstance] requestWithMethod:GHRequestMethod_GET withUrl:Construction withParameter:nil withLoadingType:GHLoadingType_HideLoading withShouldHaveToken:YES withContentType:GHContentType_JSON completionBlock:^(BOOL isSuccess, NSString * _Nullable msg, id  _Nullable response) {
+        if (isSuccess) {
+            
+            NSArray *dataarry = response[@"data"];
+            
+            for (NSInteger index = 0; index < dataarry.count; index ++) {
+                DFConstructionModel *model = [[DFConstructionModel alloc]initWithDictionary:dataarry[index] error:nil];
+                [self.constructionArry addObject:model];
+            }
+            
+            self.header.dataArry = self.constructionArry;
+        }
+    }];
+}
+
+#pragma mark - UITableViewDelegate , UITableViewDataSource
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    return 1;
+}
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return self.companyArry.count;
+}
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    static NSString *cellid = @"cellid";
+    
+    DFCompanyTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellid];
+    
+    if (!cell) {
+        cell = [[DFCompanyTableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellid];
+    }
+    cell.model = self.companyArry[indexPath.row];
+    return cell;
+}
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return HScaleHeight(105);
+}
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+{
+    return HScaleHeight(47);
+    
+}
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
+{
+    return self.segment;
+}
 - (void)clickSearchAction
 {
     
@@ -126,6 +232,35 @@
 - (void)clickCancelAction
 {
     [self.navigationController popViewControllerAnimated:YES];
+}
+- (NSMutableArray *)constructionArry
+{
+    if (!_constructionArry) {
+        _constructionArry = [NSMutableArray arrayWithCapacity:0];
+    }
+    return _constructionArry;
+}
+
+- (NSMutableArray *)companyArry
+{
+    if (!_companyArry) {
+        _companyArry = [NSMutableArray arrayWithCapacity:0];
+    }
+    return _companyArry;
+}
+
+- (CQTopBarSegment *)segment
+{
+    if (!_segment) {
+        _segment = [[CQTopBarSegment alloc]initWithFrame:CGRectMake(0, kNavBarAndStatusBarHeight, ScreenW, HScaleHeight(47)) sectionTitles:@[@"区域选择",@"综合",@"筛选"]];
+        _segment.titleTextColor = [UIColor colorWithHexString:@"666666"];
+        _segment.segmentImage = @"箭头";
+        _segment.selectSegmentImage = @"箭头-1";
+        _segment.selectedTitleTextColor = [UIColor colorWithHexString:@"DD1A21"];
+        _segment.titleTextFont = HScaleFont(12);
+        _segment.segmentlineColor = [UIColor clearColor];
+    }
+    return _segment;
 }
 /*
 #pragma mark - Navigation
