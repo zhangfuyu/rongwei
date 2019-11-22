@@ -78,4 +78,9 @@
 */
 #define Company   @"construction/company"
 
+/**
+获取施工公司 详情
+*/
+#define CompanyDetail   @"construction/company/1"
+
 #endif /* DFApi_h */

@@ -45,6 +45,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic , strong) NSString<Optional> *sort;
 
+@property (nonatomic , strong) NSString<Optional> *distance;
 @end
 
 NS_ASSUME_NONNULL_END

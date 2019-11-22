@@ -60,6 +60,8 @@
     [self.imageView sd_setImageWithURL:[NSURL URLWithString:model.avatar] placeholderImage:nil];
     self.titleLabel.text = model.name;
     self.scoreLabel.text = model.brief;
+    self.distanceLabel.text = [NSString stringWithFormat:@"%@km",model.distance];
+    self.constructionLabel.text = [NSString stringWithFormat:@"施工工地  %@",model.scale];
 }
 - (void)awakeFromNib {
     [super awakeFromNib];

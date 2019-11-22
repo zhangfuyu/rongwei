@@ -13,6 +13,7 @@
 #import "DFCompanyModel.h"
 #import "DFCompanyTableViewCell.h"
 #import "CQTopBarSegment.h"
+#import "DFContructionDetailViewController.h"
 
 @interface DFFoundConstructionViewController ()<UITableViewDelegate , UITableViewDataSource>
 
@@ -25,6 +26,8 @@
 @property (nonatomic , strong) DfConstructionHeadrView *header;
 
 @property (nonatomic , strong) CQTopBarSegment *segment;
+
+@property (nonatomic , strong) UIView *secondView;
 
 @end
 
@@ -160,7 +163,13 @@
 /// 获取施工公司列表
 - (void)getCompany
 {
-    [[DFNetworkTool shareInstance] requestWithMethod:GHRequestMethod_GET withUrl:Company withParameter:nil withLoadingType:GHLoadingType_HideLoading withShouldHaveToken:YES withContentType:GHContentType_JSON completionBlock:^(BOOL isSuccess, NSString * _Nullable msg, id  _Nullable response) {
+    
+    NSMutableDictionary *parmars = [@{
+        @"lat":@"30.3751",
+        @"lng":@"120.1236"
+    }copy];
+    
+    [[DFNetworkTool shareInstance] requestWithMethod:GHRequestMethod_GET withUrl:Company withParameter:parmars withLoadingType:GHLoadingType_HideLoading withShouldHaveToken:YES withContentType:GHContentType_JSON completionBlock:^(BOOL isSuccess, NSString * _Nullable msg, id  _Nullable response) {
         if (isSuccess) {
             
             NSArray *dataarry = response[@"data"];
@@ -218,13 +227,22 @@
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
-    return HScaleHeight(47);
+    return HScaleHeight(57);
     
 }
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
-    return self.segment;
+    return self.secondView;
 }
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    DFContructionDetailViewController *detailview = [[DFContructionDetailViewController alloc]init];
+    detailview.model = self.companyArry[indexPath.row];
+    [self.navigationController pushViewController:detailview animated:YES];
+}
+
+
 - (void)clickSearchAction
 {
     
@@ -248,11 +266,20 @@
     }
     return _companyArry;
 }
+- (UIView *)secondView
+{
+    if (!_secondView) {
+        _secondView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, ScreenW, HScaleHeight(57))];
+        _secondView.backgroundColor = [UIColor colorWithHexString:@"F7F7F7"];
+        [_secondView addSubview:self.segment];
+    }
+    return _secondView;
+}
 
 - (CQTopBarSegment *)segment
 {
     if (!_segment) {
-        _segment = [[CQTopBarSegment alloc]initWithFrame:CGRectMake(0, kNavBarAndStatusBarHeight, ScreenW, HScaleHeight(47)) sectionTitles:@[@"区域选择",@"综合",@"筛选"]];
+        _segment = [[CQTopBarSegment alloc]initWithFrame:CGRectMake(0, HScaleHeight(5), ScreenW, HScaleHeight(47)) sectionTitles:@[@"区域选择",@"综合",@"筛选"]];
         _segment.titleTextColor = [UIColor colorWithHexString:@"666666"];
         _segment.segmentImage = @"箭头";
         _segment.selectSegmentImage = @"箭头-1";

@@ -15,6 +15,8 @@
 #import "DFGetNetData.h"
 #import "DfDesignerTableViewCell.h"
 #import "DFEsignerDetialViewController.h"
+#import "DFConstructionModel.h"
+#import "DFConstructionTtableCell.h"
 
 @interface DFHomeViewController ()<UITableViewDelegate,UITableViewDataSource>
 
@@ -32,6 +34,8 @@
 
 //设计师数组
 @property (nonatomic , strong)NSMutableArray *designerListArry;
+//施工工地列表
+@property (nonatomic , strong)NSMutableArray *constructionArry;
 @end
 
 @implementation DFHomeViewController
@@ -113,6 +117,7 @@
     dispatch_async(dispatch_get_global_queue(0, 0), ^{
            
         [self getdesignerList];
+        [self getConstruction];
 
     });
     
@@ -133,6 +138,10 @@
     if (section == 2) {
         return self.designerListArry.count;
     }
+    else if (section == 1)
+    {
+        return 1;
+    }
     return 1;
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -148,6 +157,18 @@
         
         return cell;
     }
+    else if (indexPath.section == 1)
+    {
+        
+        static NSString *ConstructionTtableCell = @"DFConstructionTtableCell";
+        DFConstructionTtableCell *cell = [tableView dequeueReusableCellWithIdentifier:ConstructionTtableCell];
+        if (!cell) {
+            cell = [[DFConstructionTtableCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:ConstructionTtableCell];
+        }
+            
+        cell.dataArry = self.constructionArry;
+        return cell;
+    }
     
     static NSString *Cellidear = @"cell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:Cellidear];
@@ -161,6 +182,10 @@
 {
     if (indexPath.section == 2) {
         return HScaleHeight(105);
+    }
+    else if (indexPath.section == 1)
+    {
+       return HScaleHeight(140);
     }
     return 100;
 }
@@ -244,6 +269,28 @@
             
     }];
 }
+
+//请求施工列表
+- (void)getConstruction
+{
+    [[DFNetworkTool shareInstance] requestWithMethod:GHRequestMethod_GET withUrl:Construction withParameter:@{@"is_rec":@"1"} withLoadingType:GHLoadingType_HideLoading withShouldHaveToken:YES withContentType:GHContentType_JSON completionBlock:^(BOOL isSuccess, NSString * _Nullable msg, id  _Nullable response) {
+        if (isSuccess) {
+            
+            NSArray *dataarry = response[@"data"];
+            
+            for (NSInteger index = 0; index < dataarry.count; index ++) {
+                DFConstructionModel *model = [[DFConstructionModel alloc]initWithDictionary:dataarry[index] error:nil];
+                [self.constructionArry addObject:model];
+            }
+            dispatch_async(dispatch_get_main_queue(), ^{
+                           
+                   
+                [self.dataTableview reloadSection:1 withRowAnimation:UITableViewRowAnimationNone];
+               
+            });
+        }
+    }];
+}
 - (DFSectionView *)firstSection
 {
     if (!_firstSection) {
@@ -308,6 +355,13 @@
         _designerListArry = [NSMutableArray arrayWithCapacity:0];
     }
     return _designerListArry;
+}
+- (NSMutableArray *)constructionArry
+{
+    if (!_constructionArry) {
+        _constructionArry = [NSMutableArray arrayWithCapacity:0];
+    }
+    return _constructionArry;
 }
 /*
 #pragma mark - Navigation
