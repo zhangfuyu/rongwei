@@ -7,6 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1803C62C238B5FC9007DCCD2 /* DFHomeCasesView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1803C62B238B5FC9007DCCD2 /* DFHomeCasesView.m */; };
+		1803C62F238B6386007DCCD2 /* DFBottomTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1803C62E238B6386007DCCD2 /* DFBottomTableViewCell.m */; };
+		1803C632238B63F3007DCCD2 /* DFPageContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1803C631238B63F3007DCCD2 /* DFPageContentView.m */; };
+		1803C635238B6698007DCCD2 /* DFNewMainTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1803C634238B6698007DCCD2 /* DFNewMainTableView.m */; };
+		1803C638238B6DA4007DCCD2 /* DFConstructionSiteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1803C637238B6DA4007DCCD2 /* DFConstructionSiteViewController.m */; };
+		1803C63B238B700A007DCCD2 /* DFItsCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1803C63A238B700A007DCCD2 /* DFItsCollectionViewCell.m */; };
+		1803C641238BAE25007DCCD2 /* DFRvaluationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1803C640238BAE25007DCCD2 /* DFRvaluationViewController.m */; };
+		1803C644238BBD3E007DCCD2 /* DFInformationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1803C643238BBD3E007DCCD2 /* DFInformationViewController.m */; };
 		18066932236A601000830CA9 /* DFRegisteredFirstViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18066931236A601000830CA9 /* DFRegisteredFirstViewController.m */; };
 		1808D70B2339ABA600710164 /* DFForgotPasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1808D70A2339ABA600710164 /* DFForgotPasswordViewController.m */; };
 		18095C5F23559478002212E9 /* DFHomeNaiBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 18095C5E23559478002212E9 /* DFHomeNaiBarView.m */; };
@@ -118,6 +126,22 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1803C62A238B5FC9007DCCD2 /* DFHomeCasesView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DFHomeCasesView.h; sourceTree = "<group>"; };
+		1803C62B238B5FC9007DCCD2 /* DFHomeCasesView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DFHomeCasesView.m; sourceTree = "<group>"; };
+		1803C62D238B6386007DCCD2 /* DFBottomTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DFBottomTableViewCell.h; sourceTree = "<group>"; };
+		1803C62E238B6386007DCCD2 /* DFBottomTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DFBottomTableViewCell.m; sourceTree = "<group>"; };
+		1803C630238B63F3007DCCD2 /* DFPageContentView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DFPageContentView.h; sourceTree = "<group>"; };
+		1803C631238B63F3007DCCD2 /* DFPageContentView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DFPageContentView.m; sourceTree = "<group>"; };
+		1803C633238B6698007DCCD2 /* DFNewMainTableView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DFNewMainTableView.h; sourceTree = "<group>"; };
+		1803C634238B6698007DCCD2 /* DFNewMainTableView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DFNewMainTableView.m; sourceTree = "<group>"; };
+		1803C636238B6DA4007DCCD2 /* DFConstructionSiteViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DFConstructionSiteViewController.h; sourceTree = "<group>"; };
+		1803C637238B6DA4007DCCD2 /* DFConstructionSiteViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DFConstructionSiteViewController.m; sourceTree = "<group>"; };
+		1803C639238B700A007DCCD2 /* DFItsCollectionViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DFItsCollectionViewCell.h; sourceTree = "<group>"; };
+		1803C63A238B700A007DCCD2 /* DFItsCollectionViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DFItsCollectionViewCell.m; sourceTree = "<group>"; };
+		1803C63F238BAE25007DCCD2 /* DFRvaluationViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DFRvaluationViewController.h; sourceTree = "<group>"; };
+		1803C640238BAE25007DCCD2 /* DFRvaluationViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DFRvaluationViewController.m; sourceTree = "<group>"; };
+		1803C642238BBD3E007DCCD2 /* DFInformationViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DFInformationViewController.h; sourceTree = "<group>"; };
+		1803C643238BBD3E007DCCD2 /* DFInformationViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DFInformationViewController.m; sourceTree = "<group>"; };
 		18066930236A601000830CA9 /* DFRegisteredFirstViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DFRegisteredFirstViewController.h; sourceTree = "<group>"; };
 		18066931236A601000830CA9 /* DFRegisteredFirstViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DFRegisteredFirstViewController.m; sourceTree = "<group>"; };
 		1808D7092339ABA600710164 /* DFForgotPasswordViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DFForgotPasswordViewController.h; sourceTree = "<group>"; };
@@ -571,6 +595,12 @@
 				180E072E238506F000CAF441 /* DFFoundConstructionViewController.m */,
 				180D7A5B2387AB2D007B9EEC /* DFContructionDetailViewController.h */,
 				180D7A5C2387AB2D007B9EEC /* DFContructionDetailViewController.m */,
+				1803C636238B6DA4007DCCD2 /* DFConstructionSiteViewController.h */,
+				1803C637238B6DA4007DCCD2 /* DFConstructionSiteViewController.m */,
+				1803C63F238BAE25007DCCD2 /* DFRvaluationViewController.h */,
+				1803C640238BAE25007DCCD2 /* DFRvaluationViewController.m */,
+				1803C642238BBD3E007DCCD2 /* DFInformationViewController.h */,
+				1803C643238BBD3E007DCCD2 /* DFInformationViewController.m */,
 			);
 			path = contro;
 			sourceTree = "<group>";
@@ -608,6 +638,16 @@
 				180DBF3B238690C300EE6D52 /* DFCompanyTableViewCell.m */,
 				180D7A612387CD03007B9EEC /* DFContructionDetailView.h */,
 				180D7A622387CD03007B9EEC /* DFContructionDetailView.m */,
+				1803C62A238B5FC9007DCCD2 /* DFHomeCasesView.h */,
+				1803C62B238B5FC9007DCCD2 /* DFHomeCasesView.m */,
+				1803C62D238B6386007DCCD2 /* DFBottomTableViewCell.h */,
+				1803C62E238B6386007DCCD2 /* DFBottomTableViewCell.m */,
+				1803C630238B63F3007DCCD2 /* DFPageContentView.h */,
+				1803C631238B63F3007DCCD2 /* DFPageContentView.m */,
+				1803C633238B6698007DCCD2 /* DFNewMainTableView.h */,
+				1803C634238B6698007DCCD2 /* DFNewMainTableView.m */,
+				1803C639238B700A007DCCD2 /* DFItsCollectionViewCell.h */,
+				1803C63A238B700A007DCCD2 /* DFItsCollectionViewCell.m */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -1027,12 +1067,15 @@
 				180DBF3C238690C300EE6D52 /* DFCompanyTableViewCell.m in Sources */,
 				1815AE80233C898F007A1955 /* DFDesignerView.m in Sources */,
 				1815AE87233CAB5F007A1955 /* DFCasesView.m in Sources */,
+				1803C635238B6698007DCCD2 /* DFNewMainTableView.m in Sources */,
 				1815AE7D233C657C007A1955 /* DFEsignerDetialViewController.m in Sources */,
 				180D7A602387ACB0007B9EEC /* DFConstructionTtableCell.m in Sources */,
+				1803C644238BBD3E007DCCD2 /* DFInformationViewController.m in Sources */,
 				C48C2FF723818C6800ECFBC9 /* DFCityModel.m in Sources */,
 				180E7AD7238378C5009EB0A4 /* DFDesignerCommentCell.m in Sources */,
 				C428EBAD2333A880009E0E8A /* DFAppVersionTool.m in Sources */,
 				18EEA1AB235991D00072D0EB /* DFChooseView.m in Sources */,
+				1803C62F238B6386007DCCD2 /* DFBottomTableViewCell.m in Sources */,
 				C41FCD95233501110017427F /* DFMainTableViewCell.m in Sources */,
 				C48C2FF423818AB700ECFBC9 /* DFSaveDataTool.m in Sources */,
 				1815AE72233C3FAF007A1955 /* CQTopBarSegmentCell.m in Sources */,
@@ -1061,12 +1104,14 @@
 				C41FCD9B23350AE90017427F /* DFMainDataModel.m in Sources */,
 				C46AD0EA23339256000514B7 /* DFUserModelTool.m in Sources */,
 				180FCDF3233D972000CD4BB7 /* DFWorksTableViewCell.m in Sources */,
+				1803C63B238B700A007DCCD2 /* DFItsCollectionViewCell.m in Sources */,
 				180D7A632387CD03007B9EEC /* DFContructionDetailView.m in Sources */,
 				C46AD0E523338FE6000514B7 /* DFNetworkTool.m in Sources */,
 				C428EBD82333B58D009E0E8A /* DFFindGonglueViewController.m in Sources */,
 				C4E0680E23327A6300C0F650 /* ViewController.m in Sources */,
 				1809B477233B0F5000D768C3 /* DFDesignerModel.m in Sources */,
 				C41FCDA82337B7FD0017427F /* NSString+GHRegular.m in Sources */,
+				1803C62C238B5FC9007DCCD2 /* DFHomeCasesView.m in Sources */,
 				18095C5F23559478002212E9 /* DFHomeNaiBarView.m in Sources */,
 				1843A990236C18430070586C /* DFRegisteredSecondViewController.m in Sources */,
 				18EEA1B323599CB40072D0EB /* DFStrategyTableViewCell.m in Sources */,
@@ -1083,9 +1128,11 @@
 				1815AE78233C3FAF007A1955 /* CQTopBarSegment.m in Sources */,
 				188888DB23543FF800391F21 /* SDCollectionViewCell.m in Sources */,
 				C4E0681923327A6700C0F650 /* main.m in Sources */,
+				1803C632238B63F3007DCCD2 /* DFPageContentView.m in Sources */,
 				180E073223851EBE00CAF441 /* DfConstructionHeadrView.m in Sources */,
 				188888DD23543FF800391F21 /* TAPageControl.m in Sources */,
 				1843A996236C3E580070586C /* DFWorkListTableViewCell.m in Sources */,
+				1803C641238BAE25007DCCD2 /* DFRvaluationViewController.m in Sources */,
 				180B583E23585DE900D1E847 /* DFWaterFallLayout.m in Sources */,
 				188888D923543FF800391F21 /* SDCycleScrollView.m in Sources */,
 				C4E0680B23327A6300C0F650 /* AppDelegate.m in Sources */,
@@ -1094,6 +1141,7 @@
 				188888DF23543FF800391F21 /* TAAbstractDotView.m in Sources */,
 				188888DA23543FF800391F21 /* UIView+SDExtension.m in Sources */,
 				188888E22354430900391F21 /* DFHomeModuleButtonView.m in Sources */,
+				1803C638238B6DA4007DCCD2 /* DFConstructionSiteViewController.m in Sources */,
 				1843A993236C39030070586C /* DFDesignerWorkModel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

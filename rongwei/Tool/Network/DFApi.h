@@ -83,4 +83,9 @@
 */
 #define CompanyDetail   @"construction/company/1"
 
+/**
+施工公司评价列表
+*/
+#define constructionComments   @"construction/comments"
+
 #endif /* DFApi_h */
