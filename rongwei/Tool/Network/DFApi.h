@@ -88,4 +88,14 @@
 */
 #define constructionComments   @"construction/comments"
 
+/**
+施工工地详情
+*/
+#define constructionSiteStageInfos   @"construction/siteStageInfos"
+
+/**
+攻略 列表
+*/
+#define BbsGuide   @"bbs/guide"
+
 #endif /* DFApi_h */

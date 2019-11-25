@@ -8,9 +8,14 @@
 
 #import <UIKit/UIKit.h>
 
+#import "DFGongLueModel.h"
+
+
 NS_ASSUME_NONNULL_BEGIN
 
 @interface DFStrategyTableViewCell : UITableViewCell
+
+@property (nonatomic , strong)DFGongLueModel *model;
 
 @end
 

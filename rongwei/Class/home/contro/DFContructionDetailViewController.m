@@ -189,8 +189,14 @@
     }
     else{
         if (self.isSpecial) {
+           
+        }
+        else
+        {
             if (!self.canScroll) {//子视图没到顶部
+                           
                 scrollView.contentOffset = CGPointMake(0, bottomCellOffset);
+                       
             }
         }
 
@@ -241,14 +247,17 @@
             
             weakself.isSpecial = NO;
             if ([clickTitle isEqualToString:@"用户评价"]) {
+                weakself.isSpecial = NO;
                 weakself.contentCell.pageContentView.contentViewCurrentIndex = 1;
             }
             else if ([clickTitle isEqualToString:@"公司信息"])
             {
+                weakself.isSpecial = YES;
                 weakself.contentCell.pageContentView.contentViewCurrentIndex = 2;
             }
             else
             {
+                weakself.isSpecial = NO;
                 weakself.contentCell.pageContentView.contentViewCurrentIndex = 0;
             }
         };

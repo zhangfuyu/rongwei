@@ -9,6 +9,7 @@
 #import "DFConstructionSiteViewController.h"
 #import "DFItsCollectionViewCell.h"
 #import "DFConstructionModel.h"
+#import "DFSiteDetailViewController.h"
 
 @interface DFConstructionSiteViewController ()<UICollectionViewDelegate,UICollectionViewDataSource>
 @property (nonatomic , strong) NSMutableArray *dataArry;
@@ -98,6 +99,13 @@
 // 设置minimumInteritemSpacing：cell左右之间最小的距离
 - (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout minimumInteritemSpacingForSectionAtIndex:(NSInteger)section {
     return HScaleHeight(0);
+}
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    DFSiteDetailViewController *detail = [[DFSiteDetailViewController alloc]init];
+    detail.model = self.dataArry[indexPath.row];
+    [self.navigationController pushViewController:detail animated:YES];
+    
 }
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {

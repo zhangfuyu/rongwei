@@ -10,11 +10,14 @@
 #import "DFChooseView.h"
 #import "DFStrategyHeaderView.h"
 #import "DFStrategyTableViewCell.h"
+#import "DFGongLueModel.h"
 
 @interface DFFindGonglueViewController ()<UITableViewDelegate,UITableViewDataSource>
 @property (nonatomic , strong)DFChooseView *chooseview;
 
 @property (nonatomic , strong)DFStrategyHeaderView *tableviewHeader;
+
+@property (nonatomic , strong)NSMutableArray *list_arry;
 
 @end
 
@@ -37,6 +40,8 @@
 
     self.dataTableview.tableHeaderView = self.tableviewHeader;
     self.dataTableview.tableFooterView = [UIView new];
+    
+    [self getdata];
 }
 
 #pragma mark - UITableViewDelegate,UITableViewDataSource
@@ -46,7 +51,7 @@
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 3;
+    return self.list_arry.count;
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -55,11 +60,30 @@
     if (!cell) {
         cell = [[DFStrategyTableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellid];
     }
+    cell.model = self.list_arry[indexPath.row];
     return cell;
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     return HScaleHeight(90);
+}
+
+- (void)getdata
+{
+    [[DFNetworkTool shareInstance] requestWithMethod:GHRequestMethod_GET withUrl:BbsGuide withParameter:@{@"is_rec":@"0"} withLoadingType:GHLoadingType_HideLoading withShouldHaveToken:YES withContentType:GHContentType_Formdata completionBlock:^(BOOL isSuccess, NSString * _Nullable msg, id  _Nullable response) {
+        if (isSuccess) {
+            
+            NSArray *dataArry = response[@"data"];
+            if (dataArry.count > 0) {
+                for (NSDictionary *dic in dataArry) {
+                    DFGongLueModel *model = [[DFGongLueModel alloc]initWithDictionary:dic error:nil];
+                    [self.list_arry addObject:model];
+                }
+                
+            }
+            [self.dataTableview reloadData];
+        }
+    }];
 }
 
 - (DFChooseView *)chooseview
@@ -76,6 +100,13 @@
         _tableviewHeader = [[DFStrategyHeaderView alloc]initWithFrame:CGRectMake(0, 0, ScreenH, HScaleHeight(150))];
     }
     return _tableviewHeader;
+}
+- (NSMutableArray *)list_arry
+{
+    if (!_list_arry) {
+        _list_arry = [NSMutableArray arrayWithCapacity:0];
+    }
+    return _list_arry;
 }
 /*
 #pragma mark - Navigation

@@ -97,6 +97,10 @@
 		C46B0B1E2354ADF6000CC79B /* DFSectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = C46B0B1D2354ADF6000CC79B /* DFSectionView.m */; };
 		C48C2FF423818AB700ECFBC9 /* DFSaveDataTool.m in Sources */ = {isa = PBXBuildFile; fileRef = C48C2FF323818AB700ECFBC9 /* DFSaveDataTool.m */; };
 		C48C2FF723818C6800ECFBC9 /* DFCityModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C48C2FF623818C6800ECFBC9 /* DFCityModel.m */; };
+		C48C2FFA238C0F1500ECFBC9 /* DFSiteDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C48C2FF9238C0F1500ECFBC9 /* DFSiteDetailViewController.m */; };
+		C48C2FFD238C126B00ECFBC9 /* DFSiteStageInfosModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C48C2FFC238C126B00ECFBC9 /* DFSiteStageInfosModel.m */; };
+		C48C3000238C14E200ECFBC9 /* DFSiteStageInfosCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C48C2FFF238C14E200ECFBC9 /* DFSiteStageInfosCell.m */; };
+		C48C3003238C1F7200ECFBC9 /* DFGongLueModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C48C3002238C1F7200ECFBC9 /* DFGongLueModel.m */; };
 		C4E0680B23327A6300C0F650 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C4E0680A23327A6300C0F650 /* AppDelegate.m */; };
 		C4E0680E23327A6300C0F650 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C4E0680D23327A6300C0F650 /* ViewController.m */; };
 		C4E0681123327A6300C0F650 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C4E0680F23327A6300C0F650 /* Main.storyboard */; };
@@ -294,6 +298,14 @@
 		C48C2FF323818AB700ECFBC9 /* DFSaveDataTool.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DFSaveDataTool.m; sourceTree = "<group>"; };
 		C48C2FF523818C6800ECFBC9 /* DFCityModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DFCityModel.h; sourceTree = "<group>"; };
 		C48C2FF623818C6800ECFBC9 /* DFCityModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DFCityModel.m; sourceTree = "<group>"; };
+		C48C2FF8238C0F1500ECFBC9 /* DFSiteDetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DFSiteDetailViewController.h; sourceTree = "<group>"; };
+		C48C2FF9238C0F1500ECFBC9 /* DFSiteDetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DFSiteDetailViewController.m; sourceTree = "<group>"; };
+		C48C2FFB238C126B00ECFBC9 /* DFSiteStageInfosModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DFSiteStageInfosModel.h; sourceTree = "<group>"; };
+		C48C2FFC238C126B00ECFBC9 /* DFSiteStageInfosModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DFSiteStageInfosModel.m; sourceTree = "<group>"; };
+		C48C2FFE238C14E200ECFBC9 /* DFSiteStageInfosCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DFSiteStageInfosCell.h; sourceTree = "<group>"; };
+		C48C2FFF238C14E200ECFBC9 /* DFSiteStageInfosCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DFSiteStageInfosCell.m; sourceTree = "<group>"; };
+		C48C3001238C1F7200ECFBC9 /* DFGongLueModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DFGongLueModel.h; sourceTree = "<group>"; };
+		C48C3002238C1F7200ECFBC9 /* DFGongLueModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DFGongLueModel.m; sourceTree = "<group>"; };
 		C4E0680623327A6300C0F650 /* rongwei.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = rongwei.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C4E0680923327A6300C0F650 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		C4E0680A23327A6300C0F650 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -398,6 +410,8 @@
 				180DBF352386650A00EE6D52 /* DFConstructionModel.m */,
 				180DBF3D238696A300EE6D52 /* DFCompanyModel.h */,
 				180DBF3E238696A300EE6D52 /* DFCompanyModel.m */,
+				C48C2FFB238C126B00ECFBC9 /* DFSiteStageInfosModel.h */,
+				C48C2FFC238C126B00ECFBC9 /* DFSiteStageInfosModel.m */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -450,6 +464,8 @@
 		18EEA1AC235991FA0072D0EB /* model */ = {
 			isa = PBXGroup;
 			children = (
+				C48C3001238C1F7200ECFBC9 /* DFGongLueModel.h */,
+				C48C3002238C1F7200ECFBC9 /* DFGongLueModel.m */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -601,6 +617,8 @@
 				1803C640238BAE25007DCCD2 /* DFRvaluationViewController.m */,
 				1803C642238BBD3E007DCCD2 /* DFInformationViewController.h */,
 				1803C643238BBD3E007DCCD2 /* DFInformationViewController.m */,
+				C48C2FF8238C0F1500ECFBC9 /* DFSiteDetailViewController.h */,
+				C48C2FF9238C0F1500ECFBC9 /* DFSiteDetailViewController.m */,
 			);
 			path = contro;
 			sourceTree = "<group>";
@@ -648,6 +666,8 @@
 				1803C634238B6698007DCCD2 /* DFNewMainTableView.m */,
 				1803C639238B700A007DCCD2 /* DFItsCollectionViewCell.h */,
 				1803C63A238B700A007DCCD2 /* DFItsCollectionViewCell.m */,
+				C48C2FFE238C14E200ECFBC9 /* DFSiteStageInfosCell.h */,
+				C48C2FFF238C14E200ECFBC9 /* DFSiteStageInfosCell.m */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -1076,6 +1096,8 @@
 				C428EBAD2333A880009E0E8A /* DFAppVersionTool.m in Sources */,
 				18EEA1AB235991D00072D0EB /* DFChooseView.m in Sources */,
 				1803C62F238B6386007DCCD2 /* DFBottomTableViewCell.m in Sources */,
+				C48C2FFD238C126B00ECFBC9 /* DFSiteStageInfosModel.m in Sources */,
+				C48C3003238C1F7200ECFBC9 /* DFGongLueModel.m in Sources */,
 				C41FCD95233501110017427F /* DFMainTableViewCell.m in Sources */,
 				C48C2FF423818AB700ECFBC9 /* DFSaveDataTool.m in Sources */,
 				1815AE72233C3FAF007A1955 /* CQTopBarSegmentCell.m in Sources */,
@@ -1086,6 +1108,7 @@
 				180DBF392386678000EE6D52 /* DFConstructionCell.m in Sources */,
 				C428EBD22333B543009E0E8A /* DFMainViewController.m in Sources */,
 				1815AE75233C3FAF007A1955 /* CQTopBarViewController.m in Sources */,
+				C48C2FFA238C0F1500ECFBC9 /* DFSiteDetailViewController.m in Sources */,
 				C428EBD52333B55D009E0E8A /* DFXiaoGuoTuViewController.m in Sources */,
 				C428EBDB2333BAEC009E0E8A /* DFBaseViewController.m in Sources */,
 				1815AE6C233C3FAF007A1955 /* CQTopBarView.m in Sources */,
@@ -1135,6 +1158,7 @@
 				1803C641238BAE25007DCCD2 /* DFRvaluationViewController.m in Sources */,
 				180B583E23585DE900D1E847 /* DFWaterFallLayout.m in Sources */,
 				188888D923543FF800391F21 /* SDCycleScrollView.m in Sources */,
+				C48C3000238C14E200ECFBC9 /* DFSiteStageInfosCell.m in Sources */,
 				C4E0680B23327A6300C0F650 /* AppDelegate.m in Sources */,
 				1808D70B2339ABA600710164 /* DFForgotPasswordViewController.m in Sources */,
 				C41FCDA42337865A0017427F /* DFTextField.m in Sources */,
