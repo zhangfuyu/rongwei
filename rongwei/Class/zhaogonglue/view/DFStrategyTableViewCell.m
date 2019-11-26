@@ -52,7 +52,7 @@
 {
     _model = model;
     
-    [self.imageView sd_setImageWithURL:[NSURL URLWithString:model.bbs_pic] placeholderImage:nil];
+    [self.iconview sd_setImageWithURL:[NSURL URLWithString:model.bbs_pic] placeholderImage:nil];
     self.titlelabel.text = model.bbs_title;
     self.subtitle.text = [NSString stringWithFormat:@"阅读%@ | 评论%@ | %@",model.bbs_view,model.bbs_com_num,model.bbs_user_name];
 }

@@ -15,6 +15,8 @@
 		1803C63B238B700A007DCCD2 /* DFItsCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1803C63A238B700A007DCCD2 /* DFItsCollectionViewCell.m */; };
 		1803C641238BAE25007DCCD2 /* DFRvaluationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1803C640238BAE25007DCCD2 /* DFRvaluationViewController.m */; };
 		1803C644238BBD3E007DCCD2 /* DFInformationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1803C643238BBD3E007DCCD2 /* DFInformationViewController.m */; };
+		1803C647238CBDE9007DCCD2 /* DFStrategyDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1803C646238CBDE9007DCCD2 /* DFStrategyDetailViewController.m */; };
+		1803C64A238CEEA2007DCCD2 /* DFStrategyDetailHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1803C649238CEEA2007DCCD2 /* DFStrategyDetailHeaderView.m */; };
 		18066932236A601000830CA9 /* DFRegisteredFirstViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18066931236A601000830CA9 /* DFRegisteredFirstViewController.m */; };
 		1808D70B2339ABA600710164 /* DFForgotPasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1808D70A2339ABA600710164 /* DFForgotPasswordViewController.m */; };
 		18095C5F23559478002212E9 /* DFHomeNaiBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 18095C5E23559478002212E9 /* DFHomeNaiBarView.m */; };
@@ -146,6 +148,10 @@
 		1803C640238BAE25007DCCD2 /* DFRvaluationViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DFRvaluationViewController.m; sourceTree = "<group>"; };
 		1803C642238BBD3E007DCCD2 /* DFInformationViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DFInformationViewController.h; sourceTree = "<group>"; };
 		1803C643238BBD3E007DCCD2 /* DFInformationViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DFInformationViewController.m; sourceTree = "<group>"; };
+		1803C645238CBDE9007DCCD2 /* DFStrategyDetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DFStrategyDetailViewController.h; sourceTree = "<group>"; };
+		1803C646238CBDE9007DCCD2 /* DFStrategyDetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DFStrategyDetailViewController.m; sourceTree = "<group>"; };
+		1803C648238CEEA2007DCCD2 /* DFStrategyDetailHeaderView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DFStrategyDetailHeaderView.h; sourceTree = "<group>"; };
+		1803C649238CEEA2007DCCD2 /* DFStrategyDetailHeaderView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DFStrategyDetailHeaderView.m; sourceTree = "<group>"; };
 		18066930236A601000830CA9 /* DFRegisteredFirstViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DFRegisteredFirstViewController.h; sourceTree = "<group>"; };
 		18066931236A601000830CA9 /* DFRegisteredFirstViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DFRegisteredFirstViewController.m; sourceTree = "<group>"; };
 		1808D7092339ABA600710164 /* DFForgotPasswordViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DFForgotPasswordViewController.h; sourceTree = "<group>"; };
@@ -479,6 +485,8 @@
 				18EEA1AF235995E40072D0EB /* DFStrategyHeaderView.m */,
 				18EEA1B123599CB40072D0EB /* DFStrategyTableViewCell.h */,
 				18EEA1B223599CB40072D0EB /* DFStrategyTableViewCell.m */,
+				1803C648238CEEA2007DCCD2 /* DFStrategyDetailHeaderView.h */,
+				1803C649238CEEA2007DCCD2 /* DFStrategyDetailHeaderView.m */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -582,6 +590,8 @@
 			children = (
 				C428EBD62333B58D009E0E8A /* DFFindGonglueViewController.h */,
 				C428EBD72333B58D009E0E8A /* DFFindGonglueViewController.m */,
+				1803C645238CBDE9007DCCD2 /* DFStrategyDetailViewController.h */,
+				1803C646238CBDE9007DCCD2 /* DFStrategyDetailViewController.m */,
 			);
 			path = contro;
 			sourceTree = "<group>";
@@ -1106,6 +1116,7 @@
 				188888DE23543FF800391F21 /* TAAnimatedDotView.m in Sources */,
 				C41FCDA0233784880017427F /* DFLoginViewController.m in Sources */,
 				180DBF392386678000EE6D52 /* DFConstructionCell.m in Sources */,
+				1803C647238CBDE9007DCCD2 /* DFStrategyDetailViewController.m in Sources */,
 				C428EBD22333B543009E0E8A /* DFMainViewController.m in Sources */,
 				1815AE75233C3FAF007A1955 /* CQTopBarViewController.m in Sources */,
 				C48C2FFA238C0F1500ECFBC9 /* DFSiteDetailViewController.m in Sources */,
@@ -1149,6 +1160,7 @@
 				180DBF3F238696A300EE6D52 /* DFCompanyModel.m in Sources */,
 				1809B474233B075100D768C3 /* DFEsignerlListViewController.m in Sources */,
 				1815AE78233C3FAF007A1955 /* CQTopBarSegment.m in Sources */,
+				1803C64A238CEEA2007DCCD2 /* DFStrategyDetailHeaderView.m in Sources */,
 				188888DB23543FF800391F21 /* SDCollectionViewCell.m in Sources */,
 				C4E0681923327A6700C0F650 /* main.m in Sources */,
 				1803C632238B63F3007DCCD2 /* DFPageContentView.m in Sources */,

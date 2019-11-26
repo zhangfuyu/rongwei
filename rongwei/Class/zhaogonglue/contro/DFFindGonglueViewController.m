@@ -11,6 +11,7 @@
 #import "DFStrategyHeaderView.h"
 #import "DFStrategyTableViewCell.h"
 #import "DFGongLueModel.h"
+#import "DFStrategyDetailViewController.h"
 
 @interface DFFindGonglueViewController ()<UITableViewDelegate,UITableViewDataSource>
 @property (nonatomic , strong)DFChooseView *chooseview;
@@ -66,6 +67,14 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     return HScaleHeight(90);
+}
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    
+    DFGongLueModel *model = self.list_arry[indexPath.row];
+    DFStrategyDetailViewController *detail = [[DFStrategyDetailViewController alloc]init];
+    detail.modelid = model.modelId;
+    [self.navigationController pushViewController:detail animated:YES];
 }
 
 - (void)getdata

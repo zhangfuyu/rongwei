@@ -40,6 +40,11 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic , strong) NSString<Optional> *updated_at;
 
+@property (nonatomic , strong) NSString<Optional> *bbs_content;
+
+@property (nonatomic , strong) NSString<Optional> *sort;
+
+
 
 @end
 
