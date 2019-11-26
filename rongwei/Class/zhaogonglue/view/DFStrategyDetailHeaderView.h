@@ -14,9 +14,10 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface DFStrategyDetailHeaderView : UIView
 
-- (instancetype)initWithFrame:(CGRect)frame withModel:(DFGongLueModel *)model;
 
 @property (nonatomic , strong) DFGongLueModel *model;
+
+@property (nonatomic , copy)void (^globalBlockInMemory)(float headerHeight);
 
 @end
 

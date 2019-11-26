@@ -103,6 +103,7 @@
 		C48C2FFD238C126B00ECFBC9 /* DFSiteStageInfosModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C48C2FFC238C126B00ECFBC9 /* DFSiteStageInfosModel.m */; };
 		C48C3000238C14E200ECFBC9 /* DFSiteStageInfosCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C48C2FFF238C14E200ECFBC9 /* DFSiteStageInfosCell.m */; };
 		C48C3003238C1F7200ECFBC9 /* DFGongLueModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C48C3002238C1F7200ECFBC9 /* DFGongLueModel.m */; };
+		C48C3006238D5AEC00ECFBC9 /* DFSecondHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = C48C3005238D5AEC00ECFBC9 /* DFSecondHeaderView.m */; };
 		C4E0680B23327A6300C0F650 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C4E0680A23327A6300C0F650 /* AppDelegate.m */; };
 		C4E0680E23327A6300C0F650 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C4E0680D23327A6300C0F650 /* ViewController.m */; };
 		C4E0681123327A6300C0F650 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C4E0680F23327A6300C0F650 /* Main.storyboard */; };
@@ -312,6 +313,8 @@
 		C48C2FFF238C14E200ECFBC9 /* DFSiteStageInfosCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DFSiteStageInfosCell.m; sourceTree = "<group>"; };
 		C48C3001238C1F7200ECFBC9 /* DFGongLueModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DFGongLueModel.h; sourceTree = "<group>"; };
 		C48C3002238C1F7200ECFBC9 /* DFGongLueModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DFGongLueModel.m; sourceTree = "<group>"; };
+		C48C3004238D5AEC00ECFBC9 /* DFSecondHeaderView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DFSecondHeaderView.h; sourceTree = "<group>"; };
+		C48C3005238D5AEC00ECFBC9 /* DFSecondHeaderView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DFSecondHeaderView.m; sourceTree = "<group>"; };
 		C4E0680623327A6300C0F650 /* rongwei.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = rongwei.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C4E0680923327A6300C0F650 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		C4E0680A23327A6300C0F650 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -487,6 +490,8 @@
 				18EEA1B223599CB40072D0EB /* DFStrategyTableViewCell.m */,
 				1803C648238CEEA2007DCCD2 /* DFStrategyDetailHeaderView.h */,
 				1803C649238CEEA2007DCCD2 /* DFStrategyDetailHeaderView.m */,
+				C48C3004238D5AEC00ECFBC9 /* DFSecondHeaderView.h */,
+				C48C3005238D5AEC00ECFBC9 /* DFSecondHeaderView.m */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -1149,6 +1154,7 @@
 				18095C5F23559478002212E9 /* DFHomeNaiBarView.m in Sources */,
 				1843A990236C18430070586C /* DFRegisteredSecondViewController.m in Sources */,
 				18EEA1B323599CB40072D0EB /* DFStrategyTableViewCell.m in Sources */,
+				C48C3006238D5AEC00ECFBC9 /* DFSecondHeaderView.m in Sources */,
 				C428EBCC2333B51F009E0E8A /* DFHomeViewController.m in Sources */,
 				180B58372358084A00D1E847 /* DFRenderingNarbarView.m in Sources */,
 				188888C823543D3C00391F21 /* DFHomeHeaderView.m in Sources */,

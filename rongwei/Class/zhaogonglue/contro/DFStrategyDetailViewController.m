@@ -10,83 +10,174 @@
 #import "DFGongLueModel.h"
 #import "DFStrategyDetailHeaderView.h"
 #import "DFItsCollectionViewCell.h"
+#import "DFNewMainTableView.h"
+#import "DFSecondHeaderView.h"
+#import "DFBottomTableViewCell.h"
+#import "DFConstructionSiteViewController.h"
 
-@interface DFStrategyDetailViewController ()<UICollectionViewDelegate,UICollectionViewDataSource>
+@interface DFStrategyDetailViewController ()<UITableViewDelegate,UITableViewDataSource>
 
 @property (nonatomic , strong) DFGongLueModel *model;
 
-@property (nonatomic , strong) UICollectionView *scrollView;
+@property (nonatomic, strong) DFBottomTableViewCell *contentCell;
+
+
+@property (nonatomic , strong) DFStrategyDetailHeaderView *headerview;
+
+@property (nonatomic , strong) NSMutableArray *recommendedarry;
+
+@property (nonatomic, strong) DFNewMainTableView *homeTableview;
+
+@property (nonatomic , strong) DFSecondHeaderView *sceondView;
+
+@property (nonatomic , assign) BOOL canScroll;
+
+@property (nonatomic , assign) float headetheight;
 
 
 @end
 
 @implementation DFStrategyDetailViewController
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    self.navigationController.navigationBar.hidden = YES;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+    self.headetheight = HScaleHeight(250);
+
+    self.canScroll = YES;
+
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(changeScrollStatus) name:@"leaveTop" object:nil];
+
+
+
+    
     [self getdata];
     
-        UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
-        layout.scrollDirection = UICollectionViewScrollDirectionVertical;
-        self.scrollView = [[UICollectionView alloc]initWithFrame:CGRectMake(HScaleWidth(0), 0, ScreenW - HScaleWidth(0), ScreenH - kBottomSafeHeight )collectionViewLayout:layout];
-        [self.scrollView registerClass:[DFItsCollectionViewCell class] forCellWithReuseIdentifier:@"DFItsCollectionViewCell"];
-            /// 设置此属性为yes 不满一屏幕 也能滚动
-        self.scrollView.backgroundColor = [UIColor colorWithHexString:@"FFFFFF"];
-    //        _collectionview.alwaysBounceHorizontal = YES;
-        self.scrollView.alwaysBounceVertical = YES;
-        self.scrollView.showsHorizontalScrollIndicator = NO;
-        self.scrollView.delegate = self;
-        self.scrollView.dataSource = self;
-        [self.view addSubview:self.scrollView];
-    
+    [self getrecommended];
+
 
 }
-#pragma mark - 代理方法 Delegate Methods
-// 设置分区
+- (void)creattable
+{
+    
+    [self.view addSubview:self.headerview];
+    self.homeTableview = [[DFNewMainTableView alloc]initWithFrame:CGRectZero style:UITableViewStylePlain];
+    self.homeTableview.tableHeaderView = self.headerview;
 
-- (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
+    self.homeTableview.delegate = self;
+    self.homeTableview.dataSource = self;
+    [self.view addSubview:self.homeTableview];
+    WEAKSELF;
+    self.headerview.globalBlockInMemory = ^(float headerHeight) {
+        weakSelf.headerview.frame = CGRectMake(0, 0, ScreenW, headerHeight);
+        weakSelf.headetheight = headerHeight;
+        [weakSelf.homeTableview reloadData];
+    };
+    
+    [self.homeTableview mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.top.right.mas_equalTo(0);
+        make.bottom.mas_equalTo(-kBottomSafeHeight);
+    }];
+    
+    
+    if (@available(iOS 11.0, *)) {
+        self.homeTableview.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
+        // est和代理 可选1个
+        self.homeTableview.estimatedSectionFooterHeight = 0;
+        self.homeTableview.estimatedSectionHeaderHeight = 0;
+    } else {
+        self.automaticallyAdjustsScrollViewInsets = NO;
+    }
+}
+
+#pragma mark notify
+- (void)changeScrollStatus//改变主视图的状态
+{
+    self.canScroll = YES;
+    self.contentCell.cellCanScroll = NO;
+}
+#pragma mark - UITableViewDelegate,UITableViewDataSource
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    return 1;
+    
+}
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
     return 1;
 }
-
-// 每个分区上得元素个数
-- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    return 11;
-}
-
-// 设置cell
-- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
-
-    DFItsCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:NSStringFromClass([DFItsCollectionViewCell class]) forIndexPath:indexPath];
-//    [cell refreshCellWithTitle:self.nameArray[indexPath.row]];
-//    cell.model = self.dataArry[indexPath.row];
-    return cell;
-}
-
-// 设置cell大小 itemSize：可以给每一个cell指定不同的尺寸
-- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-//    CGFloat height = 35.0f;
-//    CGFloat width = [self gainStringWidthWithString:self.nameArray[indexPath.row] font:15.0f height:height];
-    return CGSizeMake(HScaleWidth(172.5), HScaleHeight(135.5));
+    return ScreenH - HScaleHeight(47) - kBottomSafeHeight - HScaleHeight(54);
+}
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    _contentCell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
+    if (!_contentCell) {
+        _contentCell = [[DFBottomTableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cell"];
+        NSMutableArray *contentVCs = [NSMutableArray array];
+
+        DFConstructionSiteViewController *construction = [[DFConstructionSiteViewController alloc]init];
+        construction.constructionid = @"1";
+        
+        [contentVCs addObject:construction];
+        
+        _contentCell.viewControllers = contentVCs;
+        _contentCell.pageContentView = [[DFPageContentView alloc]initWithFrame:CGRectMake(0, 0, ScreenW, ScreenH - HScaleHeight(47) - kBottomSafeHeight) childVCs:contentVCs parentVC:self delegate:self];
+        _contentCell.pageContentView.backgroundColor = [UIColor whiteColor];
+
+        _contentCell.pageContentView.contentViewCanScroll = NO;
+        [_contentCell.contentView addSubview:_contentCell.pageContentView];
+    }
+    return _contentCell;
+}
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+{
+    return HScaleHeight(47);
+}
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
+{
+    return self.sceondView;
 }
 
+#pragma mark UIScrollView
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView
+{
+    
+    
+    if (scrollView.contentOffset.y < 0) {
+        self.homeTableview.contentOffset = CGPointMake(0, 0);
+    }
+    
+    
+    CGFloat bottomCellOffset = [self.homeTableview rectForSection:0].origin.y;
 
-// 设置UIcollectionView整体的内边距（这样item不贴边显示）
-- (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout insetForSectionAtIndex:(NSInteger)section {
-    // 上 左 下 右
-    return UIEdgeInsetsMake(0, 0, 0, 0);
+    if (scrollView.contentOffset.y >= bottomCellOffset) {
+        scrollView.contentOffset = CGPointMake(0, bottomCellOffset);
+        if (self.canScroll) {
+            self.canScroll = NO;
+            self.contentCell.cellCanScroll = YES;
+        }
+    }
+    else{
+       
+        if (!self.canScroll) {//子视图没到顶部
+                       
+            scrollView.contentOffset = CGPointMake(0, bottomCellOffset);
+                   
+        }
+
+    }
+    self.homeTableview.showsVerticalScrollIndicator = _canScroll?YES:NO;
 }
 
-// 设置minimumLineSpacing：cell上下之间最小的距离
-- (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout minimumLineSpacingForSectionAtIndex:(NSInteger)section {
-    return HScaleHeight(0);
-}
-
-// 设置minimumInteritemSpacing：cell左右之间最小的距离
-- (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout minimumInteritemSpacingForSectionAtIndex:(NSInteger)section {
-    return HScaleHeight(0);
-}
 - (void)getdata
 {
     NSString *urlstr = [NSString stringWithFormat:@"%@/%@",BbsGuide,self.modelid];
@@ -97,11 +188,62 @@
             
             
             self.model = [[DFGongLueModel alloc]initWithDictionary:response[@"data"] error:nil];
-            DFStrategyDetailHeaderView *headervew = [[DFStrategyDetailHeaderView alloc]initWithFrame:CGRectMake(0, kNavBarHeight, ScreenW, HScaleHeight(370 + 5 + 300)) withModel:self.model];
-            self.scrollView.col
 
+            self.headerview.model = self.model;
+            
+
+            [self creattable];
+            
+            [self.homeTableview reloadData];
+            
         }
     }];
+}
+- (void)getrecommended
+{
+    [[DFNetworkTool shareInstance] requestWithMethod:GHRequestMethod_GET withUrl:BbsGuide withParameter:@{@"is_rec":@"1"} withLoadingType:GHLoadingType_HideLoading withShouldHaveToken:YES withContentType:GHContentType_Formdata completionBlock:^(BOOL isSuccess, NSString * _Nullable msg, id  _Nullable response) {
+        if (isSuccess) {
+            
+            NSArray *dataArry = response[@"data"];
+            if (dataArry.count > 0) {
+                for (NSDictionary *dic in dataArry) {
+                    DFGongLueModel *submodel = [[DFGongLueModel alloc]initWithDictionary:dic error:nil];
+                    [self.recommendedarry addObject:submodel];
+                }
+                
+            }
+            [self.homeTableview reloadData];
+        }
+    }];
+}
+- (DFStrategyDetailHeaderView *)headerview
+{
+    if (!_headerview) {
+        _headerview = [[DFStrategyDetailHeaderView alloc]init];
+    
+    }
+    return _headerview;
+}
+
+- (NSMutableArray *)recommendedarry
+{
+    if (!_recommendedarry) {
+        _recommendedarry = [NSMutableArray arrayWithCapacity:0];
+    }
+    return _recommendedarry;
+}
+
+- (DFSecondHeaderView *)sceondView
+{
+    if (!_sceondView) {
+        _sceondView = [[DFSecondHeaderView alloc]initWithFrame:CGRectMake(0, 0, ScreenW, HScaleHeight(47)) withtitle:@"猜你喜欢"];
+        _sceondView.backgroundColor = [UIColor whiteColor];
+    }
+    return _sceondView;
+}
+- (void)dealloc
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"leaveTop" object:nil];
 }
 /*
 #pragma mark - Navigation
