@@ -10,6 +10,7 @@
 #import "DFConstructionSiteViewController.h"
 #import "DFRvaluationViewController.h"
 #import "DFInformationViewController.h"
+#import "DFRecommendedViewController.h"
 
 @implementation DFBottomTableViewCell
 
@@ -55,13 +56,13 @@
             VC.scrollView.contentOffset = CGPointZero;
         }
     }
-//    for (GHAllDepartmentsViewController *VC in _viewControllers) {
-//           VC.vcCanScroll = cellCanScroll;
-//
-//           if (!cellCanScroll) {//如果cell不能滑动，代表到了顶部，修改所有子vc的状态回到顶部
-//               VC.scrollView.contentOffset = CGPointZero;
-//           }
-//       }
+    for (DFRecommendedViewController *VC in _viewControllers) {
+           VC.vcCanScroll = cellCanScroll;
+
+           if (!cellCanScroll) {//如果cell不能滑动，代表到了顶部，修改所有子vc的状态回到顶部
+               VC.scrollView.contentOffset = CGPointZero;
+           }
+       }
     
 }
 

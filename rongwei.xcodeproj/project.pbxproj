@@ -17,6 +17,8 @@
 		1803C644238BBD3E007DCCD2 /* DFInformationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1803C643238BBD3E007DCCD2 /* DFInformationViewController.m */; };
 		1803C647238CBDE9007DCCD2 /* DFStrategyDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1803C646238CBDE9007DCCD2 /* DFStrategyDetailViewController.m */; };
 		1803C64A238CEEA2007DCCD2 /* DFStrategyDetailHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1803C649238CEEA2007DCCD2 /* DFStrategyDetailHeaderView.m */; };
+		1803C64D238E0176007DCCD2 /* DFRecommendedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1803C64C238E0176007DCCD2 /* DFRecommendedViewController.m */; };
+		1803C650238E0289007DCCD2 /* DFStrategyCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1803C64F238E0289007DCCD2 /* DFStrategyCollectionViewCell.m */; };
 		18066932236A601000830CA9 /* DFRegisteredFirstViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18066931236A601000830CA9 /* DFRegisteredFirstViewController.m */; };
 		1808D70B2339ABA600710164 /* DFForgotPasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1808D70A2339ABA600710164 /* DFForgotPasswordViewController.m */; };
 		18095C5F23559478002212E9 /* DFHomeNaiBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 18095C5E23559478002212E9 /* DFHomeNaiBarView.m */; };
@@ -153,6 +155,10 @@
 		1803C646238CBDE9007DCCD2 /* DFStrategyDetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DFStrategyDetailViewController.m; sourceTree = "<group>"; };
 		1803C648238CEEA2007DCCD2 /* DFStrategyDetailHeaderView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DFStrategyDetailHeaderView.h; sourceTree = "<group>"; };
 		1803C649238CEEA2007DCCD2 /* DFStrategyDetailHeaderView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DFStrategyDetailHeaderView.m; sourceTree = "<group>"; };
+		1803C64B238E0176007DCCD2 /* DFRecommendedViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DFRecommendedViewController.h; sourceTree = "<group>"; };
+		1803C64C238E0176007DCCD2 /* DFRecommendedViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DFRecommendedViewController.m; sourceTree = "<group>"; };
+		1803C64E238E0289007DCCD2 /* DFStrategyCollectionViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DFStrategyCollectionViewCell.h; sourceTree = "<group>"; };
+		1803C64F238E0289007DCCD2 /* DFStrategyCollectionViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DFStrategyCollectionViewCell.m; sourceTree = "<group>"; };
 		18066930236A601000830CA9 /* DFRegisteredFirstViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DFRegisteredFirstViewController.h; sourceTree = "<group>"; };
 		18066931236A601000830CA9 /* DFRegisteredFirstViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DFRegisteredFirstViewController.m; sourceTree = "<group>"; };
 		1808D7092339ABA600710164 /* DFForgotPasswordViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DFForgotPasswordViewController.h; sourceTree = "<group>"; };
@@ -492,6 +498,8 @@
 				1803C649238CEEA2007DCCD2 /* DFStrategyDetailHeaderView.m */,
 				C48C3004238D5AEC00ECFBC9 /* DFSecondHeaderView.h */,
 				C48C3005238D5AEC00ECFBC9 /* DFSecondHeaderView.m */,
+				1803C64E238E0289007DCCD2 /* DFStrategyCollectionViewCell.h */,
+				1803C64F238E0289007DCCD2 /* DFStrategyCollectionViewCell.m */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -597,6 +605,8 @@
 				C428EBD72333B58D009E0E8A /* DFFindGonglueViewController.m */,
 				1803C645238CBDE9007DCCD2 /* DFStrategyDetailViewController.h */,
 				1803C646238CBDE9007DCCD2 /* DFStrategyDetailViewController.m */,
+				1803C64B238E0176007DCCD2 /* DFRecommendedViewController.h */,
+				1803C64C238E0176007DCCD2 /* DFRecommendedViewController.m */,
 			);
 			path = contro;
 			sourceTree = "<group>";
@@ -1128,6 +1138,7 @@
 				C428EBD52333B55D009E0E8A /* DFXiaoGuoTuViewController.m in Sources */,
 				C428EBDB2333BAEC009E0E8A /* DFBaseViewController.m in Sources */,
 				1815AE6C233C3FAF007A1955 /* CQTopBarView.m in Sources */,
+				1803C650238E0289007DCCD2 /* DFStrategyCollectionViewCell.m in Sources */,
 				18810E7E23347D1A00F8191C /* DFMainHeaderView.m in Sources */,
 				180E072F238506F000CAF441 /* DFFoundConstructionViewController.m in Sources */,
 				C41FCD98233507F70017427F /* DFMainCellBtn.m in Sources */,
@@ -1151,6 +1162,7 @@
 				1809B477233B0F5000D768C3 /* DFDesignerModel.m in Sources */,
 				C41FCDA82337B7FD0017427F /* NSString+GHRegular.m in Sources */,
 				1803C62C238B5FC9007DCCD2 /* DFHomeCasesView.m in Sources */,
+				1803C64D238E0176007DCCD2 /* DFRecommendedViewController.m in Sources */,
 				18095C5F23559478002212E9 /* DFHomeNaiBarView.m in Sources */,
 				1843A990236C18430070586C /* DFRegisteredSecondViewController.m in Sources */,
 				18EEA1B323599CB40072D0EB /* DFStrategyTableViewCell.m in Sources */,

@@ -14,6 +14,7 @@
 #import "DFSecondHeaderView.h"
 #import "DFBottomTableViewCell.h"
 #import "DFConstructionSiteViewController.h"
+#import "DFRecommendedViewController.h"
 
 @interface DFStrategyDetailViewController ()<UITableViewDelegate,UITableViewDataSource>
 
@@ -34,6 +35,10 @@
 
 @property (nonatomic , assign) float headetheight;
 
+@property (nonatomic , strong) UIView *navitationview;
+
+@property (nonatomic , strong) UILabel *titlelabel;
+
 
 @end
 
@@ -49,10 +54,11 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
+    self.navitationview.hidden = YES;
+    
     self.headetheight = HScaleHeight(250);
 
     self.canScroll = YES;
-
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(changeScrollStatus) name:@"leaveTop" object:nil];
 
 
@@ -60,7 +66,7 @@
     
     [self getdata];
     
-    [self getrecommended];
+//    [self getrecommended];
 
 
 }
@@ -78,6 +84,7 @@
     self.headerview.globalBlockInMemory = ^(float headerHeight) {
         weakSelf.headerview.frame = CGRectMake(0, 0, ScreenW, headerHeight);
         weakSelf.headetheight = headerHeight;
+        weakSelf.canScroll = YES;
         [weakSelf.homeTableview reloadData];
     };
     
@@ -124,13 +131,13 @@
         _contentCell = [[DFBottomTableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cell"];
         NSMutableArray *contentVCs = [NSMutableArray array];
 
-        DFConstructionSiteViewController *construction = [[DFConstructionSiteViewController alloc]init];
-        construction.constructionid = @"1";
+        DFRecommendedViewController *construction = [[DFRecommendedViewController alloc]init];
+//        construction.constructionid = @"1";
         
         [contentVCs addObject:construction];
         
         _contentCell.viewControllers = contentVCs;
-        _contentCell.pageContentView = [[DFPageContentView alloc]initWithFrame:CGRectMake(0, 0, ScreenW, ScreenH - HScaleHeight(47) - kBottomSafeHeight) childVCs:contentVCs parentVC:self delegate:self];
+        _contentCell.pageContentView = [[DFPageContentView alloc]initWithFrame:CGRectMake(0, 0, ScreenW, ScreenH - HScaleHeight(47) - kBottomSafeHeight) childVCs:contentVCs parentVC:self delegate:nil];
         _contentCell.pageContentView.backgroundColor = [UIColor whiteColor];
 
         _contentCell.pageContentView.contentViewCanScroll = NO;
@@ -152,8 +159,14 @@
 {
     
     
-    if (scrollView.contentOffset.y < 0) {
-        self.homeTableview.contentOffset = CGPointMake(0, 0);
+    if (scrollView.contentOffset.y > kNavBarAndStatusBarHeight) {
+        self.navitationview.hidden = NO;
+        [self.view bringSubviewToFront:self.navitationview];
+    }
+    else
+    {
+        self.navitationview.hidden = YES;
+
     }
     
     
@@ -191,6 +204,7 @@
 
             self.headerview.model = self.model;
             
+            self.titlelabel.text = self.model.bbs_title;
 
             [self creattable];
             
@@ -199,22 +213,37 @@
         }
     }];
 }
-- (void)getrecommended
+- (UIView *)navitationview
 {
-    [[DFNetworkTool shareInstance] requestWithMethod:GHRequestMethod_GET withUrl:BbsGuide withParameter:@{@"is_rec":@"1"} withLoadingType:GHLoadingType_HideLoading withShouldHaveToken:YES withContentType:GHContentType_Formdata completionBlock:^(BOOL isSuccess, NSString * _Nullable msg, id  _Nullable response) {
-        if (isSuccess) {
-            
-            NSArray *dataArry = response[@"data"];
-            if (dataArry.count > 0) {
-                for (NSDictionary *dic in dataArry) {
-                    DFGongLueModel *submodel = [[DFGongLueModel alloc]initWithDictionary:dic error:nil];
-                    [self.recommendedarry addObject:submodel];
-                }
-                
-            }
-            [self.homeTableview reloadData];
-        }
-    }];
+    if (!_navitationview) {
+        _navitationview = [[UIView alloc]initWithFrame:CGRectMake(0, 0, ScreenW, kNavBarAndStatusBarHeight)];
+        _navitationview.backgroundColor = [UIColor colorWithHexString:@"FFFFFF"];
+        [self.view addSubview:_navitationview];
+        
+        
+        
+        UIButton *backBtn = [[UIButton alloc] initWithFrame:CGRectMake(0, kStatusBarHeight, 44, 44)];
+        backBtn.showsTouchWhenHighlighted = NO;
+        [backBtn setImage:[UIImage imageNamed:@"login_back"] forState:UIControlStateNormal];
+        [backBtn addTarget:self action:@selector(clickCancelAction) forControlEvents:UIControlEventTouchUpInside];
+        [_navitationview addSubview:backBtn];
+        
+        self.titlelabel = [[UILabel alloc]init];
+        self.titlelabel.font = HScaleFont(12);
+        self.titlelabel.textColor = [UIColor colorWithHexString:@"333333"];
+        [_navitationview addSubview:self.titlelabel];
+        
+        [self.titlelabel mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.left.mas_equalTo(backBtn.mas_right).offset(HScaleWidth(11));;
+            make.top.mas_equalTo(kStatusBarHeight);
+            make.bottom.mas_equalTo(0);
+            make.right.mas_equalTo(_navitationview.mas_right).offset(-HScaleWidth(137));
+        }];
+    }
+    return _navitationview;
+}
+- (void)clickCancelAction{
+    [self.navigationController popViewControllerAnimated:YES];
 }
 - (DFStrategyDetailHeaderView *)headerview
 {
