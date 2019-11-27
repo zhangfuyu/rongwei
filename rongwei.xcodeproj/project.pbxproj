@@ -106,6 +106,9 @@
 		C48C3000238C14E200ECFBC9 /* DFSiteStageInfosCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C48C2FFF238C14E200ECFBC9 /* DFSiteStageInfosCell.m */; };
 		C48C3003238C1F7200ECFBC9 /* DFGongLueModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C48C3002238C1F7200ECFBC9 /* DFGongLueModel.m */; };
 		C48C3006238D5AEC00ECFBC9 /* DFSecondHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = C48C3005238D5AEC00ECFBC9 /* DFSecondHeaderView.m */; };
+		C48C3009238ED31700ECFBC9 /* DFCommentBommenView.m in Sources */ = {isa = PBXBuildFile; fileRef = C48C3008238ED31700ECFBC9 /* DFCommentBommenView.m */; };
+		C48C300C238ED88B00ECFBC9 /* DFGongLueCommentsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C48C300B238ED88B00ECFBC9 /* DFGongLueCommentsViewController.m */; };
+		C48C300F238EDC0D00ECFBC9 /* DFGongLueCommentModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C48C300E238EDC0D00ECFBC9 /* DFGongLueCommentModel.m */; };
 		C4E0680B23327A6300C0F650 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C4E0680A23327A6300C0F650 /* AppDelegate.m */; };
 		C4E0680E23327A6300C0F650 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C4E0680D23327A6300C0F650 /* ViewController.m */; };
 		C4E0681123327A6300C0F650 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C4E0680F23327A6300C0F650 /* Main.storyboard */; };
@@ -321,6 +324,12 @@
 		C48C3002238C1F7200ECFBC9 /* DFGongLueModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DFGongLueModel.m; sourceTree = "<group>"; };
 		C48C3004238D5AEC00ECFBC9 /* DFSecondHeaderView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DFSecondHeaderView.h; sourceTree = "<group>"; };
 		C48C3005238D5AEC00ECFBC9 /* DFSecondHeaderView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DFSecondHeaderView.m; sourceTree = "<group>"; };
+		C48C3007238ED31700ECFBC9 /* DFCommentBommenView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DFCommentBommenView.h; sourceTree = "<group>"; };
+		C48C3008238ED31700ECFBC9 /* DFCommentBommenView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DFCommentBommenView.m; sourceTree = "<group>"; };
+		C48C300A238ED88B00ECFBC9 /* DFGongLueCommentsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DFGongLueCommentsViewController.h; sourceTree = "<group>"; };
+		C48C300B238ED88B00ECFBC9 /* DFGongLueCommentsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DFGongLueCommentsViewController.m; sourceTree = "<group>"; };
+		C48C300D238EDC0D00ECFBC9 /* DFGongLueCommentModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DFGongLueCommentModel.h; sourceTree = "<group>"; };
+		C48C300E238EDC0D00ECFBC9 /* DFGongLueCommentModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DFGongLueCommentModel.m; sourceTree = "<group>"; };
 		C4E0680623327A6300C0F650 /* rongwei.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = rongwei.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C4E0680923327A6300C0F650 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		C4E0680A23327A6300C0F650 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -481,6 +490,8 @@
 			children = (
 				C48C3001238C1F7200ECFBC9 /* DFGongLueModel.h */,
 				C48C3002238C1F7200ECFBC9 /* DFGongLueModel.m */,
+				C48C300D238EDC0D00ECFBC9 /* DFGongLueCommentModel.h */,
+				C48C300E238EDC0D00ECFBC9 /* DFGongLueCommentModel.m */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -500,6 +511,8 @@
 				C48C3005238D5AEC00ECFBC9 /* DFSecondHeaderView.m */,
 				1803C64E238E0289007DCCD2 /* DFStrategyCollectionViewCell.h */,
 				1803C64F238E0289007DCCD2 /* DFStrategyCollectionViewCell.m */,
+				C48C3007238ED31700ECFBC9 /* DFCommentBommenView.h */,
+				C48C3008238ED31700ECFBC9 /* DFCommentBommenView.m */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -607,6 +620,8 @@
 				1803C646238CBDE9007DCCD2 /* DFStrategyDetailViewController.m */,
 				1803C64B238E0176007DCCD2 /* DFRecommendedViewController.h */,
 				1803C64C238E0176007DCCD2 /* DFRecommendedViewController.m */,
+				C48C300A238ED88B00ECFBC9 /* DFGongLueCommentsViewController.h */,
+				C48C300B238ED88B00ECFBC9 /* DFGongLueCommentsViewController.m */,
 			);
 			path = contro;
 			sourceTree = "<group>";
@@ -1164,6 +1179,7 @@
 				1803C62C238B5FC9007DCCD2 /* DFHomeCasesView.m in Sources */,
 				1803C64D238E0176007DCCD2 /* DFRecommendedViewController.m in Sources */,
 				18095C5F23559478002212E9 /* DFHomeNaiBarView.m in Sources */,
+				C48C3009238ED31700ECFBC9 /* DFCommentBommenView.m in Sources */,
 				1843A990236C18430070586C /* DFRegisteredSecondViewController.m in Sources */,
 				18EEA1B323599CB40072D0EB /* DFStrategyTableViewCell.m in Sources */,
 				C48C3006238D5AEC00ECFBC9 /* DFSecondHeaderView.m in Sources */,
@@ -1174,6 +1190,7 @@
 				18BD929C235D7C360084873C /* DFBuildingHeaderView.m in Sources */,
 				188888DC23543FF800391F21 /* TADotView.m in Sources */,
 				180D7A5D2387AB2D007B9EEC /* DFContructionDetailViewController.m in Sources */,
+				C48C300C238ED88B00ECFBC9 /* DFGongLueCommentsViewController.m in Sources */,
 				1815AE6F233C3FAF007A1955 /* CQSegmentTitleImage.m in Sources */,
 				180DBF3F238696A300EE6D52 /* DFCompanyModel.m in Sources */,
 				1809B474233B075100D768C3 /* DFEsignerlListViewController.m in Sources */,
@@ -1184,6 +1201,7 @@
 				1803C632238B63F3007DCCD2 /* DFPageContentView.m in Sources */,
 				180E073223851EBE00CAF441 /* DfConstructionHeadrView.m in Sources */,
 				188888DD23543FF800391F21 /* TAPageControl.m in Sources */,
+				C48C300F238EDC0D00ECFBC9 /* DFGongLueCommentModel.m in Sources */,
 				1843A996236C3E580070586C /* DFWorkListTableViewCell.m in Sources */,
 				1803C641238BAE25007DCCD2 /* DFRvaluationViewController.m in Sources */,
 				180B583E23585DE900D1E847 /* DFWaterFallLayout.m in Sources */,

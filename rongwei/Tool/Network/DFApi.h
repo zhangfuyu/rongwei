@@ -98,5 +98,10 @@
 */
 #define BbsGuide   @"bbs/guide"
 
+/**
+根据攻略ID 获取该攻略下方评论
+*/
+#define BbsGuideComment   @"bbs/comment"
+
 
 #endif /* DFApi_h */

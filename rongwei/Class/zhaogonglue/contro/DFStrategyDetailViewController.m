@@ -15,6 +15,7 @@
 #import "DFBottomTableViewCell.h"
 #import "DFConstructionSiteViewController.h"
 #import "DFRecommendedViewController.h"
+#import "DFCommentBommenView.h"
 
 @interface DFStrategyDetailViewController ()<UITableViewDelegate,UITableViewDataSource>
 
@@ -39,6 +40,8 @@
 
 @property (nonatomic , strong) UILabel *titlelabel;
 
+@property (nonatomic , strong) DFCommentBommenView *boomview;
+
 
 @end
 
@@ -62,6 +65,11 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(changeScrollStatus) name:@"leaveTop" object:nil];
 
 
+    [self.boomview mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.right.mas_equalTo(0);
+        make.bottom.mas_equalTo(- kBottomSafeHeight);
+        make.height.mas_equalTo(HScaleHeight(54));
+    }];
 
     
     [self getdata];
@@ -76,7 +84,7 @@
     [self.view addSubview:self.headerview];
     self.homeTableview = [[DFNewMainTableView alloc]initWithFrame:CGRectZero style:UITableViewStylePlain];
     self.homeTableview.tableHeaderView = self.headerview;
-
+    self.homeTableview.separatorStyle = UITableViewCellSeparatorStyleNone;
     self.homeTableview.delegate = self;
     self.homeTableview.dataSource = self;
     [self.view addSubview:self.homeTableview];
@@ -90,7 +98,7 @@
     
     [self.homeTableview mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.top.right.mas_equalTo(0);
-        make.bottom.mas_equalTo(-kBottomSafeHeight);
+        make.bottom.mas_equalTo(-kBottomSafeHeight - HScaleHeight(54));
     }];
     
     
@@ -137,7 +145,7 @@
         [contentVCs addObject:construction];
         
         _contentCell.viewControllers = contentVCs;
-        _contentCell.pageContentView = [[DFPageContentView alloc]initWithFrame:CGRectMake(0, 0, ScreenW, ScreenH - HScaleHeight(47) - kBottomSafeHeight) childVCs:contentVCs parentVC:self delegate:nil];
+        _contentCell.pageContentView = [[DFPageContentView alloc]initWithFrame:CGRectMake(0, 0, ScreenW, ScreenH - HScaleHeight(47) - kBottomSafeHeight - HScaleHeight(54)) childVCs:contentVCs parentVC:self delegate:nil];
         _contentCell.pageContentView.backgroundColor = [UIColor whiteColor];
 
         _contentCell.pageContentView.contentViewCanScroll = NO;
@@ -204,6 +212,8 @@
 
             self.headerview.model = self.model;
             
+            self.boomview.model = self.model;
+            
             self.titlelabel.text = self.model.bbs_title;
 
             [self creattable];
@@ -269,6 +279,14 @@
         _sceondView.backgroundColor = [UIColor whiteColor];
     }
     return _sceondView;
+}
+- (DFCommentBommenView *)boomview
+{
+    if (!_boomview) {
+        _boomview = [[DFCommentBommenView alloc]init];
+        [self.view addSubview:_boomview];
+    }
+    return _boomview;
 }
 - (void)dealloc
 {
