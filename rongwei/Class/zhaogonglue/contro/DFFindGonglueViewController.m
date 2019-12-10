@@ -12,6 +12,7 @@
 #import "DFStrategyTableViewCell.h"
 #import "DFGongLueModel.h"
 #import "DFStrategyDetailViewController.h"
+#import "DFHomeNavModel.h"
 
 @interface DFFindGonglueViewController ()<UITableViewDelegate,UITableViewDataSource>
 @property (nonatomic , strong)DFChooseView *chooseview;
@@ -19,6 +20,8 @@
 @property (nonatomic , strong)DFStrategyHeaderView *tableviewHeader;
 
 @property (nonatomic , strong)NSMutableArray *list_arry;
+
+@property (nonatomic , strong)NSMutableArray *hot_arry;
 
 @end
 
@@ -34,7 +37,11 @@
     [super viewDidLoad];
     self.title = @"找攻略";
     // Do any additional setup after loading the view.
-    self.chooseview.titleArry = [NSMutableArray arrayWithArray:@[@"全部",@"装修设计",@"预算报价",@"建材购买",@"验房收房",@"其他"]];
+//    self.chooseview.titleArry = [NSMutableArray arrayWithArray:@[@"全部",@"装修设计",@"预算报价",@"建材购买",@"验房收房",@"其他"]];
+    WEAKSELF;
+    self.chooseview.clickTypeBlock = ^(NSString * _Nonnull clickTitle) {
+        [weakSelf getdataWithClassId:clickTitle];
+    };
     [self allocTableviewWith:UITableViewStylePlain];
     self.dataTableview.delegate = self;
     self.dataTableview.dataSource = self;
@@ -48,7 +55,8 @@
     self.dataTableview.tableHeaderView = self.tableviewHeader;
     self.dataTableview.tableFooterView = [UIView new];
     
-    [self getdata];
+    [self getMoreClass];
+    [self getnav];
 }
 
 #pragma mark - UITableViewDelegate,UITableViewDataSource
@@ -83,10 +91,27 @@
     [self.navigationController pushViewController:detail animated:YES];
 }
 
-- (void)getdata
+- (void)getMoreClass
 {
-    [[DFNetworkTool shareInstance] requestWithMethod:GHRequestMethod_GET withUrl:BbsGuide withParameter:@{@"is_rec":@"0"} withLoadingType:GHLoadingType_HideLoading withShouldHaveToken:YES withContentType:GHContentType_Formdata completionBlock:^(BOOL isSuccess, NSString * _Nullable msg, id  _Nullable response) {
+    [[DFNetworkTool shareInstance] requestWithMethod:GHRequestMethod_GET withUrl:BbsClass withParameter:nil withLoadingType:GHLoadingType_HideLoading withShouldHaveToken:YES withContentType:GHContentType_Formdata completionBlock:^(BOOL isSuccess, NSString * _Nullable msg, id  _Nullable response) {
+         if (isSuccess) {
+             
+             self.chooseview.titleArry = [NSMutableArray arrayWithArray:response[@"data"]];
+             NSDictionary *dic = self.chooseview.titleArry.firstObject;
+             [self getdataWithClassId:dic[@"id"]];
+         }
+     }];
+}
+
+- (void)getdataWithClassId:(NSString *)classid
+{
+    
+
+    [SVProgressHUD showWithStatus:@"加载中"];
+    [[DFNetworkTool shareInstance] requestWithMethod:GHRequestMethod_GET withUrl:BbsGuide withParameter:@{@"is_rec":@"0",@"class_id":classid} withLoadingType:GHLoadingType_HideLoading withShouldHaveToken:YES withContentType:GHContentType_Formdata completionBlock:^(BOOL isSuccess, NSString * _Nullable msg, id  _Nullable response) {
         if (isSuccess) {
+            
+            [self.list_arry removeAllObjects];
             
             NSArray *dataArry = response[@"data"];
             if (dataArry.count > 0) {
@@ -97,6 +122,22 @@
                 
             }
             [self.dataTableview reloadData];
+        }
+    }];
+}
+- (void)getnav
+{
+    [[DFNetworkTool shareInstance] requestWithMethod:GHRequestMethod_GET withUrl:BbsADS withParameter:nil withLoadingType:GHLoadingType_HideLoading withShouldHaveToken:YES withContentType:GHContentType_Formdata completionBlock:^(BOOL isSuccess, NSString * _Nullable msg, id  _Nullable response) {
+        if (isSuccess) {
+            
+            NSArray *hot = response[@"data"][@"app_hot"];//[@"APP-热门攻略广告位"];
+            for (NSInteger index = 0; index < hot.count; index ++) {
+                NSDictionary *dic = hot[index];
+                DFHomeNavModel *model = [[DFHomeNavModel alloc]initWithDictionary:dic error:nil];
+                [self.hot_arry addObject:model];
+
+            }
+            self.tableviewHeader.hotarry = self.hot_arry;
         }
     }];
 }
@@ -122,6 +163,13 @@
         _list_arry = [NSMutableArray arrayWithCapacity:0];
     }
     return _list_arry;
+}
+- (NSMutableArray *)hot_arry
+{
+    if (!_hot_arry) {
+        _hot_arry = [NSMutableArray arrayWithCapacity:0];
+    }
+    return _hot_arry;
 }
 /*
 #pragma mark - Navigation

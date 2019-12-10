@@ -11,12 +11,15 @@
 #import "CQTopBarSegment.h"
 #import "DFWaterFallLayout.h"
 #import "DFRenderingCollectionViewCell.h"
+#import "DFDesignerWorkModel.h"
+#import "DFWorksDetailViewController.h"
 
 @interface DFXiaoGuoTuViewController ()<DFWaterFallLayoutDeleaget, UICollectionViewDelegate, UICollectionViewDataSource>
 @property (nonatomic , strong)DFRenderingNarbarView *navview;
 @property (nonatomic , strong)CQTopBarSegment *segment;
 
 @property (nonatomic , strong)UICollectionView *scrollView;
+@property (nonatomic , strong)NSMutableArray *work_listArry;
 
 @end
 
@@ -40,16 +43,13 @@
     [self.view addSubview:self.segment];
     
     // 创建布局
-    DFWaterFallLayout * waterFallLayout = [[DFWaterFallLayout alloc]init];
-    waterFallLayout.fallDelegate = self;
-    //    waterFallLayout.headerReferenceSize = CGSizeMake(SCREENWIDTH, HScaleHeight(350));
-    
-    //    UICollectionViewFlowLayout *waterFallLayout = [[UICollectionViewFlowLayout alloc] init];
-    
-    //    waterFallLayout.headerReferenceSize = CGSizeMake(SCREENWIDTH, HScaleHeight(350));
+    // 1.创建流水布局
+   UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
+   layout.scrollDirection = UICollectionViewScrollDirectionVertical;
+
     
     // 创建collectionView
-    self.scrollView = [[UICollectionView alloc]initWithFrame:CGRectMake(0, kNavBarAndStatusBarHeight + HScaleHeight(47), ScreenW, ScreenH - kNavAndTabHeight - HScaleHeight(47)) collectionViewLayout:waterFallLayout];
+    self.scrollView = [[UICollectionView alloc]initWithFrame:CGRectMake(0, kNavBarAndStatusBarHeight + HScaleHeight(47), ScreenW ,ScreenH - kNavAndTabHeight - HScaleHeight(47))collectionViewLayout:layout];
     self.scrollView.backgroundColor = [UIColor whiteColor];
     self.scrollView.delegate = self;
     self.scrollView.dataSource = self;
@@ -62,55 +62,150 @@
     
     [self.view addSubview:self.scrollView];
     
-}
-
-#pragma mark  - <LMHWaterFallLayoutDeleaget>
-- (CGFloat)waterFallLayout:(DFWaterFallLayout *)waterFallLayout heightForItemAtIndexPath:(NSUInteger)indexPath itemWidth:(CGFloat)itemWidth{
-   
-    
-    return HScaleHeight(126);
-}
-
-- (CGFloat)rowMarginInWaterFallLayout:(DFWaterFallLayout *)waterFallLayout {
-    
-    return HScaleWidth(10);
+    [self getWorkData];
     
 }
 
-- (CGFloat)columnMarginInWaterFallLayout:(DFWaterFallLayout *)waterFallLayout {
+/// 推荐案例
+- (void)getWorkData
+{
     
-    return HScaleWidth(10);
-    
-}
+    [SVProgressHUD showWithStatus:@"正在加载。。。"];
+    NSMutableDictionary *parmar = [@{
+        @"is_rec":@"1",
 
-- (NSUInteger)columnCountInWaterFallLayout:(DFWaterFallLayout *)waterFallLayout{
-    
-    return 2;
-    
+    }copy];
+    [[DFNetworkTool shareInstance] requestWithMethod:GHRequestMethod_GET withUrl:WorkDesignerDetailApi withParameter:parmar withLoadingType:GHLoadingType_ShowLoading withShouldHaveToken:YES withContentType:GHContentType_Formdata completionBlock:^(BOOL isSuccess, NSString * _Nullable msg, id  _Nullable response) {
+        [SVProgressHUD showSuccessWithStatus:@"加载成功"];
+           if (isSuccess) {
+               
+              NSArray *listarry = response[@"data"];
+              if (listarry.count > 0) {
+                  for (NSDictionary *dic in listarry) {
+                      DFDesignerWorkModel *workmodel = [[DFDesignerWorkModel alloc]initWithDictionary:dic error:nil];
+                      [self.work_listArry addObject:workmodel];
+                  }
+              }
+              [self.scrollView reloadData];
+               
+           }
+       }];
 }
-#pragma mark - UICollectionViewDelegate
+#pragma mark - 代理方法 Delegate Methods
+// 设置分区
 
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
-    
     return 1;
-    
 }
 
+// 每个分区上得元素个数
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    
-    return 2;
-    
+    return self.work_listArry.count;
 }
 
+// 设置cell
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
-    
+
     DFRenderingCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"DFRenderingCollectionViewCell" forIndexPath:indexPath];
+    cell.model = self.work_listArry[indexPath.row];
     
-   
-    
+     
     return cell;
-    
 }
+
+// 设置cell大小 itemSize：可以给每一个cell指定不同的尺寸
+- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
+{
+//    CGFloat height = 35.0f;
+//    CGFloat width = [self gainStringWidthWithString:self.nameArray[indexPath.row] font:15.0f height:height];
+    return CGSizeMake((ScreenW - HScaleWidth(30)) / 2, HScaleHeight(126));
+}
+
+
+// 设置UIcollectionView整体的内边距（这样item不贴边显示）
+- (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout insetForSectionAtIndex:(NSInteger)section {
+    
+    if (section % 2 > 0) {
+        
+        return UIEdgeInsetsMake(0, 0, 0, HScaleWidth(10));
+
+    }
+    else
+    {
+        return UIEdgeInsetsMake(0, 10, 0,HScaleWidth(10));
+
+    }
+    // 上 左 下 右
+}
+
+// 设置minimumLineSpacing：cell上下之间最小的距离
+- (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout minimumLineSpacingForSectionAtIndex:(NSInteger)section {
+    return HScaleHeight(10);
+}
+
+// 设置minimumInteritemSpacing：cell左右之间最小的距离
+- (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout minimumInteritemSpacingForSectionAtIndex:(NSInteger)section {
+    return HScaleHeight(10);
+}
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    
+    DFDesignerWorkModel *model = self.work_listArry[indexPath.row];
+    DFWorksDetailViewController *worksdetail = [[DFWorksDetailViewController alloc]init];
+    worksdetail.worksId = model.modelid;
+//        worksdetail.model = self.model;
+    worksdetail.autherID = model.designer_id;
+    [self.navigationController pushViewController:worksdetail animated:YES];
+
+}
+///***********************************/
+//#pragma mark  - <LMHWaterFallLayoutDeleaget>
+//- (CGFloat)waterFallLayout:(DFWaterFallLayout *)waterFallLayout heightForItemAtIndexPath:(NSUInteger)indexPath itemWidth:(CGFloat)itemWidth{
+//
+//
+//    return HScaleHeight(126);
+//}
+//
+//- (CGFloat)rowMarginInWaterFallLayout:(DFWaterFallLayout *)waterFallLayout {
+//
+//    return HScaleWidth(10);
+//
+//}
+//
+//- (CGFloat)columnMarginInWaterFallLayout:(DFWaterFallLayout *)waterFallLayout {
+//
+//    return HScaleWidth(10);
+//
+//}
+//
+//- (NSUInteger)columnCountInWaterFallLayout:(DFWaterFallLayout *)waterFallLayout{
+//
+//    return 2;
+//
+//}
+//#pragma mark - UICollectionViewDelegate
+//
+//- (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
+//
+//    return 1;
+//
+//}
+//
+//- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
+//
+//    return 2;
+//
+//}
+//
+//- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
+//
+//    DFRenderingCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"DFRenderingCollectionViewCell" forIndexPath:indexPath];
+//
+//
+//
+//    return cell;
+//
+//}
 
 - (DFRenderingNarbarView *)navview
 {
@@ -133,6 +228,14 @@
         _segment.segmentlineColor = [UIColor clearColor];
     }
     return _segment;
+}
+
+- (NSMutableArray *)work_listArry
+{
+    if (!_work_listArry) {
+        _work_listArry = [NSMutableArray arrayWithCapacity:0];
+    }
+    return _work_listArry;
 }
 
 /*

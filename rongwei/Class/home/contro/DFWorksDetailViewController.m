@@ -1,51 +1,34 @@
 //
-//  DFStrategyDetailViewController.m
+//  DFWorksDetailViewController.m
 //  rongwei
 //
-//  Created by apple on 2019/11/26.
+//  Created by zhangfuyu on 2019/12/3.
 //  Copyright © 2019 zhangfuyu. All rights reserved.
 //
 
-#import "DFStrategyDetailViewController.h"
-#import "DFGongLueModel.h"
-#import "DFStrategyDetailHeaderView.h"
-#import "DFItsCollectionViewCell.h"
+#import "DFWorksDetailViewController.h"
+#import "DFDesignerWorkModel.h"
+#import "DFWorksDetailView.h"
 #import "DFNewMainTableView.h"
-#import "DFSecondHeaderView.h"
 #import "DFBottomTableViewCell.h"
-#import "DFConstructionSiteViewController.h"
-#import "DFRecommendedViewController.h"
+#import "DFSitWorksListViewController.h"
+#import "DFSitDetailHeaderView.h"
 #import "DFCommentBommenView.h"
 
-@interface DFStrategyDetailViewController ()<UITableViewDelegate,UITableViewDataSource>
+@interface DFWorksDetailViewController ()<UITableViewDelegate,UITableViewDataSource>
 
-@property (nonatomic , strong) DFGongLueModel *model;
-
-@property (nonatomic, strong) DFBottomTableViewCell *contentCell;
-
-
-@property (nonatomic , strong) DFStrategyDetailHeaderView *headerview;
-
-@property (nonatomic , strong) NSMutableArray *recommendedarry;
-
+@property (nonatomic , strong) DFDesignerWorkModel *workModel;
 @property (nonatomic, strong) DFNewMainTableView *homeTableview;
-
-@property (nonatomic , strong) DFSecondHeaderView *sceondView;
-
+@property (nonatomic , strong) DFSitDetailHeaderView *secondrview;
+@property (nonatomic, strong) DFBottomTableViewCell *contentCell;
+@property (nonatomic , strong) DFWorksDetailView*headerview;
 @property (nonatomic , assign) BOOL canScroll;
-
-@property (nonatomic , assign) float headetheight;
-
-@property (nonatomic , strong) UIView *navitationview;
-
-@property (nonatomic , strong) UILabel *titlelabel;
-
 @property (nonatomic , strong) DFCommentBommenView *boomview;
 
 
 @end
 
-@implementation DFStrategyDetailViewController
+@implementation DFWorksDetailViewController
 
 - (void)viewWillAppear:(BOOL)animated
 {
@@ -57,26 +40,58 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    self.navitationview.hidden = YES;
-    
-    self.headetheight = HScaleHeight(370);
-
     self.canScroll = YES;
+
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(changeScrollStatus) name:@"leaveTop" object:nil];
+    
+    
+    
+    if (self.model == nil) {
+            NSString *urlstr = [NSString stringWithFormat:@"%@/%@",DesignerDetailApi,self.autherID];
+            
+            [[DFNetworkTool shareInstance] requestWithMethod:GHRequestMethod_GET withUrl:urlstr withParameter:nil withLoadingType:GHLoadingType_ShowLoading withShouldHaveToken:YES withContentType:GHContentType_Formdata completionBlock:^(BOOL isSuccess, NSString * _Nullable msg, id  _Nullable response) {
+                if (isSuccess) {
 
+                    self.model = [[DFDesignerModel alloc]initWithDictionary:response[@"data"] error:nil];
+                    [self getWorkDetail];
 
+                }
+            }];
+    }
+    else
+    {
+        [self getWorkDetail];
+    }
+
+    
+
+    
     [self.boomview mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.right.mas_equalTo(0);
         make.bottom.mas_equalTo(- kBottomSafeHeight);
         make.height.mas_equalTo(HScaleHeight(54));
     }];
+}
 
+- (void)getWorkDetail
+{
+     NSString *urlstr = [NSString stringWithFormat:@"%@/%@",DesignerAboutworksApi,self.worksId];
+     
     
-    [self getdata];
-    
-//    [self getrecommended];
-
-
+     [[DFNetworkTool shareInstance] requestWithMethod:GHRequestMethod_GET withUrl:urlstr withParameter:nil withLoadingType:GHLoadingType_ShowLoading withShouldHaveToken:YES withContentType:GHContentType_Formdata completionBlock:^(BOOL isSuccess, NSString * _Nullable msg, id  _Nullable response) {
+         if (isSuccess) {
+             
+             self.workModel = [[DFDesignerWorkModel alloc] initWithDictionary:response[@"data"] error:nil];
+             [self creattable];
+             
+         }
+     }];
+}
+#pragma mark notify
+- (void)changeScrollStatus//改变主视图的状态
+{
+    self.canScroll = YES;
+    self.contentCell.cellCanScroll = NO;
 }
 - (void)creattable
 {
@@ -91,7 +106,7 @@
     WEAKSELF;
     self.headerview.globalBlockInMemory = ^(float headerHeight) {
         weakSelf.headerview.frame = CGRectMake(0, 0, ScreenW, headerHeight);
-        weakSelf.headetheight = headerHeight;
+//        weakSelf.headetheight = headerHeight;
         weakSelf.canScroll = YES;
         [weakSelf.homeTableview reloadData];
     };
@@ -112,12 +127,6 @@
     }
 }
 
-#pragma mark notify
-- (void)changeScrollStatus//改变主视图的状态
-{
-    self.canScroll = YES;
-    self.contentCell.cellCanScroll = NO;
-}
 #pragma mark - UITableViewDelegate,UITableViewDataSource
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
@@ -139,9 +148,10 @@
         _contentCell = [[DFBottomTableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cell"];
         NSMutableArray *contentVCs = [NSMutableArray array];
 
-        DFRecommendedViewController *construction = [[DFRecommendedViewController alloc]init];
+        DFSitWorksListViewController *construction = [[DFSitWorksListViewController alloc]init];
 //        construction.constructionid = @"1";
-        
+        construction.sitmodel = self.model;
+        construction.authorID = self.autherID;
         [contentVCs addObject:construction];
         
         _contentCell.viewControllers = contentVCs;
@@ -155,27 +165,16 @@
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
-    return HScaleHeight(47);
+    return HScaleHeight(98);
 }
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
-    return self.sceondView;
+    return self.secondrview;
 }
 
 #pragma mark UIScrollView
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
-    
-    
-    if (scrollView.contentOffset.y > kNavBarAndStatusBarHeight) {
-        self.navitationview.hidden = NO;
-        [self.view bringSubviewToFront:self.navitationview];
-    }
-    else
-    {
-        self.navitationview.hidden = YES;
-
-    }
     
     
     CGFloat bottomCellOffset = [self.homeTableview rectForSection:0].origin.y;
@@ -199,86 +198,19 @@
     self.homeTableview.showsVerticalScrollIndicator = _canScroll?YES:NO;
 }
 
-- (void)getdata
-{
-    NSString *urlstr = [NSString stringWithFormat:@"%@/%@",BbsGuide,self.modelid];
-    
-    
-    [[DFNetworkTool shareInstance] requestWithMethod:GHRequestMethod_GET withUrl:urlstr withParameter:nil withLoadingType:GHLoadingType_HideLoading withShouldHaveToken:YES withContentType:GHContentType_Formdata completionBlock:^(BOOL isSuccess, NSString * _Nullable msg, id  _Nullable response) {
-        if (isSuccess) {
-            
-            
-            self.model = [[DFGongLueModel alloc]initWithDictionary:response[@"data"] error:nil];
-
-            self.headerview.model = self.model;
-            
-            self.boomview.model = self.model;
-            
-            self.titlelabel.text = self.model.bbs_title;
-
-            [self creattable];
-            
-            [self.homeTableview reloadData];
-            
-        }
-    }];
-}
-- (UIView *)navitationview
-{
-    if (!_navitationview) {
-        _navitationview = [[UIView alloc]initWithFrame:CGRectMake(0, 0, ScreenW, kNavBarAndStatusBarHeight)];
-        _navitationview.backgroundColor = [UIColor colorWithHexString:@"FFFFFF"];
-        [self.view addSubview:_navitationview];
-        
-        
-        
-        UIButton *backBtn = [[UIButton alloc] initWithFrame:CGRectMake(0, kStatusBarHeight, 44, 44)];
-        backBtn.showsTouchWhenHighlighted = NO;
-        [backBtn setImage:[UIImage imageNamed:@"login_back"] forState:UIControlStateNormal];
-        [backBtn addTarget:self action:@selector(clickCancelAction) forControlEvents:UIControlEventTouchUpInside];
-        [_navitationview addSubview:backBtn];
-        
-        self.titlelabel = [[UILabel alloc]init];
-        self.titlelabel.font = HScaleFont(12);
-        self.titlelabel.textColor = [UIColor colorWithHexString:@"333333"];
-        [_navitationview addSubview:self.titlelabel];
-        
-        [self.titlelabel mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.left.mas_equalTo(backBtn.mas_right).offset(HScaleWidth(11));;
-            make.top.mas_equalTo(kStatusBarHeight);
-            make.bottom.mas_equalTo(0);
-            make.right.mas_equalTo(_navitationview.mas_right).offset(-HScaleWidth(137));
-        }];
-    }
-    return _navitationview;
-}
-- (void)clickCancelAction{
-    [self.navigationController popViewControllerAnimated:YES];
-}
-- (DFStrategyDetailHeaderView *)headerview
+- (DFWorksDetailView *)headerview
 {
     if (!_headerview) {
-        _headerview = [[DFStrategyDetailHeaderView alloc]initWithFrame:CGRectMake(0, 0, ScreenW, self.headetheight)];
-    
+        _headerview = [[DFWorksDetailView alloc]initWithFrame:CGRectMake(0, 0, ScreenW, HScaleHeight(346.5)) withModel:self.workModel];
     }
     return _headerview;
 }
-
-- (NSMutableArray *)recommendedarry
+- (DFSitDetailHeaderView *)secondrview
 {
-    if (!_recommendedarry) {
-        _recommendedarry = [NSMutableArray arrayWithCapacity:0];
+    if (!_secondrview) {
+        _secondrview = [[DFSitDetailHeaderView alloc]initWithFrame:CGRectMake(0, 0, ScreenW, HScaleHeight(98)) withmodel:self.model];
     }
-    return _recommendedarry;
-}
-
-- (DFSecondHeaderView *)sceondView
-{
-    if (!_sceondView) {
-        _sceondView = [[DFSecondHeaderView alloc]initWithFrame:CGRectMake(0, 0, ScreenW, HScaleHeight(47)) withtitle:@"猜你喜欢"];
-        _sceondView.backgroundColor = [UIColor whiteColor];
-    }
-    return _sceondView;
+    return _secondrview;
 }
 - (DFCommentBommenView *)boomview
 {
@@ -288,7 +220,6 @@
     }
     return _boomview;
 }
-
 - (void)dealloc
 {
     [[NSNotificationCenter defaultCenter] removeObserver:self name:@"leaveTop" object:nil];

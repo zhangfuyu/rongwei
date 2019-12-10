@@ -48,6 +48,54 @@
         UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(clickEvent:)];
         [self.commentLaebl addGestureRecognizer: tap];
         
+        
+        
+        UIImageView *messageimage = [[UIImageView alloc]init];
+        messageimage.image = [UIImage imageNamed:@"聊天 对话 沟通"];
+        [self addSubview:messageimage];
+        
+        [messageimage mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.left.mas_equalTo(self.commentLaebl.mas_right).offset(HScaleWidth(14.5));
+            make.top.mas_equalTo(HScaleHeight(10));
+            make.size.mas_equalTo(CGSizeMake(HScaleWidth(20), HScaleHeight(20)));
+        }];
+        
+        UILabel *firstlabel = [[UILabel alloc]init];
+        firstlabel.text = @"评论";
+        firstlabel.textColor = [UIColor colorWithHexString:@"333333"];
+        firstlabel.font = HScaleFont(10);
+        firstlabel.textAlignment = NSTextAlignmentCenter;
+        [self addSubview:firstlabel];
+        
+        [firstlabel mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.top.mas_equalTo(messageimage.mas_bottom).offset(HScaleHeight(6));
+            make.left.mas_equalTo(messageimage.mas_left);
+            make.right.mas_equalTo(messageimage.mas_right);
+        }];
+        
+        UIImageView *star = [[UIImageView alloc]init];
+        star.image = [UIImage imageNamed:@"关注"];
+        [self addSubview:star];
+        
+        [star mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.left.mas_equalTo(messageimage.mas_right).offset(HScaleWidth(20.5));
+            make.top.mas_equalTo(HScaleHeight(10));
+            make.size.mas_equalTo(CGSizeMake(HScaleWidth(20), HScaleHeight(20)));
+        }];
+        
+        UILabel *secondlabel = [[UILabel alloc]init];
+        secondlabel.text = @"收藏";
+        secondlabel.textColor = [UIColor colorWithHexString:@"333333"];
+        secondlabel.font = HScaleFont(10);
+        secondlabel.textAlignment = NSTextAlignmentCenter;
+        [self addSubview:secondlabel];
+        
+        [secondlabel mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.top.mas_equalTo(star.mas_bottom).offset(HScaleHeight(6));
+            make.left.mas_equalTo(star.mas_left);
+            make.right.mas_equalTo(star.mas_right);
+        }];
+        
     }
     return self;
 }

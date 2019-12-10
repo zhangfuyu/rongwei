@@ -8,6 +8,7 @@
 
 #import "DFGongLueCommentsViewController.h"
 #import "DFGongLueCommentModel.h"
+#import "DFStrategyCommentCell.h"
 
 @interface DFGongLueCommentsViewController ()<UITableViewDelegate,UITableViewDataSource>
 
@@ -30,8 +31,10 @@
     [self getcomment];
     
     [self allocTableviewWith:UITableViewStylePlain];
+    self.dataTableview.tableFooterView = [UIView new];
     self.dataTableview.delegate = self;
     self.dataTableview.dataSource = self;
+    self.dataTableview.separatorInset = UIEdgeInsetsMake(0, HScaleWidth(10), 0, HScaleHeight(10));
     
     [self.dataTableview mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.right.mas_equalTo(0);
@@ -56,10 +59,14 @@
 {
     
 
-    static NSString *cellid = @"DFDesignerCommentCell";
-    DFDesignerCommentCell *cell = [tableView dequeueReusableCellWithIdentifier:cellid];
+    static NSString *cellid = @"DFStrategyCommentCell";
+    
+    
+    
+
+    DFStrategyCommentCell *cell = [tableView dequeueReusableCellWithIdentifier:cellid];
     if (!cell) {
-        cell = [[DFDesignerCommentCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellid];
+        cell = [[DFStrategyCommentCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellid];
     }
     cell.model = self.comment_list[indexPath.row];
     return cell;
@@ -84,7 +91,7 @@
                 NSArray *dataArry = response[@"data"];
                 for (NSDictionary *dic in dataArry) {
                     DFGongLueCommentModel *model = [[DFGongLueCommentModel alloc]initWithDictionary:dic error:nil];
-                    CGFloat contentHeight = [model.com_content heightForFont:HScaleFont(11) width:ScreenW - HScaleWidth(30)];
+                    CGFloat contentHeight = [model.com_content heightForFont:HScaleFont(11) width:ScreenW - HScaleWidth(35)];
                     model.contentHeight = [NSString stringWithFormat:@"%.2f",contentHeight];
 
                     [self.comment_list addObject:model];

@@ -9,9 +9,12 @@
 #import "DFBuildingHeaderView.h"
 #import "SDCycleScrollView.h"
 #import "DFHomeModuleButtonView.h"
+#import "DFHomeNavModel.h"
 
 @interface DFBuildingHeaderView ()<SDCycleScrollViewDelegate>
 @property (nonatomic , strong)SDCycleScrollView *scrollView;
+@property (nonatomic , strong)UIImageView *firstiamge;
+@property (nonatomic , strong)UIImageView *secondimage;
 @end
 
 @implementation DFBuildingHeaderView
@@ -44,7 +47,7 @@
     self.scrollView.pageDotColor = [UIColor colorWithWhite:1 alpha:.6];
     self.scrollView.currentPageDotColor = [UIColor whiteColor];
     self.scrollView.bannerImageViewContentMode = UIViewContentModeScaleAspectFill;
-    self.scrollView.imageSize = CGSizeMake(ScreenW - HScaleHeight(20), HScaleHeight(150));
+    self.scrollView.imageSize = CGSizeMake(ScreenW, HScaleHeight(150));
     [self addSubview:self.scrollView];
     
     NSArray *titleArry = @[@"卫浴",@"橱柜",@"家具",@"家电",@"门窗",@"地暖/空调",@"全屋定制",@"瓷砖",@"地板",@"智能家居"];
@@ -71,7 +74,7 @@
     
     
     UIView *backview = [[UIView alloc]init];
-    backview.backgroundColor = [UIColor colorWithHexString:@"333333"];
+    backview.backgroundColor = [UIColor colorWithHexString:@"F7F7F7"];
     [self addSubview:backview];
     
     [backview mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -80,23 +83,46 @@
         make.height.mas_equalTo(95);
     }];
     
-    UIImageView *firstiamge = [[UIImageView alloc]init];
-    firstiamge.backgroundColor = [UIColor orangeColor];
-    [backview addSubview:firstiamge];
-    [firstiamge mas_makeConstraints:^(MASConstraintMaker *make) {
+    self.firstiamge = [[UIImageView alloc]init];
+    self.firstiamge.backgroundColor = [UIColor orangeColor];
+    [backview addSubview:self.firstiamge];
+    [self.firstiamge mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.left.mas_equalTo(HScaleHeight(10));
         make.size.mas_equalTo(CGSizeMake(HScaleWidth(172.5), HScaleHeight(75)));
     }];
     
-    UIImageView *secondimage = [[UIImageView alloc]init];
-    secondimage.backgroundColor = [UIColor orangeColor];
-    [backview addSubview:secondimage];
-    [secondimage mas_makeConstraints:^(MASConstraintMaker *make) {
+    self.secondimage = [[UIImageView alloc]init];
+    self.secondimage.backgroundColor = [UIColor orangeColor];
+    [backview addSubview:self.secondimage];
+    [self.secondimage mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.mas_equalTo(HScaleHeight(10));
         make.right.mas_equalTo(-HScaleHeight(10));
         make.size.mas_equalTo(CGSizeMake(HScaleWidth(172.5), HScaleHeight(75)));
     }];
     
+}
+
+- (void)setDownbanaerArry:(NSMutableArray *)downbanaerArry
+{
+    _downbanaerArry = downbanaerArry;
+    DFHomeNavModel *model = [downbanaerArry objectAtIndex:0];
+    [self.firstiamge sd_setImageWithURL:[NSURL URLWithString:model.pic_url] placeholderImage:nil];
+    
+    DFHomeNavModel *model2 = [downbanaerArry objectAtIndex:0];
+    [self.secondimage sd_setImageWithURL:[NSURL URLWithString:model2.pic_url] placeholderImage:nil];
+}
+
+- (void)setBanaerArry:(NSMutableArray *)banaerArry
+{
+    _banaerArry = banaerArry;
+    NSMutableArray *imageUrlArray = [NSMutableArray arrayWithCapacity:0];
+    for (NSInteger index = 0; index < banaerArry.count; index ++) {
+        DFHomeNavModel *model = [banaerArry objectOrNilAtIndex:index];
+        [imageUrlArray addObject:model.pic_url];
+        
+    }
+    
+    [self.scrollView setImageURLStringsGroup:imageUrlArray];
 }
 
 - (void)clicksubButton:(DFHomeModuleButtonView *)clickbtn

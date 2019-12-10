@@ -11,6 +11,7 @@
 #import "DFRvaluationViewController.h"
 #import "DFInformationViewController.h"
 #import "DFRecommendedViewController.h"
+#import "DFSitWorksListViewController.h"
 
 @implementation DFBottomTableViewCell
 
@@ -57,6 +58,13 @@
         }
     }
     for (DFRecommendedViewController *VC in _viewControllers) {
+           VC.vcCanScroll = cellCanScroll;
+
+           if (!cellCanScroll) {//如果cell不能滑动，代表到了顶部，修改所有子vc的状态回到顶部
+               VC.scrollView.contentOffset = CGPointZero;
+           }
+       }
+    for (DFSitWorksListViewController *VC in _viewControllers) {
            VC.vcCanScroll = cellCanScroll;
 
            if (!cellCanScroll) {//如果cell不能滑动，代表到了顶部，修改所有子vc的状态回到顶部

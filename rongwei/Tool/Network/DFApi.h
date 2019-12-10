@@ -19,7 +19,7 @@
 /**
 设计师详情
 */
-#define DesignerDetailApi   @"designer/designer/1"
+#define DesignerDetailApi   @"designer/designer"
 
 
 /**
@@ -31,6 +31,11 @@
 设计师简介
 */
 #define DesignerAboutDetailApi   @"designer/about"
+
+/**
+指定ID 作品 详情
+*/
+#define DesignerAboutworksApi   @"designer/works"
 
 /**
 设计师评价
@@ -99,9 +104,34 @@
 #define BbsGuide   @"bbs/guide"
 
 /**
+攻略 攻略-攻略分类列表
+*/
+#define BbsClass   @"bbs/class"
+
+/**
 根据攻略ID 获取该攻略下方评论
 */
 #define BbsGuideComment   @"bbs/comment"
+
+/**
+找攻略 广告位
+*/
+#define BbsADS   @"bbs/ads"
+
+/**
+建材城首页广告接口
+*/
+#define ShopADS   @"shop/ads"
+
+/**
+获取店铺列表
+*/
+#define ShopStore   @"shop/store"
+
+/**
+商品列表
+*/
+#define ShopGoods   @"shop/goods"
 
 
 #endif /* DFApi_h */

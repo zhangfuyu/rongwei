@@ -61,6 +61,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic , strong) NSArray<Optional> *work_images;
 
+@property (nonatomic , strong) NSString<Optional> *coll_nums;
+
+@property (nonatomic , strong) NSString<Optional> *designer_image;
 @end
 
 NS_ASSUME_NONNULL_END

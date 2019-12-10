@@ -1,13 +1,14 @@
 //
-//  DFStrategyCollectionViewCell.m
+//  DFSitWorksCollectionViewCell.m
 //  rongwei
 //
-//  Created by apple on 2019/11/27.
+//  Created by zhangfuyu on 2019/12/3.
 //  Copyright © 2019 zhangfuyu. All rights reserved.
 //
 
-#import "DFStrategyCollectionViewCell.h"
-@interface DFStrategyCollectionViewCell ()
+#import "DFSitWorksCollectionViewCell.h"
+
+@interface DFSitWorksCollectionViewCell ()
 
 @property (nonatomic , strong) UIImageView *imageview;
 
@@ -21,7 +22,7 @@
 
 @end
 
-@implementation DFStrategyCollectionViewCell
+@implementation DFSitWorksCollectionViewCell
 
 - (instancetype)initWithFrame:(CGRect)frame
 {
@@ -56,13 +57,13 @@
     return self;
 }
 
-- (void)setModel:(DFGongLueModel *)model
+- (void)setModel:(DFDesignerWorkModel *)model
 {
     _model = model;
-    [self.imageview sd_setImageWithURL:[NSURL URLWithString:model.bbs_pic] placeholderImage:nil];
-    self.titlelabel.text = model.bbs_title;
-    self.namelLabel.text = model.bbs_user_name;
-    self.lookNumberLabel.text = model.bbs_view;
+    [self.imageview sd_setImageWithURL:[NSURL URLWithString:model.img] placeholderImage:nil];
+    self.titlelabel.text = model.title;
+    self.namelLabel.text = model.style[@"name"];
+    self.lookNumberLabel.text = [NSString stringWithFormat:@"%@",model.hits];
 }
 
 - (UIImageView *)imageview
@@ -117,4 +118,5 @@
     }
     return _lookNumberLabel;
 }
+
 @end

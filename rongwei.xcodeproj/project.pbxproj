@@ -109,6 +109,19 @@
 		C48C3009238ED31700ECFBC9 /* DFCommentBommenView.m in Sources */ = {isa = PBXBuildFile; fileRef = C48C3008238ED31700ECFBC9 /* DFCommentBommenView.m */; };
 		C48C300C238ED88B00ECFBC9 /* DFGongLueCommentsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C48C300B238ED88B00ECFBC9 /* DFGongLueCommentsViewController.m */; };
 		C48C300F238EDC0D00ECFBC9 /* DFGongLueCommentModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C48C300E238EDC0D00ECFBC9 /* DFGongLueCommentModel.m */; };
+		C48C3012239629B900ECFBC9 /* DFStrategyCommentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C48C3011239629B900ECFBC9 /* DFStrategyCommentCell.m */; };
+		C48C30152396551600ECFBC9 /* DFWorksDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C48C30142396551600ECFBC9 /* DFWorksDetailViewController.m */; };
+		C48C301823965A7200ECFBC9 /* DFWorksDetailView.m in Sources */ = {isa = PBXBuildFile; fileRef = C48C301723965A7200ECFBC9 /* DFWorksDetailView.m */; };
+		C48C301B23966A5C00ECFBC9 /* DFSitWorksListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C48C301A23966A5C00ECFBC9 /* DFSitWorksListViewController.m */; };
+		C48C301E23966BE200ECFBC9 /* DFSitWorksCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C48C301D23966BE200ECFBC9 /* DFSitWorksCollectionViewCell.m */; };
+		C48C30212396C1A600ECFBC9 /* DFSitDetailHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = C48C30202396C1A600ECFBC9 /* DFSitDetailHeaderView.m */; };
+		C48C30242398173300ECFBC9 /* DFHomeStrategyCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C48C30232398173300ECFBC9 /* DFHomeStrategyCell.m */; };
+		C48C30272398ACD500ECFBC9 /* DFHomeWorkListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C48C30262398ACD500ECFBC9 /* DFHomeWorkListCell.m */; };
+		C48C302A239E358B00ECFBC9 /* DFStoreModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C48C3029239E358B00ECFBC9 /* DFStoreModel.m */; };
+		C48C302D239E3A2E00ECFBC9 /* DFStoreTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C48C302C239E3A2E00ECFBC9 /* DFStoreTableViewCell.m */; };
+		C48C3030239F9D1700ECFBC9 /* DFGoodsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C48C302F239F9D1700ECFBC9 /* DFGoodsTableViewCell.m */; };
+		C48C3033239F9F2300ECFBC9 /* DFStoreGoodsView.m in Sources */ = {isa = PBXBuildFile; fileRef = C48C3032239F9F2300ECFBC9 /* DFStoreGoodsView.m */; };
+		C48C3036239FA63400ECFBC9 /* DFStoreGoodModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C48C3035239FA63400ECFBC9 /* DFStoreGoodModel.m */; };
 		C4E0680B23327A6300C0F650 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C4E0680A23327A6300C0F650 /* AppDelegate.m */; };
 		C4E0680E23327A6300C0F650 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C4E0680D23327A6300C0F650 /* ViewController.m */; };
 		C4E0681123327A6300C0F650 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C4E0680F23327A6300C0F650 /* Main.storyboard */; };
@@ -330,7 +343,33 @@
 		C48C300B238ED88B00ECFBC9 /* DFGongLueCommentsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DFGongLueCommentsViewController.m; sourceTree = "<group>"; };
 		C48C300D238EDC0D00ECFBC9 /* DFGongLueCommentModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DFGongLueCommentModel.h; sourceTree = "<group>"; };
 		C48C300E238EDC0D00ECFBC9 /* DFGongLueCommentModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DFGongLueCommentModel.m; sourceTree = "<group>"; };
-		C4E0680623327A6300C0F650 /* rongwei.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = rongwei.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		C48C3010239629B900ECFBC9 /* DFStrategyCommentCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DFStrategyCommentCell.h; sourceTree = "<group>"; };
+		C48C3011239629B900ECFBC9 /* DFStrategyCommentCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DFStrategyCommentCell.m; sourceTree = "<group>"; };
+		C48C30132396551600ECFBC9 /* DFWorksDetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DFWorksDetailViewController.h; sourceTree = "<group>"; };
+		C48C30142396551600ECFBC9 /* DFWorksDetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DFWorksDetailViewController.m; sourceTree = "<group>"; };
+		C48C301623965A7200ECFBC9 /* DFWorksDetailView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DFWorksDetailView.h; sourceTree = "<group>"; };
+		C48C301723965A7200ECFBC9 /* DFWorksDetailView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DFWorksDetailView.m; sourceTree = "<group>"; };
+		C48C301923966A5C00ECFBC9 /* DFSitWorksListViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DFSitWorksListViewController.h; sourceTree = "<group>"; };
+		C48C301A23966A5C00ECFBC9 /* DFSitWorksListViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DFSitWorksListViewController.m; sourceTree = "<group>"; };
+		C48C301C23966BE200ECFBC9 /* DFSitWorksCollectionViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DFSitWorksCollectionViewCell.h; sourceTree = "<group>"; };
+		C48C301D23966BE200ECFBC9 /* DFSitWorksCollectionViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DFSitWorksCollectionViewCell.m; sourceTree = "<group>"; };
+		C48C301F2396C1A600ECFBC9 /* DFSitDetailHeaderView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DFSitDetailHeaderView.h; sourceTree = "<group>"; };
+		C48C30202396C1A600ECFBC9 /* DFSitDetailHeaderView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DFSitDetailHeaderView.m; sourceTree = "<group>"; };
+		C48C30222398173300ECFBC9 /* DFHomeStrategyCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DFHomeStrategyCell.h; sourceTree = "<group>"; };
+		C48C30232398173300ECFBC9 /* DFHomeStrategyCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DFHomeStrategyCell.m; sourceTree = "<group>"; };
+		C48C30252398ACD500ECFBC9 /* DFHomeWorkListCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DFHomeWorkListCell.h; sourceTree = "<group>"; };
+		C48C30262398ACD500ECFBC9 /* DFHomeWorkListCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DFHomeWorkListCell.m; sourceTree = "<group>"; };
+		C48C3028239E358B00ECFBC9 /* DFStoreModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DFStoreModel.h; sourceTree = "<group>"; };
+		C48C3029239E358B00ECFBC9 /* DFStoreModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DFStoreModel.m; sourceTree = "<group>"; };
+		C48C302B239E3A2E00ECFBC9 /* DFStoreTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DFStoreTableViewCell.h; sourceTree = "<group>"; };
+		C48C302C239E3A2E00ECFBC9 /* DFStoreTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DFStoreTableViewCell.m; sourceTree = "<group>"; };
+		C48C302E239F9D1700ECFBC9 /* DFGoodsTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DFGoodsTableViewCell.h; sourceTree = "<group>"; };
+		C48C302F239F9D1700ECFBC9 /* DFGoodsTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DFGoodsTableViewCell.m; sourceTree = "<group>"; };
+		C48C3031239F9F2300ECFBC9 /* DFStoreGoodsView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DFStoreGoodsView.h; sourceTree = "<group>"; };
+		C48C3032239F9F2300ECFBC9 /* DFStoreGoodsView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DFStoreGoodsView.m; sourceTree = "<group>"; };
+		C48C3034239FA63400ECFBC9 /* DFStoreGoodModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DFStoreGoodModel.h; sourceTree = "<group>"; };
+		C48C3035239FA63400ECFBC9 /* DFStoreGoodModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DFStoreGoodModel.m; sourceTree = "<group>"; };
+		C4E0680623327A6300C0F650 /* 容装.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "容装.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C4E0680923327A6300C0F650 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		C4E0680A23327A6300C0F650 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		C4E0680C23327A6300C0F650 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
@@ -472,6 +511,10 @@
 		18BD9298235D7BE00084873C /* model */ = {
 			isa = PBXGroup;
 			children = (
+				C48C3028239E358B00ECFBC9 /* DFStoreModel.h */,
+				C48C3029239E358B00ECFBC9 /* DFStoreModel.m */,
+				C48C3034239FA63400ECFBC9 /* DFStoreGoodModel.h */,
+				C48C3035239FA63400ECFBC9 /* DFStoreGoodModel.m */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -481,6 +524,12 @@
 			children = (
 				18BD929A235D7C360084873C /* DFBuildingHeaderView.h */,
 				18BD929B235D7C360084873C /* DFBuildingHeaderView.m */,
+				C48C302B239E3A2E00ECFBC9 /* DFStoreTableViewCell.h */,
+				C48C302C239E3A2E00ECFBC9 /* DFStoreTableViewCell.m */,
+				C48C302E239F9D1700ECFBC9 /* DFGoodsTableViewCell.h */,
+				C48C302F239F9D1700ECFBC9 /* DFGoodsTableViewCell.m */,
+				C48C3031239F9F2300ECFBC9 /* DFStoreGoodsView.h */,
+				C48C3032239F9F2300ECFBC9 /* DFStoreGoodsView.m */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -513,6 +562,8 @@
 				1803C64F238E0289007DCCD2 /* DFStrategyCollectionViewCell.m */,
 				C48C3007238ED31700ECFBC9 /* DFCommentBommenView.h */,
 				C48C3008238ED31700ECFBC9 /* DFCommentBommenView.m */,
+				C48C3010239629B900ECFBC9 /* DFStrategyCommentCell.h */,
+				C48C3011239629B900ECFBC9 /* DFStrategyCommentCell.m */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -645,6 +696,10 @@
 				1809B473233B075100D768C3 /* DFEsignerlListViewController.m */,
 				1815AE7B233C657C007A1955 /* DFEsignerDetialViewController.h */,
 				1815AE7C233C657C007A1955 /* DFEsignerDetialViewController.m */,
+				C48C30132396551600ECFBC9 /* DFWorksDetailViewController.h */,
+				C48C30142396551600ECFBC9 /* DFWorksDetailViewController.m */,
+				C48C301923966A5C00ECFBC9 /* DFSitWorksListViewController.h */,
+				C48C301A23966A5C00ECFBC9 /* DFSitWorksListViewController.m */,
 				180E7AD82383C116009EB0A4 /* DFAppointViewController.h */,
 				180E7AD92383C116009EB0A4 /* DFAppointViewController.m */,
 				180E072D238506F000CAF441 /* DFFoundConstructionViewController.h */,
@@ -708,6 +763,16 @@
 				1803C63A238B700A007DCCD2 /* DFItsCollectionViewCell.m */,
 				C48C2FFE238C14E200ECFBC9 /* DFSiteStageInfosCell.h */,
 				C48C2FFF238C14E200ECFBC9 /* DFSiteStageInfosCell.m */,
+				C48C301623965A7200ECFBC9 /* DFWorksDetailView.h */,
+				C48C301723965A7200ECFBC9 /* DFWorksDetailView.m */,
+				C48C301C23966BE200ECFBC9 /* DFSitWorksCollectionViewCell.h */,
+				C48C301D23966BE200ECFBC9 /* DFSitWorksCollectionViewCell.m */,
+				C48C301F2396C1A600ECFBC9 /* DFSitDetailHeaderView.h */,
+				C48C30202396C1A600ECFBC9 /* DFSitDetailHeaderView.m */,
+				C48C30222398173300ECFBC9 /* DFHomeStrategyCell.h */,
+				C48C30232398173300ECFBC9 /* DFHomeStrategyCell.m */,
+				C48C30252398ACD500ECFBC9 /* DFHomeWorkListCell.h */,
+				C48C30262398ACD500ECFBC9 /* DFHomeWorkListCell.m */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -858,7 +923,7 @@
 		C4E0680723327A6300C0F650 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				C4E0680623327A6300C0F650 /* rongwei.app */,
+				C4E0680623327A6300C0F650 /* 容装.app */,
 				C4E0681E23327A6700C0F650 /* rongweiTests.xctest */,
 				C4E0682923327A6700C0F650 /* rongweiUITests.xctest */,
 			);
@@ -933,7 +998,7 @@
 			);
 			name = rongwei;
 			productName = rongwei;
-			productReference = C4E0680623327A6300C0F650 /* rongwei.app */;
+			productReference = C4E0680623327A6300C0F650 /* 容装.app */;
 			productType = "com.apple.product-type.application";
 		};
 		C4E0681D23327A6700C0F650 /* rongweiTests */ = {
@@ -1123,6 +1188,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				C428EBCF2333B534009E0E8A /* DFJianCaiViewController.m in Sources */,
+				C48C301B23966A5C00ECFBC9 /* DFSitWorksListViewController.m in Sources */,
+				C48C3030239F9D1700ECFBC9 /* DFGoodsTableViewCell.m in Sources */,
 				180C9197237BA01B0001CD4E /* DFGetNetData.m in Sources */,
 				180DBF3C238690C300EE6D52 /* DFCompanyTableViewCell.m in Sources */,
 				1815AE80233C898F007A1955 /* DFDesignerView.m in Sources */,
@@ -1137,6 +1204,7 @@
 				18EEA1AB235991D00072D0EB /* DFChooseView.m in Sources */,
 				1803C62F238B6386007DCCD2 /* DFBottomTableViewCell.m in Sources */,
 				C48C2FFD238C126B00ECFBC9 /* DFSiteStageInfosModel.m in Sources */,
+				C48C301E23966BE200ECFBC9 /* DFSitWorksCollectionViewCell.m in Sources */,
 				C48C3003238C1F7200ECFBC9 /* DFGongLueModel.m in Sources */,
 				C41FCD95233501110017427F /* DFMainTableViewCell.m in Sources */,
 				C48C2FF423818AB700ECFBC9 /* DFSaveDataTool.m in Sources */,
@@ -1144,18 +1212,23 @@
 				C428EBB52333AD8E009E0E8A /* DFNavigationController.m in Sources */,
 				180DBF362386650A00EE6D52 /* DFConstructionModel.m in Sources */,
 				188888DE23543FF800391F21 /* TAAnimatedDotView.m in Sources */,
+				C48C30272398ACD500ECFBC9 /* DFHomeWorkListCell.m in Sources */,
 				C41FCDA0233784880017427F /* DFLoginViewController.m in Sources */,
+				C48C30242398173300ECFBC9 /* DFHomeStrategyCell.m in Sources */,
 				180DBF392386678000EE6D52 /* DFConstructionCell.m in Sources */,
 				1803C647238CBDE9007DCCD2 /* DFStrategyDetailViewController.m in Sources */,
 				C428EBD22333B543009E0E8A /* DFMainViewController.m in Sources */,
 				1815AE75233C3FAF007A1955 /* CQTopBarViewController.m in Sources */,
+				C48C3036239FA63400ECFBC9 /* DFStoreGoodModel.m in Sources */,
 				C48C2FFA238C0F1500ECFBC9 /* DFSiteDetailViewController.m in Sources */,
+				C48C301823965A7200ECFBC9 /* DFWorksDetailView.m in Sources */,
 				C428EBD52333B55D009E0E8A /* DFXiaoGuoTuViewController.m in Sources */,
 				C428EBDB2333BAEC009E0E8A /* DFBaseViewController.m in Sources */,
 				1815AE6C233C3FAF007A1955 /* CQTopBarView.m in Sources */,
 				1803C650238E0289007DCCD2 /* DFStrategyCollectionViewCell.m in Sources */,
 				18810E7E23347D1A00F8191C /* DFMainHeaderView.m in Sources */,
 				180E072F238506F000CAF441 /* DFFoundConstructionViewController.m in Sources */,
+				C48C3012239629B900ECFBC9 /* DFStrategyCommentCell.m in Sources */,
 				C41FCD98233507F70017427F /* DFMainCellBtn.m in Sources */,
 				C428EBB22333A99A009E0E8A /* DFTabBarController.m in Sources */,
 				1815AE84233C96BE007A1955 /* NSString+Extension.m in Sources */,
@@ -1180,11 +1253,13 @@
 				1803C64D238E0176007DCCD2 /* DFRecommendedViewController.m in Sources */,
 				18095C5F23559478002212E9 /* DFHomeNaiBarView.m in Sources */,
 				C48C3009238ED31700ECFBC9 /* DFCommentBommenView.m in Sources */,
+				C48C3033239F9F2300ECFBC9 /* DFStoreGoodsView.m in Sources */,
 				1843A990236C18430070586C /* DFRegisteredSecondViewController.m in Sources */,
 				18EEA1B323599CB40072D0EB /* DFStrategyTableViewCell.m in Sources */,
 				C48C3006238D5AEC00ECFBC9 /* DFSecondHeaderView.m in Sources */,
 				C428EBCC2333B51F009E0E8A /* DFHomeViewController.m in Sources */,
 				180B58372358084A00D1E847 /* DFRenderingNarbarView.m in Sources */,
+				C48C30212396C1A600ECFBC9 /* DFSitDetailHeaderView.m in Sources */,
 				188888C823543D3C00391F21 /* DFHomeHeaderView.m in Sources */,
 				C46B0B1E2354ADF6000CC79B /* DFSectionView.m in Sources */,
 				18BD929C235D7C360084873C /* DFBuildingHeaderView.m in Sources */,
@@ -1196,10 +1271,12 @@
 				1809B474233B075100D768C3 /* DFEsignerlListViewController.m in Sources */,
 				1815AE78233C3FAF007A1955 /* CQTopBarSegment.m in Sources */,
 				1803C64A238CEEA2007DCCD2 /* DFStrategyDetailHeaderView.m in Sources */,
+				C48C302D239E3A2E00ECFBC9 /* DFStoreTableViewCell.m in Sources */,
 				188888DB23543FF800391F21 /* SDCollectionViewCell.m in Sources */,
 				C4E0681923327A6700C0F650 /* main.m in Sources */,
 				1803C632238B63F3007DCCD2 /* DFPageContentView.m in Sources */,
 				180E073223851EBE00CAF441 /* DfConstructionHeadrView.m in Sources */,
+				C48C302A239E358B00ECFBC9 /* DFStoreModel.m in Sources */,
 				188888DD23543FF800391F21 /* TAPageControl.m in Sources */,
 				C48C300F238EDC0D00ECFBC9 /* DFGongLueCommentModel.m in Sources */,
 				1843A996236C3E580070586C /* DFWorkListTableViewCell.m in Sources */,
@@ -1209,6 +1286,7 @@
 				C48C3000238C14E200ECFBC9 /* DFSiteStageInfosCell.m in Sources */,
 				C4E0680B23327A6300C0F650 /* AppDelegate.m in Sources */,
 				1808D70B2339ABA600710164 /* DFForgotPasswordViewController.m in Sources */,
+				C48C30152396551600ECFBC9 /* DFWorksDetailViewController.m in Sources */,
 				C41FCDA42337865A0017427F /* DFTextField.m in Sources */,
 				188888DF23543FF800391F21 /* TAAbstractDotView.m in Sources */,
 				188888DA23543FF800391F21 /* UIView+SDExtension.m in Sources */,
@@ -1403,7 +1481,7 @@
 				CODE_SIGN_ENTITLEMENTS = rongwei/rongwei.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 77XN44C2XF;
+				DEVELOPMENT_TEAM = B249C8T6W6;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/rongwei/PrefixHeader.pch";
 				INFOPLIST_FILE = rongwei/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
@@ -1411,8 +1489,8 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.ghwl.udoctor;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = www.rongzw.rongzhuangw;
+				PRODUCT_NAME = "容装";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -1426,7 +1504,7 @@
 				CODE_SIGN_ENTITLEMENTS = rongwei/rongwei.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 77XN44C2XF;
+				DEVELOPMENT_TEAM = B249C8T6W6;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/rongwei/PrefixHeader.pch";
 				INFOPLIST_FILE = rongwei/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
@@ -1434,8 +1512,8 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.ghwl.udoctor;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = www.rongzw.rongzhuangw;
+				PRODUCT_NAME = "容装";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				TARGETED_DEVICE_FAMILY = 1;
 			};

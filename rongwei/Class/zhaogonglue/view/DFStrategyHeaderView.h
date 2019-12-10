@@ -12,6 +12,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface DFStrategyHeaderView : UIView
 
+@property (nonatomic , strong) NSMutableArray *hotarry;
+
 @end
 
 NS_ASSUME_NONNULL_END

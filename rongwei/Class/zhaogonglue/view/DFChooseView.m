@@ -58,10 +58,12 @@
     }
     
     for (NSInteger index = 0; index < titleArry.count; index ++) {
+        
+        NSDictionary *dic = titleArry[index];
     
         UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
         btn.tag = index;
-        [btn setTitle:titleArry[index] forState:UIControlStateNormal];
+        [btn setTitle:dic[@"name"] forState:UIControlStateNormal];
         [btn setTitleColor:[UIColor colorWithHexString:@"666666"] forState:UIControlStateNormal];
         [btn setTitleColor:[UIColor colorWithHexString:@"DD1A21"] forState:UIControlStateSelected];
         btn.titleLabel.font = HScaleFont(12);
@@ -69,7 +71,7 @@
         [self.scrollview addSubview:btn];
         [btn addTarget:self action:@selector(btnClick:) forControlEvents:UIControlEventTouchUpInside];
         
-        float btnWid = [DFChooseView getWidthWithString:titleArry[index] font:btn.titleLabel.font] + HScaleWidth(20);
+        float btnWid = [DFChooseView getWidthWithString:dic[@"name"] font:btn.titleLabel.font] + HScaleWidth(20);
 
         btn.frame = CGRectMake(scroWid, 0, btnWid, CGRectGetHeight(self.bounds));
         
@@ -96,13 +98,15 @@
         }
     }
     
+    NSDictionary *dic =  self.titleArry[sender.tag];
+    
     //点击按钮在滑动视图中居中显示
     CGRect centerRect = CGRectMake(sender.center.x - CGRectGetWidth(self.scrollview.bounds)/2, 0, CGRectGetWidth(self.scrollview.bounds), CGRectGetHeight(self.scrollview.bounds));
     [self.scrollview scrollRectToVisible:centerRect animated:YES];
     
     
     if (self.clickTypeBlock) {
-        self.clickTypeBlock(sender.titleLabel.text);
+        self.clickTypeBlock([NSString stringWithFormat:@"%@",dic[@"id"]]);
     }
 }
 

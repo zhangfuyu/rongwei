@@ -12,6 +12,11 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface DFBuildingHeaderView : UIView
 
+@property (nonatomic , strong) NSMutableArray *banaerArry;
+
+@property (nonatomic , strong) NSMutableArray *downbanaerArry;
+
+
 @end
 
 NS_ASSUME_NONNULL_END

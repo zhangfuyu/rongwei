@@ -1,8 +1,8 @@
 //
-//  DFRenderingCollectionViewCell.h
+//  DFHomeWorkListCell.h
 //  rongwei
 //
-//  Created by apple on 2019/10/17.
+//  Created by zhangfuyu on 2019/12/5.
 //  Copyright © 2019 zhangfuyu. All rights reserved.
 //
 
@@ -11,9 +11,10 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface DFRenderingCollectionViewCell : UICollectionViewCell
+@interface DFHomeWorkListCell : UITableViewCell
 
 @property (nonatomic , strong)DFDesignerWorkModel *model;
+
 
 @end
 

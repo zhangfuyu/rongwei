@@ -237,7 +237,7 @@
 - (WKWebView *)wkWebView
 {
     if (!_wkWebView) {
-        WKWebViewConfiguration *config = [[WKWebViewConfiguration alloc] init];
+//        WKWebViewConfiguration *config = [[WKWebViewConfiguration alloc] init];
         //以下代码适配文本大小，由UIWebView换为WKWebView后，会发现字体小了很多，这应该是WKWebView与html的兼容问题，解决办法是修改原网页，要么我们手动注入JS
 //        NSString *jSString = @"var meta = document.createElement('meta'); meta.setAttribute('name', 'viewport'); meta.setAttribute('content', 'width=device-width'); document.getElementsByTagName('head')[0].appendChild(meta);";
         //用于进行JavaScript注入

@@ -17,6 +17,12 @@
 #import "DFEsignerDetialViewController.h"
 #import "DFConstructionModel.h"
 #import "DFConstructionTtableCell.h"
+#import "DFGongLueModel.h"
+#import "DFHomeStrategyCell.h"
+#import "DFStrategyDetailViewController.h"
+#import "DFDesignerWorkModel.h"
+#import "DFHomeWorkListCell.h"
+#import "DFWorksDetailViewController.h"
 
 @interface DFHomeViewController ()<UITableViewDelegate,UITableViewDataSource>
 
@@ -36,6 +42,10 @@
 @property (nonatomic , strong)NSMutableArray *designerListArry;
 //施工工地列表
 @property (nonatomic , strong)NSMutableArray *constructionArry;
+//攻略列表
+@property (nonatomic , strong)NSMutableArray *trategylistArry;
+//攻略列表
+@property (nonatomic , strong)NSMutableArray *work_listArry;
 @end
 
 @implementation DFHomeViewController
@@ -87,13 +97,13 @@
     [[DFNetworkTool shareInstance] requestWithMethod:GHRequestMethod_GET withUrl:HomeAds withParameter:nil withLoadingType:GHLoadingType_HideLoading withShouldHaveToken:YES withContentType:GHContentType_JSON completionBlock:^(BOOL isSuccess, NSString * _Nullable msg, id  _Nullable response) {
         if (isSuccess) {
             
-            NSArray *hot = response[@"data"][@"APP-热门攻略广告位"];
+            NSArray *hot = response[@"data"][@"app_hot"];//[@"APP-热门攻略广告位"];
             for (NSInteger index = 0; index < hot.count; index ++) {
                 NSDictionary *dic = hot[index];
                 DFHomeNavModel *model = [[DFHomeNavModel alloc]initWithDictionary:dic error:nil];
                 [[DFUserModelTool shareInstance].hotArry addObject:model];
             }
-            NSArray *banaer = response[@"data"][@"APP-首页轮播图"];
+            NSArray *banaer = response[@"data"][@"app_navi"];//[@"APP-首页轮播图"];
             for (NSInteger index = 0; index < banaer.count; index ++) {
                  NSDictionary *dic = hot[index];
                  DFHomeNavModel *model = [[DFHomeNavModel alloc]initWithDictionary:dic error:nil];
@@ -102,7 +112,7 @@
             
             headerview.banaerArry = [DFUserModelTool shareInstance].banaerArry;
             
-            NSArray *navdown = response[@"data"][@"APP-图标导航下方广告"];
+            NSArray *navdown = response[@"data"][@"app_banner"];//[@"APP-图标导航下方广告"];
             for (NSInteger index = 0; index < navdown.count; index ++) {
                  NSDictionary *dic = navdown[index];
                  DFHomeNavModel *model = [[DFHomeNavModel alloc]initWithDictionary:dic error:nil];
@@ -116,8 +126,10 @@
     //子线程请求推荐设计师
     dispatch_async(dispatch_get_global_queue(0, 0), ^{
            
+        [self getWorkData];
         [self getdesignerList];
         [self getConstruction];
+        [self getstrategylist];
 
     });
     
@@ -142,7 +154,11 @@
     {
         return 1;
     }
-    return 1;
+    else if (section == 3)
+    {
+        return self.trategylistArry.count;
+    }
+    return self.work_listArry.count;
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -169,12 +185,27 @@
         cell.dataArry = self.constructionArry;
         return cell;
     }
-    
-    static NSString *Cellidear = @"cell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:Cellidear];
-    if (!cell) {
-        cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:Cellidear];
+    else if (indexPath.section == 3)
+    {
+        
+        
+        static NSString *cellid = @"DFHomeStrategyCell";
+        DFHomeStrategyCell *cell = [tableView dequeueReusableCellWithIdentifier:cellid];
+        if (!cell) {
+            cell = [[DFHomeStrategyCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellid];
+        }
+        cell.model = [self.trategylistArry objectAtIndex:indexPath.row];
+        
+        return cell;
     }
+    
+    
+    static NSString *Cellidear = @"DFHomeWorkListCell";
+    DFHomeWorkListCell *cell = [tableView dequeueReusableCellWithIdentifier:Cellidear];
+    if (!cell) {
+        cell = [[DFHomeWorkListCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:Cellidear];
+    }
+    cell.model = self.work_listArry[indexPath.row];
     return cell;
 }
 
@@ -187,7 +218,11 @@
     {
        return HScaleHeight(140);
     }
-    return 100;
+    else if (indexPath.section == 3)
+    {
+        return HScaleHeight(105);
+    }
+    return HScaleHeight(222);
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
@@ -220,6 +255,22 @@
         detail.model = self.designerListArry[indexPath.row];
         [self.navigationController pushViewController:detail animated:YES];
     }
+    else if (indexPath.section == 3)
+    {
+        DFGongLueModel *model = self.trategylistArry[indexPath.row];
+        DFStrategyDetailViewController *detail = [[DFStrategyDetailViewController alloc]init];
+        detail.modelid = model.modelId;
+        [self.navigationController pushViewController:detail animated:YES];
+    }
+    else if (indexPath.section == 0)
+    {
+        DFDesignerWorkModel *model = self.work_listArry[indexPath.row];
+        DFWorksDetailViewController *worksdetail = [[DFWorksDetailViewController alloc]init];
+        worksdetail.worksId = model.modelid;
+//        worksdetail.model = self.model;
+        worksdetail.autherID = model.designer_id;
+        [self.navigationController pushViewController:worksdetail animated:YES];
+    }
 }
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
@@ -235,6 +286,30 @@
         }
     }
 }
+
+/// 推荐案例
+- (void)getWorkData
+{
+    NSMutableDictionary *parmar = [@{
+        @"is_rec":@"1",
+
+    }copy];
+    [[DFNetworkTool shareInstance] requestWithMethod:GHRequestMethod_GET withUrl:WorkDesignerDetailApi withParameter:parmar withLoadingType:GHLoadingType_ShowLoading withShouldHaveToken:YES withContentType:GHContentType_Formdata completionBlock:^(BOOL isSuccess, NSString * _Nullable msg, id  _Nullable response) {
+           if (isSuccess) {
+               
+              NSArray *listarry = response[@"data"];
+              if (listarry.count > 0) {
+                  for (NSDictionary *dic in listarry) {
+                      DFDesignerWorkModel *workmodel = [[DFDesignerWorkModel alloc]initWithDictionary:dic error:nil];
+                      [self.work_listArry addObject:workmodel];
+                  }
+              }
+              [self.dataTableview reloadData];
+               
+           }
+       }];
+}
+
 - (void)getdesignerList
 {
     
@@ -262,8 +337,9 @@
 
             dispatch_async(dispatch_get_main_queue(), ^{
                         
-                [self.dataTableview reloadSection:2 withRowAnimation:UITableViewRowAnimationNone];
-
+//                [self.dataTableview reloadSection:2 withRowAnimation:UITableViewRowAnimationNone];
+                    [self.dataTableview reloadData];
+                
             });
         }
             
@@ -285,9 +361,34 @@
             dispatch_async(dispatch_get_main_queue(), ^{
                            
                    
-                [self.dataTableview reloadSection:1 withRowAnimation:UITableViewRowAnimationNone];
+//                [self.dataTableview reloadSection:1 withRowAnimation:UITableViewRowAnimationNone];
+                [self.dataTableview reloadData];
                
             });
+        }
+    }];
+}
+//热门攻略列表
+- (void)getstrategylist
+{
+    [[DFNetworkTool shareInstance] requestWithMethod:GHRequestMethod_GET withUrl:BbsGuide withParameter:@{@"is_rec":@"1"} withLoadingType:GHLoadingType_HideLoading withShouldHaveToken:YES withContentType:GHContentType_Formdata completionBlock:^(BOOL isSuccess, NSString * _Nullable msg, id  _Nullable response) {
+        if (isSuccess) {
+            
+            NSArray *dataArry = response[@"data"];
+            if (dataArry.count > 0) {
+                for (NSDictionary *dic in dataArry) {
+                    DFGongLueModel *model = [[DFGongLueModel alloc]initWithDictionary:dic error:nil];
+                    [self.trategylistArry addObject:model];
+                }
+                
+            }
+            dispatch_async(dispatch_get_main_queue(), ^{
+                        
+//                [self.dataTableview reloadSection:3 withRowAnimation:UITableViewRowAnimationNone];
+                [self.dataTableview reloadData];
+
+            });
+            
         }
     }];
 }
@@ -363,6 +464,22 @@
     }
     return _constructionArry;
 }
+- (NSMutableArray *)trategylistArry
+{
+    if (!_trategylistArry) {
+        _trategylistArry = [NSMutableArray arrayWithCapacity:0];
+    }
+    return _trategylistArry;
+}
+- (NSMutableArray *)work_listArry
+{
+    if (!_work_listArry) {
+        _work_listArry = [NSMutableArray arrayWithArray:0];
+    }
+    return _work_listArry;
+}
+
+
 /*
 #pragma mark - Navigation
 

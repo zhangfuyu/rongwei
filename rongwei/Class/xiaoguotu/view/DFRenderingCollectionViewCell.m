@@ -48,6 +48,13 @@
     }
     return self;
 }
+- (void)setModel:(DFDesignerWorkModel *)model
+{
+    _model = model;
+    [self.contentimage sd_setImageWithURL:[NSURL URLWithString:model.designer_image] placeholderImage:nil];
+    self.titlelabel.text = [NSString stringWithFormat:@"%@|%@|%@m²|%@",model.style[@"name"],model.shape[@"name"],model.mianji,model.zaojia];
+    self.sublabel.text = model.designer_name;
+}
 
 - (UIImageView *)contentimage
 {

@@ -29,24 +29,24 @@
 #pragma mark - 根控制器
 - (void)setUpRootVC
 {
-    if ([BUNDLE_VERSION isEqualToString:[DFAppVersionTool dc_GetLastOneAppVersion]]) {//判断是否当前版本号等于上一次储存版本号
+//    if ([BUNDLE_VERSION isEqualToString:[DFAppVersionTool dc_GetLastOneAppVersion]]) {//判断是否当前版本号等于上一次储存版本号
         
         self.window.rootViewController = [[DFTabBarController alloc] init];
-    }else{
-        
-        //第一次进入
-        [DFAppVersionTool dc_SaveNewAppVersion:BUNDLE_VERSION]; //储存当前版本号
-        
-//        // 设置窗口的根控制器
-//        DCNewFeatureViewController *dcFVc = [[DCNewFeatureViewController alloc] init];
-//        [dcFVc setUpFeatureAttribute:^(NSArray *__autoreleasing *imageArray, UIColor *__autoreleasing *selColor, BOOL *showSkip, BOOL *showPageCount) {
+//    }else{
 //
-//            *imageArray = @[@"guide1",@"guide2",@"guide3",@"guide4"];
-//            *showPageCount = YES;
-//            *showSkip = YES;
-//        }];
-//        self.window.rootViewController = dcFVc;
-    }
+//        //第一次进入
+//        [DFAppVersionTool dc_SaveNewAppVersion:BUNDLE_VERSION]; //储存当前版本号
+//
+////        // 设置窗口的根控制器
+////        DCNewFeatureViewController *dcFVc = [[DCNewFeatureViewController alloc] init];
+////        [dcFVc setUpFeatureAttribute:^(NSArray *__autoreleasing *imageArray, UIColor *__autoreleasing *selColor, BOOL *showSkip, BOOL *showPageCount) {
+////
+////            *imageArray = @[@"guide1",@"guide2",@"guide3",@"guide4"];
+////            *showPageCount = YES;
+////            *showSkip = YES;
+////        }];
+////        self.window.rootViewController = dcFVc;
+//    }
 }
 
 

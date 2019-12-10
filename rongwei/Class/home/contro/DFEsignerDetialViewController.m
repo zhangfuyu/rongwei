@@ -15,6 +15,7 @@
 #import "DFCommentModel.h"
 #import "DFDesignerCommentCell.h"
 #import "DFAppointViewController.h"
+#import "DFWorksDetailViewController.h"//作品展示详情
 
 @interface DFEsignerDetialViewController ()<UITableViewDelegate,UITableViewDataSource,DFAppointViewControllerDelegate>
 
@@ -70,22 +71,26 @@
     
     [self getWorkData];
     
-    [[DFNetworkTool shareInstance] requestWithMethod:GHRequestMethod_GET withUrl:DesignerDetailApi withParameter:@{@"id":self.model.modelId} withLoadingType:GHLoadingType_ShowLoading withShouldHaveToken:YES withContentType:GHContentType_Formdata completionBlock:^(BOOL isSuccess, NSString * _Nullable msg, id  _Nullable response) {
+    
+    NSString *urlstr = [NSString stringWithFormat:@"%@/%@",DesignerDetailApi,self.model.modelId];
+    
+    [[DFNetworkTool shareInstance] requestWithMethod:GHRequestMethod_GET withUrl:urlstr withParameter:nil withLoadingType:GHLoadingType_ShowLoading withShouldHaveToken:YES withContentType:GHContentType_Formdata completionBlock:^(BOOL isSuccess, NSString * _Nullable msg, id  _Nullable response) {
         if (isSuccess) {
 
-//            self.model = [[DFDesignerModel alloc]initWithDictionary:response[@"data"] error:nil];
-//            self.headerView.model = self.model;
-            NSDictionary *listdic = response[@"data"][@"work_list"];
+            self.model = [[DFDesignerModel alloc]initWithDictionary:response[@"data"] error:nil];
+            self.secondHeaderView.workcount = self.model.works_num;
+            self.headerView.model = self.model;
+//            NSDictionary *listdic = response[@"data"][@"work_list"];
 
-            NSArray *listarry = listdic[@"list"];
-            if (listarry.count > 0) {
-                self.worlcount = [NSString stringWithFormat:@"%@",response[@"data"][@"work_list"][@"count"]];
-                self.secondHeaderView.workcount = self.worlcount;
-                for (NSDictionary *dic in listarry) {
-                    DFDesignerWorkModel *workmodel = [[DFDesignerWorkModel alloc]initWithDictionary:dic error:nil];
-                    [self.work_list addObject:workmodel];
-                }
-            }
+//            NSArray *listarry = listdic[@"list"];
+//            if (listarry.count > 0) {
+//                self.worlcount = [NSString stringWithFormat:@"%@",response[@"data"][@"work_list"][@"count"]];
+//                self.secondHeaderView.workcount = self.worlcount;
+//                for (NSDictionary *dic in listarry) {
+//                    DFDesignerWorkModel *workmodel = [[DFDesignerWorkModel alloc]initWithDictionary:dic error:nil];
+//                    [self.work_list addObject:workmodel];
+//                }
+//            }
 //            [self getWorkData];
             [self.dataTableview reloadData];
         }
@@ -234,6 +239,16 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:NO];
+    
+    if (self.selectStyle == 1) {
+        DFDesignerWorkModel *model = self.work_list[indexPath.row];
+        DFWorksDetailViewController *worksdetail = [[DFWorksDetailViewController alloc]init];
+        worksdetail.worksId = model.modelid;
+        worksdetail.model = self.model;
+        [self.navigationController pushViewController:worksdetail animated:YES];
+    }
+    
+    
 }
 
 - (void)getDesignerWorks
