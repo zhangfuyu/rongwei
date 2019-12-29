@@ -56,7 +56,7 @@
     [sccondlabel1 mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.mas_equalTo(firstlabel1.mas_left);
         make.top.mas_equalTo(firstlabel1.mas_bottom).offset(HScaleHeight(10));
-        make.right.mas_equalTo(self.scrollView.mas_right).offset(-HScaleWidth(12));
+        make.width.mas_equalTo(ScreenW - HScaleWidth(34));
     }];
     
     
@@ -68,7 +68,7 @@
     
     [firstlabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.mas_equalTo(self.scrollView.mas_left).offset(HScaleWidth(17));
-        make.top.mas_equalTo(sccondlabel1.mas_top).offset(HScaleHeight(25));
+        make.top.mas_equalTo(sccondlabel1.mas_bottom).offset(HScaleHeight(25));
     }];
     
     UILabel *sccondlabel = [[UILabel alloc]init];
@@ -119,7 +119,7 @@
     }];
     
     UILabel *sixlabel = [[UILabel alloc]init];
-    sixlabel.text = [NSString stringWithFormat:@"%@支施工团队",self.model.scale];
+    sixlabel.text = [NSString stringWithFormat:@"%@",self.model.scale];
     sixlabel.font = HScaleFont(12);
     sixlabel.textColor = [UIColor colorWithHexString:@"666666"];
     [self.scrollView addSubview:sixlabel];
@@ -130,26 +130,26 @@
 
     }];
     
-    UILabel *sevenlabel = [[UILabel alloc]init];
-    sevenlabel.text = @"工商注册信息";
-    sevenlabel.font = HScaleBoldFont(14);
-    sevenlabel.textColor = [UIColor colorWithHexString:@"333333"];
-    [self.scrollView addSubview:sevenlabel];
+//    UILabel *sevenlabel = [[UILabel alloc]init];
+//    sevenlabel.text = @"工商注册信息";
+//    sevenlabel.font = HScaleBoldFont(14);
+//    sevenlabel.textColor = [UIColor colorWithHexString:@"333333"];
+//    [self.scrollView addSubview:sevenlabel];
+//
+//    [sevenlabel mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.left.mas_equalTo(firstlabel.mas_left);
+//        make.top.mas_equalTo(sixlabel.mas_bottom).offset(HScaleHeight(25));
+//    }];
     
-    [sevenlabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.mas_equalTo(firstlabel.mas_left);
-        make.top.mas_equalTo(sixlabel.mas_bottom).offset(HScaleHeight(25));
-    }];
-    
-    UIImageView *firseimage = [[UIImageView alloc]init];
-    [firseimage sd_setImageWithURL:[NSURL URLWithString:self.model.business_license_pic] placeholderImage:nil];
-    [self.scrollView addSubview:firseimage];
-    
-    [firseimage mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.mas_equalTo(sevenlabel.mas_left);
-        make.top.mas_equalTo(sevenlabel.mas_bottom).offset(HScaleHeight(10));
-        make.size.mas_equalTo(CGSizeMake(HScaleWidth(196), HScaleHeight(147)));
-    }];
+//    UIImageView *firseimage = [[UIImageView alloc]init];
+//    [firseimage sd_setImageWithURL:[NSURL URLWithString:self.model.business_license_pic] placeholderImage:nil];
+//    [self.scrollView addSubview:firseimage];
+//    
+//    [firseimage mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.left.mas_equalTo(sevenlabel.mas_left);
+//        make.top.mas_equalTo(sevenlabel.mas_bottom).offset(HScaleHeight(10));
+//        make.size.mas_equalTo(CGSizeMake(HScaleWidth(196), HScaleHeight(147)));
+//    }];
    
     
     UILabel *eightlabel = [[UILabel alloc]init];
@@ -159,8 +159,8 @@
     [self.scrollView addSubview:eightlabel];
     
     [eightlabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.mas_equalTo(firseimage.mas_left);
-        make.top.mas_equalTo(firseimage.mas_bottom).offset(HScaleHeight(20));
+        make.left.mas_equalTo(firstlabel.mas_left);
+        make.top.mas_equalTo(sixlabel.mas_bottom).offset(HScaleHeight(20));
     }];
     
     UIImageView *secondimage = [[UIImageView alloc]init];

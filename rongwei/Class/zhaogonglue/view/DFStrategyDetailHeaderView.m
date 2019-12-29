@@ -20,7 +20,7 @@
 @property (nonatomic , strong)UIView *lineview;
 @property (nonatomic , strong)WKWebView *wkWebView;
 @property (nonatomic , assign)float thisHeight;
-
+@property (nonatomic , strong)UIButton *guanzhuBtn;
 
 @end
 
@@ -55,7 +55,7 @@
     self.thisHeight += HScaleHeight(250);
     self.thisHeight += HScaleHeight(14);
      
-     [self.userimageview sd_setImageWithURL:[NSURL URLWithString:model.bbs_user_image] placeholderImage:nil];
+     [self.userimageview sd_setImageWithURL:[NSURL URLWithString:model.bbs_user_image] placeholderImage:[UIImage imageNamed:@"头像_男孩"]];
         
     self.thisHeight += HScaleHeight(15);
      
@@ -93,7 +93,7 @@
 
     self.thisHeight += HScaleHeight(12);
      
-     self.timerlabel.text = model.updated_at;
+     self.timerlabel.text = model.created_at;
 
     self.thisHeight += HScaleHeight(14.5);
      
@@ -126,6 +126,30 @@
     }
     return _upimageview;
 }
+
+
+- (UIButton *)guanzhuBtn
+{
+    if (!_guanzhuBtn) {
+        _guanzhuBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+        _guanzhuBtn.layer.cornerRadius = HScaleHeight(1);
+        _guanzhuBtn.layer.borderColor = [UIColor colorWithHexString:@"DD1A21"].CGColor;
+        _guanzhuBtn.layer.borderWidth = HScaleHeight(.5);
+        [_guanzhuBtn setTitle:@"关注" forState:UIControlStateNormal];
+        [_guanzhuBtn setTitleColor:[UIColor colorWithHexString:@"DD1A21"] forState:UIControlStateNormal];
+        _guanzhuBtn.titleLabel.font = HScaleFont(11);
+        [self addSubview:_guanzhuBtn];
+        
+        [_guanzhuBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.right.mas_equalTo(-HScaleWidth(14));
+            make.top.mas_equalTo(self.upimageview.mas_bottom).offset(HScaleHeight(12.5));
+            make.size.mas_equalTo(CGSizeMake(HScaleWidth(48.5), HScaleHeight(18)));
+        }];
+        
+    }
+    
+    return _guanzhuBtn;
+}
 - (UIImageView *)userimageview
 {
     if (!_userimageview) {
@@ -152,7 +176,7 @@
         
         [_namelabel mas_makeConstraints:^(MASConstraintMaker *make) {
             make.left.mas_equalTo(self.userimageview.mas_right).offset(HScaleWidth(6));
-            make.right.mas_equalTo(- HScaleWidth(30));
+            make.right.mas_equalTo(self.guanzhuBtn.mas_left).offset(-HScaleWidth(20));
             make.centerY.mas_equalTo(self.userimageview.mas_centerY);
         }];
     }

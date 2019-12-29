@@ -47,7 +47,11 @@
             if (listarry.count > 0) {
                 for (NSDictionary *dic in listarry) {
                     DFDesignerWorkModel *workmodel = [[DFDesignerWorkModel alloc]initWithDictionary:dic error:nil];
-                    [self.dataArry addObject:workmodel];
+                    if (![self.worksId isEqualToString:workmodel.modelid]) {
+                    
+                        [self.dataArry addObject:workmodel];
+
+                    }
                 }
             }
             [self.scrollView reloadData];

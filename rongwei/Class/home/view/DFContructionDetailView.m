@@ -104,7 +104,7 @@
 - (void)setModel:(DFCompanyModel *)model
 {
     _model = model;
-    [self.imageview sd_setImageWithURL:[NSURL URLWithString:model.avatar] placeholderImage:nil];
+    [self.imageview sd_setImageWithURL:[NSURL URLWithString:model.avatar] placeholderImage:[UIImage imageNamed:@"头像_男孩"]];
     self.titlelabel.text = model.name;
     self.sublabel.text = model.brief;
     self.addresslabel.text = model.address;
@@ -198,8 +198,8 @@
         _likeThisBtn.titleLabel.font = HScaleFont(12);
         [_likeThisBtn setTitleColor:[UIColor colorWithHexString:@"DD1A21"] forState:UIControlStateNormal];
         [_likeThisBtn setTitle:@"  关注" forState:UIControlStateNormal];
-        [_likeThisBtn setImage:[UIImage imageNamed:@"no_Focus_on"] forState:UIControlStateNormal];
-        [_likeThisBtn setImage:[UIImage imageNamed:@"Focus_on"] forState:UIControlStateSelected];
+        [_likeThisBtn setImage:[UIImage imageNamed:@"star-n"] forState:UIControlStateNormal];
+//        [_likeThisBtn setImage:[UIImage imageNamed:@"Focus_on"] forState:UIControlStateSelected];
 //        [_likeThisBtn addTarget:self action:@selector(focusonThis) forControlEvents:UIControlEventTouchUpInside];
         [self addSubview:_likeThisBtn];
         

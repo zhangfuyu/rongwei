@@ -28,6 +28,11 @@
 #define WorkDesignerDetailApi   @"designer/works"
 
 /**
+设计-设计风格列表
+*/
+#define WorkDesignerStyleApi   @"designer/style"
+
+/**
 设计师简介
 */
 #define DesignerAboutDetailApi   @"designer/about"
@@ -52,7 +57,13 @@
 /**
 发松验证码
 */
-#define SendCode   @"userInfo/sendCode"
+#define SendCode   @"consumer/getTelCode"
+
+
+/**
+发松验证码
+*/
+#define Consumer   @"consumer/reg/1"
 
 /******************/
 
@@ -79,6 +90,11 @@
 #define Construction   @"construction/site"
 
 /**
+施工工地-施工阶段列表
+*/
+#define ConstructionStage   @"construction/stage"
+
+/**
 施工公司列表
 */
 #define Company   @"construction/company"
@@ -102,6 +118,11 @@
 攻略 列表
 */
 #define BbsGuide   @"bbs/guide"
+
+/**
+咨询 列表
+*/
+#define BbsAdvisory   @"bbs/advisory"
 
 /**
 攻略 攻略-攻略分类列表
@@ -132,6 +153,16 @@
 商品列表
 */
 #define ShopGoods   @"shop/goods"
+
+/**
+商品分类列表
+*/
+#define ShopCategory   @"shop/category"
+
+/**
+商品评价列表
+*/
+#define ShopGoodsComment   @"shop/goodsComment"
 
 
 #endif /* DFApi_h */

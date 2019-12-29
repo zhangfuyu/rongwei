@@ -15,6 +15,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic , strong)DFDesignerWorkModel *model;
 
+@property (nonatomic , assign)BOOL isRecommended;
+
 
 @end
 

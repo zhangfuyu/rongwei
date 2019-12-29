@@ -335,7 +335,7 @@
 {
     if (!_browsesubLabel) {
         _browsesubLabel = [[UILabel alloc]init];
-        _browsesubLabel.text = @"浏览";
+        _browsesubLabel.text = @"评价";
         _browsesubLabel.textColor = [UIColor colorWithHexString:@"333333"];
         _browsesubLabel.font = HScaleFont(10);
         _browsesubLabel.textAlignment = NSTextAlignmentCenter;

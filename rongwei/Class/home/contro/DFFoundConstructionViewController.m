@@ -14,8 +14,10 @@
 #import "DFCompanyTableViewCell.h"
 #import "CQTopBarSegment.h"
 #import "DFContructionDetailViewController.h"
+#import "DFConstructionPhaseViewController.h"
+#import "DFDecorateFamilyViewController.h"
 
-@interface DFFoundConstructionViewController ()<UITableViewDelegate , UITableViewDataSource>
+@interface DFFoundConstructionViewController ()<UITableViewDelegate , UITableViewDataSource,DFConstructionPhaseViewControllerDelegate,CQTopBarSegmentDelegate,DFDecorateFamilyViewControllerDelegate>
 
 @property (nonatomic , strong) DFTextField *searchTextField;
 
@@ -26,6 +28,10 @@
 @property (nonatomic , strong) DfConstructionHeadrView *header;
 
 @property (nonatomic , strong) CQTopBarSegment *segment;
+
+@property (nonatomic , strong) DFConstructionPhaseViewController *stylevc;
+
+@property (nonatomic , strong) DFDecorateFamilyViewController *DecorateFamily;
 
 @property (nonatomic , strong) UIView *secondView;
 
@@ -55,6 +61,8 @@
     self.dataTableview.tableFooterView = [UIView new];
     self.dataTableview.separatorInset = UIEdgeInsetsMake(0, 0, 0, 0);
     
+    self.dataTableview.mj_footer = [MJRefreshBackNormalFooter footerWithRefreshingTarget:self refreshingAction:@selector(getCompany)];
+
     [self.dataTableview mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.right.mas_equalTo(0);
         make.top.mas_equalTo(kNavBarAndStatusBarHeight);
@@ -166,17 +174,28 @@
     
     NSMutableDictionary *parmars = [@{
         @"lat":@"30.3751",
-        @"lng":@"120.1236"
+        @"lng":@"120.1236",
+        @"itemsPerLoad":@(10),
+        @"lastIndex":@(self.companyArry.count)
     }copy];
     
     [[DFNetworkTool shareInstance] requestWithMethod:GHRequestMethod_GET withUrl:Company withParameter:parmars withLoadingType:GHLoadingType_HideLoading withShouldHaveToken:YES withContentType:GHContentType_JSON completionBlock:^(BOOL isSuccess, NSString * _Nullable msg, id  _Nullable response) {
         if (isSuccess) {
+            
             
             NSArray *dataarry = response[@"data"];
             
             for (NSInteger index = 0; index < dataarry.count; index ++) {
                 DFCompanyModel *model = [[DFCompanyModel alloc]initWithDictionary:dataarry[index] error:nil];
                 [self.companyArry addObject:model];
+            }
+            
+            if (dataarry.count == 0) {
+                [self.dataTableview.mj_footer endRefreshingWithNoMoreData];
+            }
+            else
+            {
+                [self.dataTableview.mj_footer endRefreshing];
             }
             [self.dataTableview reloadData];
         }
@@ -279,16 +298,72 @@
 - (CQTopBarSegment *)segment
 {
     if (!_segment) {
-        _segment = [[CQTopBarSegment alloc]initWithFrame:CGRectMake(0, HScaleHeight(5), ScreenW, HScaleHeight(47)) sectionTitles:@[@"区域选择",@"综合",@"筛选"]];
+        _segment = [[CQTopBarSegment alloc]initWithFrame:CGRectMake(0, HScaleHeight(5), ScreenW, HScaleHeight(47)) sectionTitles:@[@"区域选择",@"施工阶段",@"筛选"]];
         _segment.titleTextColor = [UIColor colorWithHexString:@"666666"];
         _segment.segmentImage = @"箭头";
         _segment.selectSegmentImage = @"箭头-1";
+        _segment.delegate = self;
         _segment.selectedTitleTextColor = [UIColor colorWithHexString:@"DD1A21"];
         _segment.titleTextFont = HScaleFont(12);
         _segment.segmentlineColor = [UIColor clearColor];
     }
     return _segment;
 }
+- (void)topBarSegmentWithBlock:(CQTopBarSegment *)segment indexPath:(NSIndexPath *)indexPath
+{
+    if (indexPath.row == 1) {
+        CGFloat contentY = [self.dataTableview rectForSection:0].origin.y;
+        self.dataTableview.contentOffset = CGPointMake(0, contentY);
+        self.stylevc.view.hidden = !self.stylevc.view.hidden;
+
+    }
+    else if (indexPath.row == 2)
+    {
+        CGFloat contentY = [self.dataTableview rectForSection:0].origin.y;
+        self.dataTableview.contentOffset = CGPointMake(0, contentY);
+        self.DecorateFamily.view.hidden = !self.DecorateFamily.view.hidden;
+    }
+}
+- (DFConstructionPhaseViewController *)stylevc
+{
+    if (!_stylevc) {
+        _stylevc = [[DFConstructionPhaseViewController alloc]init];
+        _stylevc.delegate = self;
+        _stylevc.view.hidden = YES;
+        [self addChildViewController:_stylevc];
+        [self.view addSubview:_stylevc.view];
+    }
+    return _stylevc;
+}
+- (void)selectChooseStyleId:(NSString *)styleId
+{
+    self.stylevc.view.hidden = YES;
+    [self.segment.collectionView reloadData];
+    [self.companyArry removeAllObjects];
+    [self getCompany];
+
+}
+- (DFDecorateFamilyViewController *)DecorateFamily
+{
+    if (!_DecorateFamily) {
+        _DecorateFamily = [[DFDecorateFamilyViewController alloc]init];
+        _DecorateFamily.delegate = self;
+        _DecorateFamily.view.hidden = YES;
+        [self addChildViewController:_DecorateFamily];
+        [self.view addSubview:_DecorateFamily.view];
+    }
+    return _DecorateFamily;
+}
+
+- (void)selectChooseBudgetStyleId:(NSString *)styleId
+{
+    self.DecorateFamily.view.hidden = YES;
+    [self.segment.collectionView reloadData];
+    
+    [self.companyArry removeAllObjects];
+    [self getCompany];
+}
+
 /*
 #pragma mark - Navigation
 

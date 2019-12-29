@@ -78,7 +78,7 @@
         
         self.four = [[UIImageView alloc]init];
         self.four.backgroundColor = [UIColor orangeColor];
-        self.four.tag = 101;
+        self.four.tag = 104;
         self.four.userInteractionEnabled = YES;
         [self addSubview:self.four];
         
@@ -140,7 +140,7 @@
         DFHomeNavModel *first = hotarry[0];
         [self.three sd_setImageWithURL:[NSURL URLWithString:first.pic_url] placeholderImage:nil];
         
-        DFHomeNavModel *second = hotarry[0];
+        DFHomeNavModel *second = hotarry[1];
         [self.four sd_setImageWithURL:[NSURL URLWithString:second.pic_url] placeholderImage:nil];
     }
 

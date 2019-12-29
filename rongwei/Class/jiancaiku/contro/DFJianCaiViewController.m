@@ -14,6 +14,7 @@
 #import "DFStoreTableViewCell.h"
 #import "DFGoodsTableViewCell.h"
 #import "DFStoreGoodModel.h"
+#import "DFCategoryModel.h"
 
 @interface DFJianCaiViewController ()<UITableViewDelegate,UITableViewDataSource>
 @property (nonatomic , strong)DFBuildingHeaderView *headerView;
@@ -22,10 +23,17 @@
 @property (nonatomic , strong)DFSectionView *firstSectond;
 @property (nonatomic , strong)NSMutableArray *store_arry;
 @property (nonatomic , strong)NSMutableArray *goods_arry;
+@property (nonatomic , strong)NSMutableArray *category_arry;
 @property (nonatomic , strong)UIView *secondView;
 @end
 
 @implementation DFJianCaiViewController
+    
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    self.navigationController.navigationBar.hidden = NO;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -43,6 +51,8 @@
     self.dataTableview.separatorStyle = UITableViewCellSeparatorStyleNone;
     self.dataTableview.tableHeaderView = self.headerView;
     self.dataTableview.tableFooterView = nil;
+    //请求分类列表
+    [self getShopCategory];
     //请求广告
     [self getnav];
     //请求合作伙伴
@@ -50,7 +60,20 @@
     //请求推荐商品
     [self getShopGoods];
 }
-
+- (void)getShopCategory
+{
+    [[DFNetworkTool shareInstance] requestWithMethod:GHRequestMethod_GET withUrl:ShopCategory withParameter:@{@"is_rec":@"1"} withLoadingType:GHLoadingType_HideLoading withShouldHaveToken:YES withContentType:GHContentType_Formdata completionBlock:^(BOOL isSuccess, NSString * _Nullable msg, id  _Nullable response) {
+        if (isSuccess) {
+                
+            NSArray *dataArry = response[@"data"];
+            for (NSInteger index = 0; index < dataArry.count; index ++) {
+                DFCategoryModel *model = [[DFCategoryModel alloc]initWithDictionary:dataArry[index] error:nil];
+                [self.category_arry addObject:model];
+            }
+            self.headerView.nav_arry = self.category_arry;
+        }
+    }];
+}
 
 - (void)getnav
 {
@@ -67,7 +90,7 @@
             
             NSArray *banner = response[@"data"][@"app_shop_banner"];
             for (NSInteger index = 0; index < banner.count; index ++) {
-                NSDictionary *dic = navi[index];
+                NSDictionary *dic = banner[index];
                 DFHomeNavModel *model = [[DFHomeNavModel alloc]initWithDictionary:dic error:nil];
                 [self.app_shop_banner addObject:model];
             }
@@ -122,6 +145,9 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     if (section == 0) {
+        if (self.store_arry.count > 3) {
+            return 3;
+        }
         return self.store_arry.count;
         
     }
@@ -147,6 +173,7 @@
     
     if (!cell) {
         cell = [[DFGoodsTableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellid];
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
     }
     cell.goodArry = self.goods_arry;
     cell.indexPath = indexPath.row;
@@ -218,10 +245,10 @@
 
 - (NSMutableArray *)app_shop_banner
 {
-    if (!_app_shop_naviarry) {
-        _app_shop_naviarry = [NSMutableArray arrayWithCapacity:0];
+    if (!_app_shop_banner) {
+       _app_shop_banner = [NSMutableArray arrayWithCapacity:0];
     }
-    return _app_shop_naviarry;
+    return _app_shop_banner;
 }
 - (NSMutableArray *)store_arry
 {
@@ -238,6 +265,13 @@
         
     }
     return _goods_arry;
+}
+- (NSMutableArray *)category_arry
+{
+    if (!_category_arry) {
+        _category_arry = [NSMutableArray arrayWithCapacity:0];
+    }
+    return _category_arry;
 }
 /*
 #pragma mark - Navigation

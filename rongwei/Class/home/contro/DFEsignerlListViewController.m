@@ -141,8 +141,8 @@
 {
     
     NSMutableDictionary *parma = [@{@"is_rec":@"0",
-                                    @"itemsPerLoad":@(self.currentPage),
-//                                    @"page_size":@(20)
+                                    @"lastIndex":@(self.dataListArry.count),
+                                    @"itemsPerLoad":@(10)
     }copy];
     
     [[DFNetworkTool shareInstance] requestWithMethod:GHRequestMethod_GET withUrl:DesignerListsApi withParameter:parma withLoadingType:GHLoadingType_ShowLoading withShouldHaveToken:YES withContentType:GHContentType_JSON completionBlock:^(BOOL isSuccess, NSString * _Nullable msg, id  _Nullable response) {
@@ -163,10 +163,10 @@
                     DFDesignerModel *model = [[DFDesignerModel alloc] initWithDictionary:dic error:nil];
                     [self.dataListArry addObject:model];
                 }
+                [self.dataTableview.mj_footer endRefreshing];
             }
             else
             {
-                self.currentPage --;
                 [self.dataTableview.mj_footer endRefreshingWithNoMoreData];
             }
             [self.dataTableview reloadData];

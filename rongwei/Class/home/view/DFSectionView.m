@@ -8,6 +8,8 @@
 
 #import "DFSectionView.h"
 #import "DFEsignerlListViewController.h"
+#import "DFMoreStoreViewController.h"
+#import "DFContructionListViewController.h"
 
 @interface DFSectionView()
 
@@ -113,6 +115,16 @@
 {
     if ([self.titleText isEqualToString:@"推荐设计师"]) {
         [self.viewController.navigationController pushViewController:[DFEsignerlListViewController new] animated:YES];
+    }
+    else if ([self.titleText isEqualToString:@"合作伙伴"])
+    {
+        [self.viewController.navigationController pushViewController:[DFMoreStoreViewController new] animated:YES];
+    }
+    else if ([self.titleText isEqualToString:@"施工工地"])
+    {
+        
+        [self.viewController.navigationController pushViewController:[DFContructionListViewController new] animated:YES];
+
     }
 }
 @end

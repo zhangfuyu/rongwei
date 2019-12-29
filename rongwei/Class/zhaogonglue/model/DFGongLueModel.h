@@ -43,7 +43,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic , strong) NSString<Optional> *bbs_content;
 
 @property (nonatomic , strong) NSString<Optional> *sort;
-
+@property (nonatomic , strong) NSString<Optional> *last_comment;
 
 
 @end

@@ -9,7 +9,8 @@
 #import "DFConstructionSiteViewController.h"
 #import "DFItsCollectionViewCell.h"
 #import "DFConstructionModel.h"
-#import "DFSiteDetailViewController.h"
+//#import "DFSiteDetailViewController.h"
+#import "DFContructionWorkDetailViewController.h"
 
 @interface DFConstructionSiteViewController ()<UICollectionViewDelegate,UICollectionViewDataSource>
 @property (nonatomic , strong) NSMutableArray *dataArry;
@@ -25,7 +26,7 @@
     self.dataArry = [NSMutableArray arrayWithCapacity:0];
     UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
     layout.scrollDirection = UICollectionViewScrollDirectionVertical;
-    self.scrollView = [[UICollectionView alloc]initWithFrame:CGRectMake(HScaleWidth(10), 0, ScreenW - HScaleWidth(20), ScreenH)collectionViewLayout:layout];
+    self.scrollView = [[UICollectionView alloc]initWithFrame:CGRectMake(HScaleWidth(10), 0, ScreenW - HScaleWidth(20),ScreenH - kNavBarAndStatusBarHeight - kBottomSafeHeight - HScaleHeight(40))collectionViewLayout:layout];
     [self.scrollView registerClass:[DFItsCollectionViewCell class] forCellWithReuseIdentifier:@"DFItsCollectionViewCell"];
         /// 设置此属性为yes 不满一屏幕 也能滚动
     self.scrollView.backgroundColor = [UIColor colorWithHexString:@"FFFFFF"];
@@ -35,13 +36,16 @@
     self.scrollView.delegate = self;
     self.scrollView.dataSource = self;
     [self.view addSubview:self.scrollView];
+    self.scrollView.mj_footer = [MJRefreshBackNormalFooter footerWithRefreshingTarget:self refreshingAction:@selector(getConstruction)];
     [self getConstruction];
 }
 
 //请求施工列表
 - (void)getConstruction
 {
-    [[DFNetworkTool shareInstance] requestWithMethod:GHRequestMethod_GET withUrl:Construction withParameter:@{@"company_id":self.constructionid} withLoadingType:GHLoadingType_HideLoading withShouldHaveToken:YES withContentType:GHContentType_JSON completionBlock:^(BOOL isSuccess, NSString * _Nullable msg, id  _Nullable response) {
+    
+    
+    [[DFNetworkTool shareInstance] requestWithMethod:GHRequestMethod_GET withUrl:Construction withParameter:@{@"company_id":self.constructionid,@"itemsPerLoad":@"10",@"lastIndex":@(self.dataArry.count)} withLoadingType:GHLoadingType_HideLoading withShouldHaveToken:YES withContentType:GHContentType_JSON completionBlock:^(BOOL isSuccess, NSString * _Nullable msg, id  _Nullable response) {
         if (isSuccess) {
             
             NSArray *dataarry = response[@"data"];
@@ -50,7 +54,14 @@
                 DFConstructionModel *model = [[DFConstructionModel alloc]initWithDictionary:dataarry[index] error:nil];
                 [self.dataArry addObject:model];
             }
-            
+            if (dataarry.count > 1) {
+                [self.scrollView.mj_footer endRefreshing];
+            }
+            else
+            {
+                [self.scrollView.mj_footer endRefreshingWithNoMoreData];
+
+            }
             [self.scrollView reloadData];
         }
     }];
@@ -102,8 +113,13 @@
 }
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    DFSiteDetailViewController *detail = [[DFSiteDetailViewController alloc]init];
-    detail.model = self.dataArry[indexPath.row];
+//    DFSiteDetailViewController *detail = [[DFSiteDetailViewController alloc]init];
+//    detail.model = self.dataArry[indexPath.row];
+//    [self.navigationController pushViewController:detail animated:YES];
+    
+    DFConstructionModel *model = self.dataArry[indexPath.row];
+    DFContructionWorkDetailViewController *detail = [[DFContructionWorkDetailViewController alloc]init];
+    detail.contructionWork_ID = model.modelid;
     [self.navigationController pushViewController:detail animated:YES];
     
 }

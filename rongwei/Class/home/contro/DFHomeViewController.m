@@ -68,7 +68,7 @@
     });
     
     self.title = @"首页";
-    [DFUserModelTool shareInstance].isLogin = true;
+//    [DFUserModelTool shareInstance].isLogin = true;
     [self allocTableviewWith:UITableViewStylePlain];
     self.dataTableview.delegate = self;
     self.dataTableview.dataSource = self;
@@ -292,6 +292,7 @@
 {
     NSMutableDictionary *parmar = [@{
         @"is_rec":@"1",
+        @"itemsPerLoad":@"2"
 
     }copy];
     [[DFNetworkTool shareInstance] requestWithMethod:GHRequestMethod_GET withUrl:WorkDesignerDetailApi withParameter:parmar withLoadingType:GHLoadingType_ShowLoading withShouldHaveToken:YES withContentType:GHContentType_Formdata completionBlock:^(BOOL isSuccess, NSString * _Nullable msg, id  _Nullable response) {
@@ -314,7 +315,7 @@
 {
     
     NSMutableDictionary *parma = [@{@"is_rec":@"1",
-                                    @"itemsPerLoad":@(1),
+                                    @"itemsPerLoad":@(3),
 //                                    @"page_size":@(20)
     }copy];
     
@@ -474,7 +475,7 @@
 - (NSMutableArray *)work_listArry
 {
     if (!_work_listArry) {
-        _work_listArry = [NSMutableArray arrayWithArray:0];
+        _work_listArry = [NSMutableArray arrayWithCapacity:0];
     }
     return _work_listArry;
 }

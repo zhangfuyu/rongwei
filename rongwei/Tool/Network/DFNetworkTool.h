@@ -39,6 +39,8 @@ typedef enum : NSUInteger {
 
 + (instancetype)shareInstance;
 
+- (void)cancelRequest;
+
 /**
  普通网络请求
  

@@ -16,6 +16,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic , strong) DFDesignerModel *sitmodel;
 
 
+@property (nonatomic , strong) NSString *worksId;
 @property (nonatomic , strong) NSString *authorID;
 
 @property (nonatomic , strong) UICollectionView *scrollView;

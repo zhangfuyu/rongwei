@@ -14,6 +14,8 @@ NS_ASSUME_NONNULL_BEGIN
 @interface DFCommentBommenView : UIView
 
 @property (nonatomic , strong) DFGongLueModel *model;
+@property (nonatomic , assign)BOOL isInformation;//是否是咨询
+
 
 @end
 

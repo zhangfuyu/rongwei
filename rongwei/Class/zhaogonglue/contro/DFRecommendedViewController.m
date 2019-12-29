@@ -96,7 +96,7 @@
 
 // 设置minimumLineSpacing：cell上下之间最小的距离
 - (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout minimumLineSpacingForSectionAtIndex:(NSInteger)section {
-    return HScaleHeight(0);
+    return HScaleHeight(10);
 }
 
 // 设置minimumInteritemSpacing：cell左右之间最小的距离

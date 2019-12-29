@@ -7,6 +7,7 @@
 //
 
 #import "DFStoreGoodsView.h"
+#import "DFGoodsDetailViewController.h"
 
 @interface DFStoreGoodsView ()
 
@@ -56,7 +57,7 @@
     [self.goodImageview sd_setImageWithURL:[NSURL URLWithString:model.goods_thumb] placeholderImage:nil];
     self.goodNameLabel.text = model.goods_name;
     self.goodPriceLabel.text = [NSString stringWithFormat:@"￥%@",model.low_price];
-    self.goodPayNumberLabel.text = [NSString stringWithFormat:@"%@人付款",model.sales_actual];
+    self.goodPayNumberLabel.text = [NSString stringWithFormat:@"%d人付款",[model.sales_actual intValue] + [model.sales_initial intValue]];
     
 }
 - (UIImageView *)goodImageview
@@ -101,7 +102,12 @@
     return _goodPayNumberLabel;
 }
 
-
+- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
+{
+    DFGoodsDetailViewController *goodsDetail = [[DFGoodsDetailViewController alloc]init];
+    goodsDetail.goods_id = self.model.spu_id;
+    [self.viewController.navigationController pushViewController:goodsDetail animated:YES];
+}
 /*
 // Only override drawRect: if you perform custom drawing.
 // An empty implementation adversely affects performance during animation.

@@ -8,6 +8,7 @@
 
 #import "DfConstructionHeadrView.h"
 #import "DFConstructionCell.h"
+#import "DFContructionWorkDetailViewController.h"
 @interface DfConstructionHeadrView ()<UICollectionViewDelegate,UICollectionViewDataSource>
 
 @property (nonatomic , strong) UIImageView *imageview;
@@ -126,7 +127,13 @@
 - (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout minimumInteritemSpacingForSectionAtIndex:(NSInteger)section {
     return HScaleHeight(10);
 }
-
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    DFConstructionModel *model = self.dataArry[indexPath.row];
+    DFContructionWorkDetailViewController *detail = [[DFContructionWorkDetailViewController alloc]init];
+    detail.contructionWork_ID = model.modelid;
+    [self.viewController.navigationController pushViewController:detail animated:YES];
+}
 
 - (UIImageView *)imageview
 {

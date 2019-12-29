@@ -151,6 +151,7 @@
         DFSitWorksListViewController *construction = [[DFSitWorksListViewController alloc]init];
 //        construction.constructionid = @"1";
         construction.sitmodel = self.model;
+        construction.worksId = self.worksId;
         construction.authorID = self.autherID;
         [contentVCs addObject:construction];
         

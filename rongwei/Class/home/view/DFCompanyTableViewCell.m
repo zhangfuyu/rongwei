@@ -61,7 +61,7 @@
     self.titleLabel.text = model.name;
     self.scoreLabel.text = model.brief;
     self.distanceLabel.text = [NSString stringWithFormat:@"%@km",model.distance];
-    self.constructionLabel.text = [NSString stringWithFormat:@"施工工地  %@",model.scale];
+    self.constructionLabel.text = [NSString stringWithFormat:@"施工工地  %@",model.site_nums];
 }
 - (void)awakeFromNib {
     [super awakeFromNib];

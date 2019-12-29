@@ -224,7 +224,7 @@
     
     
     
-    [[DFNetworkTool shareInstance] requestWithMethod:GHRequestMethod_POST withUrl:SendCode withParameter:@{@"phone":self.phoneTextField.text} withLoadingType:GHLoadingType_ShowLoading withShouldHaveToken:NO withContentType:GHContentType_Formdata completionBlock:^(BOOL isSuccess, NSString * _Nullable msg, id  _Nullable response) {
+    [[DFNetworkTool shareInstance] requestWithMethod:GHRequestMethod_POST withUrl:SendCode withParameter:@{@"phone":self.phoneTextField.text,@"type":@"reg"} withLoadingType:GHLoadingType_ShowLoading withShouldHaveToken:YES withContentType:GHContentType_Formdata completionBlock:^(BOOL isSuccess, NSString * _Nullable msg, id  _Nullable response) {
         if (isSuccess) {
             
             self.countDown = 60;
@@ -244,33 +244,51 @@
 
 - (void)TheNextStep
 {
-//    if (!self.isRead) {
-//        [SVProgressHUD showErrorWithStatus:@"请勾选《注册许可协议》"];
-//        return;
-//    }
-//    
-//    
-//     if (self.phoneTextField.text.length == 0) {
-//            [SVProgressHUD showErrorWithStatus:@"请输入您的手机号"];
-//            return;
-//        }
-//        
-//    if (![self.phoneTextField.text isMobileNumber]) {
-//        [SVProgressHUD showErrorWithStatus:@"请输入正确的手机号"];
-//        return;
-//    }
-//    
-//    if (![self.verificationField.text isMobileNumber]) {
-//        [SVProgressHUD showErrorWithStatus:@"请输入验证码"];
-//        return;
-//    }
-//    
+    if (!self.isRead) {
+        [SVProgressHUD showErrorWithStatus:@"请勾选《注册许可协议》"];
+        return;
+    }
     
     
-    DFRegisteredSecondViewController *secondpassword = [[DFRegisteredSecondViewController alloc]init];
-    secondpassword.phoneNumber = self.phoneTextField.text;
-    secondpassword.code = self.verificationField.text;
-    [self.navigationController pushViewController:secondpassword animated:YES];
+     if (self.phoneTextField.text.length == 0) {
+            [SVProgressHUD showErrorWithStatus:@"请输入您的手机号"];
+            return;
+        }
+        
+    if (![self.phoneTextField.text isMobileNumber]) {
+        [SVProgressHUD showErrorWithStatus:@"请输入正确的手机号"];
+        return;
+    }
+    
+    if (self.verificationField.text.length == 0) {
+        [SVProgressHUD showErrorWithStatus:@"请输入验证码"];
+        return;
+    }
+    
+    
+    
+    [[DFNetworkTool shareInstance] requestWithMethod:GHRequestMethod_POST withUrl:Consumer withParameter:@{@"username":self.phoneTextField.text,@"tel_code":self.verificationField.text} withLoadingType:GHLoadingType_ShowLoading withShouldHaveToken:YES withContentType:GHContentType_Formdata completionBlock:^(BOOL isSuccess, NSString * _Nullable msg, id  _Nullable response) {
+        if (isSuccess) {
+            
+            NSString *codeStr = [NSString stringWithFormat:@"%@",response[@"code"]];
+            if ([codeStr isEqualToString:@"0"]) {
+                DFRegisteredSecondViewController *secondpassword = [[DFRegisteredSecondViewController alloc]init];
+                secondpassword.phoneNumber = self.phoneTextField.text;
+                secondpassword.code = self.verificationField.text;
+                [self.navigationController pushViewController:secondpassword animated:YES];
+            }
+            else
+            {
+                [SVProgressHUD showErrorWithStatus:response[@"msg"]];
+            }
+            
+
+            
+        }
+    }];
+    
+    
+
     
 
 }

@@ -7,12 +7,22 @@
 //
 
 #import "DFSitDetailHeaderView.h"
+#import "DFEsignerDetialViewController.h"
+
+@interface DFSitDetailHeaderView ()
+
+@property (nonatomic , strong) DFDesignerModel *detailModel;
+
+@end
 
 @implementation DFSitDetailHeaderView
 
 - (instancetype)initWithFrame:(CGRect)frame withmodel:(DFDesignerModel *)model
 {
     if (self = [super initWithFrame:frame]) {
+        
+        self.detailModel = model;
+        
         UIImageView *headerimageview = [[UIImageView alloc]init];
         [headerimageview sd_setImageWithURL:[NSURL URLWithString:model.avatar] placeholderImage:[UIImage imageNamed:@"shejishi (1)"]];
         [self addSubview:headerimageview];
@@ -63,7 +73,7 @@
         subdetailelabel.textAlignment = NSTextAlignmentCenter;
         [self addSubview:subdetailelabel];
         
-        NSString *subdetailtext = [NSString stringWithFormat:@"%@套作品  %@次浏览  %@人预约",number,looknum,appointmentnum];
+        NSString *subdetailtext = [NSString stringWithFormat:@"%@套作品  %@次评价  %@人预约",number,looknum,appointmentnum];
         
         NSMutableAttributedString *attritext = [[NSMutableAttributedString alloc]initWithString:subdetailtext];
         NSRange range = [subdetailtext rangeOfString:number];
@@ -97,6 +107,13 @@
         
     }
     return self;
+}
+
+- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
+{
+    DFEsignerDetialViewController *detail = [[DFEsignerDetialViewController alloc]init];
+    detail.model = self.detailModel;
+    [self.viewController.navigationController pushViewController:detail animated:YES];
 }
 
 /*

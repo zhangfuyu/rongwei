@@ -14,6 +14,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic , strong) NSString *modelid;
 
+@property (nonatomic , assign)BOOL isInformation;//是否是咨询
+
 @end
 
 NS_ASSUME_NONNULL_END

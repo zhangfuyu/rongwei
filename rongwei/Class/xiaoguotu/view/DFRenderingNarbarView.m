@@ -27,7 +27,7 @@
         
         [renderingBtn mas_makeConstraints:^(MASConstraintMaker *make) {
             make.left.mas_equalTo(HScaleWidth(62));
-            make.top.mas_equalTo(kTopBarSafeHeight);
+            make.top.mas_equalTo(kStatusBarHeight);
             make.bottom.mas_equalTo(self);
             make.width.mas_equalTo(HScaleWidth(80));
         }];

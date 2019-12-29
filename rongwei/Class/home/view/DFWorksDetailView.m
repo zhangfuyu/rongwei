@@ -77,7 +77,10 @@
         
         
         NSArray *subtitle = [NSArray arrayWithObjects:@"风格",@"户型",@"面积",@"造价", nil];
-        NSArray *textArry = [NSArray arrayWithObjects:model.style[@"name"],model.shape[@"name"],model.mianji,model.zaojia, nil];
+        NSString *zaojia = [NSString stringWithFormat:@"%.1f万",[model.zaojia floatValue] / 10000];
+        NSString *mianji = [NSString stringWithFormat:@"%@m²",model.mianji];
+
+        NSArray *textArry = [NSArray arrayWithObjects:model.style[@"name"],model.shape[@"name"],mianji,zaojia, nil];
         
         float widh = (ScreenW - 2 * HScaleWidth(10)) / 4;
         

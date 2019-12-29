@@ -7,6 +7,7 @@
 //
 
 #import "DFHomeNaiBarView.h"
+#import "DFFoundConstructionViewController.h"
 
 @implementation DFHomeNaiBarView
 
@@ -29,7 +30,7 @@
 - (void)creatui
 
 {
-     UITextField *searchTextField = [[UITextField alloc] init];
+       UITextField *searchTextField = [[UITextField alloc] init];
        searchTextField.backgroundColor = [UIColor colorWithHexString:@"F5F6FA"];
        searchTextField.layer.cornerRadius = HScaleHeight(14);
        searchTextField.clearButtonMode = UITextFieldViewModeWhileEditing;
@@ -73,7 +74,10 @@
         UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
 
         [btn setImage:[UIImage imageNamed:imageArry[index]] forState:UIControlStateNormal];
+        btn.tag = 10086 + index;
         [self addSubview:btn];
+        
+        [btn addTarget:self action:@selector(pushToSelfVC:) forControlEvents:UIControlEventTouchUpInside];
         
         [btn mas_makeConstraints:^(MASConstraintMaker *make) {
             make.left.mas_equalTo(searchTextField.mas_right).offset(HScaleWidth(8) + index * HScaleWidth(28) + index *HScaleWidth(6));
@@ -116,6 +120,17 @@
     [scroup addTarget:self action:@selector(doit) forControlEvents:UIControlEventTouchUpInside];
     
 }
+
+- (void)pushToSelfVC:(UIButton *)sender
+{
+    //找施工
+    if (sender.tag == 10087) {
+        [self.viewController.navigationController pushViewController:[DFFoundConstructionViewController new] animated:YES];
+
+    }
+}
+
+
 - (void)doit
 {
     if (self.scroToMusrUp) {

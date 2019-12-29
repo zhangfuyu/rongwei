@@ -14,6 +14,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic , strong) NSString<Optional> *address;
 
+@property (nonatomic , strong) NSString<Optional> *brand;
+
 @property (nonatomic , strong) NSString<Optional> *area_id;
 
 @property (nonatomic , strong) NSString<Optional> *brief;
@@ -41,6 +43,11 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic , strong) NSString<Optional> *shop_id;
 
 @property (nonatomic , strong) NSString<Optional> *shop_name;
+
+@property (nonatomic , strong) NSString<Optional> *created_at;
+
+@property (nonatomic , strong) NSString<Optional> *follow_num;
+
 
 
 

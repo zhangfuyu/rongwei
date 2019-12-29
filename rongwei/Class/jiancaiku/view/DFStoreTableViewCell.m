@@ -7,6 +7,7 @@
 //
 
 #import "DFStoreTableViewCell.h"
+#import "DFStoreDetailViewController.h"
 
 @interface DFStoreTableViewCell ()
 
@@ -72,7 +73,9 @@
 
 - (void)clickIntoTheShop
 {
-    
+    DFStoreDetailViewController *storeDetail = [[DFStoreDetailViewController alloc]init];
+    storeDetail.store_id = self.model.shop_id;
+    [self.viewController.navigationController pushViewController:storeDetail animated:YES];
 }
 
 

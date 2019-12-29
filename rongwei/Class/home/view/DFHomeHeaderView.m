@@ -10,12 +10,15 @@
 #import "SDCycleScrollView.h"
 #import "DFHomeModuleButtonView.h"
 #import "DFFoundConstructionViewController.h"
+#import "DFEsignerlListViewController.h"
 
 @interface DFHomeHeaderView()<SDCycleScrollViewDelegate>
 
 @property (nonatomic , strong)SDCycleScrollView *scrollView;
 
 @property (nonatomic , strong)SDCycleScrollView *recommended;
+
+@property (nonatomic , strong) UIImageView *imageview;
 
 
 
@@ -40,15 +43,28 @@
 }
 - (void)creatui
 {
-    UIImageView *imageview = [[UIImageView alloc]init];
-    [imageview setImage:[UIImage imageNamed:@"框_home_header"]];
-    [self addSubview:imageview];
+    self.imageview = [[UIImageView alloc]init];
+    [self.imageview setImage:[UIImage imageNamed:@"框_home_header"]];
+    [self addSubview:self.imageview];
     
-    [imageview mas_makeConstraints:^(MASConstraintMaker *make) {
+    [self.imageview mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.right.top.mas_equalTo(0);
         make.height.mas_equalTo(196);
     }];
     
+    UIBlurEffect *blurEffect =[UIBlurEffect effectWithStyle:UIBlurEffectStyleDark];
+
+    UIVisualEffectView *effectView =[[UIVisualEffectView alloc]initWithEffect:blurEffect];
+
+    effectView.alpha = .9;
+
+    [self addSubview:effectView];
+    
+    [effectView mas_makeConstraints:^(MASConstraintMaker *make) {
+                
+        make.left.right.top.mas_equalTo(0);
+        make.height.mas_equalTo(196);
+    }];
     
     UIButton *locationButton = [UIButton buttonWithType:UIButtonTypeCustom];
        locationButton.titleLabel.font = HScaleFont(14);
@@ -311,10 +327,26 @@
     if (clickBtn.tag == 0) {
         [self.viewController.tabBarController setSelectedIndex:1];
     }
+    //找设计
+     else if (clickBtn.tag == 1)
+     {
+         [self.viewController.navigationController pushViewController:[DFEsignerlListViewController new] animated:YES];
+     }
+    //找施工
     else if (clickBtn.tag == 2)
     {
         [self.viewController.navigationController pushViewController:[DFFoundConstructionViewController new] animated:YES];
     }
+    //建材库
+     else if (clickBtn.tag == 3)
+     {
+         [self.viewController.tabBarController setSelectedIndex:2];
+     }
+    //攻略
+        else if (clickBtn.tag == 4)
+        {
+            [self.viewController.tabBarController setSelectedIndex:3];
+        }
 }
 
 /// 定位
@@ -334,5 +366,15 @@
    
     
 }
+/** 图片滚动回调 */
+- (void)cycleScrollView:(SDCycleScrollView *)cycleScrollView didScrollToIndex:(NSInteger)index
+{
+    if (cycleScrollView == self.scrollView) {
+        DFHomeNavModel *model = [self.banaerArry objectOrNilAtIndex:index];
 
+        [self.imageview sd_setImageWithURL:[NSURL URLWithString:model.pic_url] placeholderImage:nil];
+
+    }
+    
+}
 @end

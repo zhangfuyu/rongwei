@@ -12,6 +12,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface DFConstructionModel : JSONModel
 
+@property (nonatomic , strong) NSString<Optional> *manager;
+
 @property (nonatomic , strong) NSString<Optional> *address;
 
 @property (nonatomic , strong) NSString<Optional> *area_id;

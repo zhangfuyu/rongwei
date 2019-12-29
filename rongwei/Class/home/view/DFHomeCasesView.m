@@ -116,7 +116,7 @@
             [self.lineview mas_makeConstraints:^(MASConstraintMaker *make) {
                 make.centerX.mas_equalTo(btn.mas_centerX);
                 make.bottom.mas_equalTo(btn.mas_bottom);
-                make.size.mas_equalTo(CGSizeMake(HScaleHeight(30), HScaleHeight(2.5)));
+                make.size.mas_equalTo(CGSizeMake(HScaleHeight([(NSString *)titleArry[index] widthForFont:HScaleFont(14)]), HScaleHeight(2.5)));
             }];
        }
        else
@@ -150,7 +150,7 @@
             [self.lineview mas_remakeConstraints:^(MASConstraintMaker *make) {
                 make.centerX.mas_equalTo(sender.mas_centerX);
                 make.bottom.mas_equalTo(sender.mas_bottom);
-                make.size.mas_equalTo(CGSizeMake(HScaleHeight(30), HScaleHeight(2)));
+                make.size.mas_equalTo(CGSizeMake(HScaleHeight([sender.titleLabel.text widthForFont:HScaleFont(14)]), HScaleHeight(2.5)));
             }];
             
             clickBtn.selected = YES;

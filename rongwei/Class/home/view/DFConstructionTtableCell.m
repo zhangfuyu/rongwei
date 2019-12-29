@@ -8,6 +8,8 @@
 
 #import "DFConstructionTtableCell.h"
 #import "DFConstructionCell.h"
+#import "DFContructionWorkDetailViewController.h"
+#import "DFConstructionModel.h"
 @interface DFConstructionTtableCell ()<UICollectionViewDelegate,UICollectionViewDataSource>
 
 @property (nonatomic , strong) UICollectionView *collectionview;
@@ -83,7 +85,13 @@
 - (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout minimumInteritemSpacingForSectionAtIndex:(NSInteger)section {
     return HScaleHeight(10);
 }
-
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    DFConstructionModel *model = self.dataArry[indexPath.row];
+    DFContructionWorkDetailViewController *WorkDetail = [[DFContructionWorkDetailViewController alloc]init];
+    WorkDetail.contructionWork_ID = model.modelid;
+    [self.viewController.navigationController pushViewController:WorkDetail animated:YES];
+}
 
 - (UICollectionView *)collectionview
 {

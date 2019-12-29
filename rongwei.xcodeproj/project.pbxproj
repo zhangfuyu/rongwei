@@ -81,12 +81,53 @@
 		18EEA1B323599CB40072D0EB /* DFStrategyTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 18EEA1B223599CB40072D0EB /* DFStrategyTableViewCell.m */; };
 		9ECA9B3767B523B47E5CC5D3 /* libPods-rongweiUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AF8B2EC23CB6593255A65F59 /* libPods-rongweiUITests.a */; };
 		B0A72C8143F173529952CB2D /* libPods-rongwei.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 20D41B16400FB5B4785A6312 /* libPods-rongwei.a */; };
+		C41F376823AB9DA300C804BB /* DFStrategyView.m in Sources */ = {isa = PBXBuildFile; fileRef = C41F376723AB9DA300C804BB /* DFStrategyView.m */; };
+		C41F376B23ABB44F00C804BB /* DFInformationCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C41F376A23ABB44F00C804BB /* DFInformationCell.m */; };
+		C41F376E23ACD71A00C804BB /* DFStoreMoreDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C41F376D23ACD71A00C804BB /* DFStoreMoreDetailViewController.m */; };
+		C41F377123AE431300C804BB /* DFZiXunListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C41F377023AE431300C804BB /* DFZiXunListViewController.m */; };
+		C41F377423AE490C00C804BB /* DFZiXunListHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = C41F377323AE490C00C804BB /* DFZiXunListHeaderView.m */; };
+		C41F377723AE6CB000C804BB /* DFCommentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C41F377623AE6CB000C804BB /* DFCommentViewController.m */; };
+		C41F377A23AFA41B00C804BB /* DFXiaoGuoStyleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C41F377923AFA41B00C804BB /* DFXiaoGuoStyleViewController.m */; };
+		C41F377D23AFACBC00C804BB /* DFXiaoGuoStyleCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C41F377C23AFACBC00C804BB /* DFXiaoGuoStyleCell.m */; };
+		C41F378023AFB86400C804BB /* DFYuSuanViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C41F377F23AFB86400C804BB /* DFYuSuanViewController.m */; };
+		C41F378323AFBC2700C804BB /* DFAreaViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C41F378223AFBC2700C804BB /* DFAreaViewController.m */; };
+		C41F378623B24CCA00C804BB /* DFConstructionPhaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C41F378523B24CCA00C804BB /* DFConstructionPhaseViewController.m */; };
+		C41F378923B2506400C804BB /* DFDecorateFamilyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C41F378823B2506400C804BB /* DFDecorateFamilyViewController.m */; };
 		C41FCD95233501110017427F /* DFMainTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C41FCD94233501110017427F /* DFMainTableViewCell.m */; };
 		C41FCD98233507F70017427F /* DFMainCellBtn.m in Sources */ = {isa = PBXBuildFile; fileRef = C41FCD97233507F70017427F /* DFMainCellBtn.m */; };
 		C41FCD9B23350AE90017427F /* DFMainDataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C41FCD9A23350AE90017427F /* DFMainDataModel.m */; };
 		C41FCDA0233784880017427F /* DFLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C41FCD9F233784880017427F /* DFLoginViewController.m */; };
 		C41FCDA42337865A0017427F /* DFTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = C41FCDA32337865A0017427F /* DFTextField.m */; };
 		C41FCDA82337B7FD0017427F /* NSString+GHRegular.m in Sources */ = {isa = PBXBuildFile; fileRef = C41FCDA72337B7FD0017427F /* NSString+GHRegular.m */; };
+		C426A39123A0EAD70007FA84 /* DFCategoryModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C426A39023A0EAD70007FA84 /* DFCategoryModel.m */; };
+		C426A39423A0F5950007FA84 /* DFMoreStoreViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C426A39323A0F5950007FA84 /* DFMoreStoreViewController.m */; };
+		C426A39723A0F9F90007FA84 /* DFCategaryChooseView.m in Sources */ = {isa = PBXBuildFile; fileRef = C426A39623A0F9F90007FA84 /* DFCategaryChooseView.m */; };
+		C426A39A23A1D8380007FA84 /* DFStoreListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C426A39923A1D8380007FA84 /* DFStoreListCell.m */; };
+		C426A39D23A1DFD50007FA84 /* DFAllCategaryView.m in Sources */ = {isa = PBXBuildFile; fileRef = C426A39C23A1DFD50007FA84 /* DFAllCategaryView.m */; };
+		C426A3A323A238310007FA84 /* DFMoreGoodsListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C426A3A223A238310007FA84 /* DFMoreGoodsListViewController.m */; };
+		C426A3A623A23D460007FA84 /* DFGoodsListCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C426A3A523A23D460007FA84 /* DFGoodsListCollectionViewCell.m */; };
+		C426A3A923A242AE0007FA84 /* DFGoodsDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C426A3A823A242AE0007FA84 /* DFGoodsDetailViewController.m */; };
+		C426A3AC23A351160007FA84 /* DFGoodsDetailModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C426A3AB23A351160007FA84 /* DFGoodsDetailModel.m */; };
+		C426A3AF23A353A60007FA84 /* DFGoodsDetailNavView.m in Sources */ = {isa = PBXBuildFile; fileRef = C426A3AE23A353A60007FA84 /* DFGoodsDetailNavView.m */; };
+		C426A3B223A3A0870007FA84 /* DFGoodsHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = C426A3B123A3A0870007FA84 /* DFGoodsHeaderView.m */; };
+		C426A3B523A617660007FA84 /* DFConfigurationView.m in Sources */ = {isa = PBXBuildFile; fileRef = C426A3B423A617660007FA84 /* DFConfigurationView.m */; };
+		C426A3B823A622090007FA84 /* UICollectionViewLeftAlignedLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = C426A3B723A622090007FA84 /* UICollectionViewLeftAlignedLayout.m */; };
+		C426A3BB23A631E90007FA84 /* DFStandardCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C426A3BA23A631E90007FA84 /* DFStandardCollectionViewCell.m */; };
+		C426A3BE23A632DA0007FA84 /* DFStandardCollectionReusableView.m in Sources */ = {isa = PBXBuildFile; fileRef = C426A3BD23A632DA0007FA84 /* DFStandardCollectionReusableView.m */; };
+		C426A3C123A63AEE0007FA84 /* DFChildModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C426A3C023A63AEE0007FA84 /* DFChildModel.m */; };
+		C426A3C423A8D94E0007FA84 /* DFStoreDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C426A3C323A8D94E0007FA84 /* DFStoreDetailViewController.m */; };
+		C426A3C723A8D99A0007FA84 /* DFStoreHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = C426A3C623A8D99A0007FA84 /* DFStoreHeaderView.m */; };
+		C426A3CA23A8ED900007FA84 /* DFStoreDetailGoodsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C426A3C923A8ED900007FA84 /* DFStoreDetailGoodsCell.m */; };
+		C426A3CD23A900A70007FA84 /* DFLookMorePictureViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C426A3CC23A900A70007FA84 /* DFLookMorePictureViewController.m */; };
+		C426A3D023A903280007FA84 /* DFLookPictureCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C426A3CF23A903280007FA84 /* DFLookPictureCollectionViewCell.m */; };
+		C426A3D323AA24830007FA84 /* DFContructionListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C426A3D223AA24820007FA84 /* DFContructionListViewController.m */; };
+		C426A3D623AA27F90007FA84 /* DFConstructionListView.m in Sources */ = {isa = PBXBuildFile; fileRef = C426A3D523AA27F90007FA84 /* DFConstructionListView.m */; };
+		C426A3D923AA2CAB0007FA84 /* DFConstructionListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C426A3D823AA2CAB0007FA84 /* DFConstructionListCell.m */; };
+		C426A3DC23AA36C40007FA84 /* DFContructionWorkDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C426A3DB23AA36C40007FA84 /* DFContructionWorkDetailViewController.m */; };
+		C426A3DF23AA392D0007FA84 /* DFConstructionHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = C426A3DE23AA392D0007FA84 /* DFConstructionHeaderView.m */; };
+		C426A3E223AA5C300007FA84 /* DFStageInfosSiteModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C426A3E123AA5C300007FA84 /* DFStageInfosSiteModel.m */; };
+		C426A3E523AA5D6E0007FA84 /* DFConstructionSiteCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C426A3E423AA5D6E0007FA84 /* DFConstructionSiteCell.m */; };
+		C426A3E823AA63640007FA84 /* DFConstructionSiteDetailCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C426A3E723AA63640007FA84 /* DFConstructionSiteDetailCell.m */; };
 		C428EBAD2333A880009E0E8A /* DFAppVersionTool.m in Sources */ = {isa = PBXBuildFile; fileRef = C428EBAC2333A880009E0E8A /* DFAppVersionTool.m */; };
 		C428EBB22333A99A009E0E8A /* DFTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = C428EBB12333A99A009E0E8A /* DFTabBarController.m */; };
 		C428EBB52333AD8E009E0E8A /* DFNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = C428EBB42333AD8E009E0E8A /* DFNavigationController.m */; };
@@ -101,7 +142,6 @@
 		C46B0B1E2354ADF6000CC79B /* DFSectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = C46B0B1D2354ADF6000CC79B /* DFSectionView.m */; };
 		C48C2FF423818AB700ECFBC9 /* DFSaveDataTool.m in Sources */ = {isa = PBXBuildFile; fileRef = C48C2FF323818AB700ECFBC9 /* DFSaveDataTool.m */; };
 		C48C2FF723818C6800ECFBC9 /* DFCityModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C48C2FF623818C6800ECFBC9 /* DFCityModel.m */; };
-		C48C2FFA238C0F1500ECFBC9 /* DFSiteDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C48C2FF9238C0F1500ECFBC9 /* DFSiteDetailViewController.m */; };
 		C48C2FFD238C126B00ECFBC9 /* DFSiteStageInfosModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C48C2FFC238C126B00ECFBC9 /* DFSiteStageInfosModel.m */; };
 		C48C3000238C14E200ECFBC9 /* DFSiteStageInfosCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C48C2FFF238C14E200ECFBC9 /* DFSiteStageInfosCell.m */; };
 		C48C3003238C1F7200ECFBC9 /* DFGongLueModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C48C3002238C1F7200ECFBC9 /* DFGongLueModel.m */; };
@@ -285,6 +325,30 @@
 		A8B7A36D84EBABCCD8B96DCC /* Pods-rongweiUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-rongweiUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-rongweiUITests/Pods-rongweiUITests.release.xcconfig"; sourceTree = "<group>"; };
 		AD2B213CB6C8440140E4FF58 /* libPods-rongweiTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-rongweiTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AF8B2EC23CB6593255A65F59 /* libPods-rongweiUITests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-rongweiUITests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		C41F376623AB9DA300C804BB /* DFStrategyView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DFStrategyView.h; sourceTree = "<group>"; };
+		C41F376723AB9DA300C804BB /* DFStrategyView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DFStrategyView.m; sourceTree = "<group>"; };
+		C41F376923ABB44F00C804BB /* DFInformationCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DFInformationCell.h; sourceTree = "<group>"; };
+		C41F376A23ABB44F00C804BB /* DFInformationCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DFInformationCell.m; sourceTree = "<group>"; };
+		C41F376C23ACD71A00C804BB /* DFStoreMoreDetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DFStoreMoreDetailViewController.h; sourceTree = "<group>"; };
+		C41F376D23ACD71A00C804BB /* DFStoreMoreDetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DFStoreMoreDetailViewController.m; sourceTree = "<group>"; };
+		C41F376F23AE431300C804BB /* DFZiXunListViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DFZiXunListViewController.h; sourceTree = "<group>"; };
+		C41F377023AE431300C804BB /* DFZiXunListViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DFZiXunListViewController.m; sourceTree = "<group>"; };
+		C41F377223AE490C00C804BB /* DFZiXunListHeaderView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DFZiXunListHeaderView.h; sourceTree = "<group>"; };
+		C41F377323AE490C00C804BB /* DFZiXunListHeaderView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DFZiXunListHeaderView.m; sourceTree = "<group>"; };
+		C41F377523AE6CB000C804BB /* DFCommentViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DFCommentViewController.h; sourceTree = "<group>"; };
+		C41F377623AE6CB000C804BB /* DFCommentViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DFCommentViewController.m; sourceTree = "<group>"; };
+		C41F377823AFA41B00C804BB /* DFXiaoGuoStyleViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DFXiaoGuoStyleViewController.h; sourceTree = "<group>"; };
+		C41F377923AFA41B00C804BB /* DFXiaoGuoStyleViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DFXiaoGuoStyleViewController.m; sourceTree = "<group>"; };
+		C41F377B23AFACBC00C804BB /* DFXiaoGuoStyleCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DFXiaoGuoStyleCell.h; sourceTree = "<group>"; };
+		C41F377C23AFACBC00C804BB /* DFXiaoGuoStyleCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DFXiaoGuoStyleCell.m; sourceTree = "<group>"; };
+		C41F377E23AFB86400C804BB /* DFYuSuanViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DFYuSuanViewController.h; sourceTree = "<group>"; };
+		C41F377F23AFB86400C804BB /* DFYuSuanViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DFYuSuanViewController.m; sourceTree = "<group>"; };
+		C41F378123AFBC2700C804BB /* DFAreaViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DFAreaViewController.h; sourceTree = "<group>"; };
+		C41F378223AFBC2700C804BB /* DFAreaViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DFAreaViewController.m; sourceTree = "<group>"; };
+		C41F378423B24CCA00C804BB /* DFConstructionPhaseViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DFConstructionPhaseViewController.h; sourceTree = "<group>"; };
+		C41F378523B24CCA00C804BB /* DFConstructionPhaseViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DFConstructionPhaseViewController.m; sourceTree = "<group>"; };
+		C41F378723B2506400C804BB /* DFDecorateFamilyViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DFDecorateFamilyViewController.h; sourceTree = "<group>"; };
+		C41F378823B2506400C804BB /* DFDecorateFamilyViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DFDecorateFamilyViewController.m; sourceTree = "<group>"; };
 		C41FCD93233501110017427F /* DFMainTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DFMainTableViewCell.h; sourceTree = "<group>"; };
 		C41FCD94233501110017427F /* DFMainTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DFMainTableViewCell.m; sourceTree = "<group>"; };
 		C41FCD96233507F70017427F /* DFMainCellBtn.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DFMainCellBtn.h; sourceTree = "<group>"; };
@@ -297,6 +361,64 @@
 		C41FCDA32337865A0017427F /* DFTextField.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DFTextField.m; sourceTree = "<group>"; };
 		C41FCDA62337B7FD0017427F /* NSString+GHRegular.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+GHRegular.h"; sourceTree = "<group>"; };
 		C41FCDA72337B7FD0017427F /* NSString+GHRegular.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+GHRegular.m"; sourceTree = "<group>"; };
+		C426A38F23A0EAD70007FA84 /* DFCategoryModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DFCategoryModel.h; sourceTree = "<group>"; };
+		C426A39023A0EAD70007FA84 /* DFCategoryModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DFCategoryModel.m; sourceTree = "<group>"; };
+		C426A39223A0F5950007FA84 /* DFMoreStoreViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DFMoreStoreViewController.h; sourceTree = "<group>"; };
+		C426A39323A0F5950007FA84 /* DFMoreStoreViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DFMoreStoreViewController.m; sourceTree = "<group>"; };
+		C426A39523A0F9F90007FA84 /* DFCategaryChooseView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DFCategaryChooseView.h; sourceTree = "<group>"; };
+		C426A39623A0F9F90007FA84 /* DFCategaryChooseView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DFCategaryChooseView.m; sourceTree = "<group>"; };
+		C426A39823A1D8380007FA84 /* DFStoreListCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DFStoreListCell.h; sourceTree = "<group>"; };
+		C426A39923A1D8380007FA84 /* DFStoreListCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DFStoreListCell.m; sourceTree = "<group>"; };
+		C426A39B23A1DFD50007FA84 /* DFAllCategaryView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DFAllCategaryView.h; sourceTree = "<group>"; };
+		C426A39C23A1DFD50007FA84 /* DFAllCategaryView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DFAllCategaryView.m; sourceTree = "<group>"; };
+		C426A3A123A238310007FA84 /* DFMoreGoodsListViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DFMoreGoodsListViewController.h; sourceTree = "<group>"; };
+		C426A3A223A238310007FA84 /* DFMoreGoodsListViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DFMoreGoodsListViewController.m; sourceTree = "<group>"; };
+		C426A3A423A23D460007FA84 /* DFGoodsListCollectionViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DFGoodsListCollectionViewCell.h; sourceTree = "<group>"; };
+		C426A3A523A23D460007FA84 /* DFGoodsListCollectionViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DFGoodsListCollectionViewCell.m; sourceTree = "<group>"; };
+		C426A3A723A242AE0007FA84 /* DFGoodsDetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DFGoodsDetailViewController.h; sourceTree = "<group>"; };
+		C426A3A823A242AE0007FA84 /* DFGoodsDetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DFGoodsDetailViewController.m; sourceTree = "<group>"; };
+		C426A3AA23A351160007FA84 /* DFGoodsDetailModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DFGoodsDetailModel.h; sourceTree = "<group>"; };
+		C426A3AB23A351160007FA84 /* DFGoodsDetailModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DFGoodsDetailModel.m; sourceTree = "<group>"; };
+		C426A3AD23A353A60007FA84 /* DFGoodsDetailNavView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DFGoodsDetailNavView.h; sourceTree = "<group>"; };
+		C426A3AE23A353A60007FA84 /* DFGoodsDetailNavView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DFGoodsDetailNavView.m; sourceTree = "<group>"; };
+		C426A3B023A3A0870007FA84 /* DFGoodsHeaderView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DFGoodsHeaderView.h; sourceTree = "<group>"; };
+		C426A3B123A3A0870007FA84 /* DFGoodsHeaderView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DFGoodsHeaderView.m; sourceTree = "<group>"; };
+		C426A3B323A617660007FA84 /* DFConfigurationView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DFConfigurationView.h; sourceTree = "<group>"; };
+		C426A3B423A617660007FA84 /* DFConfigurationView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DFConfigurationView.m; sourceTree = "<group>"; };
+		C426A3B623A622090007FA84 /* UICollectionViewLeftAlignedLayout.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UICollectionViewLeftAlignedLayout.h; sourceTree = "<group>"; };
+		C426A3B723A622090007FA84 /* UICollectionViewLeftAlignedLayout.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UICollectionViewLeftAlignedLayout.m; sourceTree = "<group>"; };
+		C426A3B923A631E90007FA84 /* DFStandardCollectionViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DFStandardCollectionViewCell.h; sourceTree = "<group>"; };
+		C426A3BA23A631E90007FA84 /* DFStandardCollectionViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DFStandardCollectionViewCell.m; sourceTree = "<group>"; };
+		C426A3BC23A632DA0007FA84 /* DFStandardCollectionReusableView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DFStandardCollectionReusableView.h; sourceTree = "<group>"; };
+		C426A3BD23A632DA0007FA84 /* DFStandardCollectionReusableView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DFStandardCollectionReusableView.m; sourceTree = "<group>"; };
+		C426A3BF23A63AEE0007FA84 /* DFChildModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DFChildModel.h; sourceTree = "<group>"; };
+		C426A3C023A63AEE0007FA84 /* DFChildModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DFChildModel.m; sourceTree = "<group>"; };
+		C426A3C223A8D94E0007FA84 /* DFStoreDetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DFStoreDetailViewController.h; sourceTree = "<group>"; };
+		C426A3C323A8D94E0007FA84 /* DFStoreDetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DFStoreDetailViewController.m; sourceTree = "<group>"; };
+		C426A3C523A8D99A0007FA84 /* DFStoreHeaderView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DFStoreHeaderView.h; sourceTree = "<group>"; };
+		C426A3C623A8D99A0007FA84 /* DFStoreHeaderView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DFStoreHeaderView.m; sourceTree = "<group>"; };
+		C426A3C823A8ED900007FA84 /* DFStoreDetailGoodsCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DFStoreDetailGoodsCell.h; sourceTree = "<group>"; };
+		C426A3C923A8ED900007FA84 /* DFStoreDetailGoodsCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DFStoreDetailGoodsCell.m; sourceTree = "<group>"; };
+		C426A3CB23A900A70007FA84 /* DFLookMorePictureViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DFLookMorePictureViewController.h; sourceTree = "<group>"; };
+		C426A3CC23A900A70007FA84 /* DFLookMorePictureViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DFLookMorePictureViewController.m; sourceTree = "<group>"; };
+		C426A3CE23A903280007FA84 /* DFLookPictureCollectionViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DFLookPictureCollectionViewCell.h; sourceTree = "<group>"; };
+		C426A3CF23A903280007FA84 /* DFLookPictureCollectionViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DFLookPictureCollectionViewCell.m; sourceTree = "<group>"; };
+		C426A3D123AA24820007FA84 /* DFContructionListViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DFContructionListViewController.h; sourceTree = "<group>"; };
+		C426A3D223AA24820007FA84 /* DFContructionListViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DFContructionListViewController.m; sourceTree = "<group>"; };
+		C426A3D423AA27F90007FA84 /* DFConstructionListView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DFConstructionListView.h; sourceTree = "<group>"; };
+		C426A3D523AA27F90007FA84 /* DFConstructionListView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DFConstructionListView.m; sourceTree = "<group>"; };
+		C426A3D723AA2CAB0007FA84 /* DFConstructionListCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DFConstructionListCell.h; sourceTree = "<group>"; };
+		C426A3D823AA2CAB0007FA84 /* DFConstructionListCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DFConstructionListCell.m; sourceTree = "<group>"; };
+		C426A3DA23AA36C40007FA84 /* DFContructionWorkDetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DFContructionWorkDetailViewController.h; sourceTree = "<group>"; };
+		C426A3DB23AA36C40007FA84 /* DFContructionWorkDetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DFContructionWorkDetailViewController.m; sourceTree = "<group>"; };
+		C426A3DD23AA392D0007FA84 /* DFConstructionHeaderView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DFConstructionHeaderView.h; sourceTree = "<group>"; };
+		C426A3DE23AA392D0007FA84 /* DFConstructionHeaderView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DFConstructionHeaderView.m; sourceTree = "<group>"; };
+		C426A3E023AA5C300007FA84 /* DFStageInfosSiteModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DFStageInfosSiteModel.h; sourceTree = "<group>"; };
+		C426A3E123AA5C300007FA84 /* DFStageInfosSiteModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DFStageInfosSiteModel.m; sourceTree = "<group>"; };
+		C426A3E323AA5D6E0007FA84 /* DFConstructionSiteCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DFConstructionSiteCell.h; sourceTree = "<group>"; };
+		C426A3E423AA5D6E0007FA84 /* DFConstructionSiteCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DFConstructionSiteCell.m; sourceTree = "<group>"; };
+		C426A3E623AA63640007FA84 /* DFConstructionSiteDetailCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DFConstructionSiteDetailCell.h; sourceTree = "<group>"; };
+		C426A3E723AA63640007FA84 /* DFConstructionSiteDetailCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DFConstructionSiteDetailCell.m; sourceTree = "<group>"; };
 		C428EBAB2333A880009E0E8A /* DFAppVersionTool.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DFAppVersionTool.h; sourceTree = "<group>"; };
 		C428EBAC2333A880009E0E8A /* DFAppVersionTool.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DFAppVersionTool.m; sourceTree = "<group>"; };
 		C428EBB02333A99A009E0E8A /* DFTabBarController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DFTabBarController.h; sourceTree = "<group>"; };
@@ -327,8 +449,6 @@
 		C48C2FF323818AB700ECFBC9 /* DFSaveDataTool.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DFSaveDataTool.m; sourceTree = "<group>"; };
 		C48C2FF523818C6800ECFBC9 /* DFCityModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DFCityModel.h; sourceTree = "<group>"; };
 		C48C2FF623818C6800ECFBC9 /* DFCityModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DFCityModel.m; sourceTree = "<group>"; };
-		C48C2FF8238C0F1500ECFBC9 /* DFSiteDetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DFSiteDetailViewController.h; sourceTree = "<group>"; };
-		C48C2FF9238C0F1500ECFBC9 /* DFSiteDetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DFSiteDetailViewController.m; sourceTree = "<group>"; };
 		C48C2FFB238C126B00ECFBC9 /* DFSiteStageInfosModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DFSiteStageInfosModel.h; sourceTree = "<group>"; };
 		C48C2FFC238C126B00ECFBC9 /* DFSiteStageInfosModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DFSiteStageInfosModel.m; sourceTree = "<group>"; };
 		C48C2FFE238C14E200ECFBC9 /* DFSiteStageInfosCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DFSiteStageInfosCell.h; sourceTree = "<group>"; };
@@ -426,6 +546,10 @@
 				180B583D23585DE900D1E847 /* DFWaterFallLayout.m */,
 				180B583F23585F2F00D1E847 /* DFRenderingCollectionViewCell.h */,
 				180B584023585F2F00D1E847 /* DFRenderingCollectionViewCell.m */,
+				C426A3CE23A903280007FA84 /* DFLookPictureCollectionViewCell.h */,
+				C426A3CF23A903280007FA84 /* DFLookPictureCollectionViewCell.m */,
+				C41F377B23AFACBC00C804BB /* DFXiaoGuoStyleCell.h */,
+				C41F377C23AFACBC00C804BB /* DFXiaoGuoStyleCell.m */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -471,6 +595,8 @@
 				180C9196237BA01B0001CD4E /* DFGetNetData.m */,
 				180DBF342386650A00EE6D52 /* DFConstructionModel.h */,
 				180DBF352386650A00EE6D52 /* DFConstructionModel.m */,
+				C426A3E023AA5C300007FA84 /* DFStageInfosSiteModel.h */,
+				C426A3E123AA5C300007FA84 /* DFStageInfosSiteModel.m */,
 				180DBF3D238696A300EE6D52 /* DFCompanyModel.h */,
 				180DBF3E238696A300EE6D52 /* DFCompanyModel.m */,
 				C48C2FFB238C126B00ECFBC9 /* DFSiteStageInfosModel.h */,
@@ -515,6 +641,12 @@
 				C48C3029239E358B00ECFBC9 /* DFStoreModel.m */,
 				C48C3034239FA63400ECFBC9 /* DFStoreGoodModel.h */,
 				C48C3035239FA63400ECFBC9 /* DFStoreGoodModel.m */,
+				C426A38F23A0EAD70007FA84 /* DFCategoryModel.h */,
+				C426A39023A0EAD70007FA84 /* DFCategoryModel.m */,
+				C426A3AA23A351160007FA84 /* DFGoodsDetailModel.h */,
+				C426A3AB23A351160007FA84 /* DFGoodsDetailModel.m */,
+				C426A3BF23A63AEE0007FA84 /* DFChildModel.h */,
+				C426A3C023A63AEE0007FA84 /* DFChildModel.m */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -530,6 +662,30 @@
 				C48C302F239F9D1700ECFBC9 /* DFGoodsTableViewCell.m */,
 				C48C3031239F9F2300ECFBC9 /* DFStoreGoodsView.h */,
 				C48C3032239F9F2300ECFBC9 /* DFStoreGoodsView.m */,
+				C426A39523A0F9F90007FA84 /* DFCategaryChooseView.h */,
+				C426A39623A0F9F90007FA84 /* DFCategaryChooseView.m */,
+				C426A39B23A1DFD50007FA84 /* DFAllCategaryView.h */,
+				C426A39C23A1DFD50007FA84 /* DFAllCategaryView.m */,
+				C426A39823A1D8380007FA84 /* DFStoreListCell.h */,
+				C426A39923A1D8380007FA84 /* DFStoreListCell.m */,
+				C426A3A423A23D460007FA84 /* DFGoodsListCollectionViewCell.h */,
+				C426A3A523A23D460007FA84 /* DFGoodsListCollectionViewCell.m */,
+				C426A3AD23A353A60007FA84 /* DFGoodsDetailNavView.h */,
+				C426A3AE23A353A60007FA84 /* DFGoodsDetailNavView.m */,
+				C426A3B023A3A0870007FA84 /* DFGoodsHeaderView.h */,
+				C426A3B123A3A0870007FA84 /* DFGoodsHeaderView.m */,
+				C426A3B323A617660007FA84 /* DFConfigurationView.h */,
+				C426A3B423A617660007FA84 /* DFConfigurationView.m */,
+				C426A3B623A622090007FA84 /* UICollectionViewLeftAlignedLayout.h */,
+				C426A3B723A622090007FA84 /* UICollectionViewLeftAlignedLayout.m */,
+				C426A3B923A631E90007FA84 /* DFStandardCollectionViewCell.h */,
+				C426A3BA23A631E90007FA84 /* DFStandardCollectionViewCell.m */,
+				C426A3BC23A632DA0007FA84 /* DFStandardCollectionReusableView.h */,
+				C426A3BD23A632DA0007FA84 /* DFStandardCollectionReusableView.m */,
+				C426A3C523A8D99A0007FA84 /* DFStoreHeaderView.h */,
+				C426A3C623A8D99A0007FA84 /* DFStoreHeaderView.m */,
+				C426A3C823A8ED900007FA84 /* DFStoreDetailGoodsCell.h */,
+				C426A3C923A8ED900007FA84 /* DFStoreDetailGoodsCell.m */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -564,6 +720,12 @@
 				C48C3008238ED31700ECFBC9 /* DFCommentBommenView.m */,
 				C48C3010239629B900ECFBC9 /* DFStrategyCommentCell.h */,
 				C48C3011239629B900ECFBC9 /* DFStrategyCommentCell.m */,
+				C41F376623AB9DA300C804BB /* DFStrategyView.h */,
+				C41F376723AB9DA300C804BB /* DFStrategyView.m */,
+				C41F376923ABB44F00C804BB /* DFInformationCell.h */,
+				C41F376A23ABB44F00C804BB /* DFInformationCell.m */,
+				C41F377223AE490C00C804BB /* DFZiXunListHeaderView.h */,
+				C41F377323AE490C00C804BB /* DFZiXunListHeaderView.m */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -673,6 +835,10 @@
 				1803C64C238E0176007DCCD2 /* DFRecommendedViewController.m */,
 				C48C300A238ED88B00ECFBC9 /* DFGongLueCommentsViewController.h */,
 				C48C300B238ED88B00ECFBC9 /* DFGongLueCommentsViewController.m */,
+				C41F376F23AE431300C804BB /* DFZiXunListViewController.h */,
+				C41F377023AE431300C804BB /* DFZiXunListViewController.m */,
+				C41F377523AE6CB000C804BB /* DFCommentViewController.h */,
+				C41F377623AE6CB000C804BB /* DFCommentViewController.m */,
 			);
 			path = contro;
 			sourceTree = "<group>";
@@ -704,6 +870,14 @@
 				180E7AD92383C116009EB0A4 /* DFAppointViewController.m */,
 				180E072D238506F000CAF441 /* DFFoundConstructionViewController.h */,
 				180E072E238506F000CAF441 /* DFFoundConstructionViewController.m */,
+				C41F378423B24CCA00C804BB /* DFConstructionPhaseViewController.h */,
+				C41F378523B24CCA00C804BB /* DFConstructionPhaseViewController.m */,
+				C41F378723B2506400C804BB /* DFDecorateFamilyViewController.h */,
+				C41F378823B2506400C804BB /* DFDecorateFamilyViewController.m */,
+				C426A3D123AA24820007FA84 /* DFContructionListViewController.h */,
+				C426A3D223AA24820007FA84 /* DFContructionListViewController.m */,
+				C426A3DA23AA36C40007FA84 /* DFContructionWorkDetailViewController.h */,
+				C426A3DB23AA36C40007FA84 /* DFContructionWorkDetailViewController.m */,
 				180D7A5B2387AB2D007B9EEC /* DFContructionDetailViewController.h */,
 				180D7A5C2387AB2D007B9EEC /* DFContructionDetailViewController.m */,
 				1803C636238B6DA4007DCCD2 /* DFConstructionSiteViewController.h */,
@@ -712,8 +886,6 @@
 				1803C640238BAE25007DCCD2 /* DFRvaluationViewController.m */,
 				1803C642238BBD3E007DCCD2 /* DFInformationViewController.h */,
 				1803C643238BBD3E007DCCD2 /* DFInformationViewController.m */,
-				C48C2FF8238C0F1500ECFBC9 /* DFSiteDetailViewController.h */,
-				C48C2FF9238C0F1500ECFBC9 /* DFSiteDetailViewController.m */,
 			);
 			path = contro;
 			sourceTree = "<group>";
@@ -725,6 +897,10 @@
 				186E7DDE233B31E800C0DCDE /* DfDesignerTableViewCell.m */,
 				180D7A5E2387ACB0007B9EEC /* DFConstructionTtableCell.h */,
 				180D7A5F2387ACB0007B9EEC /* DFConstructionTtableCell.m */,
+				C426A3E323AA5D6E0007FA84 /* DFConstructionSiteCell.h */,
+				C426A3E423AA5D6E0007FA84 /* DFConstructionSiteCell.m */,
+				C426A3E623AA63640007FA84 /* DFConstructionSiteDetailCell.h */,
+				C426A3E723AA63640007FA84 /* DFConstructionSiteDetailCell.m */,
 				1815AE7E233C898F007A1955 /* DFDesignerView.h */,
 				1815AE7F233C898F007A1955 /* DFDesignerView.m */,
 				1815AE85233CAB5F007A1955 /* DFCasesView.h */,
@@ -745,6 +921,12 @@
 				180E7AD6238378C5009EB0A4 /* DFDesignerCommentCell.m */,
 				180E073023851EBE00CAF441 /* DfConstructionHeadrView.h */,
 				180E073123851EBE00CAF441 /* DfConstructionHeadrView.m */,
+				C426A3D423AA27F90007FA84 /* DFConstructionListView.h */,
+				C426A3D523AA27F90007FA84 /* DFConstructionListView.m */,
+				C426A3D723AA2CAB0007FA84 /* DFConstructionListCell.h */,
+				C426A3D823AA2CAB0007FA84 /* DFConstructionListCell.m */,
+				C426A3DD23AA392D0007FA84 /* DFConstructionHeaderView.h */,
+				C426A3DE23AA392D0007FA84 /* DFConstructionHeaderView.m */,
 				180DBF372386678000EE6D52 /* DFConstructionCell.h */,
 				180DBF382386678000EE6D52 /* DFConstructionCell.m */,
 				180DBF3A238690C300EE6D52 /* DFCompanyTableViewCell.h */,
@@ -792,6 +974,16 @@
 			children = (
 				C428EBCD2333B534009E0E8A /* DFJianCaiViewController.h */,
 				C428EBCE2333B534009E0E8A /* DFJianCaiViewController.m */,
+				C426A39223A0F5950007FA84 /* DFMoreStoreViewController.h */,
+				C426A39323A0F5950007FA84 /* DFMoreStoreViewController.m */,
+				C426A3A123A238310007FA84 /* DFMoreGoodsListViewController.h */,
+				C426A3A223A238310007FA84 /* DFMoreGoodsListViewController.m */,
+				C426A3A723A242AE0007FA84 /* DFGoodsDetailViewController.h */,
+				C426A3A823A242AE0007FA84 /* DFGoodsDetailViewController.m */,
+				C426A3C223A8D94E0007FA84 /* DFStoreDetailViewController.h */,
+				C426A3C323A8D94E0007FA84 /* DFStoreDetailViewController.m */,
+				C41F376C23ACD71A00C804BB /* DFStoreMoreDetailViewController.h */,
+				C41F376D23ACD71A00C804BB /* DFStoreMoreDetailViewController.m */,
 			);
 			path = contro;
 			sourceTree = "<group>";
@@ -852,6 +1044,14 @@
 			children = (
 				C428EBD32333B55D009E0E8A /* DFXiaoGuoTuViewController.h */,
 				C428EBD42333B55D009E0E8A /* DFXiaoGuoTuViewController.m */,
+				C426A3CB23A900A70007FA84 /* DFLookMorePictureViewController.h */,
+				C426A3CC23A900A70007FA84 /* DFLookMorePictureViewController.m */,
+				C41F377823AFA41B00C804BB /* DFXiaoGuoStyleViewController.h */,
+				C41F377923AFA41B00C804BB /* DFXiaoGuoStyleViewController.m */,
+				C41F377E23AFB86400C804BB /* DFYuSuanViewController.h */,
+				C41F377F23AFB86400C804BB /* DFYuSuanViewController.m */,
+				C41F378123AFBC2700C804BB /* DFAreaViewController.h */,
+				C41F378223AFBC2700C804BB /* DFAreaViewController.m */,
 			);
 			path = contro;
 			sourceTree = "<group>";
@@ -1190,21 +1390,35 @@
 				C428EBCF2333B534009E0E8A /* DFJianCaiViewController.m in Sources */,
 				C48C301B23966A5C00ECFBC9 /* DFSitWorksListViewController.m in Sources */,
 				C48C3030239F9D1700ECFBC9 /* DFGoodsTableViewCell.m in Sources */,
+				C41F378323AFBC2700C804BB /* DFAreaViewController.m in Sources */,
 				180C9197237BA01B0001CD4E /* DFGetNetData.m in Sources */,
 				180DBF3C238690C300EE6D52 /* DFCompanyTableViewCell.m in Sources */,
+				C41F377123AE431300C804BB /* DFZiXunListViewController.m in Sources */,
+				C426A3CD23A900A70007FA84 /* DFLookMorePictureViewController.m in Sources */,
 				1815AE80233C898F007A1955 /* DFDesignerView.m in Sources */,
 				1815AE87233CAB5F007A1955 /* DFCasesView.m in Sources */,
 				1803C635238B6698007DCCD2 /* DFNewMainTableView.m in Sources */,
+				C426A3C123A63AEE0007FA84 /* DFChildModel.m in Sources */,
+				C426A3C723A8D99A0007FA84 /* DFStoreHeaderView.m in Sources */,
+				C41F377423AE490C00C804BB /* DFZiXunListHeaderView.m in Sources */,
+				C426A3D623AA27F90007FA84 /* DFConstructionListView.m in Sources */,
 				1815AE7D233C657C007A1955 /* DFEsignerDetialViewController.m in Sources */,
 				180D7A602387ACB0007B9EEC /* DFConstructionTtableCell.m in Sources */,
+				C426A39D23A1DFD50007FA84 /* DFAllCategaryView.m in Sources */,
 				1803C644238BBD3E007DCCD2 /* DFInformationViewController.m in Sources */,
 				C48C2FF723818C6800ECFBC9 /* DFCityModel.m in Sources */,
 				180E7AD7238378C5009EB0A4 /* DFDesignerCommentCell.m in Sources */,
+				C426A3A323A238310007FA84 /* DFMoreGoodsListViewController.m in Sources */,
 				C428EBAD2333A880009E0E8A /* DFAppVersionTool.m in Sources */,
+				C426A3BE23A632DA0007FA84 /* DFStandardCollectionReusableView.m in Sources */,
 				18EEA1AB235991D00072D0EB /* DFChooseView.m in Sources */,
 				1803C62F238B6386007DCCD2 /* DFBottomTableViewCell.m in Sources */,
+				C426A3B223A3A0870007FA84 /* DFGoodsHeaderView.m in Sources */,
+				C426A3BB23A631E90007FA84 /* DFStandardCollectionViewCell.m in Sources */,
 				C48C2FFD238C126B00ECFBC9 /* DFSiteStageInfosModel.m in Sources */,
+				C41F377A23AFA41B00C804BB /* DFXiaoGuoStyleViewController.m in Sources */,
 				C48C301E23966BE200ECFBC9 /* DFSitWorksCollectionViewCell.m in Sources */,
+				C426A3B523A617660007FA84 /* DFConfigurationView.m in Sources */,
 				C48C3003238C1F7200ECFBC9 /* DFGongLueModel.m in Sources */,
 				C41FCD95233501110017427F /* DFMainTableViewCell.m in Sources */,
 				C48C2FF423818AB700ECFBC9 /* DFSaveDataTool.m in Sources */,
@@ -1219,62 +1433,86 @@
 				1803C647238CBDE9007DCCD2 /* DFStrategyDetailViewController.m in Sources */,
 				C428EBD22333B543009E0E8A /* DFMainViewController.m in Sources */,
 				1815AE75233C3FAF007A1955 /* CQTopBarViewController.m in Sources */,
+				C426A3D923AA2CAB0007FA84 /* DFConstructionListCell.m in Sources */,
 				C48C3036239FA63400ECFBC9 /* DFStoreGoodModel.m in Sources */,
-				C48C2FFA238C0F1500ECFBC9 /* DFSiteDetailViewController.m in Sources */,
+				C426A3D323AA24830007FA84 /* DFContructionListViewController.m in Sources */,
 				C48C301823965A7200ECFBC9 /* DFWorksDetailView.m in Sources */,
 				C428EBD52333B55D009E0E8A /* DFXiaoGuoTuViewController.m in Sources */,
+				C426A3DC23AA36C40007FA84 /* DFContructionWorkDetailViewController.m in Sources */,
+				C426A39123A0EAD70007FA84 /* DFCategoryModel.m in Sources */,
 				C428EBDB2333BAEC009E0E8A /* DFBaseViewController.m in Sources */,
 				1815AE6C233C3FAF007A1955 /* CQTopBarView.m in Sources */,
 				1803C650238E0289007DCCD2 /* DFStrategyCollectionViewCell.m in Sources */,
+				C426A3E223AA5C300007FA84 /* DFStageInfosSiteModel.m in Sources */,
+				C426A3D023A903280007FA84 /* DFLookPictureCollectionViewCell.m in Sources */,
 				18810E7E23347D1A00F8191C /* DFMainHeaderView.m in Sources */,
+				C41F378023AFB86400C804BB /* DFYuSuanViewController.m in Sources */,
 				180E072F238506F000CAF441 /* DFFoundConstructionViewController.m in Sources */,
 				C48C3012239629B900ECFBC9 /* DFStrategyCommentCell.m in Sources */,
+				C41F377D23AFACBC00C804BB /* DFXiaoGuoStyleCell.m in Sources */,
 				C41FCD98233507F70017427F /* DFMainCellBtn.m in Sources */,
 				C428EBB22333A99A009E0E8A /* DFTabBarController.m in Sources */,
 				1815AE84233C96BE007A1955 /* NSString+Extension.m in Sources */,
 				180E7ADA2383C116009EB0A4 /* DFAppointViewController.m in Sources */,
 				180E7AD423827E47009EB0A4 /* DFCommentModel.m in Sources */,
+				C426A3E523AA5D6E0007FA84 /* DFConstructionSiteCell.m in Sources */,
 				18EEA1B0235995E40072D0EB /* DFStrategyHeaderView.m in Sources */,
 				186E7DDF233B31E900C0DCDE /* DfDesignerTableViewCell.m in Sources */,
 				180E71FD237ADAB000CD34D2 /* DFHomeNavModel.m in Sources */,
 				180B584123585F2F00D1E847 /* DFRenderingCollectionViewCell.m in Sources */,
 				18066932236A601000830CA9 /* DFRegisteredFirstViewController.m in Sources */,
+				C426A3E823AA63640007FA84 /* DFConstructionSiteDetailCell.m in Sources */,
 				C41FCD9B23350AE90017427F /* DFMainDataModel.m in Sources */,
+				C426A3A923A242AE0007FA84 /* DFGoodsDetailViewController.m in Sources */,
 				C46AD0EA23339256000514B7 /* DFUserModelTool.m in Sources */,
 				180FCDF3233D972000CD4BB7 /* DFWorksTableViewCell.m in Sources */,
 				1803C63B238B700A007DCCD2 /* DFItsCollectionViewCell.m in Sources */,
 				180D7A632387CD03007B9EEC /* DFContructionDetailView.m in Sources */,
 				C46AD0E523338FE6000514B7 /* DFNetworkTool.m in Sources */,
+				C426A3AF23A353A60007FA84 /* DFGoodsDetailNavView.m in Sources */,
 				C428EBD82333B58D009E0E8A /* DFFindGonglueViewController.m in Sources */,
 				C4E0680E23327A6300C0F650 /* ViewController.m in Sources */,
 				1809B477233B0F5000D768C3 /* DFDesignerModel.m in Sources */,
 				C41FCDA82337B7FD0017427F /* NSString+GHRegular.m in Sources */,
 				1803C62C238B5FC9007DCCD2 /* DFHomeCasesView.m in Sources */,
+				C426A3C423A8D94E0007FA84 /* DFStoreDetailViewController.m in Sources */,
 				1803C64D238E0176007DCCD2 /* DFRecommendedViewController.m in Sources */,
+				C41F378623B24CCA00C804BB /* DFConstructionPhaseViewController.m in Sources */,
+				C426A3AC23A351160007FA84 /* DFGoodsDetailModel.m in Sources */,
+				C426A39723A0F9F90007FA84 /* DFCategaryChooseView.m in Sources */,
 				18095C5F23559478002212E9 /* DFHomeNaiBarView.m in Sources */,
 				C48C3009238ED31700ECFBC9 /* DFCommentBommenView.m in Sources */,
 				C48C3033239F9F2300ECFBC9 /* DFStoreGoodsView.m in Sources */,
 				1843A990236C18430070586C /* DFRegisteredSecondViewController.m in Sources */,
 				18EEA1B323599CB40072D0EB /* DFStrategyTableViewCell.m in Sources */,
 				C48C3006238D5AEC00ECFBC9 /* DFSecondHeaderView.m in Sources */,
+				C426A3DF23AA392D0007FA84 /* DFConstructionHeaderView.m in Sources */,
 				C428EBCC2333B51F009E0E8A /* DFHomeViewController.m in Sources */,
 				180B58372358084A00D1E847 /* DFRenderingNarbarView.m in Sources */,
 				C48C30212396C1A600ECFBC9 /* DFSitDetailHeaderView.m in Sources */,
 				188888C823543D3C00391F21 /* DFHomeHeaderView.m in Sources */,
 				C46B0B1E2354ADF6000CC79B /* DFSectionView.m in Sources */,
 				18BD929C235D7C360084873C /* DFBuildingHeaderView.m in Sources */,
+				C426A3B823A622090007FA84 /* UICollectionViewLeftAlignedLayout.m in Sources */,
 				188888DC23543FF800391F21 /* TADotView.m in Sources */,
+				C426A3A623A23D460007FA84 /* DFGoodsListCollectionViewCell.m in Sources */,
+				C41F377723AE6CB000C804BB /* DFCommentViewController.m in Sources */,
 				180D7A5D2387AB2D007B9EEC /* DFContructionDetailViewController.m in Sources */,
 				C48C300C238ED88B00ECFBC9 /* DFGongLueCommentsViewController.m in Sources */,
+				C41F378923B2506400C804BB /* DFDecorateFamilyViewController.m in Sources */,
 				1815AE6F233C3FAF007A1955 /* CQSegmentTitleImage.m in Sources */,
 				180DBF3F238696A300EE6D52 /* DFCompanyModel.m in Sources */,
 				1809B474233B075100D768C3 /* DFEsignerlListViewController.m in Sources */,
 				1815AE78233C3FAF007A1955 /* CQTopBarSegment.m in Sources */,
+				C426A39A23A1D8380007FA84 /* DFStoreListCell.m in Sources */,
 				1803C64A238CEEA2007DCCD2 /* DFStrategyDetailHeaderView.m in Sources */,
+				C41F376B23ABB44F00C804BB /* DFInformationCell.m in Sources */,
 				C48C302D239E3A2E00ECFBC9 /* DFStoreTableViewCell.m in Sources */,
+				C41F376E23ACD71A00C804BB /* DFStoreMoreDetailViewController.m in Sources */,
 				188888DB23543FF800391F21 /* SDCollectionViewCell.m in Sources */,
 				C4E0681923327A6700C0F650 /* main.m in Sources */,
 				1803C632238B63F3007DCCD2 /* DFPageContentView.m in Sources */,
+				C426A3CA23A8ED900007FA84 /* DFStoreDetailGoodsCell.m in Sources */,
 				180E073223851EBE00CAF441 /* DfConstructionHeadrView.m in Sources */,
 				C48C302A239E358B00ECFBC9 /* DFStoreModel.m in Sources */,
 				188888DD23543FF800391F21 /* TAPageControl.m in Sources */,
@@ -1284,11 +1522,13 @@
 				180B583E23585DE900D1E847 /* DFWaterFallLayout.m in Sources */,
 				188888D923543FF800391F21 /* SDCycleScrollView.m in Sources */,
 				C48C3000238C14E200ECFBC9 /* DFSiteStageInfosCell.m in Sources */,
+				C41F376823AB9DA300C804BB /* DFStrategyView.m in Sources */,
 				C4E0680B23327A6300C0F650 /* AppDelegate.m in Sources */,
 				1808D70B2339ABA600710164 /* DFForgotPasswordViewController.m in Sources */,
 				C48C30152396551600ECFBC9 /* DFWorksDetailViewController.m in Sources */,
 				C41FCDA42337865A0017427F /* DFTextField.m in Sources */,
 				188888DF23543FF800391F21 /* TAAbstractDotView.m in Sources */,
+				C426A39423A0F5950007FA84 /* DFMoreStoreViewController.m in Sources */,
 				188888DA23543FF800391F21 /* UIView+SDExtension.m in Sources */,
 				188888E22354430900391F21 /* DFHomeModuleButtonView.m in Sources */,
 				1803C638238B6DA4007DCCD2 /* DFConstructionSiteViewController.m in Sources */,

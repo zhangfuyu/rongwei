@@ -130,7 +130,7 @@
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return ScreenH - HScaleHeight(47) - kBottomSafeHeight - HScaleHeight(54);
+    return ScreenH - HScaleHeight(47) - kBottomSafeHeight - HScaleHeight(54) - HScaleHeight(125.5);
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -284,6 +284,7 @@
 {
     if (!_boomview) {
         _boomview = [[DFCommentBommenView alloc]init];
+        _boomview.isInformation = self.isInformation;
         [self.view addSubview:_boomview];
     }
     return _boomview;
@@ -292,6 +293,7 @@
 - (void)dealloc
 {
     [[NSNotificationCenter defaultCenter] removeObserver:self name:@"leaveTop" object:nil];
+    [[DFNetworkTool shareInstance] cancelRequest];
 }
 /*
 #pragma mark - Navigation

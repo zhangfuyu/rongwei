@@ -8,6 +8,7 @@
 
 #import "DFCommentBommenView.h"
 #import "DFGongLueCommentsViewController.h"
+#import "DFZiXunListViewController.h"
 
 @interface DFCommentBommenView ()
 
@@ -63,6 +64,7 @@
         UILabel *firstlabel = [[UILabel alloc]init];
         firstlabel.text = @"评论";
         firstlabel.textColor = [UIColor colorWithHexString:@"333333"];
+        firstlabel.adjustsFontSizeToFitWidth = YES;
         firstlabel.font = HScaleFont(10);
         firstlabel.textAlignment = NSTextAlignmentCenter;
         [self addSubview:firstlabel];
@@ -73,9 +75,21 @@
             make.right.mas_equalTo(messageimage.mas_right);
         }];
         
+        
+        UIButton *commentBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+        [self addSubview:commentBtn];
+        [commentBtn addTarget:self action:@selector(pushCommentVC) forControlEvents:UIControlEventTouchUpInside];
+        [commentBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.left.mas_equalTo(messageimage.left);
+            make.right.mas_equalTo(messageimage.right);
+            make.bottom.mas_equalTo(firstlabel.mas_bottom);
+        }];
+        
+        
         UIImageView *star = [[UIImageView alloc]init];
         star.image = [UIImage imageNamed:@"关注"];
         [self addSubview:star];
+        
         
         [star mas_makeConstraints:^(MASConstraintMaker *make) {
             make.left.mas_equalTo(messageimage.mas_right).offset(HScaleWidth(20.5));
@@ -86,6 +100,7 @@
         UILabel *secondlabel = [[UILabel alloc]init];
         secondlabel.text = @"收藏";
         secondlabel.textColor = [UIColor colorWithHexString:@"333333"];
+        secondlabel.adjustsFontSizeToFitWidth = YES;
         secondlabel.font = HScaleFont(10);
         secondlabel.textAlignment = NSTextAlignmentCenter;
         [self addSubview:secondlabel];
@@ -99,13 +114,31 @@
     }
     return self;
 }
-- (void)clickEvent:(UITapGestureRecognizer *)tap
+
+- (void)pushCommentVC
 {
-    NSLog(@"view.tag = %ld",tap.view.tag);
     DFGongLueCommentsViewController *comment = [[DFGongLueCommentsViewController alloc]init];
     comment.bbs_id = self.model.modelId;
     comment.comment_num = self.model.bbs_com_num;
     [self.viewController.navigationController pushViewController:comment animated:YES];
+}
+
+- (void)clickEvent:(UITapGestureRecognizer *)tap
+{
+    NSLog(@"view.tag = %ld",tap.view.tag);
+    if (self.isInformation) {
+        DFZiXunListViewController *zixun = [[DFZiXunListViewController alloc]init];
+        zixun.model = self.model;
+        [self.viewController.navigationController pushViewController:zixun animated:YES];
+    }
+    else
+    {
+//        DFGongLueCommentsViewController *comment = [[DFGongLueCommentsViewController alloc]init];
+//        comment.bbs_id = self.model.modelId;
+//        comment.comment_num = self.model.bbs_com_num;
+//        [self.viewController.navigationController pushViewController:comment animated:YES];
+    }
+
     
 }
 

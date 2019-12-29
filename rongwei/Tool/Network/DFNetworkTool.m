@@ -53,6 +53,14 @@ static const NSString *htmlAddress = @"http://rz.soft-shop.cn/api/";
     
     
 }
+- (void)cancelRequest
+{
+    if ([self.sessionManager.tasks count] > 0) {
+        NSLog(@"返回时取消网络请求");
+        [self.sessionManager.tasks makeObjectsPerformSelector:@selector(cancel)];
+        //NSLog(@"tasks = %@",manager.tasks);
+    }
+}
 /**
  设置请求基本信息
  */
