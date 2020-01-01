@@ -7,6 +7,7 @@
 //
 
 #import "DFWorkListTableViewCell.h"
+#import "SDCycleScrollView.h"
 
 @interface DFWorkListTableViewCell ()
 
@@ -20,6 +21,8 @@
 
 @property (nonatomic , strong) UIButton *nowconsult;
 
+@property (nonatomic , strong) SDCycleScrollView *scrollView;
+
 @end
 
 @implementation DFWorkListTableViewCell
@@ -27,7 +30,11 @@
 {
     if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
         
-        [self.bigimageview mas_makeConstraints:^(MASConstraintMaker *make) {
+        
+        
+
+        
+        [self.scrollView mas_makeConstraints:^(MASConstraintMaker *make) {
             make.top.mas_equalTo(HScaleHeight(15));
             make.left.mas_equalTo(HScaleWidth(10));
             make.right.mas_equalTo(-HScaleWidth(10));
@@ -35,21 +42,21 @@
         }];
         
         [self.numbercount mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.left.bottom.mas_equalTo(self.bigimageview);
+            make.left.bottom.mas_equalTo(self.scrollView);
             make.size.mas_equalTo(CGSizeMake(HScaleWidth(50), HScaleHeight(30)));
         }];
         
         
         [self.nowconsult mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.top.mas_equalTo(self.bigimageview.mas_bottom).offset(HScaleHeight(13));
-            make.right.mas_equalTo(self.bigimageview.mas_right);
+            make.top.mas_equalTo(self.scrollView.mas_bottom).offset(HScaleHeight(13));
+            make.right.mas_equalTo(self.scrollView.mas_right);
             make.size.mas_equalTo(CGSizeMake(HScaleWidth(62.5), HScaleHeight(20)));
         }];
         
         [self.namelabel mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.left.mas_equalTo(self.bigimageview.mas_left);
+            make.left.mas_equalTo(self.scrollView.mas_left);
             make.right.mas_equalTo(self.nowconsult.mas_left);
-            make.top.mas_equalTo(self.bigimageview.mas_bottom).offset(HScaleHeight(12));
+            make.top.mas_equalTo(self.scrollView.mas_bottom).offset(HScaleHeight(12));
             make.height.mas_equalTo(HScaleHeight(15));
         }];
         
@@ -64,8 +71,13 @@
 - (void)setModel:(DFDesignerWorkModel *)model
 {
     _model = model;
-    [self.bigimageview sd_setImageWithURL:[NSURL URLWithString:model.img] placeholderImage:nil];
-    self.numbercount.text = [NSString stringWithFormat:@"%@张",model.img_num];
+    if (model.work_images.count > 0) {
+//        [self.bigimageview sd_setImageWithURL:[NSURL URLWithString:model.img] placeholderImage:nil];
+        [self.scrollView setImageURLStringsGroup:[NSMutableArray arrayWithArray:model.work_images]];
+
+
+    }
+    self.numbercount.text = [NSString stringWithFormat:@"%ld张",model.work_images.count];
     self.namelabel.text = model.title;
     
     self.moretextlabel.text = [NSString stringWithFormat:@"%@  %@  %@m²",model.style[@"name"],model.shape[@"name"],model.mianji];
@@ -88,6 +100,27 @@
         [self.contentView addSubview:_bigimageview];
     }
     return _bigimageview;
+}
+
+- (SDCycleScrollView *)scrollView
+{
+    if (!_scrollView) {
+         _scrollView = [SDCycleScrollView cycleScrollViewWithFrame:CGRectMake(HScaleHeight(10), HScaleHeight(15), ScreenW - HScaleHeight(20), HScaleHeight(175)) delegate:nil placeholderImage:[UIImage imageNamed:@""]];
+         _scrollView.autoScrollTimeInterval = 5;
+         _scrollView.layer.cornerRadius = HScaleHeight(5);
+         _scrollView.backgroundColor = [UIColor whiteColor];
+         _scrollView.currentPageDotColor = [UIColor whiteColor];
+    //    scrollView.pageControlStyle = SDCycleScrollViewPageContolStyleAnimated;
+         _scrollView.pageDotColor = [UIColor colorWithWhite:1 alpha:0.6];
+         _scrollView.pageControlBottomOffset = 12;
+        _scrollView.showPageControl = NO;
+         _scrollView.pageDotColor = [UIColor colorWithWhite:1 alpha:.6];
+         _scrollView.currentPageDotColor = [UIColor whiteColor];
+         _scrollView.bannerImageViewContentMode = UIViewContentModeScaleAspectFill;
+         _scrollView.imageSize = CGSizeMake(ScreenW - HScaleHeight(20), HScaleHeight(175));
+         [self.contentView addSubview:_scrollView];
+    }
+    return _scrollView;
 }
 - (UILabel *)numbercount
 {

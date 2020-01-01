@@ -15,6 +15,10 @@
 
 @property (nonatomic , strong)UICollectionView *scrollView;
 
+@property (nonatomic , strong)NSIndexPath *selecIndex;
+
+@property (nonatomic , assign)BOOL isSelect;
+
 @end
 
 @implementation DFYuSuanViewController
@@ -22,12 +26,14 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+        self.isSelect = YES;
+    self.selecIndex = [NSIndexPath indexPathForRow:0 inSection:0];
     
     self.view.backgroundColor = [[UIColor blackColor]colorWithAlphaComponent:0];
     
 
     
-    self.styleArry = [NSMutableArray arrayWithArray:@[@"3万-5万",@"5万-8万",@"8万-12万",@"12万-18万",@"18万-30万",@"30万-以上"]];
+    self.styleArry = [NSMutableArray arrayWithArray:@[@"不限",@"3万-5万",@"5万-8万",@"8万-12万",@"12万-18万",@"18万-30万",@"30万-以上"]];
     
      // 创建布局
      // 1.创建流水布局
@@ -67,13 +73,26 @@
     DFXiaoGuoStyleCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"DFXiaoGuoStyleCell" forIndexPath:indexPath];
     cell.titeleTextk = self.styleArry[indexPath.row];
      
+    if (self.isSelect) {
+        if (self.selecIndex.row == indexPath.row) {
+            cell.isSelect = YES;
+        }
+        else
+        {
+            cell.isSelect = NO;
+        }
+    }
     return cell;
 }
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
+    
+    self.isSelect = YES;
+    self.selecIndex = indexPath;
+    [collectionView reloadData];
     self.view.hidden = YES;
-    if (self.delegate && [self.delegate respondsToSelector:@selector(selectChooseBudgetStyleId:)]) {
-        [self.delegate selectChooseBudgetStyleId:[NSString stringWithFormat:@"%ld",indexPath.row + 1]];
+    if (self.delegate && [self.delegate respondsToSelector:@selector(selectChooseBudgetStyleId:withText:)]) {
+        [self.delegate selectChooseBudgetStyleId:[NSString stringWithFormat:@"%ld",indexPath.row]withText:self.styleArry[indexPath.row]];
     }
 }
 // 设置cell大小 itemSize：可以给每一个cell指定不同的尺寸
@@ -115,8 +134,8 @@
     UITouch *touch = [touches anyObject];
     if (touch.view == self.view) {
         self.view.hidden = YES;
-        if (self.delegate && [self.delegate respondsToSelector:@selector(selectChooseBudgetStyleId:)]) {
-            [self.delegate selectChooseBudgetStyleId:@""];
+        if (self.delegate && [self.delegate respondsToSelector:@selector(selectChooseBudgetStyleId:withText:)]) {
+            [self.delegate selectChooseBudgetStyleId:@"" withText:@""];
         }
     }
 }

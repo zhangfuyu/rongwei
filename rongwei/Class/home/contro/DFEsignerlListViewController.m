@@ -12,8 +12,11 @@
 #import "CQTopBarViewController.h"
 #import "CQTopBarSegment.h"
 #import "DFEsignerDetialViewController.h"
+#import "DFChooseCityViewController.h"
+#import "DFEsignerStyleViewController.h"
+#import "DFEsignerSortingViewController.h"
 
-@interface DFEsignerlListViewController ()<UITableViewDelegate,UITableViewDataSource>
+@interface DFEsignerlListViewController ()<UITableViewDelegate,UITableViewDataSource,CQTopBarSegmentDelegate,DFChooseCityViewControllerDelegate,DFEsignerSortingViewControllerDelegate,DFEsignerStyleViewControllerDelegate>
 
 @property (nonatomic , assign)NSInteger currentPage;
 
@@ -22,6 +25,15 @@
 @property (nonatomic , strong)NSMutableArray *dataListArry;
 
 @property (nonatomic, strong) CQTopBarSegment *segment;
+
+@property (nonatomic , strong)NSMutableDictionary *parma;
+
+@property (nonatomic , strong) DFChooseCityViewController *chooseCity;
+
+@property (nonatomic , strong) DFEsignerStyleViewController *style;
+
+@property (nonatomic , strong) DFEsignerSortingViewController *sortVc;
+
 
 
 @end
@@ -39,9 +51,11 @@
     // Do any additional setup after loading the view.
     
    
+    
     self.title = @"设计师";
     
-   
+    self.parma = [[NSMutableDictionary alloc]init];
+    
     self.dataTableview = [[UITableView alloc]initWithFrame:CGRectZero style:UITableViewStylePlain];
     [self.view addSubview:self.dataTableview];
     
@@ -140,12 +154,12 @@
 - (void)getdata
 {
     
-    NSMutableDictionary *parma = [@{@"is_rec":@"0",
-                                    @"lastIndex":@(self.dataListArry.count),
-                                    @"itemsPerLoad":@(10)
-    }copy];
+
+    self.parma[@"is_rec"] = @"0";
+    self.parma[@"lastIndex"] = @(self.dataListArry.count);
+    self.parma[@"itemsPerLoad"] = @"10";
     
-    [[DFNetworkTool shareInstance] requestWithMethod:GHRequestMethod_GET withUrl:DesignerListsApi withParameter:parma withLoadingType:GHLoadingType_ShowLoading withShouldHaveToken:YES withContentType:GHContentType_JSON completionBlock:^(BOOL isSuccess, NSString * _Nullable msg, id  _Nullable response) {
+    [[DFNetworkTool shareInstance] requestWithMethod:GHRequestMethod_GET withUrl:DesignerListsApi withParameter:self.parma withLoadingType:GHLoadingType_ShowLoading withShouldHaveToken:YES withContentType:GHContentType_JSON completionBlock:^(BOOL isSuccess, NSString * _Nullable msg, id  _Nullable response) {
         
         [self.dataTableview.mj_header endRefreshing];
         [self.dataTableview.mj_footer endRefreshing];
@@ -191,11 +205,112 @@
         _segment.titleTextColor = [UIColor colorWithHexString:@"666666"];
         _segment.segmentImage = @"箭头";
         _segment.selectSegmentImage = @"箭头-1";
+        _segment.delegate = self;
         _segment.selectedTitleTextColor = [UIColor colorWithHexString:@"DD1A21"];
         _segment.titleTextFont = HScaleFont(12);
         _segment.segmentlineColor = [UIColor clearColor];
     }
     return _segment;
+}
+- (void)topBarSegmentWithBlock:(CQTopBarSegment *)segment indexPath:(NSIndexPath *)indexPath
+{
+    if (indexPath.row == 1) {
+        CGFloat contentY = [self.dataTableview rectForSection:0].origin.y;
+        self.dataTableview.contentOffset = CGPointMake(0, contentY);
+        self.style.view.hidden = !self.style.view.hidden;
+
+    }
+    else if (indexPath.row == 2)
+    {
+        CGFloat contentY = [self.dataTableview rectForSection:0].origin.y;
+        self.dataTableview.contentOffset = CGPointMake(0, contentY);
+        self.sortVc.view.hidden = !self.sortVc.view.hidden;
+    }
+    else
+    {
+        CGFloat contentY = [self.dataTableview rectForSection:0].origin.y;
+        self.dataTableview.contentOffset = CGPointMake(0, contentY);
+        self.chooseCity.view.hidden = !self.chooseCity.view.hidden;
+    }
+}
+- (DFChooseCityViewController *)chooseCity
+{
+    if (!_chooseCity) {
+        _chooseCity = [[DFChooseCityViewController alloc]init];
+        _chooseCity.delegate = self;
+        _chooseCity.view.hidden = YES;
+        [self addChildViewController:_chooseCity];
+        [self.view addSubview:_chooseCity.view];
+    }
+    return _chooseCity;
+}
+- (void)selectChooseprovinceId:(NSString *)province_id city_id:(NSString *)cityID area_id:(NSString *)areaId
+{
+    
+    [self.segment.collectionView reloadData];
+    self.parma[@"province_id"] = province_id;
+    self.parma[@"city_id"] = cityID;
+    self.parma[@"area_id"] = areaId;
+    
+    [self.dataListArry removeAllObjects];
+    [self getdata];
+
+}
+
+- (DFEsignerStyleViewController *)style
+{
+    if (!_style) {
+        _style = [[DFEsignerStyleViewController alloc]init];
+        _style.delegate = self;
+        _style.view.hidden = YES;
+        [self addChildViewController:_style];
+        [self.view addSubview:_style.view];
+    }
+    return _style;
+}
+- (void)selectChooseEsignerStyleId:(NSString *)styleId withText:(NSString *)text
+{
+    [self.segment.collectionView reloadData];
+    
+    if (text.length == 0) {
+        return;
+    }
+
+    text = [text stringByReplacingOccurrencesOfString:@"全部" withString:@"擅长风格"];
+
+    
+    [self.segment topBarReplaceObjectsAtIndexes:1 withObjects:text BarView:nil];
+    self.parma[@"style_id"] = styleId;
+    self.style.view.hidden = YES;
+    [self.segment.collectionView reloadData];
+    [self.dataListArry removeAllObjects];
+    [self getdata];
+}
+- (DFEsignerSortingViewController *)sortVc
+{
+    if (!_sortVc) {
+        _sortVc = [[DFEsignerSortingViewController alloc]init];
+        _sortVc.delegate = self;
+        _sortVc.view.hidden = YES;
+        [self addChildViewController:_sortVc];
+        [self.view addSubview:_sortVc.view];
+    }
+    return _sortVc;
+}
+- (void)selectChooseEsignerSortId:(NSString *)styleId withText:(NSString *)text
+{
+    [self.segment.collectionView reloadData];
+    
+    if (text.length == 0) {
+        return;
+    }
+
+    [self.segment topBarReplaceObjectsAtIndexes:2 withObjects:text BarView:nil];
+    self.parma[@"des_status"] = styleId;
+    self.style.view.hidden = YES;
+    [self.segment.collectionView reloadData];
+    [self.dataListArry removeAllObjects];
+    [self getdata];
 }
 
 /*

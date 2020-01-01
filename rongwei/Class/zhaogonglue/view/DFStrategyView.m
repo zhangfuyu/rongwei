@@ -21,6 +21,7 @@
         
         UIButton *renderingBtn = [UIButton buttonWithType:UIButtonTypeCustom];
         [renderingBtn setTitle:@"攻略" forState:UIControlStateNormal];
+        renderingBtn.tag = 10087;
         renderingBtn.titleLabel.font = HScaleFont(15);
         [renderingBtn setTitleColor:[UIColor colorWithHexString:@"333333"] forState:UIControlStateNormal];
         [renderingBtn addTarget:self action:@selector(chousetypeclick:) forControlEvents:UIControlEventTouchUpInside];
@@ -35,6 +36,7 @@
         
         UIButton *localFigureBtn = [UIButton buttonWithType:UIButtonTypeCustom];
         [localFigureBtn setTitle:@"咨询" forState:UIControlStateNormal];
+        localFigureBtn.tag = 10086;
         localFigureBtn.titleLabel.font = HScaleFont(15);
         [localFigureBtn addTarget:self action:@selector(chousetypeclick:) forControlEvents:UIControlEventTouchUpInside];
         [localFigureBtn setTitleColor:[UIColor colorWithHexString:@"333333"] forState:UIControlStateNormal];
@@ -108,6 +110,32 @@
         }
 
     }
+}
+
+- (void)setSTraTegyStyle:(DFconditions)sTraTegyStyle
+{
+    if (sTraTegyStyle == DFStrategy_information) {//咨询
+        UIButton *zixun = [self viewWithTag:10086];
+        
+        [self.lineview mas_remakeConstraints:^(MASConstraintMaker *make) {
+             make.centerX.mas_equalTo(zixun.mas_centerX);
+             make.bottom.mas_equalTo(zixun.mas_bottom);
+             make.height.mas_equalTo(HScaleHeight(2));
+             make.width.mas_equalTo([self sizeWithText:zixun.titleLabel.text font:HScaleFont(15) maxSize:CGSizeMake(MAXFLOAT, HScaleHeight(15))].width);
+        }];
+    }
+    else
+    {
+        UIButton *gonglue = [self viewWithTag:10087];
+        
+        [self.lineview mas_remakeConstraints:^(MASConstraintMaker *make) {
+             make.centerX.mas_equalTo(gonglue.mas_centerX);
+             make.bottom.mas_equalTo(gonglue.mas_bottom);
+             make.height.mas_equalTo(HScaleHeight(2));
+             make.width.mas_equalTo([self sizeWithText:gonglue.titleLabel.text font:HScaleFont(15) maxSize:CGSizeMake(MAXFLOAT, HScaleHeight(15))].width);
+        }];
+    }
+    
 }
 
 - (void)clickNoticeAction

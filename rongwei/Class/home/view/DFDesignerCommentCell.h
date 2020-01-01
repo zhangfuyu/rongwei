@@ -15,6 +15,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic , strong) DFCommentModel *model;
 
+@property (nonatomic , assign) BOOL isShowNoData;
+
 @end
 
 NS_ASSUME_NONNULL_END

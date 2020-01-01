@@ -50,7 +50,7 @@
     
     UIButton *backBtn = [[UIButton alloc] initWithFrame:CGRectMake(0, kStatusBarHeight, 44, 44)];
     backBtn.showsTouchWhenHighlighted = NO;
-    [backBtn setImage:[UIImage imageNamed:@"login_back"] forState:UIControlStateNormal];
+    [backBtn setImage:[UIImage imageNamed:@"jiancaiku_fanhui"] forState:UIControlStateNormal];
     [backBtn addTarget:self action:@selector(clickCancelAction) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:backBtn];
     

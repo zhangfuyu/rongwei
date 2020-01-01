@@ -13,7 +13,7 @@ NS_ASSUME_NONNULL_BEGIN
 @protocol DFConstructionPhaseViewControllerDelegate <NSObject>
 @optional
 
-- (void)selectChooseStyleId:(NSString *)styleId;
+- (void)selectChooseStyleId:(NSString *)styleId withText:(NSString *)text;
 
 @end
 

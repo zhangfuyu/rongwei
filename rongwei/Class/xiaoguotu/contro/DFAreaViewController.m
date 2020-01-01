@@ -15,6 +15,10 @@
 
 @property (nonatomic , strong)UICollectionView *scrollView;
 
+@property (nonatomic , strong)NSIndexPath *selecIndex;
+
+@property (nonatomic , assign)BOOL isSelect;
+
 @end
 
 @implementation DFAreaViewController
@@ -23,10 +27,13 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
+        self.isSelect = YES;
         self.view.backgroundColor = [[UIColor blackColor]colorWithAlphaComponent:0];
+    
+    self.selecIndex = [NSIndexPath indexPathForRow:0 inSection:0];
         
 
-        self.styleArry = [NSMutableArray arrayWithArray:@[@"0-60",@"60- 100",@"100-150",@"150-200",@"200 以上"]];
+        self.styleArry = [NSMutableArray arrayWithArray:@[@"不限",@"0-60m²",@"60- 100m²",@"100-150m²",@"150-200m²",@"200m²以上"]];
         
          // 创建布局
          // 1.创建流水布局
@@ -66,13 +73,26 @@
     DFXiaoGuoStyleCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"DFXiaoGuoStyleCell" forIndexPath:indexPath];
     cell.titeleTextk = self.styleArry[indexPath.row];
      
+    if (self.isSelect) {
+        if (self.selecIndex.row == indexPath.row) {
+            cell.isSelect = YES;
+        }
+        else
+        {
+            cell.isSelect = NO;
+        }
+    }
     return cell;
 }
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
+    
+    self.isSelect = YES;
+    self.selecIndex = indexPath;
+    [collectionView reloadData];
     self.view.hidden = YES;
-    if (self.delegate && [self.delegate respondsToSelector:@selector(selectChooseAreaStyleId:)]) {
-        [self.delegate selectChooseAreaStyleId:[NSString stringWithFormat:@"%ld",indexPath.row + 1]];
+    if (self.delegate && [self.delegate respondsToSelector:@selector(selectChooseAreaStyleId:withText:)]) {
+        [self.delegate selectChooseAreaStyleId:[NSString stringWithFormat:@"%ld",indexPath.row] withText:self.styleArry[indexPath.row]];
     }
 }
 // 设置cell大小 itemSize：可以给每一个cell指定不同的尺寸
@@ -114,8 +134,8 @@
     UITouch *touch = [touches anyObject];
     if (touch.view == self.view) {
         self.view.hidden = YES;
-        if (self.delegate && [self.delegate respondsToSelector:@selector(selectChooseAreaStyleId:)]) {
-            [self.delegate selectChooseAreaStyleId:@""];
+        if (self.delegate && [self.delegate respondsToSelector:@selector(selectChooseAreaStyleId:withText:)]) {
+            [self.delegate selectChooseAreaStyleId:@"" withText:@""];
         }
     }
 }

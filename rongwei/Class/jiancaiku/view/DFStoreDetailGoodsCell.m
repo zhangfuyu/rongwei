@@ -56,7 +56,7 @@
     [self.goodImageview sd_setImageWithURL:[NSURL URLWithString:model.goods_thumb] placeholderImage:nil];
     self.goodNameLabel.text = model.goods_name;
     self.goodPriceLabel.text = [NSString stringWithFormat:@"￥%@",model.low_price];
-    self.goodPayNumberLabel.text = [NSString stringWithFormat:@"%@人付款",model.sales_actual];
+    self.goodPayNumberLabel.text = [NSString stringWithFormat:@"%d人付款",[model.sales_actual intValue] + [model.sales_initial intValue]];
     
 }
 

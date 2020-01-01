@@ -13,7 +13,7 @@ NS_ASSUME_NONNULL_BEGIN
 @protocol DFYuSuanViewControllerDelegate <NSObject>
 @optional
 
-- (void)selectChooseBudgetStyleId:(NSString *)styleId;
+- (void)selectChooseBudgetStyleId:(NSString *)styleId withText:(NSString *)text;
 
 @end
 

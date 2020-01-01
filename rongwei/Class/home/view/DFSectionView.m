@@ -10,6 +10,8 @@
 #import "DFEsignerlListViewController.h"
 #import "DFMoreStoreViewController.h"
 #import "DFContructionListViewController.h"
+#import "DFHomeNavModel.h"
+#import "DFStrategyDetailViewController.h"
 
 @interface DFSectionView()
 
@@ -34,6 +36,8 @@
 - (instancetype)initWithFrame:(CGRect)frame
 {
     if (self = [super initWithFrame:frame]) {
+        
+        self.backgroundColor = [UIColor colorWithHexString:@"FFFFFF"];
         [self addSubview:self.titleLabel];
         
         [self.titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -61,6 +65,44 @@
     }
     return self;
 }
+
+- (void)setHotArry:(NSMutableArray *)hotArry
+{
+    _hotArry = hotArry;
+    
+    for (NSInteger index = 0; index < hotArry.count; index++) {
+        
+        DFHomeNavModel *model = hotArry[index];
+
+        UIImageView *imaview = [[UIImageView alloc]init];
+        imaview.backgroundColor = [UIColor orangeColor];
+        imaview.layer.cornerRadius = HScaleHeight(5);
+        imaview.layer.masksToBounds = YES;
+        [imaview sd_setImageWithURL:[NSURL URLWithString:model.pic_url] placeholderImage:nil];
+        [self addSubview:imaview];
+        
+        imaview.frame = CGRectMake((index % 2 + 1) * HScaleWidth(10) + index % 2 * HScaleWidth(172.5), (index / 2 + 1 ) * HScaleHeight(10) + index / 2 * HScaleHeight(100) + HScaleHeight(39), HScaleWidth(172.5), HScaleHeight(100));
+        
+        UIButton *clickBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+        [clickBtn addTarget:self action:@selector(pushGonglue:) forControlEvents:UIControlEventTouchUpInside];
+        clickBtn.tag = 10086 +index;
+        [self addSubview:clickBtn];
+        
+        clickBtn.frame = CGRectMake((index % 2 + 1) * HScaleWidth(10) + index % 2 * HScaleWidth(172.5), (index / 2 + 1 ) * HScaleHeight(10) + index / 2 * HScaleHeight(100) + HScaleHeight(39), HScaleWidth(172.5), HScaleHeight(100));
+    }
+    
+}
+
+- (void)pushGonglue:(UIButton *)sender
+{
+    
+    DFHomeNavModel *model = self.hotArry[sender.tag - 10086];
+    
+    DFStrategyDetailViewController *detail = [[DFStrategyDetailViewController alloc]init];
+    detail.modelid = model.modelid;
+    [self.viewController.navigationController pushViewController:detail animated:YES];
+}
+
 - (void)setTitleText:(NSString *)titleText
 {
     _titleText = titleText;

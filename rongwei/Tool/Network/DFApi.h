@@ -90,6 +90,11 @@
 #define Construction   @"construction/site"
 
 /**
+户型列表
+*/
+#define ConstructionShapes   @"shapes"
+
+/**
 施工工地-施工阶段列表
 */
 #define ConstructionStage   @"construction/stage"

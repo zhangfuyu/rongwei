@@ -16,6 +16,7 @@
 #import "DFDesignerCommentCell.h"
 #import "DFAppointViewController.h"
 #import "DFWorksDetailViewController.h"//作品展示详情
+#import "DFDesignerIntroductionCell.h"
 
 @interface DFEsignerDetialViewController ()<UITableViewDelegate,UITableViewDataSource,DFAppointViewControllerDelegate>
 
@@ -34,6 +35,7 @@
 @property (nonatomic , assign) NSInteger selectStyle;// 1作品 2个人简介。3评价
 
 @property (nonatomic , strong) UIButton *likeThisBtn;
+
 @end
 
 @implementation DFEsignerDetialViewController
@@ -178,6 +180,9 @@
     }
     else if (self.selectStyle == 3)
     {
+        if (self.comment_list.count == 0) {
+            return 1;
+        }
         return self.comment_list.count;
     }
     return 1;
@@ -202,15 +207,24 @@
         if (!cell) {
             cell = [[DFDesignerCommentCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellid];
         }
-        cell.model = self.comment_list[indexPath.row];
+        if (self.comment_list.count == 0) {
+            cell.isShowNoData = NO;
+        }
+        else
+        {
+            cell.isShowNoData = YES;
+            cell.model = self.comment_list[indexPath.row];
+            
+        }
         return cell;
     }
     
     static NSString *cellid = @"cell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellid];
+    DFDesignerIntroductionCell *cell = [tableView dequeueReusableCellWithIdentifier:cellid];
     if (!cell) {
-        cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellid];
+        cell = [[DFDesignerIntroductionCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellid];
     }
+    cell.content = self.model.content[@"content"];
     return cell;
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -222,11 +236,16 @@
     }
     else if (self.selectStyle == 3)
     {
+        
+        if (self.comment_list.count == 0) {
+            return HScaleHeight(81.5);
+        }
+        
         DFCommentModel *model = self.comment_list[indexPath.row];
         CGFloat height = [model.contentHeight floatValue];
         return height + HScaleHeight(62.5);
     }
-    return HScaleHeight(242);
+    return ScreenH - kNavBarHeight - HScaleHeight(40);
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
@@ -322,7 +341,8 @@
         __weak typeof(self) weakself = self;
         _secondHeaderView.clickTypeBlock = ^(NSString * _Nonnull clickTitle) {
             if ([clickTitle isEqualToString:@"个人简介"]) {
-                [weakself getPersonalProfile];
+                weakself.selectStyle = 2;
+//                [weakself getPersonalProfile];
             }
             else if ([clickTitle isEqualToString:@"评价"])
             {
@@ -382,6 +402,9 @@
     
     self.likeThisBtn.selected = !self.likeThisBtn.selected;
 }
+
+
+
 - (void)dealloc
 {
     

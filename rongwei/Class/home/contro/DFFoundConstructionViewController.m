@@ -14,10 +14,11 @@
 #import "DFCompanyTableViewCell.h"
 #import "CQTopBarSegment.h"
 #import "DFContructionDetailViewController.h"
-#import "DFConstructionPhaseViewController.h"
+#import "DFSortingViewController.h"
 #import "DFDecorateFamilyViewController.h"
+#import "DFChooseCityViewController.h"
 
-@interface DFFoundConstructionViewController ()<UITableViewDelegate , UITableViewDataSource,DFConstructionPhaseViewControllerDelegate,CQTopBarSegmentDelegate,DFDecorateFamilyViewControllerDelegate>
+@interface DFFoundConstructionViewController ()<UITableViewDelegate , UITableViewDataSource,DFSortingViewControllerDelegate,CQTopBarSegmentDelegate,DFDecorateFamilyViewControllerDelegate,DFChooseCityViewControllerDelegate>
 
 @property (nonatomic , strong) DFTextField *searchTextField;
 
@@ -29,11 +30,15 @@
 
 @property (nonatomic , strong) CQTopBarSegment *segment;
 
-@property (nonatomic , strong) DFConstructionPhaseViewController *stylevc;
+@property (nonatomic , strong) DFSortingViewController *stylevc;
 
 @property (nonatomic , strong) DFDecorateFamilyViewController *DecorateFamily;
 
+@property (nonatomic , strong) DFChooseCityViewController *chooseCity;
+
 @property (nonatomic , strong) UIView *secondView;
+
+@property (nonatomic , strong) NSMutableDictionary *parmars;
 
 @end
 
@@ -49,6 +54,9 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.title = @"找施工";
+    
+    self.parmars = [[NSMutableDictionary alloc]init];
+    
     [self setupNavigationBar];
     
     self.header = [[DfConstructionHeadrView alloc]initWithFrame:CGRectMake(0, kNavBarAndStatusBarHeight, ScreenW, HScaleHeight(360))];
@@ -171,15 +179,21 @@
 /// 获取施工公司列表
 - (void)getCompany
 {
+//
+//    NSMutableDictionary *parmars = [@{
+//        @"lat":@"30.3751",
+//        @"lng":@"120.1236",
+//        @"itemsPerLoad":@(10),
+//        @"lastIndex":@(self.companyArry.count)
+//    }copy];
     
-    NSMutableDictionary *parmars = [@{
-        @"lat":@"30.3751",
-        @"lng":@"120.1236",
-        @"itemsPerLoad":@(10),
-        @"lastIndex":@(self.companyArry.count)
-    }copy];
+    self.parmars[@"lat"] = @"30.3751";
+    self.parmars[@"lng"] = @"120.1236";
+    self.parmars[@"itemsPerLoad"] = @(10);
+   self.parmars[@"lastIndex"] = @(self.companyArry.count);
     
-    [[DFNetworkTool shareInstance] requestWithMethod:GHRequestMethod_GET withUrl:Company withParameter:parmars withLoadingType:GHLoadingType_HideLoading withShouldHaveToken:YES withContentType:GHContentType_JSON completionBlock:^(BOOL isSuccess, NSString * _Nullable msg, id  _Nullable response) {
+    
+    [[DFNetworkTool shareInstance] requestWithMethod:GHRequestMethod_GET withUrl:Company withParameter:self.parmars withLoadingType:GHLoadingType_HideLoading withShouldHaveToken:YES withContentType:GHContentType_JSON completionBlock:^(BOOL isSuccess, NSString * _Nullable msg, id  _Nullable response) {
         if (isSuccess) {
             
             
@@ -298,7 +312,7 @@
 - (CQTopBarSegment *)segment
 {
     if (!_segment) {
-        _segment = [[CQTopBarSegment alloc]initWithFrame:CGRectMake(0, HScaleHeight(5), ScreenW, HScaleHeight(47)) sectionTitles:@[@"区域选择",@"施工阶段",@"筛选"]];
+        _segment = [[CQTopBarSegment alloc]initWithFrame:CGRectMake(0, HScaleHeight(5), ScreenW, HScaleHeight(47)) sectionTitles:@[@"区域选择",@"综合",@"筛选"]];
         _segment.titleTextColor = [UIColor colorWithHexString:@"666666"];
         _segment.segmentImage = @"箭头";
         _segment.selectSegmentImage = @"箭头-1";
@@ -323,11 +337,17 @@
         self.dataTableview.contentOffset = CGPointMake(0, contentY);
         self.DecorateFamily.view.hidden = !self.DecorateFamily.view.hidden;
     }
+    else
+    {
+        CGFloat contentY = [self.dataTableview rectForSection:0].origin.y;
+        self.dataTableview.contentOffset = CGPointMake(0, contentY);
+        self.chooseCity.view.hidden = !self.chooseCity.view.hidden;
+    }
 }
-- (DFConstructionPhaseViewController *)stylevc
+- (DFSortingViewController *)stylevc
 {
     if (!_stylevc) {
-        _stylevc = [[DFConstructionPhaseViewController alloc]init];
+        _stylevc = [[DFSortingViewController alloc]init];
         _stylevc.delegate = self;
         _stylevc.view.hidden = YES;
         [self addChildViewController:_stylevc];
@@ -335,8 +355,20 @@
     }
     return _stylevc;
 }
-- (void)selectChooseStyleId:(NSString *)styleId
+- (void)selectChooseSortId:(NSString *)styleId withText:(NSString *)text;
 {
+    
+
+    
+    [self.segment.collectionView reloadData];
+    
+    if (text.length == 0) {
+        return;
+    }
+    [self.segment topBarReplaceObjectsAtIndexes:1 withObjects:text BarView:nil];
+
+    self.parmars[@"des_status"] = styleId;
+
     self.stylevc.view.hidden = YES;
     [self.segment.collectionView reloadData];
     [self.companyArry removeAllObjects];
@@ -355,14 +387,58 @@
     return _DecorateFamily;
 }
 
-- (void)selectChooseBudgetStyleId:(NSString *)styleId
+- (void)selectChooseDoorModelStyleId:(NSString *)styleId withText:(NSString *)text
 {
+    [self.segment.collectionView reloadData];
+    
+    if (text.length == 0) {
+        return;
+    }
+    text = [text stringByReplacingOccurrencesOfString:@"不限" withString:@"筛选"];
+    
+    [self.segment topBarReplaceObjectsAtIndexes:2 withObjects:text BarView:nil];
+
+    self.parmars[@"shapes"] = text;
+
     self.DecorateFamily.view.hidden = YES;
     [self.segment.collectionView reloadData];
     
     [self.companyArry removeAllObjects];
     [self getCompany];
 }
+
+- (DFChooseCityViewController *)chooseCity
+{
+    if (!_chooseCity) {
+        _chooseCity = [[DFChooseCityViewController alloc]init];
+        _chooseCity.delegate = self;
+        _chooseCity.view.hidden = YES;
+        [self addChildViewController:_chooseCity];
+        [self.view addSubview:_chooseCity.view];
+    }
+    return _chooseCity;
+}
+- (void)selectChooseprovinceId:(NSString *)province_id city_id:(NSString *)cityID area_id:(NSString *)areaId
+{
+    
+
+    
+    
+    [self.segment.collectionView reloadData];
+    
+    if (province_id.length == 0) {
+        return;
+    }
+    
+    self.parmars[@"province_id"] = province_id;
+    self.parmars[@"city_id"] = cityID;
+    self.parmars[@"area_id"] = areaId;
+    
+    [self.companyArry removeAllObjects];
+    [self getCompany];
+
+}
+
 
 /*
 #pragma mark - Navigation

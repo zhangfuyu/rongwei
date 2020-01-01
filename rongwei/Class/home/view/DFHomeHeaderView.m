@@ -16,7 +16,7 @@
 
 @property (nonatomic , strong)SDCycleScrollView *scrollView;
 
-@property (nonatomic , strong)SDCycleScrollView *recommended;
+@property (nonatomic , strong)UIScrollView *recommended;
 
 @property (nonatomic , strong) UIImageView *imageview;
 
@@ -251,18 +251,25 @@
      }];
     
     
-    self.recommended = [SDCycleScrollView cycleScrollViewWithFrame:CGRectMake(HScaleHeight(10), HScaleHeight(405) + kStatusBarHeight , ScreenW - HScaleHeight(10), HScaleHeight(101)) delegate:self placeholderImage:[UIImage imageNamed:@""]];
-    self.recommended.autoScrollTimeInterval = 5;
-    self.recommended.layer.cornerRadius = HScaleHeight(5);
+    self.recommended = [[UIScrollView alloc]initWithFrame:CGRectMake(HScaleHeight(0), HScaleHeight(405) + kStatusBarHeight , ScreenW, HScaleHeight(101))];
     self.recommended.backgroundColor = [UIColor whiteColor];
-//    self.recommended.currentPageDotColor = [UIColor whiteColor];
-    self.recommended.pageControlStyle = SDCycleScrollViewPageContolStyleNone;
-//    self.recommended.pageDotColor = [UIColor colorWithWhite:1 alpha:0.6];
-//    self.recommended.pageControlBottomOffset = 12;
-//    self.recommended.pageDotColor = [UIColor colorWithWhite:1 alpha:.6];
-//    self.recommended.currentPageDotColor = [UIColor whiteColor];
-    self.recommended.bannerImageViewContentMode = UIViewContentModeScaleAspectFill;
-    self.recommended.imageSize = CGSizeMake(HScaleHeight(310), HScaleHeight(100));
+    self.recommended.showsVerticalScrollIndicator = NO;
+    self.recommended.showsHorizontalScrollIndicator = NO;
+    [self addSubview:self.recommended];
+    
+    
+//    self.recommended = [SDCycleScrollView cycleScrollViewWithFrame:CGRectMake(HScaleHeight(10), HScaleHeight(405) + kStatusBarHeight , ScreenW - HScaleHeight(10), HScaleHeight(101)) delegate:self placeholderImage:[UIImage imageNamed:@""]];
+//    self.recommended.autoScrollTimeInterval = 5;
+//    self.recommended.layer.cornerRadius = HScaleHeight(5);
+//    self.recommended.backgroundColor = [UIColor whiteColor];
+////    self.recommended.currentPageDotColor = [UIColor whiteColor];
+//    self.recommended.pageControlStyle = SDCycleScrollViewPageContolStyleNone;
+////    self.recommended.pageDotColor = [UIColor colorWithWhite:1 alpha:0.6];
+////    self.recommended.pageControlBottomOffset = 12;
+////    self.recommended.pageDotColor = [UIColor colorWithWhite:1 alpha:.6];
+////    self.recommended.currentPageDotColor = [UIColor whiteColor];
+//    self.recommended.bannerImageViewContentMode = UIViewContentModeScaleAspectFill;
+//    self.recommended.imageSize = CGSizeMake(HScaleHeight(310), HScaleHeight(100));
     
     [self addSubview:self.recommended];
 }
@@ -308,18 +315,47 @@
     }
     
     [self.scrollView setImageURLStringsGroup:imageUrlArray];
+    
+    
+    if (imageUrlArray.count > 0) {
+        [self.imageview sd_setImageWithURL:[NSURL URLWithString:imageUrlArray[0]] placeholderImage:nil];
+
+    }
 }
 - (void)setNavdownArry:(NSMutableArray *)navdownArry
 {
+    
     _navdownArry = navdownArry;
-    NSMutableArray *imageUrlArray = [NSMutableArray arrayWithCapacity:0];
+
     for (NSInteger index = 0; index < navdownArry.count; index ++) {
         DFHomeNavModel *model = [navdownArry objectOrNilAtIndex:index];
-        [imageUrlArray addObject:model.pic_url];
+        UIImageView *downImage = [[UIImageView alloc]init];
+        downImage.layer.cornerRadius = HScaleHeight(3);
+        downImage.layer.masksToBounds = YES;
+        [self.recommended addSubview:downImage];
+        downImage.frame = CGRectMake((index + 1) * HScaleWidth(10) + index * HScaleWidth(310), 0, HScaleWidth(310), HScaleHeight(100));
         
+        [downImage sd_setImageWithURL:[NSURL URLWithString:model.pic_url] placeholderImage:nil];
+        
+        
+        
+        UIButton *clickBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+        [self.recommended addSubview:clickBtn];
+        clickBtn.frame = CGRectMake((index + 1) * HScaleWidth(10) + index * HScaleWidth(310), 0, HScaleWidth(310), HScaleHeight(100));
+
     }
     
-    [self.recommended setImageURLStringsGroup:imageUrlArray];
+    self.recommended.contentSize = CGSizeMake((navdownArry.count + 1) * HScaleWidth(10) + navdownArry.count * HScaleWidth(310), HScaleHeight(0));
+    
+    
+//    NSMutableArray *imageUrlArray = [NSMutableArray arrayWithCapacity:0];
+//    for (NSInteger index = 0; index < navdownArry.count; index ++) {
+//        DFHomeNavModel *model = [navdownArry objectOrNilAtIndex:index];
+//        [imageUrlArray addObject:model.pic_url];
+//
+//    }
+//
+//    [self.recommended setImageURLStringsGroup:imageUrlArray];
 }
 - (void)clicksubButton:(UIButton *)clickBtn
 {
@@ -343,10 +379,22 @@
          [self.viewController.tabBarController setSelectedIndex:2];
      }
     //攻略
-        else if (clickBtn.tag == 4)
-        {
-            [self.viewController.tabBarController setSelectedIndex:3];
-        }
+     else if (clickBtn.tag == 4)
+     {
+         [self.viewController.tabBarController setSelectedIndex:3];
+         [[NSNotificationCenter defaultCenter] postNotificationName:@"chaGongLue" object:nil];//到顶通知父视图改变状态
+     }
+    //找攻略
+    else if (clickBtn.tag == 6)
+    {
+        [self.viewController.tabBarController setSelectedIndex:3];
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                   NSLog(@"run-----");
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"FoundZiXun" object:nil];//到顶通知父视图改变状态
+
+          
+        });
+    }
 }
 
 /// 定位

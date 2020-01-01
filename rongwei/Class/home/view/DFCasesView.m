@@ -43,7 +43,8 @@
         
         
         [self.scrollview mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.edges.equalTo(self);
+            make.left.right.top.mas_equalTo(0);
+            make.height.mas_equalTo(HScaleHeight(40));
         }];
         
 

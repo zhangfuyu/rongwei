@@ -15,6 +15,10 @@
 
 @property (nonatomic , strong)UICollectionView *scrollView;
 
+@property (nonatomic , strong)NSIndexPath *selecIndex;
+
+@property (nonatomic , assign)BOOL isSelect;
+
 @end
 
 @implementation DFXiaoGuoStyleViewController
@@ -23,7 +27,9 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-
+    self.isSelect = YES;
+    
+   self.selecIndex = [NSIndexPath indexPathForRow:0 inSection:0];
     
     self.view.backgroundColor = [[UIColor blackColor]colorWithAlphaComponent:0];
     
@@ -56,6 +62,11 @@
        if (isSuccess) {
            NSArray *dataArry = response[@"data"];
            self.styleArry = [NSMutableArray arrayWithArray:dataArry];
+           NSDictionary *dic = @{@"id":@"0",
+                                 @"name":@"不限",
+                                 @"sort":@"0"
+           };
+           [self.styleArry insertObject:dic atIndex:0];
            dispatch_async(dispatch_get_main_queue(), ^{
                [self.scrollView reloadData];
            });
@@ -84,14 +95,28 @@
     DFXiaoGuoStyleCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"DFXiaoGuoStyleCell" forIndexPath:indexPath];
     NSDictionary *dic = self.styleArry[indexPath.row];
     cell.titeleTextk = dic[@"name"];
+    
+    if (self.isSelect) {
+        if (self.selecIndex.row == indexPath.row) {
+            cell.isSelect = YES;
+        }
+        else
+        {
+            cell.isSelect = NO;
+        }
+    }
      
     return cell;
 }
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
+    
+    self.isSelect = YES;
+    self.selecIndex = indexPath;
+    [collectionView reloadData];
     NSDictionary *dic = self.styleArry[indexPath.row];
-    if (self.delegate && [self.delegate respondsToSelector:@selector(selectChooseStyleId:)]) {
-        [self.delegate selectChooseStyleId:[NSString stringWithFormat:@"%@",dic[@"id"]]];
+    if (self.delegate && [self.delegate respondsToSelector:@selector(selectChooseStyleId:withText:)]) {
+        [self.delegate selectChooseStyleId:[NSString stringWithFormat:@"%@",dic[@"id"]]withText:dic[@"name"]];
     }
 }
 // 设置cell大小 itemSize：可以给每一个cell指定不同的尺寸
@@ -133,8 +158,8 @@
     UITouch *touch = [touches anyObject];
     if (touch.view == self.view) {
         self.view.hidden = YES;
-        if (self.delegate && [self.delegate respondsToSelector:@selector(selectChooseStyleId:)]) {
-            [self.delegate selectChooseStyleId:@""];
+        if (self.delegate && [self.delegate respondsToSelector:@selector(selectChooseStyleId:withText:)]) {
+            [self.delegate selectChooseStyleId:@"" withText:@""];
         }
     }
 }

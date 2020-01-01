@@ -83,8 +83,16 @@
 - (void)setIsRecommended:(BOOL)isRecommended
 {
     _isRecommended = isRecommended;
-    if (isRecommended) {
-        self.numberLabel.hidden = NO;
+    if (!isRecommended) {
+        
+        
+        [self.numberLabel mas_remakeConstraints:^(MASConstraintMaker *make) {
+            make.right.mas_equalTo(self.iconview.mas_right).offset(-HScaleWidth(19.5));
+            make.bottom.mas_equalTo(self.iconview.mas_bottom).offset(-HScaleHeight(10.5));
+            
+        }];
+        self.numberLabel.text = [NSString stringWithFormat:@"阅读%@",self.model.hits];
+        self.numberLabel.textColor = [UIColor colorWithHexString:@"FFFFFF"];
     }
 }
 
@@ -145,7 +153,7 @@
         _numberLabel = [[UILabel alloc]init];
         _numberLabel.font = HScaleFont(11);
         _numberLabel.textColor = [UIColor colorWithHexString:@"999999"];
-        _numberLabel.hidden = YES;
+        _numberLabel.hidden = NO;
         _numberLabel.textAlignment = NSTextAlignmentRight;
         [self.contentView addSubview:_numberLabel];;
     }

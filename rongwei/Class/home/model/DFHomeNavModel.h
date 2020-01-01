@@ -11,6 +11,7 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface DFHomeNavModel : JSONModel
+
 @property (nonatomic , strong) NSString<Optional> *after_open;
 
 @property (nonatomic , strong) NSString<Optional> *android_activity;

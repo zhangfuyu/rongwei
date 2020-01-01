@@ -15,6 +15,11 @@
 
 @property (nonatomic , strong)UICollectionView *scrollView;
 
+@property (nonatomic , strong)NSIndexPath *selecIndex;
+
+@property (nonatomic , assign)BOOL isSelect;
+
+
 @end
 
 @implementation DFDecorateFamilyViewController
@@ -23,7 +28,10 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    self.styleArry = [NSMutableArray arrayWithArray:@[@"不限",@"一居室",@"二居室",@"三居室",@"四居室",@"别墅"]];
+        self.isSelect = YES;
+    self.selecIndex = [NSIndexPath indexPathForRow:0 inSection:0];
+    
+    self.styleArry = [NSMutableArray arrayWithCapacity:0];
     
     self.view.backgroundColor = [[UIColor blackColor]colorWithAlphaComponent:0];
 
@@ -56,7 +64,27 @@
     [self.scrollView registerClass:[DFXiaoGuoStyleCell class] forCellWithReuseIdentifier:@"DFXiaoGuoStyleCell"];
     
     [self.view addSubview:self.scrollView];
+    
+    [self getData];
 
+}
+
+- (void)getData
+{
+    [[DFNetworkTool shareInstance] requestWithMethod:GHRequestMethod_GET withUrl:ConstructionShapes withParameter:nil withLoadingType:GHLoadingType_ShowLoading withShouldHaveToken:NO withContentType:GHContentType_Formdata completionBlock:^(BOOL isSuccess, NSString * _Nullable msg, id  _Nullable response) {
+        if (isSuccess) {
+ 
+            NSArray *dataArry = response[@"data"];
+            self.styleArry = [NSMutableArray arrayWithArray:dataArry];
+            NSDictionary *dic = @{@"id":@"0",
+                                  @"name":@"不限",
+                                  @"sort":@"1"
+            };
+            [self.styleArry insertObject:dic atIndex:0];
+            [self.scrollView reloadData];
+         
+        }
+    }];
 }
 #pragma mark - 代理方法 Delegate Methods
 // 设置分区
@@ -74,15 +102,32 @@
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
 
     DFXiaoGuoStyleCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"DFXiaoGuoStyleCell" forIndexPath:indexPath];
-    cell.titeleTextk = self.styleArry[indexPath.row];
+    
+    NSDictionary *dic = self.styleArry[indexPath.row];
+    cell.titeleTextk = dic[@"name"];
+    
+    if (self.isSelect) {
+        if (self.selecIndex.row == indexPath.row) {
+            cell.isSelect = YES;
+        }
+        else
+        {
+            cell.isSelect = NO;
+        }
+    }
      
     return cell;
 }
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
+    
+    self.isSelect = YES;
+    self.selecIndex = indexPath;
+    [collectionView reloadData];
     self.view.hidden = YES;
-    if (self.delegate && [self.delegate respondsToSelector:@selector(selectChooseBudgetStyleId:)]) {
-        [self.delegate selectChooseBudgetStyleId:[NSString stringWithFormat:@"%ld",indexPath.row + 1]];
+    if (self.delegate && [self.delegate respondsToSelector:@selector(selectChooseDoorModelStyleId:withText:)]) {
+        NSDictionary *dic = self.styleArry[indexPath.row];
+        [self.delegate selectChooseDoorModelStyleId:dic[@"id"] withText:dic[@"name"]];
     }
 }
 // 设置cell大小 itemSize：可以给每一个cell指定不同的尺寸
@@ -124,8 +169,8 @@
     UITouch *touch = [touches anyObject];
     if (touch.view == self.view) {
         self.view.hidden = YES;
-        if (self.delegate && [self.delegate respondsToSelector:@selector(selectChooseBudgetStyleId:)]) {
-            [self.delegate selectChooseBudgetStyleId:@""];
+        if (self.delegate && [self.delegate respondsToSelector:@selector(selectChooseDoorModelStyleId:withText:)]) {
+            [self.delegate selectChooseDoorModelStyleId:@"" withText:@""];
         }
     }
 }

@@ -49,6 +49,10 @@
     // Do any additional setup after loading the view.
 //    self.chooseview.titleArry = [NSMutableArray arrayWithArray:@[@"全部",@"装修设计",@"预算报价",@"建材购买",@"验房收房",@"其他"]];
     
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(chaGongLue) name:@"chaGongLue" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(FoundZiXun) name:@"FoundZiXun" object:nil];
+    
     [self.navview mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.right.top.mas_equalTo(0);
         make.height.mas_equalTo(kNavBarAndStatusBarHeight);
@@ -92,6 +96,27 @@
     
     [self getMoreClass];
     [self getnav];
+}
+- (void)chaGongLue
+{
+    self.navview.sTraTegyStyle = DFStrategy_Strategy;
+    self.isInformation = NO;
+    self.dataTableview.separatorColor = [UIColor colorWithHexString:@"F7F7F7"];
+    
+    [self.list_arry removeAllObjects];
+    [self getdataWithClassId:self.chooseID];
+
+}
+
+- (void)FoundZiXun
+{
+    self.navview.sTraTegyStyle = DFStrategy_information;
+    self.isInformation = YES;
+    self.dataTableview.separatorColor = [UIColor clearColor];
+    [self.list_arry removeAllObjects];
+    [self getdataWithClassId:self.chooseID];
+
+
 }
 - (void)getMoreData
 {
@@ -297,7 +322,10 @@
     }
     return _navview;
 }
-
+- (void)dealloc
+{
+    [[NSNotificationCenter defaultCenter]removeObserver:self];
+}
 /*
 #pragma mark - Navigation
 

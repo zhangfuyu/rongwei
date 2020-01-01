@@ -300,14 +300,14 @@
     timerLabel.font = HScaleFont(15);
     timerLabel.textAlignment = NSTextAlignmentLeft;
     timerLabel.textColor = [UIColor colorWithHexString:@"999999"];
-//    timerLabel.text = self.model.brief;
+    timerLabel.text = self.model.created_at;
     timerLabel.numberOfLines = 0;
     [IntroductionVew addSubview:timerLabel];
     
     [timerLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.mas_equalTo(HScaleHeight(102.5));
         make.right.mas_equalTo(-HScaleWidth(25.5));
-        make.top.mas_equalTo(IntroductionLbel.mas_top);
+        make.top.mas_equalTo(storeTime.mas_top);
 
     }];
     

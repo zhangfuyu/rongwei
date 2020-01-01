@@ -8,6 +8,7 @@
 
 #import "DFHomeNaiBarView.h"
 #import "DFFoundConstructionViewController.h"
+#import "DFEsignerlListViewController.h"
 
 @implementation DFHomeNaiBarView
 
@@ -127,6 +128,15 @@
     if (sender.tag == 10087) {
         [self.viewController.navigationController pushViewController:[DFFoundConstructionViewController new] animated:YES];
 
+    }
+    //找设计
+    else if (sender.tag == 10086)
+    {
+        [self.viewController.navigationController pushViewController:[DFEsignerlListViewController new] animated:YES];
+    }
+    else if (sender.tag == 10089)
+    {
+        [self.viewController.tabBarController setSelectedIndex:3];
     }
 }
 

@@ -32,9 +32,25 @@
         UILabel *quesetLabel = [[UILabel alloc]init];
         quesetLabel.font = HScaleFont(12);
         quesetLabel.textColor = [UIColor colorWithHexString:@"333333"];
-        quesetLabel.text = model.bbs_title;
-        [self addSubview:quesetLabel];
         
+        NSString *questText = [NSString stringWithFormat:@"%@#%@",model.bbs_title,model.modelclass[@"name"]];
+
+        
+        if ([(NSString *)model.modelclass[@"name"] length] > 0) {
+            NSMutableAttributedString *str = [[NSMutableAttributedString alloc] initWithString:questText];
+            [str addAttribute:NSForegroundColorAttributeName value:[UIColor colorWithHexString:@"333333"] range:NSMakeRange(0,questText.length - ([(NSString *)model.modelclass[@"name"] length] + 1))];
+            [str addAttribute:NSForegroundColorAttributeName value:[UIColor colorWithHexString:@"DD1A21"] range:NSMakeRange(questText.length - ([(NSString *)model.modelclass[@"name"] length] + 1),[(NSString *)model.modelclass[@"name"] length] + 1)];
+            quesetLabel.attributedText = str;
+        }
+        else
+        {
+            quesetLabel.text = questText;
+        }
+        
+        
+        quesetLabel.numberOfLines = 0;
+        [self addSubview:quesetLabel];
+
         
         [quesetLabel mas_makeConstraints:^(MASConstraintMaker *make) {
             make.left.mas_equalTo(questImage.mas_right).offset(HScaleWidth(8));
@@ -42,7 +58,7 @@
             make.right.mas_equalTo(-HScaleWidth(12.5));
         }];
         
-        selfHeighet += [model.bbs_title heightForFont:quesetLabel.font width:ScreenW - HScaleWidth(12.5) - HScaleWidth(30.5)];
+        selfHeighet += [quesetLabel.text heightForFont:quesetLabel.font width:ScreenW - HScaleWidth(12.5) - HScaleWidth(30.5)];
         
         
         
@@ -85,7 +101,7 @@
         
         
         UIImageView *headerImage = [[UIImageView alloc]init];
-        [headerImage sd_setImageWithURL:[NSURL URLWithString:model.bbs_user_image] placeholderImage:nil];
+        [headerImage sd_setImageWithURL:[NSURL URLWithString:model.bbs_user_image] placeholderImage:[UIImage imageNamed:@"头像_男孩"]];
         [self addSubview:headerImage];
         
         [headerImage mas_makeConstraints:^(MASConstraintMaker *make) {

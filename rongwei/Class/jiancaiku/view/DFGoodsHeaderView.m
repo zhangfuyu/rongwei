@@ -10,6 +10,7 @@
 #import <WebKit/WebKit.h>
 #import "DFConfigurationView.h"
 #import "DFStoreDetailViewController.h"
+#import "SDCycleScrollView.h"
 
 
 @interface DFGoodsHeaderView ()
@@ -41,14 +42,31 @@
         
         self.wkwebviewContent = 0.0;
         
-        UIImageView *imageview = [[UIImageView alloc]init];
-        [imageview sd_setImageWithURL:[NSURL URLWithString:model.goods_thumb] placeholderImage:nil];
-        [self addSubview:imageview];
         
-        [imageview mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.top.left.right.mas_equalTo(0);
-            make.height.mas_equalTo(HScaleHeight(250));
-        }];
+         SDCycleScrollView *scrollView = [SDCycleScrollView cycleScrollViewWithFrame:CGRectMake(0, 0 , ScreenW, HScaleHeight(250)) delegate:self placeholderImage:[UIImage imageNamed:@""]];
+         scrollView.autoScrollTimeInterval = 5;
+         scrollView.layer.cornerRadius = HScaleHeight(5);
+         scrollView.backgroundColor = [UIColor whiteColor];
+         scrollView.currentPageDotColor = [UIColor whiteColor];
+    //    scrollView.pageControlStyle = SDCycleScrollViewPageContolStyleAnimated;
+         scrollView.pageDotColor = [UIColor colorWithWhite:1 alpha:0.6];
+         scrollView.pageControlBottomOffset = 12;
+         scrollView.pageDotColor = [UIColor colorWithWhite:1 alpha:.6];
+         scrollView.currentPageDotColor = [UIColor whiteColor];
+         scrollView.bannerImageViewContentMode = UIViewContentModeScaleAspectFill;
+         scrollView.imageSize = CGSizeMake(ScreenW, HScaleHeight(250));
+         [self addSubview:scrollView];
+        
+        [scrollView setImageURLStringsGroup:model.infos[@"spu_thumb_json"]];
+        
+//        UIImageView *imageview = [[UIImageView alloc]init];
+//        [imageview sd_setImageWithURL:[NSURL URLWithString:model.goods_thumb] placeholderImage:nil];
+//        [self addSubview:imageview];
+//
+//        [imageview mas_makeConstraints:^(MASConstraintMaker *make) {
+//            make.top.left.right.mas_equalTo(0);
+//            make.height.mas_equalTo(HScaleHeight(250));
+//        }];
         
         self.selfHeight += HScaleHeight(250);
         
@@ -69,7 +87,7 @@
         [nameLaebl mas_makeConstraints:^(MASConstraintMaker *make) {
             make.left.mas_equalTo(HScaleWidth(19));
             make.right.mas_equalTo(-HScaleWidth(19));
-            make.top.mas_equalTo(imageview.mas_bottom).offset(HScaleHeight(17.5));
+            make.top.mas_equalTo(scrollView.mas_bottom).offset(HScaleHeight(17.5));
             
         }];
         
@@ -238,8 +256,8 @@
         
         
         UILabel *address = [[UILabel alloc]init];
-        address.text = @"浙江 丽水    |     快递: 0:00 ";
-//        address.text = [NSString stringWithFormat:@"%@   |     快递: 0:00 ",model.];
+//        address.text = @"浙江 丽水    |     快递: 0:00 ";
+        address.text = [NSString stringWithFormat:@"%@   |     快递: 0:00 ",model.shopDetailModel.address];
         address.textColor = [UIColor colorWithHexString:@"333333"];
         address.font = HScaleFont(12);
         [self addSubview:address];

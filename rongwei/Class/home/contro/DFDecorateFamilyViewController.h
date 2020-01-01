@@ -13,7 +13,7 @@ NS_ASSUME_NONNULL_BEGIN
 @protocol DFDecorateFamilyViewControllerDelegate <NSObject>
 @optional
 
-- (void)selectChooseBudgetStyleId:(NSString *)styleId;
+- (void)selectChooseDoorModelStyleId:(NSString *)styleId withText:(NSString *)text;
 
 @end
 

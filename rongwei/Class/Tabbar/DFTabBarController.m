@@ -74,11 +74,11 @@
         UITabBarItem *item = nav.tabBarItem;
         item.titlePositionAdjustment = UIOffsetMake(0, 0);
 
-        item.imageInsets=UIEdgeInsetsMake(-1,0,1,0);
+//        item.imageInsets=UIEdgeInsetsMake(-1,0,3,0);
 
         item.image = [UIImage imageNamed:dict[MallImgKey]];
         item.selectedImage = [[UIImage imageNamed:dict[MallSelImgKey]] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
-        item.imageInsets = UIEdgeInsetsMake(6, 0,-6, 0);//（当只有图片的时候）需要自动调整
+//        item.imageInsets = UIEdgeInsetsMake(6, 0,-6, 0);//（当只有图片的时候）需要自动调整
         item.title = dict[MallTitleKey];
         [self addChildViewController:nav];
         

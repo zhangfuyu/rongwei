@@ -102,10 +102,12 @@
                 NSDictionary *dic = hot[index];
                 DFHomeNavModel *model = [[DFHomeNavModel alloc]initWithDictionary:dic error:nil];
                 [[DFUserModelTool shareInstance].hotArry addObject:model];
+                
             }
+            self.fourSection.hotArry = [DFUserModelTool shareInstance].hotArry;
             NSArray *banaer = response[@"data"][@"app_navi"];//[@"APP-首页轮播图"];
             for (NSInteger index = 0; index < banaer.count; index ++) {
-                 NSDictionary *dic = hot[index];
+                 NSDictionary *dic = banaer[index];
                  DFHomeNavModel *model = [[DFHomeNavModel alloc]initWithDictionary:dic error:nil];
                  [[DFUserModelTool shareInstance].banaerArry addObject:model];
             }
@@ -206,6 +208,8 @@
         cell = [[DFHomeWorkListCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:Cellidear];
     }
     cell.model = self.work_listArry[indexPath.row];
+    cell.isRecommended = NO;
+
     return cell;
 }
 
@@ -228,6 +232,10 @@
 {
     if (section == 0 || section == 2) {
         return HScaleHeight(56);
+    }
+    else if (section == 3)
+    {
+        return HScaleHeight(269);
     }
     
     return HScaleHeight(39);
@@ -277,10 +285,27 @@
 {
     if (scrollView.contentOffset.y >= HScaleHeight(348)) {
         self.narbaView.hidden = NO;
+        [self.dataTableview mas_remakeConstraints:^(MASConstraintMaker *make) {
+            make.top.mas_equalTo(self.narbaView.mas_bottom);
+            make.right.left.mas_equalTo(0);
+            make.bottom.mas_equalTo(-kTabBarHeight);
+            
+          
+        }];
     }
     else
     {
+        
+        
         self.narbaView.hidden = YES;
+        
+        [self.dataTableview mas_remakeConstraints:^(MASConstraintMaker *make) {
+            make.top.right.left.mas_equalTo(0);
+            make.bottom.mas_equalTo(-kTabBarHeight);
+            
+          
+        }];
+        
         if (scrollView.contentOffset.y <= 0) {
             [self.dataTableview scrollToTopAnimated:NO];
         }
@@ -330,9 +355,7 @@
                 for (NSDictionary *dic in dataarry) {
                     DFDesignerModel *model = [[DFDesignerModel alloc] initWithDictionary:dic error:nil];
                     [self.designerListArry addObject:model];
-                    if (self.designerListArry.count >= 2) {
-                        break;
-                    }
+
                 }
             }
 
@@ -424,7 +447,7 @@
 - (DFSectionView *)fourSection
 {
     if (!_fourSection) {
-        _fourSection = [[DFSectionView alloc]initWithFrame:CGRectMake(0, 0, ScreenW, HScaleHeight(39))];
+        _fourSection = [[DFSectionView alloc]initWithFrame:CGRectMake(0, 0, ScreenW, HScaleHeight(269))];
         _fourSection.titleText = @"热门攻略";
         _fourSection.isShowSubTitle = NO;
     }

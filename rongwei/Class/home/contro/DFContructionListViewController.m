@@ -13,14 +13,24 @@
 #import "DFConstructionModel.h"
 #import "DFConstructionListCell.h"
 #import "DFContructionWorkDetailViewController.h"
+#import "DFConstructionPhaseViewController.h"
+#import "DFDecorateFamilyViewController.h"
+#import "DFChooseCityViewController.h"
 
-@interface DFContructionListViewController ()<UITableViewDelegate,UITableViewDataSource,UICollectionViewDelegate,UICollectionViewDataSource>
+@interface DFContructionListViewController ()<UITableViewDelegate,UITableViewDataSource,UICollectionViewDelegate,UICollectionViewDataSource,DFConstructionPhaseViewControllerDelegate,DFDecorateFamilyViewControllerDelegate,DFChooseCityViewControllerDelegate,CQTopBarSegmentDelegate>
 
 @property (nonatomic , strong) DFTextField *searchTextField;
 @property (nonatomic , strong) CQTopBarSegment *segment;
 @property (nonatomic , strong) DFConstructionListView *header;
 @property (nonatomic , strong) UICollectionView *scrollView;
 @property (nonatomic , strong) NSMutableArray *constructionArry;
+@property (nonatomic , strong) NSMutableDictionary *parmars;
+
+@property (nonatomic , strong) DFConstructionPhaseViewController *stylevc;
+
+@property (nonatomic , strong) DFDecorateFamilyViewController *DecorateFamily;
+
+@property (nonatomic , strong) DFChooseCityViewController *chooseCity;
 
 @end
 
@@ -35,6 +45,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+    self.parmars = [[NSMutableDictionary alloc]init];
     
     [self setupNavigationBar];
     
@@ -59,14 +71,30 @@
 //请求施工列表
 - (void)getConstruction
 {
-    [[DFNetworkTool shareInstance] requestWithMethod:GHRequestMethod_GET withUrl:Construction withParameter:@{@"is_rec":@"0"} withLoadingType:GHLoadingType_HideLoading withShouldHaveToken:YES withContentType:GHContentType_JSON completionBlock:^(BOOL isSuccess, NSString * _Nullable msg, id  _Nullable response) {
+    
+    self.parmars[@"itemsPerLoad"] = @(10);
+    self.parmars[@"lastIndex"] = @(self.constructionArry.count);
+    self.parmars[@"is_rec"] = @(0);
+    
+    
+    [[DFNetworkTool shareInstance] requestWithMethod:GHRequestMethod_GET withUrl:Construction withParameter:self.parmars withLoadingType:GHLoadingType_HideLoading withShouldHaveToken:YES withContentType:GHContentType_JSON completionBlock:^(BOOL isSuccess, NSString * _Nullable msg, id  _Nullable response) {
         if (isSuccess) {
+            
+            [self.scrollView.mj_footer endRefreshing];
+
             
             NSArray *dataarry = response[@"data"];
             
             for (NSInteger index = 0; index < dataarry.count; index ++) {
                 DFConstructionModel *model = [[DFConstructionModel alloc]initWithDictionary:dataarry[index] error:nil];
                 [self.constructionArry addObject:model];
+            }
+            if (dataarry.count >0) {
+                [self.scrollView.mj_footer endRefreshing];
+            }
+            else
+            {
+                [self.scrollView.mj_footer endRefreshingWithNoMoreData];
             }
             [self.scrollView reloadData];
         }
@@ -301,10 +329,13 @@
          _scrollView.backgroundColor = [UIColor whiteColor];
          _scrollView.delegate = self;
          _scrollView.dataSource = self;
+        _scrollView.scrollEnabled = NO;
         _scrollView.alwaysBounceVertical=YES;
 
 //         _scrollView.showsVerticalScrollIndicator = NO;
          _scrollView.backgroundColor = [UIColor colorWithHexString:@"FFFFFF"];
+        _scrollView.mj_footer = [MJRefreshBackNormalFooter footerWithRefreshingTarget:self refreshingAction:@selector(getConstruction)];
+
         [_scrollView registerClass:[DFConstructionListCell class] forCellWithReuseIdentifier:@"DFConstructionListCell"];
         
     }
@@ -314,9 +345,10 @@
 - (CQTopBarSegment *)segment
 {
     if (!_segment) {
-        _segment = [[CQTopBarSegment alloc]initWithFrame:CGRectMake(0, HScaleHeight(5), ScreenW, HScaleHeight(47)) sectionTitles:@[@"区域选择",@"综合",@"筛选"]];
+        _segment = [[CQTopBarSegment alloc]initWithFrame:CGRectMake(0, HScaleHeight(5), ScreenW, HScaleHeight(47)) sectionTitles:@[@"区域选择",@"施工阶段",@"筛选"]];
         _segment.titleTextColor = [UIColor colorWithHexString:@"666666"];
         _segment.segmentImage = @"箭头";
+        _segment.delegate = self;
         _segment.selectSegmentImage = @"箭头-1";
         _segment.selectedTitleTextColor = [UIColor colorWithHexString:@"DD1A21"];
         _segment.titleTextFont = HScaleFont(12);
@@ -330,6 +362,114 @@
         _constructionArry = [NSMutableArray arrayWithCapacity:0];
     }
     return _constructionArry;
+}
+- (void)topBarSegmentWithBlock:(CQTopBarSegment *)segment indexPath:(NSIndexPath *)indexPath
+{
+    if (indexPath.row == 1) {
+        CGFloat contentY = [self.dataTableview rectForSection:0].origin.y;
+        self.dataTableview.contentOffset = CGPointMake(0, contentY);
+        self.stylevc.view.hidden = !self.stylevc.view.hidden;
+
+    }
+    else if (indexPath.row == 2)
+    {
+        CGFloat contentY = [self.dataTableview rectForSection:0].origin.y;
+        self.dataTableview.contentOffset = CGPointMake(0, contentY);
+        self.DecorateFamily.view.hidden = !self.DecorateFamily.view.hidden;
+    }
+    else
+    {
+        CGFloat contentY = [self.dataTableview rectForSection:0].origin.y;
+        self.dataTableview.contentOffset = CGPointMake(0, contentY);
+        self.chooseCity.view.hidden = !self.DecorateFamily.view.hidden;
+    }
+}
+- (DFConstructionPhaseViewController *)stylevc
+{
+    if (!_stylevc) {
+        _stylevc = [[DFConstructionPhaseViewController alloc]init];
+        _stylevc.delegate = self;
+        _stylevc.view.hidden = YES;
+        [self addChildViewController:_stylevc];
+        [self.view addSubview:_stylevc.view];
+    }
+    return _stylevc;
+}
+- (void)selectChooseStyleId:(NSString *)styleId withText:(nonnull NSString *)text
+{
+    
+    [self.segment.collectionView reloadData];
+    
+    if (text.length == 0) {
+        return;
+    }
+
+    text = [text stringByReplacingOccurrencesOfString:@"不限" withString:@"施工阶段"];
+    
+    [self.segment topBarReplaceObjectsAtIndexes:1 withObjects:text BarView:nil];
+    self.parmars[@"stage_id"] = styleId;
+    self.stylevc.view.hidden = YES;
+    [self.segment.collectionView reloadData];
+    [self.constructionArry removeAllObjects];
+    [self getConstruction];
+
+}
+- (DFDecorateFamilyViewController *)DecorateFamily
+{
+    if (!_DecorateFamily) {
+        _DecorateFamily = [[DFDecorateFamilyViewController alloc]init];
+        _DecorateFamily.delegate = self;
+        _DecorateFamily.view.hidden = YES;
+        [self addChildViewController:_DecorateFamily];
+        [self.view addSubview:_DecorateFamily.view];
+    }
+    return _DecorateFamily;
+}
+
+- (void)selectChooseDoorModelStyleId:(NSString *)styleId withText:(NSString *)text
+{
+    [self.segment.collectionView reloadData];
+    
+    if (text.length == 0) {
+        return;
+    }
+    
+    text = [text stringByReplacingOccurrencesOfString:@"不限" withString:@"筛选"];
+
+    
+    [self.segment topBarReplaceObjectsAtIndexes:2 withObjects:text BarView:nil];
+    
+    self.parmars[@"shape_id"] = styleId;
+
+    self.DecorateFamily.view.hidden = YES;
+    [self.segment.collectionView reloadData];
+    
+    [self.constructionArry removeAllObjects];
+    [self getConstruction];
+}
+
+- (DFChooseCityViewController *)chooseCity
+{
+    if (!_chooseCity) {
+        _chooseCity = [[DFChooseCityViewController alloc]init];
+        _chooseCity.delegate = self;
+        _chooseCity.view.hidden = YES;
+        [self addChildViewController:_chooseCity];
+        [self.view addSubview:_chooseCity.view];
+    }
+    return _chooseCity;
+}
+- (void)selectChooseprovinceId:(NSString *)province_id city_id:(NSString *)cityID area_id:(NSString *)areaId
+{
+    
+    [self.segment.collectionView reloadData];
+    self.parmars[@"province_id"] = province_id;
+    self.parmars[@"city_id"] = cityID;
+    self.parmars[@"area_id"] = areaId;
+    
+    [self.constructionArry removeAllObjects];
+    [self getConstruction];
+
 }
 /*
 #pragma mark - Navigation

@@ -42,6 +42,8 @@
 
 @property (nonatomic , strong) DFCommentBommenView *boomview;
 
+@property (nonatomic , assign) CGFloat contentHeight;
+
 
 @end
 
@@ -72,9 +74,8 @@
     }];
 
     
-    [self getdata];
     
-//    [self getrecommended];
+    [self getrecommended];
 
 
 }
@@ -130,7 +131,8 @@
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return ScreenH - HScaleHeight(47) - kBottomSafeHeight - HScaleHeight(54) - HScaleHeight(125.5);
+//    return ScreenH - HScaleHeight(47) - kBottomSafeHeight - HScaleHeight(54) - HScaleHeight(125.5);
+    return self.contentHeight;
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -198,7 +200,33 @@
     }
     self.homeTableview.showsVerticalScrollIndicator = _canScroll?YES:NO;
 }
+- (void)getrecommended
+{
+    [[DFNetworkTool shareInstance] requestWithMethod:GHRequestMethod_GET withUrl:BbsGuide withParameter:@{@"is_rec":@"0"} withLoadingType:GHLoadingType_HideLoading withShouldHaveToken:YES withContentType:GHContentType_Formdata completionBlock:^(BOOL isSuccess, NSString * _Nullable msg, id  _Nullable response) {
+        if (isSuccess) {
+            
+            NSArray *dataArry = response[@"data"];
+            if (dataArry.count > 0) {
+                NSInteger remainder = dataArry.count % 2;
+                NSInteger zhengshu = dataArry.count / 2;
+                if (remainder > 0) {
+                    self.contentHeight = (zhengshu + 1) * HScaleHeight(125.5) + (zhengshu + 2) *HScaleHeight(10);
+                }
+                else
+                {
+                    self.contentHeight = zhengshu * HScaleHeight(125.5) + (zhengshu + 2) * HScaleHeight(10);
 
+                }
+                
+
+            }
+            
+            [self getdata];
+
+        }
+
+    }];
+}
 - (void)getdata
 {
     NSString *urlstr = [NSString stringWithFormat:@"%@/%@",BbsGuide,self.modelid];

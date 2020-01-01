@@ -112,10 +112,12 @@
     _stage_name = stage_name;
     if ([stage_name isEqualToString:self.titleLabel.text]) {
         self.gardenView .backgroundColor = [UIColor colorWithHexString:@"DD1A21"];
+        self.titleLabel.textColor = [UIColor colorWithHexString:@"DD1A21"];
     }
     else
     {
         self.gardenView .backgroundColor = [UIColor colorWithHexString:@"DDDDDD"];
+        self.titleLabel.textColor = [UIColor colorWithHexString:@"333333"];
 
     }
 }

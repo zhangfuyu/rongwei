@@ -18,8 +18,9 @@
 #import "DFXiaoGuoStyleViewController.h"
 #import "DFYuSuanViewController.h"
 #import "DFAreaViewController.h"
+#import "DFDecorateFamilyViewController.h"
 
-@interface DFXiaoGuoTuViewController ()<UICollectionViewDelegate, UICollectionViewDataSource,UITableViewDelegate,UITableViewDataSource,CQTopBarSegmentDelegate,DFXiaoGuoStyleViewControllerDelegate,DFYuSuanViewControllerDelegate,DFAreaViewControllerDelegate>
+@interface DFXiaoGuoTuViewController ()<UICollectionViewDelegate, UICollectionViewDataSource,UITableViewDelegate,UITableViewDataSource,CQTopBarSegmentDelegate,DFXiaoGuoStyleViewControllerDelegate,DFYuSuanViewControllerDelegate,DFAreaViewControllerDelegate,DFDecorateFamilyViewControllerDelegate>
 @property (nonatomic , strong)DFRenderingNarbarView *navview;
 @property (nonatomic , strong)CQTopBarSegment *segment;
 
@@ -31,6 +32,8 @@
 @property (nonatomic , strong)DFYuSuanViewController *yusuanVc;
 
 @property (nonatomic , strong)DFAreaViewController *areaVC;
+
+@property (nonatomic , strong)DFDecorateFamilyViewController *DecorateFamily;
 
 
 @property (nonatomic , strong)UICollectionView *scrollView;
@@ -51,7 +54,9 @@
     self.stylevc.view.hidden = YES;
     self.yusuanVc.view.hidden = YES;
     self.areaVC.view.hidden = YES;
+    self.DecorateFamily.view.hidden = YES;
     
+    [self.view bringSubviewToFront:self.DecorateFamily.view];
     [self.view bringSubviewToFront:self.stylevc.view];
     [self.view bringSubviewToFront:self.yusuanVc.view];
     [self.view bringSubviewToFront:self.areaVC.view];
@@ -346,7 +351,7 @@
 //
 //}
 #pragma mark - DFXiaoGuoStyleViewControllerDelegate
-- (void)selectChooseStyleId:(NSString *)styleId
+- (void)selectChooseStyleId:(NSString *)styleId withText:(nonnull NSString *)text
 {
     
     
@@ -358,27 +363,58 @@
         return;
     }
     
+    text = [text stringByReplacingOccurrencesOfString:@"不限" withString:@"风格"];
+    
+    NSString * isrex = self.parmars[@"is_rec"];
+
+    
+    if ([isrex intValue] == 1) {
+        [self.segment2 topBarReplaceObjectsAtIndexes:0 withObjects:text BarView:nil];
+
+    }
+    else
+    {
+        [self.segment topBarReplaceObjectsAtIndexes:0 withObjects:text BarView:nil];
+
+    }
+    
     self.stylevc.view.hidden = YES;
     self.parmars[@"style_id"] = styleId;
-    
+    [self.work_listArry removeAllObjects];
     [self getWorkData];
 }
-- (void)selectChooseBudgetStyleId:(NSString *)styleId
+- (void)selectChooseBudgetStyleId:(NSString *)styleId withText:(nonnull NSString *)text
 {
     [self.segment.collectionView reloadData];
     [self.segment2.collectionView reloadData];
     
     if (styleId.length == 0) {
         return;
+    }
+    
+    text = [text stringByReplacingOccurrencesOfString:@"不限" withString:@"预算"];
+    
+    NSString * isrex = self.parmars[@"is_rec"];
+    
+    if ([isrex intValue] == 1) {
+        [self.segment2 topBarReplaceObjectsAtIndexes:2 withObjects:text BarView:nil];
+
+    }
+    else
+    {
+        [self.segment topBarReplaceObjectsAtIndexes:2 withObjects:text BarView:nil];
+
     }
     
     self.stylevc.view.hidden = YES;
     self.parmars[@"budget"] = styleId;
     
+    [self.work_listArry removeAllObjects];
     [self getWorkData];
 }
-- (void)selectChooseAreaStyleId:(NSString *)styleId
+- (void)selectChooseAreaStyleId:(NSString *)styleId withText:(NSString *)text
 {
+   
     [self.segment.collectionView reloadData];
     [self.segment2.collectionView reloadData];
     
@@ -386,9 +422,14 @@
         return;
     }
     
+    text = [text stringByReplacingOccurrencesOfString:@"不限" withString:@"面积"];
+    
+    [self.segment2 topBarReplaceObjectsAtIndexes:3 withObjects:text BarView:nil];
+
+    
     self.stylevc.view.hidden = YES;
     self.parmars[@"mianji"] = styleId;
-    
+    [self.work_listArry removeAllObjects];
     [self getWorkData];
 }
 
@@ -438,6 +479,10 @@
     if (indexPath.row == 0) {
             self.stylevc.view.hidden = !self.stylevc.view.hidden;
 
+    }
+    else if (indexPath.row == 1)
+    {
+        self.DecorateFamily.view.hidden = !self.DecorateFamily.view.hidden;
     }
     else if (indexPath.row == 2)
     {
@@ -505,7 +550,7 @@
 {
     if (!_areaVC) {
         _areaVC = [[DFAreaViewController alloc]init];
-//        _areaVC.delegate = self;
+        _areaVC.delegate = self;
         _areaVC.view.hidden = YES;
         [self addChildViewController:_areaVC];
         [self.view addSubview:_areaVC.view];
@@ -516,6 +561,53 @@
         
     }
     return _areaVC;
+}
+
+- (DFDecorateFamilyViewController *)DecorateFamily
+{
+    if (!_DecorateFamily) {
+        _DecorateFamily = [[DFDecorateFamilyViewController alloc]init];
+        _DecorateFamily.delegate = self;
+        _DecorateFamily.view.hidden = YES;
+        [self addChildViewController:_DecorateFamily];
+        [self.view addSubview:_DecorateFamily.view];
+    }
+    return _DecorateFamily;
+}
+
+- (void)selectChooseDoorModelStyleId:(NSString *)styleId withText:(NSString *)text
+{
+
+    
+    if (text.length == 0) {
+        return;
+    }
+    
+    text = [text stringByReplacingOccurrencesOfString:@"不限" withString:@"户型"];
+    NSString * isrex = self.parmars[@"is_rec"];
+    
+    if ([isrex intValue] == 1) {
+        [self.segment2 topBarReplaceObjectsAtIndexes:1 withObjects:text BarView:nil];
+
+    }
+    else
+    {
+        [self.segment topBarReplaceObjectsAtIndexes:1 withObjects:text BarView:nil];
+
+    }
+    
+    [self.segment.collectionView reloadData];
+    [self.segment2.collectionView reloadData];
+
+    self.parmars[@"shape_id"] = styleId;
+
+    self.DecorateFamily.view.hidden = YES;
+    [self.segment.collectionView reloadData];
+    [self.segment2.collectionView reloadData];
+
+    
+    [self.work_listArry removeAllObjects];
+    [self getWorkData];
 }
 
 /*

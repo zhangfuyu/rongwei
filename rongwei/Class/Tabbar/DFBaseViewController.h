@@ -22,6 +22,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (void)refreshData;
 - (void)getMoreData;
+
 @end
 
 NS_ASSUME_NONNULL_END

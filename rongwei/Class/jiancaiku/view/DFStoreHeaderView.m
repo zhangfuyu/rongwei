@@ -38,6 +38,10 @@
 - (void)creatUI
 {
     self.backImage = [[UIImageView alloc]init];
+    if (self.detailModel.carousel_image.count > 0) {
+        [self.backImage sd_setImageWithURL:[NSURL URLWithString:self.detailModel.carousel_image[0]] placeholderImage:nil];
+
+    }
     [self addSubview:self.backImage];
     
     [self.backImage mas_makeConstraints:^(MASConstraintMaker *make) {

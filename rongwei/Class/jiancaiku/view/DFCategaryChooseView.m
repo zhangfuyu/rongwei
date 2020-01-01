@@ -11,9 +11,12 @@
 
 @interface DFCategaryChooseView ()
 
-@property (nonatomic ,strong)UIView *backview;
+@property (nonatomic ,strong)UIScrollView *backview;
 
 @property (nonatomic , strong)NSMutableArray *itemBtnArr;
+
+
+
 
 
 
@@ -26,15 +29,19 @@
 {
     if (self = [super initWithFrame:frame]) {
         
+        self.backgroundColor = [UIColor colorWithHexString:@"FFFFFF"];
+
+        
         [self.backview mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.left.top.right.bottom.mas_equalTo(0);
+            make.left.top.bottom.mas_equalTo(0);
+            make.right.mas_offset(-HScaleWidth(35.5));
         }];
         
         
         UIButton *clickbtn = [UIButton buttonWithType:UIButtonTypeCustom];
         [clickbtn setImage:[UIImage imageNamed:@"Building_down"] forState:UIControlStateNormal];
         [clickbtn addTarget:self action:@selector(showAllCategary) forControlEvents:UIControlEventTouchUpInside];
-        [self.backview addSubview:clickbtn];
+        [self addSubview:clickbtn];
         
         [clickbtn mas_makeConstraints:^(MASConstraintMaker *make) {
             make.top.bottom.right.mas_equalTo(0);
@@ -57,6 +64,10 @@
         if ([model.modelid isEqualToString:clickId]) {
             UIButton *categaryBtn = self.itemBtnArr[index];
             categaryBtn.selected = YES;
+            
+            //点击按钮在滑动视图中居中显示
+            CGRect centerRect = CGRectMake(categaryBtn.center.x - CGRectGetWidth(self.backview.bounds)/2, 0, CGRectGetWidth(self.backview.bounds), CGRectGetHeight(self.backview.bounds));
+            [self.backview scrollRectToVisible:centerRect animated:YES];
         }
         else
         {
@@ -95,21 +106,23 @@
 
         scroWid += btnWid;
 
-        if (ScreenW - scroWid > HScaleWidth(35.5)) {
+//        if (ScreenW - scroWid > HScaleWidth(35.5)) {
             btn.frame = CGRectMake(scroWid - btnWid, 0, btnWid, CGRectGetHeight(self.bounds));
             
             if (index == 0) {
                 btn.selected = YES;
             }
             [self.itemBtnArr addObject:btn];
-        }
-        else
-        {
-            break;
-        }
+//        }
+//        else
+//        {
+//            break;
+//        }
         
 
     }
+    
+    self.backview.contentSize = CGSizeMake(scroWid, HScaleHeight(37));
     
 }
 - (void)btnClick:(UIButton *)sender
@@ -125,8 +138,14 @@
         }
     }
     
-    DFCategoryModel *model = self.titleArry[sender.tag];
     
+    //点击按钮在滑动视图中居中显示
+    CGRect centerRect = CGRectMake(sender.center.x - CGRectGetWidth(self.backview.bounds)/2, 0, CGRectGetWidth(self.backview.bounds), CGRectGetHeight(self.backview.bounds));
+    [self.backview scrollRectToVisible:centerRect animated:YES];
+    
+    
+    DFCategoryModel *model = self.titleArry[sender.tag];
+
     
     if (self.clickTypeBlock) {
         
@@ -141,10 +160,12 @@
 }
 
 
-- (UIView *)backview
+- (UIScrollView *)backview
 {
     if (!_backview) {
-        _backview = [[UIView alloc]init];
+        _backview = [[UIScrollView alloc]init];
+        _backview.showsVerticalScrollIndicator = NO;
+        _backview.showsHorizontalScrollIndicator = NO;
         _backview.backgroundColor = [UIColor colorWithHexString:@"FFFFFF"];
         [self addSubview:_backview];
     }

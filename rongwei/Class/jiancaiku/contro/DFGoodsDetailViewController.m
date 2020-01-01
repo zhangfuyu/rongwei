@@ -63,7 +63,11 @@
         }
         else
         {
-            [weakSelf.dataTableview scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] atScrollPosition:UITableViewScrollPositionNone animated:YES];
+            CGFloat contentOfssY = [weakSelf.dataTableview rectForSection:0].origin.y;
+            
+            weakSelf.dataTableview.contentOffset = CGPointMake(0, contentOfssY);
+
+//            [weakSelf.dataTableview scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] atScrollPosition:UITableViewScrollPositionNone animated:YES];
         }
     };
     

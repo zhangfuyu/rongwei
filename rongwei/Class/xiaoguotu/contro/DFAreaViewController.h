@@ -12,7 +12,7 @@ NS_ASSUME_NONNULL_BEGIN
 @protocol DFAreaViewControllerDelegate <NSObject>
 @optional
 
-- (void)selectChooseAreaStyleId:(NSString *)styleId;
+- (void)selectChooseAreaStyleId:(NSString *)styleId withText:(NSString *)text;
 
 @end
 

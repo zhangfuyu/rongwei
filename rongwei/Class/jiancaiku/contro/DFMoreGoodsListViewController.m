@@ -13,7 +13,8 @@
 #import "DFCategoryModel.h"
 #import "DFCategaryChooseView.h"
 #import "DFAllCategaryView.h"
-@interface DFMoreGoodsListViewController ()<UICollectionViewDelegate,UICollectionViewDataSource,CQTopBarSegmentDelegate>
+#import "DFSalesGoodsStyleViewController.h"
+@interface DFMoreGoodsListViewController ()<UICollectionViewDelegate,UICollectionViewDataSource,CQTopBarSegmentDelegate,DFSalesGoodsStyleViewControllerDelegate>
 
 @property (nonatomic , strong) CQTopBarSegment *segment;
 @property (nonatomic , strong) UICollectionView *scrollView;
@@ -21,7 +22,8 @@
 @property (nonatomic , strong) NSMutableArray *category_arry;
 @property (nonatomic , strong) DFCategaryChooseView *topView;
 @property (nonatomic , strong) DFAllCategaryView *allTopView;
-
+@property (nonatomic , strong) NSMutableDictionary *parmar;
+@property (nonatomic , strong) DFSalesGoodsStyleViewController *sortingVC;
 @end
 
 @implementation DFMoreGoodsListViewController
@@ -38,6 +40,8 @@
     // Do any additional setup after loading the view.
     
     self.title = @"建材库";
+    
+    self.parmar = [[NSMutableDictionary alloc]init];
     
     UIButton *search = [UIButton buttonWithType:UIButtonTypeCustom];
     search.frame = CGRectMake(0, 0, 44, 44);
@@ -91,7 +95,7 @@
 
      
      // 创建collectionView
-     self.scrollView = [[UICollectionView alloc]initWithFrame:CGRectMake(0, kNavBarAndStatusBarHeight + HScaleHeight(47) + HScaleHeight(37), ScreenW ,ScreenH - kNavAndTabHeight - HScaleHeight(47)- HScaleHeight(37))collectionViewLayout:layout];
+     self.scrollView = [[UICollectionView alloc]initWithFrame:CGRectMake(0, kNavBarAndStatusBarHeight + HScaleHeight(47) + HScaleHeight(37), ScreenW ,ScreenH - kNavBarAndStatusBarHeight - kBottomSafeHeight - HScaleHeight(47)- HScaleHeight(37))collectionViewLayout:layout];
      self.scrollView.backgroundColor = [UIColor whiteColor];
      self.scrollView.delegate = self;
      self.scrollView.dataSource = self;
@@ -138,14 +142,13 @@
     
     [SVProgressHUD showWithStatus:@"加载中..."];
     
-    NSMutableDictionary *parmar = [[NSMutableDictionary alloc]init];
     
     if (self.isCategory) {
-        parmar[@"category_id"] = self.category_id;
+        self.parmar[@"category_id"] = self.category_id;
     }
-    parmar[@"itemsPerLoad"] = @"10";
-    parmar[@"lastIndex"] = @(self.goods_arry.count);
-    [[DFNetworkTool shareInstance] requestWithMethod:GHRequestMethod_GET withUrl:ShopGoods withParameter:parmar withLoadingType:GHLoadingType_HideLoading withShouldHaveToken:YES withContentType:GHContentType_Formdata completionBlock:^(BOOL isSuccess, NSString * _Nullable msg, id  _Nullable response) {
+    self.parmar[@"itemsPerLoad"] = @"10";
+    self.parmar[@"lastIndex"] = @(self.goods_arry.count);
+    [[DFNetworkTool shareInstance] requestWithMethod:GHRequestMethod_GET withUrl:ShopGoods withParameter:self.parmar withLoadingType:GHLoadingType_HideLoading withShouldHaveToken:YES withContentType:GHContentType_Formdata completionBlock:^(BOOL isSuccess, NSString * _Nullable msg, id  _Nullable response) {
         if (isSuccess) {
             
             NSArray *dataarry = response[@"data"];
@@ -229,7 +232,23 @@
 {
     if (indexPath.row == 1) {
         
+        [self.view bringSubviewToFront:self.sortingVC.view];
+        self.sortingVC.view.hidden = !self.sortingVC.view.hidden;
     }
+    else if (indexPath.row == 0)
+    {
+        self.parmar[@"des_status"] = @"0";
+        [self.goods_arry removeAllObjects];
+        [self getShopGoods];
+    }
+    else
+    {
+        self.parmar[@"des_status"] = @"1";
+        [self.goods_arry removeAllObjects];
+        [self getShopGoods];
+
+    }
+
 }
 
 - (CQTopBarSegment *)segment
@@ -279,6 +298,30 @@
     }
     return _allTopView;
 }
+- (DFSalesGoodsStyleViewController *)sortingVC
+{
+    if (!_sortingVC) {
+        _sortingVC = [[DFSalesGoodsStyleViewController alloc]init];
+        _sortingVC.delegate = self;
+        _sortingVC.view.hidden = YES;
+        [self addChildViewController:_sortingVC];
+        [self.view addSubview:_sortingVC.view];
+        
+    }
+    return _sortingVC;
+}
+- (void)selectChooseSelesGoodsSortId:(NSString *)styleId withText:(NSString *)text
+{
+    [self.segment.collectionView reloadData];
+    [self.goods_arry removeAllObjects];
+    [self.segment topBarReplaceObjectsAtIndexes:1 withObjects:text BarView:nil];
+    self.parmar[@"des_status"] = styleId;
+    
+    [self.goods_arry removeAllObjects];
+    [self getShopGoods];
+}
+
+
 /*
 #pragma mark - Navigation
 

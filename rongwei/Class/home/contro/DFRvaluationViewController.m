@@ -64,6 +64,9 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
 
+    if (self.comment_list.count == 0) {
+        return 1;
+    }
     return self.comment_list.count;
 
 }
@@ -77,13 +80,24 @@
     if (!cell) {
         cell = [[DFDesignerCommentCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellid];
     }
-    cell.model = self.comment_list[indexPath.row];
+    if (self.comment_list.count == 0) {
+        cell.isShowNoData = NO;
+    }
+    else
+    {
+        cell.isShowNoData = YES;
+        cell.model = self.comment_list[indexPath.row];
+
+    }
     return cell;
    
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
 
+    if (self.comment_list.count == 0) {
+        return HScaleHeight(81.5);
+    }
     DFCommentModel *model = self.comment_list[indexPath.row];
     CGFloat height = [model.contentHeight floatValue];
     return height + HScaleHeight(62.5);

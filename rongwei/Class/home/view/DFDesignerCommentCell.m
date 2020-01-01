@@ -19,6 +19,8 @@
 
 @property (nonatomic , strong)UILabel *commentLabel;
 
+@property (nonatomic , strong)UIView *noCommentView;
+
 @end
 
 @implementation DFDesignerCommentCell
@@ -54,6 +56,10 @@
             make.size.mas_equalTo(CGSizeMake(HScaleWidth(55), HScaleWidth(13)));
             make.centerY.mas_equalTo(self.nameLabel.mas_centerY);
         }];
+        
+        [self.noCommentView mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.left.right.top.bottom.mas_equalTo(0);
+        }];
     }
     return self;
 }
@@ -70,7 +76,7 @@
         [self.commentTypeBtn setTitleColor:[UIColor colorWithHexString:@"DD1A21"] forState:UIControlStateNormal];
         [self.commentTypeBtn setImage:[UIImage imageNamed:@"haoping"] forState:UIControlStateNormal];
     }
-    else if ([model.score intValue] == 2 || [model.score intValue] == 3)
+    else if ([model.score intValue] == 3)
     {
         [self.commentTypeBtn setTitle:@"中评" forState:UIControlStateNormal];
         [self.commentTypeBtn setTitleColor:[UIColor colorWithHexString:@"FF7E00"] forState:UIControlStateNormal];
@@ -82,6 +88,12 @@
         [self.commentTypeBtn setTitleColor:[UIColor colorWithHexString:@"666666"] forState:UIControlStateNormal];
         [self.commentTypeBtn setImage:[UIImage imageNamed:@"chaping"] forState:UIControlStateNormal];
     }
+}
+
+- (void)setIsShowNoData:(BOOL)isShowNoData
+{
+    _isShowNoData = isShowNoData;
+    self.noCommentView.hidden = isShowNoData;
 }
 
 - (void)awakeFromNib {
@@ -152,5 +164,51 @@
         
     }
     return _commentTypeBtn;
+}
+
+- (UIView *)noCommentView
+{
+    if (!_noCommentView) {
+        _noCommentView = [[UIView alloc]init];//WithFrame:CGRectMake(0, 0, ScreenW, HScaleHeight(81.5))];
+        _noCommentView.backgroundColor = [UIColor colorWithHexString:@"FFFFFF"];
+        _noCommentView.hidden = YES;
+        
+        [self.contentView addSubview:_noCommentView];
+
+        
+        UIImageView *noDataImage = [[UIImageView alloc]init];
+        noDataImage.image = [UIImage imageNamed:@"comment_zanwu"];
+        [_noCommentView addSubview:noDataImage];
+        
+        [noDataImage mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.left.mas_equalTo(HScaleWidth(126.5));
+            make.centerY.mas_equalTo(_noCommentView.mas_centerY);
+            make.size.mas_equalTo(CGSizeMake(HScaleWidth(34), HScaleHeight(30.5)));
+        }];
+        
+        UILabel *titlelabel = [[UILabel alloc]init];
+        titlelabel.text = @"没有相应的评价";
+        [titlelabel setTextColor:[UIColor colorWithHexString:@"999999"]];
+        titlelabel.font = HScaleFont(12);
+        [_noCommentView addSubview:titlelabel];
+        
+        [titlelabel mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.left.mas_equalTo(noDataImage.mas_right).offset(HScaleWidth(5.5));
+            make.top.mas_equalTo(noDataImage.mas_top);
+        }];
+        
+        UILabel *subTitle = [[UILabel alloc]init];
+        subTitle.text = @"看看其他的~";
+        [subTitle setTextColor:[UIColor colorWithHexString:@"999999"]];
+        subTitle.font = HScaleFont(9);
+        [_noCommentView addSubview:subTitle];
+        
+        [subTitle mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.left.mas_equalTo(noDataImage.mas_right).offset(HScaleWidth(5.5));
+            make.bottom.mas_equalTo(noDataImage.mas_bottom);
+        }];
+        
+    }
+    return _noCommentView;
 }
 @end

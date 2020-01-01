@@ -18,6 +18,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic , strong)NSString *subText;
 
+@property (nonatomic , strong)NSMutableArray *hotArry;
+
 @end
 
 NS_ASSUME_NONNULL_END

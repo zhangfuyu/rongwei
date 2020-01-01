@@ -31,7 +31,9 @@
         self.thisHeight = 0.0;
         
         UIImageView *bigimageview = [[UIImageView alloc]init];
-        [bigimageview sd_setImageWithURL:[NSURL URLWithString:model.designer_image] placeholderImage:nil];
+        [bigimageview sd_setImageWithURL:[NSURL URLWithString:model.img] placeholderImage:nil];
+        bigimageview.contentMode = UIViewContentModeScaleAspectFill;
+        bigimageview.clipsToBounds = YES;
         [self addSubview:bigimageview];
         
         [bigimageview mas_makeConstraints:^(MASConstraintMaker *make) {

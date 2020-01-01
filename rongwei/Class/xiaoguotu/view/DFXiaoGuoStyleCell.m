@@ -52,6 +52,7 @@
         _styleLabel.textColor = [UIColor blackColor];
         _styleLabel.backgroundColor = [UIColor colorWithHexString:@"F1F3F6"];
         _styleLabel.layer.cornerRadius = HScaleHeight(2);
+        _styleLabel.adjustsFontSizeToFitWidth = YES;
         _styleLabel.layer.masksToBounds = YES;
         _styleLabel.font = HScaleFont(12);
         _styleLabel.textAlignment = NSTextAlignmentCenter;

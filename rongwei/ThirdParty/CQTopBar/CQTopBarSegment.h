@@ -23,7 +23,7 @@
 @property (nonatomic, strong)NSMutableArray * sectionTitles;
 @property (nonatomic, strong) UIColor * titleTextColor UI_APPEARANCE_SELECTOR;
 @property (nonatomic, strong) UIColor * selectedTitleTextColor UI_APPEARANCE_SELECTOR;
-@property (nonatomic, strong)UIFont * titleTextFont;
+@property (nonatomic, strong) UIFont * titleTextFont;
 @property (nonatomic, strong) NSString * segmentImage;
 @property (nonatomic, strong) NSString * selectSegmentImage;
 @property (nonatomic, strong) UIColor * segmentlineColor;

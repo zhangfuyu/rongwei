@@ -24,6 +24,7 @@
 @property (nonatomic , strong) DFWorksDetailView*headerview;
 @property (nonatomic , assign) BOOL canScroll;
 @property (nonatomic , strong) DFCommentBommenView *boomview;
+@property (nonatomic , assign) CGFloat contentHeight;
 
 
 @end
@@ -82,11 +83,37 @@
          if (isSuccess) {
              
              self.workModel = [[DFDesignerWorkModel alloc] initWithDictionary:response[@"data"] error:nil];
-             [self creattable];
+             [self getrecommended];
              
          }
      }];
 }
+
+- (void)getrecommended
+{
+    [[DFNetworkTool shareInstance] requestWithMethod:GHRequestMethod_GET withUrl:WorkDesignerDetailApi withParameter:@{@"designer_id":self.model.modelId} withLoadingType:GHLoadingType_HideLoading withShouldHaveToken:YES withContentType:GHContentType_Formdata completionBlock:^(BOOL isSuccess, NSString * _Nullable msg, id  _Nullable response) {
+        if (isSuccess) {
+            
+            NSArray *listarry = response[@"data"];
+            if (listarry.count > 0) {
+                
+                NSInteger remainder = listarry.count % 2;
+                NSInteger zhengshu = listarry.count / 2;
+                if (remainder > 0) {
+                    self.contentHeight = (zhengshu + 1) * HScaleHeight(125.5) + (zhengshu + 2) *HScaleHeight(10);
+                }
+                else
+                {
+                    self.contentHeight = zhengshu * HScaleHeight(125.5) + (zhengshu + 2) * HScaleHeight(10);
+
+                }
+
+            }
+            [self creattable];
+        }
+    }];
+}
+
 #pragma mark notify
 - (void)changeScrollStatus//改变主视图的状态
 {
@@ -139,7 +166,8 @@
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return ScreenH - HScaleHeight(47) - kBottomSafeHeight - HScaleHeight(54);
+//    return ScreenH - HScaleHeight(47) - kBottomSafeHeight - HScaleHeight(54);
+    return self.contentHeight;
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
