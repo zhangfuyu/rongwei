@@ -28,7 +28,7 @@
     // Do any additional setup after loading the view.
     self.isSelect = YES;
     self.selecIndex = [NSIndexPath indexPathForRow:0 inSection:0];
-    self.view.backgroundColor = [[UIColor blackColor]colorWithAlphaComponent:0];
+    self.view.backgroundColor = [[UIColor blackColor]colorWithAlphaComponent:0.3];
     
      // 创建布局
      // 1.创建流水布局
@@ -37,7 +37,7 @@
 
      
      // 创建collectionView
-     self.scrollView = [[UICollectionView alloc]initWithFrame:CGRectMake(0, kNavBarAndStatusBarHeight + HScaleHeight(47), ScreenW ,HScaleHeight(70))collectionViewLayout:layout];
+     self.scrollView = [[UICollectionView alloc]initWithFrame:CGRectMake(0, 0, ScreenW ,HScaleHeight(70))collectionViewLayout:layout];
      self.scrollView.backgroundColor = [UIColor whiteColor];
      self.scrollView.delegate = self;
      self.scrollView.dataSource = self;

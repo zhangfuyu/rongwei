@@ -379,7 +379,8 @@
         [_likeThisBtn setTitleColor:UIColorHex(0x010101) forState:UIControlStateNormal];
         _likeThisBtn.frame = CGRectMake(0, 0, HScaleWidth(83), 44);
         _likeThisBtn.titleLabel.font = HScaleFont(12);
-        [_likeThisBtn setTitleColor:[UIColor colorWithHexString:@"DD1A21"] forState:UIControlStateNormal];
+//        [_likeThisBtn setTitleColor:[UIColor colorWithHexString:@"DD1A21"] forState:UIControlStateNormal];
+        [_likeThisBtn setTitleColor:[UIColor colorWithHexString:@"8A8A8A"] forState:UIControlStateNormal];
         [_likeThisBtn setTitle:@"  关注" forState:UIControlStateNormal];
         [_likeThisBtn setImage:[UIImage imageNamed:@"no_Focus_on"] forState:UIControlStateNormal];
         [_likeThisBtn setImage:[UIImage imageNamed:@"Focus_on"] forState:UIControlStateSelected];

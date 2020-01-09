@@ -153,6 +153,11 @@
         [self.imageScro addSubview:imageview];
         DFHomeNavModel *model = [downbanaerArry objectAtIndex:index];
         [imageview sd_setImageWithURL:[NSURL URLWithString:model.pic_url] placeholderImage:nil];
+        
+        UITapGestureRecognizer *noneTapGR = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(selectread:)];
+        [imageview addGestureRecognizer:noneTapGR];
+        imageview.tag = 10086 + index;
+        [imageview setUserInteractionEnabled:YES];
 
         [imageview mas_makeConstraints:^(MASConstraintMaker *make) {
             make.left.mas_equalTo((index + 1) * jianju + index * HScaleWidth(172.5));
@@ -166,6 +171,14 @@
     self.imageScro.contentSize = CGSizeMake((downbanaerArry.count + 1) * jianju + downbanaerArry.count *HScaleWidth(172.5), 0);
     
 
+}
+
+- (void)selectread:(UITapGestureRecognizer *)tap
+{
+
+    DFHomeNavModel *model = self.downbanaerArry[tap.view.tag - 10086];
+    [[DFUserModelTool shareInstance] formeController:self.viewController withModel:model];
+    
 }
 
 - (void)setBanaerArry:(NSMutableArray *)banaerArry
@@ -196,7 +209,9 @@
 #pragma mark - SDCycleScrollViewDelegate
 - (void)cycleScrollView:(SDCycleScrollView *)cycleScrollView didSelectItemAtIndex:(NSInteger)index {
     
+   DFHomeNavModel *model = self.banaerArry[index];
    
+   [[DFUserModelTool shareInstance] formeController:self.viewController withModel:model];
     
 }
 @end

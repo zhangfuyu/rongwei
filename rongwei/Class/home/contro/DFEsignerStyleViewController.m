@@ -18,6 +18,8 @@
 
 @property (nonatomic , strong)NSIndexPath *selecIndex;
 
+@property (nonatomic , strong)UIView *zhengzhao;
+
 @property (nonatomic , assign)BOOL isSelect;
 
 @end
@@ -28,6 +30,10 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
         self.view.backgroundColor = [[UIColor blackColor]colorWithAlphaComponent:0];
+    
+    self.isSelect = YES;
+    self.selecIndex = [NSIndexPath indexPathForRow:0 inSection:0];
+    
         
          // 创建布局
          // 1.创建流水布局
@@ -48,6 +54,17 @@
         [self.scrollView registerClass:[DFXiaoGuoStyleCell class] forCellWithReuseIdentifier:@"DFXiaoGuoStyleCell"];
         
         [self.view addSubview:self.scrollView];
+    
+    
+    
+    self.zhengzhao = [[UIView alloc]init];
+    self.zhengzhao.backgroundColor = [[UIColor blackColor]colorWithAlphaComponent:0.3];
+    [self.view addSubview:self.zhengzhao];
+    
+    [self.zhengzhao mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.right.bottom.mas_equalTo(0);
+        make.top.mas_equalTo(self.scrollView.mas_bottom);
+    }];
         
         [self getStyle];
 }
@@ -64,6 +81,23 @@
            };
            [self.styleArry insertObject:dic atIndex:0];
            dispatch_async(dispatch_get_main_queue(), ^{
+               
+               NSInteger zhengshu = self.styleArry.count / 4;
+               
+               NSInteger yushu = self.styleArry.count  % 4;
+               
+               CGFloat heightAll = 0.0;
+               
+               if (yushu > 0) {
+                   heightAll = (zhengshu + 1) * HScaleHeight(25)  + (zhengshu + 2) *HScaleHeight(10);
+               }
+               else
+               {
+                   heightAll = zhengshu * HScaleHeight(25)  + (zhengshu + 1) *HScaleHeight(10);
+               }
+               
+               self.scrollView.frame = CGRectMake(0, kNavBarAndStatusBarHeight + HScaleHeight(47), ScreenW ,heightAll);
+               
                [self.scrollView reloadData];
            });
            
@@ -154,7 +188,7 @@
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
 {
     UITouch *touch = [touches anyObject];
-    if (touch.view == self.view) {
+    if (touch.view == self.view || touch.view == self.zhengzhao) {
         self.view.hidden = YES;
         if (self.delegate && [self.delegate respondsToSelector:@selector(selectChooseEsignerStyleId:withText:)]) {
             [self.delegate selectChooseEsignerStyleId:@"" withText:@""];

@@ -26,6 +26,7 @@
 
 @property (nonatomic , strong)CQTopBarSegment *segment2;
 @property (nonatomic , strong)NSMutableDictionary *parmars;
+@property (nonatomic , assign)BOOL iszHuangXiuAnLi;
 
 @property (nonatomic , strong)DFXiaoGuoStyleViewController *stylevc;
 
@@ -68,6 +69,8 @@
     self.parmars = [[NSMutableDictionary alloc]init];
     self.parmars[@"is_rec"] = @"0";
     
+
+    
     [self.navview mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.right.top.mas_equalTo(0);
         make.height.mas_equalTo(kNavBarAndStatusBarHeight);
@@ -82,11 +85,13 @@
             [weakSelf.view bringSubviewToFront:weakSelf.segment2];
             [weakSelf.segment2.collectionView reloadData];
             [weakSelf.view bringSubviewToFront:weakSelf.dataTableview];
-            weakSelf.parmars[@"is_rec"] = @"1";
+//            weakSelf.parmars[@"is_rec"] = @"1";
+            weakSelf.iszHuangXiuAnLi = YES;
         }
         else
         {
-            weakSelf.parmars[@"is_rec"] = @"0";
+//            weakSelf.parmars[@"is_rec"] = @"0";
+            weakSelf.iszHuangXiuAnLi = NO;
             [weakSelf.view bringSubviewToFront:weakSelf.segment];
             [weakSelf.segment.collectionView reloadData];
             [weakSelf.view bringSubviewToFront:weakSelf.scrollView];
@@ -142,8 +147,25 @@
     
     [self getWorkData];
     
-}
 
+    
+}
+- (void)chaGongLue
+{
+    
+    self.navview.sTraTegyStyle = DFconditions_DecorateACase;
+    
+    [self.view bringSubviewToFront:self.segment2];
+    [self.segment2.collectionView reloadData];
+    [self.view bringSubviewToFront:self.dataTableview];
+//            weakSelf.parmars[@"is_rec"] = @"1";
+    self.iszHuangXiuAnLi = YES;
+    
+    
+    [self.work_listArry removeAllObjects];
+    [self getWorkData];
+
+}
 /// 推荐案例
 - (void)getWorkData
 {
@@ -165,7 +187,7 @@
                       [self.work_listArry addObject:workmodel];
                   }
               }
-               if ([self.parmars[@"is_rec"] intValue] == 1) {
+               if (self.iszHuangXiuAnLi) {
                    [self.dataTableview reloadData];
                }
                else
@@ -174,11 +196,11 @@
 
                }
                
-               if (listarry.count == 0) {
-                   [self.scrollView.mj_footer endRefreshingWithNoMoreData];
-                   [self.dataTableview.mj_footer endRefreshingWithNoMoreData];
+//               if (listarry.count == 0) {
+                   [self.scrollView.mj_footer endRefreshing];
+                   [self.dataTableview.mj_footer endRefreshing];
 
-               }
+//               }
                
            }
        }];
@@ -571,6 +593,11 @@
         _DecorateFamily.view.hidden = YES;
         [self addChildViewController:_DecorateFamily];
         [self.view addSubview:_DecorateFamily.view];
+        
+        [_DecorateFamily.view mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.left.right.bottom.mas_equalTo(0);
+            make.top.mas_equalTo(kNavBarAndStatusBarHeight + HScaleHeight(47));
+        }];
     }
     return _DecorateFamily;
 }
@@ -609,7 +636,10 @@
     [self.work_listArry removeAllObjects];
     [self getWorkData];
 }
-
+- (void)dealloc
+{
+    [[NSNotificationCenter defaultCenter]removeObserver:self];
+}
 /*
 #pragma mark - Navigation
 

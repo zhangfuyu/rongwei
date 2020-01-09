@@ -6,7 +6,9 @@
 //  Copyright © 2019 zhangfuyu. All rights reserved.
 //
 
+#import "JSONModel.h"
 #import <Foundation/Foundation.h>
+#import "DFHomeNavModel.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -47,6 +49,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 /// 地区(省市区)列表 数据
 - (void)getcitydata;
+
+
+- (void)formeController:(UIViewController *)controller withModel:(DFHomeNavModel *)model;
 
 @end
 

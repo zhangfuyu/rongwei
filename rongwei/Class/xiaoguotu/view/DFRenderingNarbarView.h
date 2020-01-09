@@ -22,6 +22,8 @@ typedef enum : NSUInteger {
 
 @property (nonatomic , copy) void (^chooseConditionsBlock)(DFconditions conditon);
 
+@property (nonatomic , assign) DFconditions sTraTegyStyle;
+
 @end
 
 NS_ASSUME_NONNULL_END

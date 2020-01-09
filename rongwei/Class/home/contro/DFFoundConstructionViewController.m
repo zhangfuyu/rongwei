@@ -344,6 +344,15 @@
         self.chooseCity.view.hidden = !self.chooseCity.view.hidden;
     }
 }
+- (void)topBarSegmentWithSegmentView:(CQTopBarSegment *)segmentView
+{
+    [self.segment.collectionView reloadData];
+    self.chooseCity.view.hidden = YES;
+    self.DecorateFamily.view.hidden = YES;
+    self.stylevc.view.hidden = YES;
+    
+}
+
 - (DFSortingViewController *)stylevc
 {
     if (!_stylevc) {
@@ -352,6 +361,11 @@
         _stylevc.view.hidden = YES;
         [self addChildViewController:_stylevc];
         [self.view addSubview:_stylevc.view];
+        
+        [_stylevc.view mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.left.right.bottom.mas_equalTo(0);
+            make.top.mas_equalTo(kNavBarAndStatusBarHeight + HScaleHeight(47));
+        }];
     }
     return _stylevc;
 }
@@ -383,6 +397,11 @@
         _DecorateFamily.view.hidden = YES;
         [self addChildViewController:_DecorateFamily];
         [self.view addSubview:_DecorateFamily.view];
+        
+        [_DecorateFamily.view mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.left.right.bottom.mas_equalTo(0);
+            make.top.mas_equalTo(kNavBarAndStatusBarHeight + HScaleHeight(47));
+        }];
     }
     return _DecorateFamily;
 }
@@ -415,6 +434,11 @@
         _chooseCity.view.hidden = YES;
         [self addChildViewController:_chooseCity];
         [self.view addSubview:_chooseCity.view];
+        
+        [_chooseCity.view mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.left.right.bottom.mas_equalTo(0);
+            make.top.mas_equalTo(kNavBarAndStatusBarHeight + HScaleHeight(47));
+        }];
     }
     return _chooseCity;
 }

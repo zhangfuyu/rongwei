@@ -54,22 +54,55 @@
     
     [self getConstruction];
     
-    DFContructionDetailView *headerview = [[DFContructionDetailView alloc]initWithFrame:CGRectMake(0, 0, ScreenW, HScaleHeight(137))];
-    headerview.model = self.model;
-    self.homeTableview.tableHeaderView = headerview;
     
+    if (self.model) {
+        DFContructionDetailView *headerview = [[DFContructionDetailView alloc]initWithFrame:CGRectMake(0, 0, ScreenW, HScaleHeight(137))];
+        headerview.model = self.model;
+        self.homeTableview.tableHeaderView = headerview;
+        
+        
+        [self.homeTableview mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.left.right.mas_equalTo(0);
+            make.top.mas_equalTo(kNavBarAndStatusBarHeight);
+            make.bottom.mas_equalTo(-kBottomSafeHeight);
+        }];
+    }
+    else
+    {
+        [self getShopDetail];
+    }
     
-    [self.homeTableview mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.right.mas_equalTo(0);
-        make.top.mas_equalTo(kNavBarAndStatusBarHeight);
-        make.bottom.mas_equalTo(-kBottomSafeHeight);
-    }];
+
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(changeScrollStatus) name:@"leaveTop" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(changeScrollSpecial) name:@"Special" object:nil];
 
 
 }
+
+- (void)getShopDetail
+{
+    
+    //获取公司详情
+    NSString *requestUrl = [NSString stringWithFormat:@"%@/%@",Company,self.shop_id];
+    
+    [[DFNetworkTool shareInstance] requestWithMethod:GHRequestMethod_GET withUrl:requestUrl withParameter:nil withLoadingType:GHLoadingType_HideLoading withShouldHaveToken:YES withContentType:GHContentType_JSON completionBlock:^(BOOL isSuccess, NSString * _Nullable msg, id  _Nullable response) {
+        if (isSuccess) {
+            self.model = [[DFCompanyModel alloc]initWithDictionary:response[@"data"] error:nil];
+            DFContructionDetailView *headerview = [[DFContructionDetailView alloc]initWithFrame:CGRectMake(0, 0, ScreenW, HScaleHeight(137))];
+            headerview.model = self.model;
+            self.homeTableview.tableHeaderView = headerview;
+            
+            
+            [self.homeTableview mas_makeConstraints:^(MASConstraintMaker *make) {
+                make.left.right.mas_equalTo(0);
+                make.top.mas_equalTo(kNavBarAndStatusBarHeight);
+                make.bottom.mas_equalTo(-kBottomSafeHeight);
+            }];
+        }
+    }];
+}
+
 #pragma mark notify
 - (void)changeScrollStatus//改变主视图的状态
 {

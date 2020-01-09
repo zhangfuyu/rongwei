@@ -33,7 +33,7 @@
 }
 - (void)getdata
 {
-    NSString *urlstr = [NSString stringWithFormat:@"%@/%@",BbsGuide,self.model.modelId];
+    NSString *urlstr = [NSString stringWithFormat:@"%@/%@",BbsGuide,self.modelID];
     
     
     [[DFNetworkTool shareInstance] requestWithMethod:GHRequestMethod_GET withUrl:urlstr withParameter:nil withLoadingType:GHLoadingType_HideLoading withShouldHaveToken:YES withContentType:GHContentType_Formdata completionBlock:^(BOOL isSuccess, NSString * _Nullable msg, id  _Nullable response) {

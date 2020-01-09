@@ -112,17 +112,23 @@
             case 103:
                 {
                     DFHomeNavModel *first = self.hotarry[0];
-                    DFStrategyDetailViewController *detail = [[DFStrategyDetailViewController alloc]init];
-                    detail.modelid = first.modelid;
-                    [self.viewController.navigationController pushViewController:detail animated:YES];
+                    
+                    [[DFUserModelTool shareInstance] formeController:self.viewController withModel:first];
+                    
+//                    DFStrategyDetailViewController *detail = [[DFStrategyDetailViewController alloc]init];
+//                    detail.modelid = first.modelid;
+//                    [self.viewController.navigationController pushViewController:detail animated:YES];
                 }
                 break;
             case 104:
                 {
                     DFHomeNavModel *first = self.hotarry[1];
-                    DFStrategyDetailViewController *detail = [[DFStrategyDetailViewController alloc]init];
-                    detail.modelid = first.modelid;
-                    [self.viewController.navigationController pushViewController:detail animated:YES];
+                    [[DFUserModelTool shareInstance] formeController:self.viewController withModel:first];
+
+                    
+//                    DFStrategyDetailViewController *detail = [[DFStrategyDetailViewController alloc]init];
+//                    detail.modelid = first.modelid;
+//                    [self.viewController.navigationController pushViewController:detail animated:YES];
                 }
                 break;
             

@@ -29,7 +29,7 @@
         self.isSelect = YES;
     self.selecIndex = [NSIndexPath indexPathForRow:0 inSection:0];
     
-    self.view.backgroundColor = [[UIColor blackColor]colorWithAlphaComponent:0];
+    self.view.backgroundColor = [[UIColor blackColor]colorWithAlphaComponent:0.3];
     
 
     

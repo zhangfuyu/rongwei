@@ -146,7 +146,7 @@
 }
 - (void)getShopGoodsWithHShop:(NSString *)shop_id
 {
-    [[DFNetworkTool shareInstance] requestWithMethod:GHRequestMethod_GET withUrl:ShopGoods withParameter:@{@"is_rec":@"1",@"shop_id":shop_id} withLoadingType:GHLoadingType_HideLoading withShouldHaveToken:YES withContentType:GHContentType_Formdata completionBlock:^(BOOL isSuccess, NSString * _Nullable msg, id  _Nullable response) {
+    [[DFNetworkTool shareInstance] requestWithMethod:GHRequestMethod_GET withUrl:ShopGoods withParameter:@{@"is_rec":@"1"/*,@"shop_id":shop_id*/} withLoadingType:GHLoadingType_HideLoading withShouldHaveToken:YES withContentType:GHContentType_Formdata completionBlock:^(BOOL isSuccess, NSString * _Nullable msg, id  _Nullable response) {
         if (isSuccess) {
             
             NSArray *dataarry = response[@"data"];

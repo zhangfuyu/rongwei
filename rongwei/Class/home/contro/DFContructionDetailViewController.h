@@ -15,6 +15,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic , strong)DFCompanyModel *model;
 
+@property (nonatomic , strong)NSString *shop_id;
+
 @end
 
 NS_ASSUME_NONNULL_END

@@ -8,8 +8,9 @@
 
 #import "DFWorkListTableViewCell.h"
 #import "SDCycleScrollView.h"
+#import "DFWorksDetailViewController.h"
 
-@interface DFWorkListTableViewCell ()
+@interface DFWorkListTableViewCell ()<SDCycleScrollViewDelegate>
 
 @property (nonatomic , strong) UIImageView *bigimageview;
 
@@ -106,6 +107,7 @@
 {
     if (!_scrollView) {
          _scrollView = [SDCycleScrollView cycleScrollViewWithFrame:CGRectMake(HScaleHeight(10), HScaleHeight(15), ScreenW - HScaleHeight(20), HScaleHeight(175)) delegate:nil placeholderImage:[UIImage imageNamed:@""]];
+        _scrollView.delegate = self;
          _scrollView.autoScrollTimeInterval = 5;
          _scrollView.layer.cornerRadius = HScaleHeight(5);
          _scrollView.backgroundColor = [UIColor whiteColor];
@@ -168,5 +170,14 @@
         [self.contentView addSubview:_nowconsult];
     }
     return _nowconsult;
+}
+- (void)cycleScrollView:(SDCycleScrollView *)cycleScrollView didSelectItemAtIndex:(NSInteger)index
+{
+    
+//    DFWorksDetailViewController *worksdetail = [[DFWorksDetailViewController alloc]init];
+//    worksdetail.autherID = self.model.
+//    worksdetail.worksId = self.model.modelid;
+//    worksdetail.model = self.model;
+//    [self.viewController.navigationController pushViewController:worksdetail animated:YES];
 }
 @end

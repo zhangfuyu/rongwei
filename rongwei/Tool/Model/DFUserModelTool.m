@@ -15,6 +15,18 @@
 
 #import "DFSaveDataTool.h"
 
+
+#import "DFGoodsDetailViewController.h"
+#import "DFStrategyDetailViewController.h"
+#import "DFZiXunListViewController.h"
+#import "DFWorksDetailViewController.h"
+#import "DFLookMorePictureViewController.h"
+#import "DFDesignerModel.h"
+#import "DFEsignerDetialViewController.h"
+#import "DFContructionDetailViewController.h"
+#import "DFStoreDetailViewController.h"
+#import "DFWebViewController.h"
+
 @implementation DFUserModelTool
 
 + (instancetype)shareInstance
@@ -136,6 +148,84 @@
     
     
 
+}
+
+- (void)formeController:(UIViewController *)controller withModel:(DFHomeNavModel *)model
+{
+    
+    NSData *jsonData = [model.custom dataUsingEncoding:NSUTF8StringEncoding];
+    NSError *err;
+    NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:jsonData
+                                                        options:NSJSONReadingMutableContainers
+                                                          error:&err];
+    
+   if ([model.ios_activity isEqualToString:@"goGoodDetail"]) {
+        DFGoodsDetailViewController *goodDetail = [[DFGoodsDetailViewController alloc]init];
+        goodDetail.goods_id = dic[@"id"];
+        [controller.navigationController pushViewController:goodDetail animated:YES];
+    }
+    else if ([model.ios_activity isEqualToString:@"goStrategyDetail"])
+    {
+        DFStrategyDetailViewController *detail = [[DFStrategyDetailViewController alloc]init];
+        detail.modelid = dic[@"id"];
+        [controller.navigationController pushViewController:detail animated:YES];
+    }
+    else if ([model.ios_activity isEqualToString:@"goConsultingDetail"])
+    {
+        DFZiXunListViewController *zixun = [[DFZiXunListViewController alloc]init];
+        zixun.modelID = dic[@"id"];
+        [controller.navigationController pushViewController:zixun animated:YES];
+    }
+    else if ([model.ios_activity isEqualToString:@"goWorksDetail"])
+    {
+        DFWorksDetailViewController *worksdetail = [[DFWorksDetailViewController alloc]init];
+        worksdetail.worksId = dic[@"id"];
+        worksdetail.autherID = dic[@"p_id"];
+        [controller.navigationController pushViewController:worksdetail animated:YES];
+    }
+    else if ([model.ios_activity isEqualToString:@"goRenderingDetail"])
+    {
+        DFLookMorePictureViewController *morePicture = [[DFLookMorePictureViewController alloc]init];
+        morePicture.workId = dic[@"id"];
+        [controller.navigationController pushViewController:morePicture animated:YES];
+    }
+    else if ([model.ios_activity isEqualToString:@"goDesignerDetail"])
+    {
+        DFEsignerDetialViewController *Esigner = [[DFEsignerDetialViewController alloc]init];
+        DFDesignerModel *esignerModel = [[DFDesignerModel alloc]init];
+        esignerModel.modelId = dic[@"id"];
+        Esigner.model = esignerModel;
+        [controller.navigationController pushViewController:Esigner animated:YES];
+    }
+    else if ([model.ios_activity isEqualToString:@"goCompanyDetail"])
+    {
+        DFContructionDetailViewController *morePicture = [[DFContructionDetailViewController alloc]init];
+        morePicture.shop_id = dic[@"id"];
+        [controller.navigationController pushViewController:morePicture animated:YES];
+    }
+    else if ([model.ios_activity isEqualToString:@"goStoreDetail"])
+    {
+        DFStoreDetailViewController *storedetail = [[DFStoreDetailViewController alloc]init];
+        storedetail.store_id = dic[@"id"];
+        [controller.navigationController pushViewController:storedetail animated:YES];
+    }
+    else if ([model.ios_activity isEqualToString:@"goWebView"])
+    {
+        DFWebViewController *webview = [[DFWebViewController alloc]init];
+        webview.requestUrl = model.url;
+        [controller.navigationController pushViewController:webview animated:YES];
+    }
+        
+    //    1.商品详情页
+    //    2.攻略详情页
+    //    3.咨询详情页
+    //    4.作品详情页   暂时写不了 缺少作者id
+    //    5.效果图详情页
+    //    6.设计师主页
+    //    7.施工公司主页
+    //    8.店铺主页
+    //    9.分享达人主页
+    //    10.H5页面
 }
 
 @end

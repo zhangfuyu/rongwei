@@ -49,6 +49,7 @@
         UIButton *decorateBtn = [UIButton buttonWithType:UIButtonTypeCustom];
         [decorateBtn setTitle:@"装修案例" forState:UIControlStateNormal];
         decorateBtn.titleLabel.font = HScaleFont(15);
+        decorateBtn.tag = 10086;
         [decorateBtn addTarget:self action:@selector(chousetypeclick:) forControlEvents:UIControlEventTouchUpInside];
         [decorateBtn setTitleColor:[UIColor colorWithHexString:@"333333"] forState:UIControlStateNormal];
         [self addSubview:decorateBtn];
@@ -125,6 +126,32 @@
 
         }
     }
+}
+
+- (void)setSTraTegyStyle:(DFconditions)sTraTegyStyle
+{
+    if (sTraTegyStyle == DFconditions_DecorateACase) {//装修案例
+        UIButton *tuijiananli = [self viewWithTag:10086];
+        
+        [self.lineview mas_remakeConstraints:^(MASConstraintMaker *make) {
+             make.centerX.mas_equalTo(tuijiananli.mas_centerX);
+             make.bottom.mas_equalTo(tuijiananli.mas_bottom);
+             make.height.mas_equalTo(HScaleHeight(2));
+             make.width.mas_equalTo([self sizeWithText:tuijiananli.titleLabel.text font:HScaleFont(15) maxSize:CGSizeMake(MAXFLOAT, HScaleHeight(15))].width);
+        }];
+    }
+//    else
+//    {
+//        UIButton *gonglue = [self viewWithTag:10087];
+//
+//        [self.lineview mas_remakeConstraints:^(MASConstraintMaker *make) {
+//             make.centerX.mas_equalTo(gonglue.mas_centerX);
+//             make.bottom.mas_equalTo(gonglue.mas_bottom);
+//             make.height.mas_equalTo(HScaleHeight(2));
+//             make.width.mas_equalTo([self sizeWithText:gonglue.titleLabel.text font:HScaleFont(15) maxSize:CGSizeMake(MAXFLOAT, HScaleHeight(15))].width);
+//        }];
+//    }
+    
 }
 
 - (void)clickNoticeAction

@@ -28,7 +28,7 @@
     // Do any additional setup after loading the view.
     
         self.isSelect = YES;
-        self.view.backgroundColor = [[UIColor blackColor]colorWithAlphaComponent:0];
+        self.view.backgroundColor = [[UIColor blackColor]colorWithAlphaComponent:0.3];
     
     self.selecIndex = [NSIndexPath indexPathForRow:0 inSection:0];
         

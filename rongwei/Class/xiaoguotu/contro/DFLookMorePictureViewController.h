@@ -14,6 +14,8 @@ NS_ASSUME_NONNULL_BEGIN
 @interface DFLookMorePictureViewController : DFBaseViewController
 
 @property (nonatomic , strong) DFDesignerWorkModel *model;
+
+@property (nonatomic , strong) NSString *workId;
 @end
 
 NS_ASSUME_NONNULL_END

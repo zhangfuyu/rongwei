@@ -33,10 +33,10 @@
     
     self.styleArry = [NSMutableArray arrayWithCapacity:0];
     
-    self.view.backgroundColor = [[UIColor blackColor]colorWithAlphaComponent:0];
+    self.view.backgroundColor = [[UIColor blackColor]colorWithAlphaComponent:0.3];
 
     UILabel *label = [[UILabel alloc] init];
-    label.frame = CGRectMake(HScaleWidth(0),kNavBarAndStatusBarHeight + HScaleHeight(47),ScreenW,HScaleHeight(15));
+    label.frame = CGRectMake(HScaleWidth(0),0,ScreenW,HScaleHeight(15));
     label.backgroundColor = [UIColor whiteColor];
     label.numberOfLines = 0;
     [self.view addSubview:label];
@@ -52,7 +52,7 @@
 
      
      // 创建collectionView
-     self.scrollView = [[UICollectionView alloc]initWithFrame:CGRectMake(0, kNavBarAndStatusBarHeight + HScaleHeight(47) + HScaleHeight(15), ScreenW ,HScaleHeight(70))collectionViewLayout:layout];
+     self.scrollView = [[UICollectionView alloc]initWithFrame:CGRectMake(0,HScaleHeight(15), ScreenW ,HScaleHeight(70))collectionViewLayout:layout];
      self.scrollView.backgroundColor = [UIColor whiteColor];
      self.scrollView.delegate = self;
      self.scrollView.dataSource = self;

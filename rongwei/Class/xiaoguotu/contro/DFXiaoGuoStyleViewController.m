@@ -31,7 +31,7 @@
     
    self.selecIndex = [NSIndexPath indexPathForRow:0 inSection:0];
     
-    self.view.backgroundColor = [[UIColor blackColor]colorWithAlphaComponent:0];
+    self.view.backgroundColor = [[UIColor blackColor]colorWithAlphaComponent:0.3];
     
      // 创建布局
      // 1.创建流水布局

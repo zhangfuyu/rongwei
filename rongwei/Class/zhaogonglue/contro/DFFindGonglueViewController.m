@@ -186,7 +186,7 @@
     
     if (self.isInformation) {
         DFZiXunListViewController *zixun = [[DFZiXunListViewController alloc]init];
-        zixun.model = model;
+        zixun.modelID = model.modelId;
         [self.navigationController pushViewController:zixun animated:YES];
     }
     else

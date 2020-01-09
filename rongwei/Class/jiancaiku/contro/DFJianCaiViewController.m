@@ -77,7 +77,7 @@
 
 - (void)getnav
 {
-    [[DFNetworkTool shareInstance] requestWithMethod:GHRequestMethod_GET withUrl:ShopADS withParameter:nil withLoadingType:GHLoadingType_HideLoading withShouldHaveToken:YES withContentType:GHContentType_Formdata completionBlock:^(BOOL isSuccess, NSString * _Nullable msg, id  _Nullable response) {
+    [[DFNetworkTool shareInstance] requestWithMethod:GHRequestMethod_GET withUrl:ShopADS withParameter:@{@"no_cached":@"1"} withLoadingType:GHLoadingType_HideLoading withShouldHaveToken:YES withContentType:GHContentType_Formdata completionBlock:^(BOOL isSuccess, NSString * _Nullable msg, id  _Nullable response) {
         if (isSuccess) {
             
             NSArray *navi = response[@"data"][@"app_shop_navi"];//[@"APP-热门攻略广告位"];

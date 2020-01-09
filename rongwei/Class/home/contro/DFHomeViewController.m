@@ -94,7 +94,7 @@
         }
     }];
     
-    [[DFNetworkTool shareInstance] requestWithMethod:GHRequestMethod_GET withUrl:HomeAds withParameter:nil withLoadingType:GHLoadingType_HideLoading withShouldHaveToken:YES withContentType:GHContentType_JSON completionBlock:^(BOOL isSuccess, NSString * _Nullable msg, id  _Nullable response) {
+    [[DFNetworkTool shareInstance] requestWithMethod:GHRequestMethod_GET withUrl:HomeAds withParameter:@{@"no_cached":@"1"} withLoadingType:GHLoadingType_HideLoading withShouldHaveToken:YES withContentType:GHContentType_JSON completionBlock:^(BOOL isSuccess, NSString * _Nullable msg, id  _Nullable response) {
         if (isSuccess) {
             
             NSArray *hot = response[@"data"][@"app_hot"];//[@"APP-热门攻略广告位"];
@@ -317,7 +317,7 @@
 {
     NSMutableDictionary *parmar = [@{
         @"is_rec":@"1",
-        @"itemsPerLoad":@"2"
+        @"itemsPerLoad":@"3"
 
     }copy];
     [[DFNetworkTool shareInstance] requestWithMethod:GHRequestMethod_GET withUrl:WorkDesignerDetailApi withParameter:parmar withLoadingType:GHLoadingType_ShowLoading withShouldHaveToken:YES withContentType:GHContentType_Formdata completionBlock:^(BOOL isSuccess, NSString * _Nullable msg, id  _Nullable response) {

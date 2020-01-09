@@ -43,14 +43,18 @@
 }
 - (void)getrecommended
 {
-    [[DFNetworkTool shareInstance] requestWithMethod:GHRequestMethod_GET withUrl:BbsGuide withParameter:@{@"is_rec":@"0"} withLoadingType:GHLoadingType_HideLoading withShouldHaveToken:YES withContentType:GHContentType_Formdata completionBlock:^(BOOL isSuccess, NSString * _Nullable msg, id  _Nullable response) {
+    [[DFNetworkTool shareInstance] requestWithMethod:GHRequestMethod_GET withUrl:BbsGuide withParameter:@{@"is_rec":@"1"} withLoadingType:GHLoadingType_HideLoading withShouldHaveToken:YES withContentType:GHContentType_Formdata completionBlock:^(BOOL isSuccess, NSString * _Nullable msg, id  _Nullable response) {
         if (isSuccess) {
             
             NSArray *dataArry = response[@"data"];
             if (dataArry.count > 0) {
                 for (NSDictionary *dic in dataArry) {
                     DFGongLueModel *submodel = [[DFGongLueModel alloc]initWithDictionary:dic error:nil];
-                    [self.dataArry addObject:submodel];
+                    if (![submodel.modelId isEqualToString:self.remove_id]) {
+                                           
+                        [self.dataArry addObject:submodel];
+
+                    }
                 }
                 
             }

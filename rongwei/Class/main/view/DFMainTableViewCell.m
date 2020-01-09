@@ -8,6 +8,10 @@
 
 #import "DFMainTableViewCell.h"
 #import "DFMainCellBtn.h"
+#import "DFWebViewController.h"
+#import "DFComplaintsViewController.h"
+#import "DFContactUsViewController.h"
+#import "DFAboutUsViewController.h"
 
 @interface DFMainTableViewCell ()
 
@@ -81,6 +85,7 @@
         self.clickMoreBtn.titleLabel.font = [UIFont systemFontOfSize:12];
         [self.clickMoreBtn setTitleColor:[UIColor colorWithHexString:@"999999"] forState:UIControlStateNormal];
         [self.clickMoreBtn setTitle:@"查看全部订单 >" forState:UIControlStateNormal];
+        
         [whiteView addSubview:self.clickMoreBtn];
         
         [self.clickMoreBtn mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -100,6 +105,9 @@
             
             clickBtn.hidden = YES;
             
+            [clickBtn addTarget:self action:@selector(clickSubBtn:) forControlEvents:UIControlEventTouchUpInside];
+
+            
             [whiteView addSubview:clickBtn];
             
             clickBtn.tag = 10086 + index;
@@ -117,6 +125,8 @@
     }
     return self;
 }
+
+
 - (void)setSubClickBtnArry:(NSArray *)subClickBtnArry
 {
     _subClickBtnArry = subClickBtnArry;
@@ -160,6 +170,44 @@
         self.clickMoreBtn.hidden = YES;
     }
 }
+
+- (void)clickSubBtn:(DFMainCellBtn *)sender
+{
+    if ([sender.titleStr isEqualToString:@"联系我们"]) {
+        [self.viewController.navigationController pushViewController:[DFContactUsViewController new] animated:YES];
+
+    }
+    else if ([sender.titleStr isEqualToString:@"投诉建议"])
+    {
+        [self.viewController.navigationController pushViewController:[DFComplaintsViewController new] animated:YES];
+    }
+    else if ([sender.titleStr isEqualToString:@"关于我们"])
+    {
+        [self.viewController.navigationController pushViewController:[DFAboutUsViewController new] animated:YES];
+    }
+    else
+    {
+            UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"温馨提示" message:@"正在开发，敬请期待！" preferredStyle:UIAlertControllerStyleAlert];
+            
+        //    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"否" style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {
+        //        NSLog(@"否按钮被点击了");
+        //    }];
+            UIAlertAction *sureAction = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            }];
+        //    UIAlertAction *destructiveAction = [UIAlertAction actionWithTitle:@"关闭" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+        //        NSLog(@"关闭按钮被点击了");
+        //    }];
+            
+        //    [alertController addAction:cancelAction];
+            [alertController addAction:sureAction];
+        //    [alertController addAction:destructiveAction];
+            
+            [self.viewController presentViewController:alertController animated:YES completion:nil];
+        
+    }
+}
+
+
 
 - (void)awakeFromNib {
     [super awakeFromNib];

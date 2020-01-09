@@ -214,10 +214,14 @@
 }
 - (void)topBarSegmentWithBlock:(CQTopBarSegment *)segment indexPath:(NSIndexPath *)indexPath
 {
+
+    
     if (indexPath.row == 1) {
         CGFloat contentY = [self.dataTableview rectForSection:0].origin.y;
         self.dataTableview.contentOffset = CGPointMake(0, contentY);
         self.style.view.hidden = !self.style.view.hidden;
+        
+
 
     }
     else if (indexPath.row == 2)
@@ -225,13 +229,27 @@
         CGFloat contentY = [self.dataTableview rectForSection:0].origin.y;
         self.dataTableview.contentOffset = CGPointMake(0, contentY);
         self.sortVc.view.hidden = !self.sortVc.view.hidden;
+        
+
     }
     else
     {
         CGFloat contentY = [self.dataTableview rectForSection:0].origin.y;
         self.dataTableview.contentOffset = CGPointMake(0, contentY);
         self.chooseCity.view.hidden = !self.chooseCity.view.hidden;
+        
+
     }
+}
+
+- (void)topBarSegmentWithSegmentView:(CQTopBarSegment *)segmentView;
+{
+    [self.segment.collectionView reloadData];
+    self.style.view.hidden = YES;
+    self.sortVc.view.hidden = YES;
+    self.chooseCity.view.hidden = YES;
+
+
 }
 - (DFChooseCityViewController *)chooseCity
 {
@@ -241,6 +259,11 @@
         _chooseCity.view.hidden = YES;
         [self addChildViewController:_chooseCity];
         [self.view addSubview:_chooseCity.view];
+        
+        [_chooseCity.view mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.left.right.bottom.mas_equalTo(0);
+            make.top.mas_equalTo(kNavBarAndStatusBarHeight + HScaleHeight(47));
+        }];
     }
     return _chooseCity;
 }
@@ -294,6 +317,11 @@
         _sortVc.view.hidden = YES;
         [self addChildViewController:_sortVc];
         [self.view addSubview:_sortVc.view];
+        
+        [_sortVc.view mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.left.right.bottom.mas_equalTo(0);
+            make.top.mas_equalTo(kNavBarAndStatusBarHeight + HScaleHeight(47));
+        }];
     }
     return _sortVc;
 }

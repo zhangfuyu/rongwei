@@ -23,7 +23,11 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self.view.backgroundColor = [[UIColor blackColor]colorWithAlphaComponent:0];
+    self.view.backgroundColor = [[UIColor blackColor]colorWithAlphaComponent:0.3];
+    
+    self.isSelect = YES;
+    self.selecIndex = [NSIndexPath indexPathForRow:0 inSection:0];
+    
     
     self.styleArry = [NSMutableArray arrayWithArray:@[@"综合排序",@"预约最多",@"签单最多",@"评价最多"]];
     
@@ -32,7 +36,7 @@
     self.dataTableview.dataSource = self;
     [self.dataTableview mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.right.mas_equalTo(0);
-        make.top.mas_equalTo(kNavBarAndStatusBarHeight + HScaleHeight(47));
+        make.top.mas_equalTo(0);
         make.height.mas_equalTo(HScaleHeight(179));
     }];
 }

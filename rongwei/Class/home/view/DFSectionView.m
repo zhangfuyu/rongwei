@@ -12,6 +12,8 @@
 #import "DFContructionListViewController.h"
 #import "DFHomeNavModel.h"
 #import "DFStrategyDetailViewController.h"
+#import "DFXiaoGuoTuViewController.h"
+#import "DFNavigationController.h"
 
 @interface DFSectionView()
 
@@ -92,15 +94,14 @@
     }
     
 }
-
 - (void)pushGonglue:(UIButton *)sender
 {
     
     DFHomeNavModel *model = self.hotArry[sender.tag - 10086];
-    
-    DFStrategyDetailViewController *detail = [[DFStrategyDetailViewController alloc]init];
-    detail.modelid = model.modelid;
-    [self.viewController.navigationController pushViewController:detail animated:YES];
+    [[DFUserModelTool shareInstance] formeController:self.viewController withModel:model];
+//    DFStrategyDetailViewController *detail = [[DFStrategyDetailViewController alloc]init];
+//    detail.modelid = model.modelid;
+//    [self.viewController.navigationController pushViewController:detail animated:YES];
 }
 
 - (void)setTitleText:(NSString *)titleText
@@ -168,5 +169,35 @@
         [self.viewController.navigationController pushViewController:[DFContructionListViewController new] animated:YES];
 
     }
+    else if ([self.titleText isEqualToString:@"推荐案例"])
+    {
+        [self.viewController.tabBarController setSelectedIndex:1];
+        
+        
+
+        
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+
+//            [[NSNotificationCenter defaultCenter] postNotificationName:@"TuiJianAnLi" object:nil];//到顶通知父视图改变状态
+            
+            DFNavigationController *naviController = self.viewController.tabBarController.selectedViewController;
+            DFXiaoGuoTuViewController *xiaoguotu = (DFXiaoGuoTuViewController *)naviController.topViewController;;
+            [xiaoguotu chaGongLue];
+
+        });
+        
+
+    }
+    else if ([self.titleText isEqualToString:@"热门攻略"])
+    {
+        [self.viewController.tabBarController setSelectedIndex:3];
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                   NSLog(@"run-----");
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"chaGongLue" object:nil];//到顶通知父视图改变状态
+
+          
+        });
+    }
+
 }
 @end

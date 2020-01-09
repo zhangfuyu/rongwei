@@ -29,6 +29,10 @@
 
 @property (nonatomic , assign)BOOL isSelect;
 
+@property (nonatomic , strong)NSString *city;
+
+@property (nonatomic , strong)NSString *province;
+
 
 @end
 
@@ -40,7 +44,7 @@
     
     self.cityArry = [NSMutableArray arrayWithCapacity:0];
     
-    self.view.backgroundColor = [[UIColor blackColor]colorWithAlphaComponent:0];
+    self.view.backgroundColor = [[UIColor blackColor]colorWithAlphaComponent:0.3];
 
     
     
@@ -50,7 +54,7 @@
     
     [backView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.right.mas_equalTo(0);
-        make.top.mas_equalTo(kNavBarAndStatusBarHeight + HScaleHeight(47));
+        make.top.mas_equalTo(0);
         make.height.mas_equalTo(HScaleHeight(145));
     }];
     
@@ -103,7 +107,6 @@
     }];
     
     
-    [self locate];
     
     UILabel *label = [[UILabel alloc] init];
     label.backgroundColor = [UIColor whiteColor];
@@ -123,46 +126,8 @@
     
     
     
-    NSDictionary *citydic = [[DFSaveDataTool shareInstance] getCountryData];
-    NSArray *allkey = citydic.allKeys;
 
-    NSMutableArray *provinceArry = [NSMutableArray arrayWithCapacity:0];
-    for (NSInteger index = 0; index < allkey.count; index ++) {
-        NSString *indexKey = allkey[index];
-        NSDictionary *keyData = citydic[indexKey];
-        DFCityModel *provinceModel = [[DFCityModel alloc]initWithDictionary:keyData error:nil];
-        [provinceArry addObject:provinceModel];
-    };
-    
-    
-    for (DFCityModel *model in provinceArry) {
-        if ([model.name isEqualToString:@"浙江省"]) {
-            self.positioningModel = model;
-            break;
-        }
-    }
-    
-    for (NSInteger index = 0; index < self.positioningModel.city.allKeys.count; index ++) {
-        NSDictionary *cityDic = [self.positioningModel.city objectForKey:self.positioningModel.city.allKeys[index]];
-        if ([(NSString *)cityDic[@"name"] containsString:@"丽水"]) {
-            self.choosCityDic = cityDic;
-            NSDictionary *region = cityDic[@"region"];
-            for (NSInteger index_j = 0; index_j < region.allKeys.count; index_j ++) {
-                NSDictionary *regionDic = region[region.allKeys[index_j]];
-                DFCityModel *provinceModel = [[DFCityModel alloc]initWithDictionary:regionDic error:nil];
-                [self.cityArry addObject:provinceModel];
-                
-            }
-            
-            DFCityModel *allModel = [[DFCityModel alloc]init];
-            allModel.name = @"全部";
-            
-            [self.cityArry insertObject:allModel atIndex:0];
-            break;
-        }
-        
-    }
-    
+//    [self getiCityArry];
     
      // 创建布局
     //1.创建流水布局
@@ -191,9 +156,62 @@
 
 
     
-    
+    [self locate];
+
     
 }
+
+
+- (void)getiCityArry
+{
+    
+    
+    [self.cityArry removeAllObjects];
+    
+    NSDictionary *citydic = [[DFSaveDataTool shareInstance] getCountryData];
+    NSArray *allkey = citydic.allKeys;
+
+    NSMutableArray *provinceArry = [NSMutableArray arrayWithCapacity:0];
+    for (NSInteger index = 0; index < allkey.count; index ++) {
+        NSString *indexKey = allkey[index];
+        NSDictionary *keyData = citydic[indexKey];
+        DFCityModel *provinceModel = [[DFCityModel alloc]initWithDictionary:keyData error:nil];
+        [provinceArry addObject:provinceModel];
+    };
+    
+    
+    for (DFCityModel *model in provinceArry) {
+        if ([model.name isEqualToString:self.province]) {
+            self.positioningModel = model;
+            break;
+        }
+    }
+    
+    for (NSInteger index = 0; index < self.positioningModel.city.allKeys.count; index ++) {
+        NSDictionary *cityDic = [self.positioningModel.city objectForKey:self.positioningModel.city.allKeys[index]];
+        if ([(NSString *)cityDic[@"name"] containsString:self.city]) {
+            self.choosCityDic = cityDic;
+            NSDictionary *region = cityDic[@"region"];
+            for (NSInteger index_j = 0; index_j < region.allKeys.count; index_j ++) {
+                NSDictionary *regionDic = region[region.allKeys[index_j]];
+                DFCityModel *provinceModel = [[DFCityModel alloc]initWithDictionary:regionDic error:nil];
+                [self.cityArry addObject:provinceModel];
+                
+            }
+            
+            DFCityModel *allModel = [[DFCityModel alloc]init];
+            allModel.name = @"全部";
+            
+            [self.cityArry insertObject:allModel atIndex:0];
+            break;
+        }
+        
+    }
+    
+    
+    [self.scrollView reloadData];
+}
+
 - (void)locate {
     if ([CLLocationManager locationServicesEnabled]) {//监测权限设置
         self.locationManager = [[CLLocationManager alloc]init];
@@ -230,11 +248,13 @@
     [geoCoder reverseGeocodeLocation:currentLocation completionHandler:^(NSArray<CLPlacemark *> * _Nullable placemarks, NSError * _Nullable error) {
         if (placemarks.count > 0) {
             CLPlacemark *placeMark = placemarks[0];
-            NSString *city = placeMark.locality;
-            if (!city) {
+            self.city = placeMark.locality;
+            self.province = placeMark.administrativeArea;
+            if (!self.city) {
                 NSLog(@"⟳定位获取失败,点击重试");
             } else {
-                [self.positioningBtn setTitle:placeMark.locality forState:UIControlStateNormal];
+                [self.positioningBtn setTitle:self.city forState:UIControlStateNormal];
+                [self getiCityArry];
             }
 
         } else if (error == nil && placemarks.count == 0 ) {

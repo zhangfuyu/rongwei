@@ -142,7 +142,7 @@
         NSMutableArray *contentVCs = [NSMutableArray array];
 
         DFRecommendedViewController *construction = [[DFRecommendedViewController alloc]init];
-//        construction.constructionid = @"1";
+        construction.remove_id = self.modelid;
         
         [contentVCs addObject:construction];
         
@@ -202,13 +202,30 @@
 }
 - (void)getrecommended
 {
-    [[DFNetworkTool shareInstance] requestWithMethod:GHRequestMethod_GET withUrl:BbsGuide withParameter:@{@"is_rec":@"0"} withLoadingType:GHLoadingType_HideLoading withShouldHaveToken:YES withContentType:GHContentType_Formdata completionBlock:^(BOOL isSuccess, NSString * _Nullable msg, id  _Nullable response) {
+    [[DFNetworkTool shareInstance] requestWithMethod:GHRequestMethod_GET withUrl:BbsGuide withParameter:@{@"is_rec":@"1"} withLoadingType:GHLoadingType_HideLoading withShouldHaveToken:YES withContentType:GHContentType_Formdata completionBlock:^(BOOL isSuccess, NSString * _Nullable msg, id  _Nullable response) {
         if (isSuccess) {
             
             NSArray *dataArry = response[@"data"];
+            
+            
+            NSMutableArray *jisuanArry = [NSMutableArray arrayWithCapacity:0];
+            
+            for (NSInteger index = 0; index < dataArry.count; index ++) {
+                
+                
+                DFGongLueModel *submodel = [[DFGongLueModel alloc]initWithDictionary:dataArry[index] error:nil];
+                if (![submodel.modelId isEqualToString:self.modelid]) {
+                                       
+                    [jisuanArry addObject:submodel];
+
+                }
+            }
+            
+            
             if (dataArry.count > 0) {
-                NSInteger remainder = dataArry.count % 2;
-                NSInteger zhengshu = dataArry.count / 2;
+                
+                NSInteger remainder = jisuanArry.count % 2;
+                NSInteger zhengshu = jisuanArry.count / 2;
                 if (remainder > 0) {
                     self.contentHeight = (zhengshu + 1) * HScaleHeight(125.5) + (zhengshu + 2) *HScaleHeight(10);
                 }

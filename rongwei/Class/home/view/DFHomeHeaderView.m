@@ -12,6 +12,18 @@
 #import "DFFoundConstructionViewController.h"
 #import "DFEsignerlListViewController.h"
 
+
+#import "DFGoodsDetailViewController.h"
+#import "DFStrategyDetailViewController.h"
+#import "DFZiXunListViewController.h"
+#import "DFWorksDetailViewController.h"
+#import "DFLookMorePictureViewController.h"
+#import "DFDesignerModel.h"
+#import "DFEsignerDetialViewController.h"
+#import "DFContructionDetailViewController.h"
+#import "DFStoreDetailViewController.h"
+#import "DFAllImageViewController.h"
+
 @interface DFHomeHeaderView()<SDCycleScrollViewDelegate>
 
 @property (nonatomic , strong)SDCycleScrollView *scrollView;
@@ -337,11 +349,14 @@
         
         [downImage sd_setImageWithURL:[NSURL URLWithString:model.pic_url] placeholderImage:nil];
         
+        UITapGestureRecognizer *noneTapGR = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(selectread:)];
+        [downImage addGestureRecognizer:noneTapGR];
+        downImage.tag = 10086 + index;
+        downImage.userInteractionEnabled = YES;
         
-        
-        UIButton *clickBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-        [self.recommended addSubview:clickBtn];
-        clickBtn.frame = CGRectMake((index + 1) * HScaleWidth(10) + index * HScaleWidth(310), 0, HScaleWidth(310), HScaleHeight(100));
+//        UIButton *clickBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+//        [self.recommended addSubview:clickBtn];
+//        clickBtn.frame = CGRectMake((index + 1) * HScaleWidth(10) + index * HScaleWidth(310), 0, HScaleWidth(310), HScaleHeight(100));
 
     }
     
@@ -356,6 +371,13 @@
 //    }
 //
 //    [self.recommended setImageURLStringsGroup:imageUrlArray];
+}
+- (void)selectread:(UITapGestureRecognizer *)tap
+{
+
+    DFHomeNavModel *model = self.navdownArry[tap.view.tag - 10086];
+    [[DFUserModelTool shareInstance] formeController:self.viewController withModel:model];
+    
 }
 - (void)clicksubButton:(UIButton *)clickBtn
 {
@@ -384,7 +406,7 @@
          [self.viewController.tabBarController setSelectedIndex:3];
          [[NSNotificationCenter defaultCenter] postNotificationName:@"chaGongLue" object:nil];//到顶通知父视图改变状态
      }
-    //找攻略
+    //找资讯
     else if (clickBtn.tag == 6)
     {
         [self.viewController.tabBarController setSelectedIndex:3];
@@ -394,6 +416,27 @@
 
           
         });
+    }
+    else if (clickBtn.tag == 7)
+    {
+        DFAllImageViewController *allimage = [[DFAllImageViewController alloc]init];
+        allimage.title = @"要监理";
+        allimage.imageName = @"yaojianli-1";
+        [self.viewController.navigationController pushViewController:allimage animated:YES];
+    }
+    else if (clickBtn.tag == 8)
+    {
+        DFAllImageViewController *allimage = [[DFAllImageViewController alloc]init];
+        allimage.title = @"智慧家";
+        allimage.imageName = @"zhihuijia-1";
+        [self.viewController.navigationController pushViewController:allimage animated:YES];
+    }
+    else if (clickBtn.tag == 9)
+    {
+        DFAllImageViewController *allimage = [[DFAllImageViewController alloc]init];
+        allimage.title = @"看直播";
+        allimage.imageName = @"kanzhibo-1";
+        [self.viewController.navigationController pushViewController:allimage animated:YES];
     }
 }
 
@@ -411,7 +454,10 @@
 #pragma mark - SDCycleScrollViewDelegate
 - (void)cycleScrollView:(SDCycleScrollView *)cycleScrollView didSelectItemAtIndex:(NSInteger)index {
     
-   
+    DFHomeNavModel *model = self.banaerArry[index];
+    
+    [[DFUserModelTool shareInstance] formeController:self.viewController withModel:model];
+
     
 }
 /** 图片滚动回调 */

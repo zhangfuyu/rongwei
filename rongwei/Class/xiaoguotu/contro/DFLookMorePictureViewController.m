@@ -31,6 +31,32 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.\
     
+    if (self.model.modelid.length == 0) {
+        
+        NSString *requestURL = [NSString stringWithFormat:@"%@/%@",WorkDesignerDetailApi,self.workId];
+         [[DFNetworkTool shareInstance] requestWithMethod:GHRequestMethod_GET withUrl:requestURL withParameter:nil withLoadingType:GHLoadingType_ShowLoading withShouldHaveToken:YES withContentType:GHContentType_Formdata completionBlock:^(BOOL isSuccess, NSString * _Nullable msg, id  _Nullable response) {
+                       
+             if (isSuccess) {
+                 self.model = [[DFDesignerWorkModel alloc]initWithDictionary:response[@"data"] error:nil];
+             }
+             
+             [self creatui];
+                         
+                    
+         }];
+        
+    }
+    else
+    {
+        [self creatui];
+
+    }
+    
+    
+
+}
+- (void)creatui
+{
     [self.collectionview mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.top.right.bottom.mas_equalTo(0);
     }];
@@ -137,7 +163,6 @@
         make.size.mas_equalTo(CGSizeMake(HScaleWidth(51), HScaleHeight(28)));
     }];
 }
-
 - (void)clickCancelAction
 {
     [self.navigationController popViewControllerAnimated:YES];

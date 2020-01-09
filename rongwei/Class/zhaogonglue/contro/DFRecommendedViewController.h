@@ -12,6 +12,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface DFRecommendedViewController : DFBaseViewController
 
+@property (nonatomic , strong) NSString *remove_id;
+
 @property (nonatomic , strong) UICollectionView *scrollView;
 
 @property (nonatomic, assign) BOOL vcCanScroll;

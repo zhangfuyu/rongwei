@@ -68,12 +68,16 @@
     
     
     self.topView.clickTypeBlock = ^(NSString * _Nonnull clickTitle) {
+        weakSelf.sortingVC.view.hidden = YES;
+        [weakSelf.segment.collectionView reloadData];
         weakSelf.allTopView.clickId = clickTitle;
         weakSelf.category_id = clickTitle;
         [weakSelf.goods_arry removeAllObjects];
         [weakSelf getShopGoods];
     };
     self.topView.clickShowAllCategaeyBlock = ^{
+        weakSelf.sortingVC.view.hidden = YES;
+        [weakSelf.segment.collectionView reloadData];
         [weakSelf.view bringSubviewToFront:weakSelf.allTopView];
         weakSelf.allTopView.hidden = NO;
     };
@@ -240,15 +244,25 @@
         self.parmar[@"des_status"] = @"0";
         [self.goods_arry removeAllObjects];
         [self getShopGoods];
+        self.sortingVC.view.hidden = YES;
+
     }
     else
     {
         self.parmar[@"des_status"] = @"1";
         [self.goods_arry removeAllObjects];
         [self getShopGoods];
+        self.sortingVC.view.hidden = YES;
+
 
     }
 
+}
+- (void)topBarSegmentWithSegmentView:(CQTopBarSegment *)segmentView
+{
+    [self.segment.collectionView reloadData];
+    self.sortingVC.view.hidden = YES;
+    
 }
 
 - (CQTopBarSegment *)segment
@@ -306,6 +320,11 @@
         _sortingVC.view.hidden = YES;
         [self addChildViewController:_sortingVC];
         [self.view addSubview:_sortingVC.view];
+        
+        [_sortingVC.view mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.left.right.bottom.mas_equalTo(0);
+            make.top.mas_equalTo(kNavBarAndStatusBarHeight + HScaleHeight(47) + HScaleHeight(37));
+        }];
         
     }
     return _sortingVC;
